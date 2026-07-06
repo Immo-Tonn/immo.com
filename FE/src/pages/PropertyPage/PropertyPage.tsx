@@ -8,8 +8,10 @@ import { usePropertyData } from '@shared/api/usePropertyData';
 import ContactForm from '@features/contact/ui/ContactForm';
 import styles from './PropertyPage.module.css';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
+import { useTranslation } from 'react-i18next';
 
 const PropertyPage: React.FC = () => {
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
@@ -43,7 +45,7 @@ const PropertyPage: React.FC = () => {
 
   // Delete handler (admin only)
   const handleDelete = async () => {
-    if (!window.confirm('Wirklich löschen? Diese Aktion ist unwiderruflich.')) {
+    if (!window.confirm(t('propertyPage.confirmDelete'))) {
       return;
     }
 
@@ -67,7 +69,7 @@ const PropertyPage: React.FC = () => {
 
       navigate('/immobilien', {
         state: {
-          message: 'Das Objekt wurde erfolgreich gelöscht',
+          message: t('propertyPage.deleteSuccess'),
           type: 'success',
         },
       });
@@ -85,43 +87,41 @@ const PropertyPage: React.FC = () => {
     return (
       <div className={styles.propertyPageContainer}>
         <div className={styles.deletedObjectMessage}>
-          <h2>Objekt wurde gelöscht</h2>
-          <p>Das angeforderte Objekt wurde erfolgreich gelöscht.</p>
-          <p>
-            Sie werden in wenigen Sekunden zur Objektübersicht weitergeleitet...
-          </p>
+          <h2>{t('propertyPage.deletedTitle')}</h2>
+          <p>{t('propertyPage.deletedText')}</p>
+          <p>{t('propertyPage.deletedRedirect')}</p>
           <button
             className={styles.backButton}
             onClick={() => navigate('/immobilien')}
           >
-            Sofort zur Übersicht
+            {t('propertyPage.backToOverview')}
           </button>
         </div>
       </div>
     );
   }
 
-  if (loading) return <p>Laden...</p>;
+  if (loading) return <p>{t('propertyPage.loading')}</p>;
 
   if (err && err.includes('nicht gefunden')) {
     return (
       <div className={styles.propertyPageContainer}>
         <div className={styles.notFoundMessage}>
-          <h2>Objekt nicht gefunden</h2>
-          <p>Das angeforderte Objekt konnte nicht gefunden werden.</p>
-          <p>Möglicherweise wurde es gelöscht oder die URL ist ungültig.</p>
+          <h2>{t('propertyPage.notFoundTitle')}</h2>
+          <p>{t('propertyPage.notFoundText')}</p>
+          <p>{t('propertyPage.notFoundHint')}</p>
           <button
             className={styles.backButton}
             onClick={() => navigate('/immobilien')}
           >
-            Zur Objektübersicht
+            {t('propertyPage.toOverview')}
           </button>
         </div>
       </div>
     );
   }
 
-  if (!objectData) return <p>Objekt nicht gefunden</p>;
+  if (!objectData) return <p>{t('propertyPage.notFoundTitle')}</p>;
 
   return (
     <div className={styles.propertyPageContainer}>
@@ -131,10 +131,10 @@ const PropertyPage: React.FC = () => {
       {isAdmin && (
         <div className={styles.adminActions}>
           <button className={styles.editButton} onClick={handleEdit}>
-            Bearbeiten
+            {t('propertyPage.edit')}
           </button>
           <button className={styles.deleteButton} onClick={handleDelete}>
-            Löschen
+            {t('propertyPage.delete')}
           </button>
         </div>
       )}

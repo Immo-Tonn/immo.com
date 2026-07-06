@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import styles from './NotFound.module.css';
 import cowSound from '@shared/assets/audio/cow-moo.mp3';
 import Button from '@shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const NotFound = () => {
+  const { t } = useTranslation();
   const [showCow] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -24,8 +26,8 @@ const NotFound = () => {
       <div className={styles.cowWrapper}>
         <Link to="/">
           <Button
-            initialText=" Zurück zur Startseite"
-            clickedText="Weiterleitung....."
+            initialText={t('notFound.backHome')}
+            clickedText={t('common.redirecting')}
             className={styles.homeBtn}
           />
         </Link>
@@ -43,7 +45,7 @@ const NotFound = () => {
 
         <div className={styles.textBox}>
           <h1>404</h1>
-          <p>Ups! Diese Seite wurde nicht gefunden.</p>
+          <p>{t('notFound.text')}</p>
         </div>
       </div>
     </div>

@@ -2,7 +2,9 @@ import { useEffect, useRef } from 'react';
 import styles from './Competence.module.css';
 import lightBuilding from '@shared/assets/competence/light-bulding.webp';
 import { fadeInOnScroll } from '@shared/anim/animations';
+import { useTranslation } from 'react-i18next';
 const Competence = () => {
+  const { t } = useTranslation();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const Competence = () => {
           refs.current[0] = el;
         }}
       >
-        Vertrauen durch Kompetenz
+        {t('competence.title')}
       </h2>
       <span className={styles.line}></span>
       <p
@@ -31,18 +33,14 @@ const Competence = () => {
           refs.current[1] = el;
         }}
       >
-        Unsere Kunden besitzen nicht nur Immobilien – sie sind oft auch bei uns
-        versichert. Das heißt: Wir kennen ihre Situation, ihre Immobilie und
-        ihre Bedürfnisse.
+        {t('competence.paragraph1')}
       </p>
       <p
         ref={el => {
           refs.current[2] = el;
         }}
       >
-        Genau darin liegt unser Vorteil: Wir kombinieren Wissen aus zwei Welten
-        – Immobilienbewertung und Versicherungsberatung – für eine ganzheitliche
-        Betreuung.
+        {t('competence.paragraph2')}
       </p>
 
       <img
@@ -60,7 +58,7 @@ const Competence = () => {
             refs.current[4] = el;
           }}
         >
-           Jetzt unverbindlich anfragen – Ihr Immo Tonn Team ist für Sie da!
+          {t('competence.secondTitle')}
         </h2>
       </div>
     </section>

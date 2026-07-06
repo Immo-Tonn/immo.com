@@ -5,41 +5,58 @@
 }
 
 .headerTop {
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
+  max-width: var(--container-max-width);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 24px;
+  row-gap: 10px;
   margin: 0 auto;
+  padding: 0 32px;
+}
+
+.logoLink {
+  grid-row: 1 / span 2;
+  grid-column: 1;
+  align-self: end;
+  display: flex;
+  align-items: flex-end;
+  margin-right: 8px;
 }
 
 .logo {
-  max-height: 136px;
+  max-height: 110px;
+  display: block;
 }
 
 /*Container for navi and admin menu */
 .navContainer {
+  grid-row: 2;
+  grid-column: 2 / 4;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: end;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .nav {
   display: flex;
-  gap: 30px;
-  align-items: flex-end;
+  gap: 40px;
+  align-items: center;
 }
 
 /* Admin button for desktop (inside nav) */
 .adminDesktop {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 /* Admin button for tablet (under nav) */
 .adminTablet {
   display: none;
   margin-top: 10px;
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .listItemText {
@@ -51,44 +68,65 @@
   font-size: clamp(16px, 3vw, 20px) !important;
 }
 
+.contactColumn {
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  justify-self: end;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bottomLangSwitcher {
+  margin-bottom: 5px;
+  padding-left: 26px;
+}
+
+
 .headerContacts {
-  margin: 5px 10px 0 0;
   align-items: center;
   text-align: left;
   list-style: none;
-  margin-bottom: 20px;
   padding: 0;
+  margin: 0;
 }
 
 .headerContacts > li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.headerContacts > li:last-child {
+  margin-bottom: 0;
 }
 
 .contactIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 26px;
+  min-width: 18px;
 }
 
 .contactIcon > img {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
+  opacity: 0.9;
 }
 
 .contactTextWrapper > span {
-  margin-top: 5px;
   display: block;
+  line-height: 1.4;
 }
 
 .contactText {
   text-decoration: none;
-  color: white;
+  color: #d9d9d9;
   font-size: 14px;
+  letter-spacing: 0.01em;
   display: flex;
   transition:
     transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -97,7 +135,8 @@
 
 .nav a {
   font-weight: var(--font-weight-secondary);
-  font-size: clamp(var(--font-size-xs), 2vw, var(--font-size-small));
+  font-size: 19px;
+  letter-spacing: var(--nav-letter-spacing);
   text-align: center;
   color: #d9d9d9;
   margin-bottom: 16px;
@@ -128,6 +167,62 @@
   color: white;
 }
 
+.langSwitcher {
+  display: flex;
+  align-items: center;
+}
+
+.langButton {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #8a8a93;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: var(--font-weight-secondary);
+  letter-spacing: 0.03em;
+  padding: 0 10px;
+  margin: 0;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.langButton:first-child {
+  padding-left: 0;
+}
+
+.langButton:last-child {
+  padding-right: 0;
+}
+
+.langButton:not(:last-child) {
+  border-right: 1px solid rgba(217, 217, 217, 0.4);
+}
+
+.langButton:hover {
+  color: white;
+}
+
+.langButtonActive {
+  color: white;
+}
+
+.drawerLangSwitcher {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  border-top: 1px solid #333;
+}
+
+.mobileActions {
+  display: none;
+  align-items: center;
+  gap: 14px;
+}
+
 .drawerHeader {
   display: flex;
   align-items: center;
@@ -148,7 +243,8 @@
 }
 
 .drawerLogo {
-  height: 114px;
+  height: 64px;
+  display: block;
 }
 
 .locationIcon {
@@ -191,18 +287,16 @@
 
 /* Планшетный размер (768px и менее) */
 @media (max-width: 768px) {
-  .logo {
-    max-height: 114px;
-    grid-row: 1 / span 2;
-    grid-column: 1;
-    margin-right: 15px;
+  .headerTop {
+    padding: 0 20px;
   }
 
-  .navContainer {
-    grid-row: 2;
-    grid-column: 2 / 4;
-    align-items: flex-start;
-    width: 100%;
+  .logo {
+    max-height: 80px;
+  }
+
+  .logoLink {
+    margin-right: 15px;
   }
 
   .nav {
@@ -223,33 +317,22 @@
     align-self: flex-start;
   }
 
-  .contact {
-    grid-row: 1;
-    grid-column: 3;
-    margin-right: 20px;
+  .contactText {
+    font-size: 11px;
   }
 
-  .contactText {
-    font-size: 10px;
+  .contactIcon > img {
+    width: 12px;
+    height: 12px;
   }
 
   .nav a {
-    font-size: clamp(12px, 8vw, 20px);
-    margin-bottom: 8px;
+    font-size: 13px;
   }
 
-  .headerTop {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
-  }
-
-  .headerContacts {
-    margin-bottom: 0;
-  }
-
-  .headerContacts li {
-    margin-bottom: 0;
+  .langButton {
+    font-size: 12px;
+    padding: 0 6px;
   }
 }
 @media (max-width: 709px) {
@@ -257,26 +340,31 @@
     gap: clamp(6px, 2vw, 11px);
   }
   .nav > a {
-    font-size: clamp(9px, 2.8vw, 17px);
+    font-size: clamp(11px, 2.8vw, 14px);
   }
 }
-@media (max-width: 576px) {
+@media (max-width: 1200px) {
   .headerTop {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
   }
 
   .navContainer {
     display: none;
   }
 
-  .contact {
+  .contactColumn {
     display: none;
+  }
+
+  .mobileActions {
+    display: flex;
   }
 
   .burgerButton {
     display: block !important;
-    margin-bottom: 16px;
   }
 
   .nav {
@@ -293,15 +381,6 @@
 
   .burger {
     display: block;
-    margin-bottom: 16px;
-  }
-
-  .logo {
-    max-height: 100px;
-  }
-
-  .headerWrapper {
-    padding: 0;
   }
 }
 

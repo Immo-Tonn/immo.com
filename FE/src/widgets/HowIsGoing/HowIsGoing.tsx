@@ -3,7 +3,16 @@ import styles from './HowIsGoing.module.css';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 const HowIsGoing = () => {
+  const { t } = useTranslation();
+  const considerItems = t('howIsGoing.considerItems', {
+    returnObjects: true,
+  }) as string[];
+  const processItems = t('howIsGoing.processItems', {
+    returnObjects: true,
+  }) as string[];
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -24,7 +33,7 @@ const HowIsGoing = () => {
           refs.current[0] = el;
         }}
       >
-        <h3>Was wir bei der Bewertung berücksichtigen:</h3>
+        <h3>{t('howIsGoing.considerTitle')}</h3>
         <div
           className={styles.listWrapper}
           ref={el => {
@@ -32,14 +41,12 @@ const HowIsGoing = () => {
           }}
         >
           <ul>
-            <li>Aktuelle Markt- und Nachfragesituation</li>
-            <li>Lage und Mikrolage der Immobilien</li>
-            <li>Baujahr, Zustand, Ausstattung</li>
-            <li>Vergleichswerte ähnlicher Objekte</li>
-            <li>Potenziale für Modernisierung oder energetische Sanierung</li>
+            {considerItems.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
           </ul>
         </div>
-        <h3>Wie läuft die Bewertung ab?</h3>
+        <h3>{t('howIsGoing.processTitle')}</h3>
         <div
           className={styles.listWrapper}
           ref={el => {
@@ -47,12 +54,9 @@ const HowIsGoing = () => {
           }}
         >
           <ol>
-            <li>Unverbindliches Erstgespräch – telefonisch oder vor Ort</li>
-            <li>Analyse der Objektunterlagen und Besichtigung</li>
-            <li>Marktgerechte Bewertung mit transparentem Ergebnis</li>
-            <li>
-              Auf Wunsch: Beratung zu Verkauf, Finanzierung oder Sanierung
-            </li>
+            {processItems.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
           </ol>
         </div>
         <div
@@ -63,8 +67,8 @@ const HowIsGoing = () => {
         >
           <Link to="/kontakt" style={{ marginTop: '113px' }}>
             <Button
-              initialText="Kontakt knüpfen"
-              clickedText="Weiterleitung..."
+              initialText={t('howIsGoing.cta')}
+              clickedText={t('common.redirecting')}
             />
           </Link>
         </div>

@@ -5,8 +5,10 @@ import animationData from '@shared/assets/lottie/mail-sent.json';
 import Confetti from 'react-confetti';
 import styles from './DankePage.module.css';
 import Button from '@shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const DankePage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [windowSize, setWindowSize] = useState({
     width: 0,
@@ -32,17 +34,17 @@ const DankePage = () => {
       <Confetti width={windowSize.width} height={windowSize.height} />
 
       <div className={styles.card}>
-        <Suspense fallback={<div>Animation wird geladen...</div>}>
+        <Suspense fallback={<div>{t('dankePage.loadingAnimation')}</div>}>
           <Lottie
             animationData={animationData}
             style={{ width: 180, height: 180, marginBottom: 20 }}
           />
         </Suspense>
-        <h1>Vielen Dank!</h1>
-        <p>Ihre Nachricht wurde erfolgreich versendet.</p>
+        <h1>{t('dankePage.title')}</h1>
+        <p>{t('dankePage.text')}</p>
         <Button
-          initialText="Zurück zur Startseite"
-          clickedText="Weiterleitung..."
+          initialText={t('dankePage.backHome')}
+          clickedText={t('common.redirecting')}
           onClick={() => navigate('/')}
         />
       </div>

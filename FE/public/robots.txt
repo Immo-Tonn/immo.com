@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /add-property
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /change-password
+Disallow: /create-object
+Disallow: /edit-object/
+Disallow: /preview-object/
+Disallow: /kontakt/danke
+
+Sitemap: https://immo-tonn.de/sitemap.xml

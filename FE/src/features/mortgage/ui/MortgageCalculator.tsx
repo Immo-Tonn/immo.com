@@ -7,6 +7,7 @@ import QuestionIcon from '@shared/assets/morgage-calculator/question.svg';
 import MarkerIcon from '@shared/assets/morgage-calculator/marker.svg';
 import Input from '@shared/ui/Input/Input';
 import Button from '@shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const formatGermanCurrency = (num: number) => {
   return num
@@ -23,25 +24,11 @@ const parseGermanCurrency = (str: string): number => {
   return isNaN(result) ? 0 : result;
 };
 
-const infoTexts = {
-  tax: {
-    title: 'Grunderwerbsteuer',
-    body: 'Die Höhe der Grunderwerbsteuer ist in Deutschland nicht einheitlich und variiert je nach Bundesland.',
-  },
-  notary: {
-    title: 'Notar & Grundbuch',
-    body: 'Die Kosten für Notar und Grundbucheintrag trägt in der Regel der Käufer.',
-  },
-  broker: {
-    title: 'Käufer-Maklerprovision',
-    body: 'Die Käufer-Maklerprovision richtet sich nach den Angaben im Exposé.',
-  },
-} as const;
-
 type Mode = 'calculateYears' | 'calculateRepayment';
-type InfoKey = keyof typeof infoTexts;
+type InfoKey = 'tax' | 'notary' | 'broker';
 
 const MortgageCalculator = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const [price, setPrice] = useState('');
   //const [showError, setShowError] = useState(false);
@@ -49,15 +36,12 @@ const MortgageCalculator = () => {
   const [loanAmount, setLoanAmount] = useState<number | null>(null);
   const [tax, setTax] = useState('6,5');
   const [notary, setNotary] = useState('1,5');
-  const [broker, setBroker] = useState('0,0357'); 
+  const [broker, setBroker] = useState('0,0357');
   const [repayment, setRepayment] = useState('2,0');
   const [interest, setInterest] = useState('3,5');
   const [years, setYears] = useState('30');
   const [monthly, setMonthly] = useState<number | null>(null);
-  const [modalContent, setModalContent] = useState<{
-    title: string;
-    body: string;
-  } | null>(null);
+  const [modalContent, setModalContent] = useState<InfoKey | null>(null);
   const [mode, setMode] = useState<Mode>('calculateYears');
   const [customTax, setCustomTax] = useState('');
   const [customNotary, setCustomNotary] = useState('');
@@ -383,11 +367,11 @@ if (priceTooLowError) {
     doc.line(20, 45, 190, 45);
     doc.setFontSize(22);
     doc.setFont('helvetica', 'bold');
-    doc.text('Finanzierungsrechner', 105, 55, { align: 'center' });
+    doc.text(t('mortgageCalculator.pdf.title'), 105, 55, { align: 'center' });
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.text(
-      `Erstellt am: ${new Date().toLocaleDateString('de-DE')}`,
+      `${t('mortgageCalculator.pdf.createdOn')}: ${new Date().toLocaleDateString('de-DE')}`,
       170,
       60,
       {
@@ -406,23 +390,23 @@ if (priceTooLowError) {
     let y = 70;
     const rowGap = 10;
 
-    doc.text('Immobilienpreis:', 25, y);
+    doc.text(`${t('mortgageCalculator.pdf.price')}:`, 25, y);
     doc.text(formatCurrency(parseGermanCurrency(price)), 110, y);
     y += rowGap;
 
-    doc.text('Eigenkapital:', 25, y);
+    doc.text(`${t('mortgageCalculator.pdf.equity')}:`, 25, y);
   doc.text(formatCurrency(parseGermanCurrency(equity)), 110, y);
     y += rowGap;
 
-    doc.text('Grunderwerbsteuer:', 25, y);
+    doc.text(`${t('mortgageCalculator.taxLabel')}:`, 25, y);
     doc.text(`${tax === 'custom' ? customTax : tax}%`, 110, y);
     y += rowGap;
 
-    doc.text('Notar/Grundbuch:', 25, y);
+    doc.text(`${t('mortgageCalculator.notaryLabel')}:`, 25, y);
     doc.text(`${notary === 'custom' ? customNotary : notary}%`, 110, y);
     y += rowGap;
 
-    doc.text('Maklerprovision:', 25, y);
+    doc.text(`${t('mortgageCalculator.pdf.brokerCommission')}:`, 25, y);
     const brokerRaw = broker === 'custom' ? customBroker : broker;
 const parsedBroker = parseFloat(brokerRaw.replace(',', '.')); // превращаем строку в число
 
@@ -434,26 +418,26 @@ if (!isNaN(parsedBroker)) {
 }
     y += rowGap;
 
-    doc.text('Darlehenssumme:', 25, y);
+    doc.text(`${t('mortgageCalculator.pdf.loanAmount')}:`, 25, y);
     doc.text(formatCurrency(loanAmount ?? 0), 110, y);
     y += rowGap;
 
-    doc.text('Zinssatz:', 25, y);
+    doc.text(`${t('mortgageCalculator.pdf.interestRate')}:`, 25, y);
     doc.text(`${interest}%`, 110, y);
     y += rowGap;
 
-    doc.text('Tilgung:', 25, y);
+    doc.text(`${t('mortgageCalculator.repaymentLabel')}:`, 25, y);
     doc.text(`${repayment}%`, 110, y);
     y += rowGap;
 
-    doc.text('Laufzeit:', 25, y);
-    doc.text(`${years} Jahre`, 110, y);
+    doc.text(`${t('mortgageCalculator.pdf.term')}:`, 25, y);
+    doc.text(`${years} ${t('mortgageCalculator.pdf.years')}`, 110, y);
     y += rowGap + 6;
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(22);
     doc.setTextColor(15, 68, 106);
-    doc.text('Monatliche Rate:', 25, y);
+    doc.text(`${t('mortgageCalculator.monthlyRate')}:`, 25, y);
     doc.text(formatCurrency(monthly ?? 0), 110, y);
 
     doc.setFont('helvetica', 'normal');
@@ -465,7 +449,7 @@ if (!isNaN(parsedBroker)) {
     let contactY = 250;
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
-    doc.text('Kontakt', 105, contactY, { align: 'center' });
+    doc.text(t('mortgageCalculator.pdf.contact'), 105, contactY, { align: 'center' });
     contactY += 7;
 
     doc.setFontSize(11);
@@ -500,10 +484,10 @@ if (!brokerOptions.includes('3,57')) {
 }
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.title}>Immobilien Finanzierung Rechner</h2>
+      <h2 className={styles.title}>{t('mortgageCalculator.pageTitle')}</h2>
       <div className={styles.grid}>
         <div className={styles.col}>
-          <label htmlFor="price">Immobilienpreis (€)</label>
+          <label htmlFor="price">{t('mortgageCalculator.priceLabel')}</label>
           <div className={styles.inputWithIcon}>
             <input
               id="price"
@@ -517,11 +501,12 @@ if (!brokerOptions.includes('3,57')) {
           </div>
           {priceTooLowError && (
   <p className={styles.error}>
-    Der Immobilienpreis muss größer als das Eigenkapital sein.
+    {t('mortgageCalculator.errorPriceTooLow')}
   </p>
 )}
           {renderSelect(
-            'Grunderwerbsteuer',
+            t,
+            t('mortgageCalculator.taxLabel'),
             tax,
             setTax,
             customTax,
@@ -534,7 +519,8 @@ if (!brokerOptions.includes('3,57')) {
              setModalContent,
           )}
           {renderSelect(
-            'Notar/Grundbuch',
+            t,
+            t('mortgageCalculator.notaryLabel'),
             notary,
             setNotary,
             customNotary,
@@ -547,7 +533,8 @@ if (!brokerOptions.includes('3,57')) {
             setModalContent,
           )}
           {renderSelect(
-            'Käufer Maklerprovision',
+            t,
+            t('mortgageCalculator.brokerLabel'),
             broker,
             setBroker,
             customBroker,
@@ -560,11 +547,11 @@ if (!brokerOptions.includes('3,57')) {
             setModalContent,
           )}
           <p className={styles.sumLine}>
-            € Gesamtpreis: {formatGermanCurrency(totalCost)}
+            € {t('mortgageCalculator.totalPrice')}: {formatGermanCurrency(totalCost)}
           </p>
         </div>
         <div className={styles.col}>
-          <label htmlFor="equity">Eigenkapital</label>
+          <label htmlFor="equity">{t('mortgageCalculator.equityLabel')}</label>
           <div className={styles.inputWithIcon}>
             <input
               id="equity"
@@ -578,17 +565,16 @@ if (!brokerOptions.includes('3,57')) {
           </div>
           {equityTooHighError && (
             <p className={styles.error}>
-              Eigenkapital muss kleiner als der Gesamtpreis sein.
+              {t('mortgageCalculator.errorEquityTooHigh')}
             </p>
           )}
           {equityDecimalError && (
             <p className={styles.error}>
-              Es dürfen nicht mehr als zwei Ziffern nach dem Komma eingegeben
-              werden.
+              {t('mortgageCalculator.errorEquityDecimals')}
             </p>
           )}
 
-          <label htmlFor="repayment">Tilgung</label>
+          <label htmlFor="repayment">{t('mortgageCalculator.repaymentLabel')}</label>
           <select
             id="repayment"
             name="repayment"
@@ -605,7 +591,7 @@ if (!brokerOptions.includes('3,57')) {
             ))}
           </select>
           {/* 222 */}
- <label htmlFor="interest">Sollzins p. a.(%)</label>
+ <label htmlFor="interest">{t('mortgageCalculator.interestLabel')}</label>
 <div className={styles.inputWithIcon}>
   <input
     type="text"
@@ -652,16 +638,16 @@ if (!brokerOptions.includes('3,57')) {
 
           {interestDecimalError && (
             <p className={styles.error}>
-              Nach dem Komma darf nur eine Ziffer eingegeben werden.
+              {t('mortgageCalculator.errorInterestDecimals')}
             </p>
           )}
           {interestRangeError && (
             <p className={styles.error}>
-              Der Sollzins muss größer als 0 und kleiner als 14 sein.
+              {t('mortgageCalculator.errorInterestRange')}
             </p>
           )}
 
-          <label htmlFor="years">Laufzeit (Jahre)</label>
+          <label htmlFor="years">{t('mortgageCalculator.yearsLabel')}</label>
           <select
             id="years"
             name="years"
@@ -679,7 +665,7 @@ if (!brokerOptions.includes('3,57')) {
           </select>
         </div>
         <div className={styles.col}>
-          <label htmlFor="loanAmount">Darlehenssumme</label>
+          <label htmlFor="loanAmount">{t('mortgageCalculator.loanAmountLabel')}</label>
           <input
             id="loanAmount"
             name="loanAmount"
@@ -687,7 +673,7 @@ if (!brokerOptions.includes('3,57')) {
             readOnly
           />
           <div className={styles.rateLabel}>
-            Monatliche Rate:{' '}
+            {t('mortgageCalculator.monthlyRate')}:{' '}
             {monthly !== null && (
               <span className={styles.monthly}>
                 <CountUp
@@ -701,45 +687,43 @@ if (!brokerOptions.includes('3,57')) {
             )}
           </div>
           <Button
-            initialText="Berechnen"
-            clickedText="im Prozess"
+            initialText={t('mortgageCalculator.calculateButton')}
+            clickedText={t('mortgageCalculator.inProgress')}
             onClick={handleCalc}
             className={styles.btn}
           />
           <Button
             onClick={exportPDF}
             className={styles.btn}
-            initialText="Export als PDF"
-            clickedText="im Prozess"
+            initialText={t('mortgageCalculator.exportPdfButton')}
+            clickedText={t('mortgageCalculator.inProgress')}
           />
           {validationError && (
             <p className={styles.error}>
-              Die monatliche Rate wird nach der Eingabe gültiger Werte
-              berechnet.
+              {t('mortgageCalculator.validationHint')}
             </p>
           )}
         </div>
       </div>
       <p className={styles.hint}>
-        <strong>Wichtiger Hinweis:</strong>
+        <strong>{t('mortgageCalculator.hintTitle')}</strong>
         <br />
-        Die hier berechnete monatliche Rate stellt lediglich eine unverbindliche
-        Beispielrechnung dar
+        {t('mortgageCalculator.hintBody1')}
         <br />
-        und dient nur zur ersten Orientierung. Sie ersetzt keine individuelle
-        Finanzierungsberatung. Die <br /> tatsächlichen Konditionen können je
-        nach Anbieter, Bonität und weiteren Faktoren abweichen.
+        {t('mortgageCalculator.hintBody2')} <br />{' '}
+        {t('mortgageCalculator.hintBody3')}
         <br />
-        Für die Richtigkeit, Vollständigkeit und Aktualität der Angaben wird
-        keine Haftung übernommen.
+        {t('mortgageCalculator.hintBody4')}
       </p>
       {/* Модальное окно для иконки QuestionIcon */}
       {modalContent && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
-            <h3>{modalContent.title}</h3>
-            <p>{modalContent.body}</p>
-            <button onClick={() => setModalContent(null)}>Schließen</button>
+            <h3>{t(`mortgageCalculator.info.${modalContent}.title`)}</h3>
+            <p>{t(`mortgageCalculator.info.${modalContent}.body`)}</p>
+            <button onClick={() => setModalContent(null)}>
+              {t('mortgageCalculator.close')}
+            </button>
           </div>
         </div>
       )}
@@ -750,6 +734,7 @@ if (!brokerOptions.includes('3,57')) {
 export default MortgageCalculator;
 
 function renderSelect(
+  t: (key: string, opts?: Record<string, unknown>) => string,
   label: string,
   value: string,
   onChange: (value: string) => void,
@@ -760,7 +745,7 @@ function renderSelect(
   modeToggle?: () => void,
   showError?: boolean,
    setShowError?: (show: boolean) => void,
-  onInfoClick?: (info: { title: string; body: string }) => void,
+  onInfoClick?: (infoKey: InfoKey) => void,
 ) {
   const showCustom = value === 'custom';
   return (
@@ -770,7 +755,7 @@ function renderSelect(
         <img
           src={QuestionIcon}
           className={styles.icon}
-          onClick={() => onInfoClick?.(infoTexts[infoKey])}
+          onClick={() => onInfoClick?.(infoKey)}
           alt={`${label} info`}
         />
       </label>
@@ -797,7 +782,7 @@ function renderSelect(
               {opt}%
             </option>
           ))}
-          <option value="custom">eigener Wert</option>
+          <option value="custom">{t('mortgageCalculator.customValue')}</option>
         </select>
 
         {showCustom && (
@@ -877,7 +862,7 @@ const parts = val.split(',');
 
       {showCustom && showError && (
   <p className={styles.error}>
-    Bitte geben Sie einen gültigen Wert zwischen 0 und 10 ein (max. zwei Nachkommastellen).
+    {t('mortgageCalculator.customValueError')}
   </p>
 )}
     </>

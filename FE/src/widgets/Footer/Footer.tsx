@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './Footer.module.css';
 import logo from '@shared/assets/about-us/logo-white.svg';
 import instagram from '@shared/assets/footer/instagram.svg';
 import linkedIn from '@shared/assets/footer/linkedin.svg';
 import youtube from '@shared/assets/footer/youtube.svg';
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
       <div className={styles.topStripe} />
@@ -14,13 +16,13 @@ const Footer = () => {
 
           <ul className={styles.footerLinks}>
             <li>
-              <Link to="/legalnotice">Impressum</Link>
+              <Link to="/legalnotice">{t('footer.legalNotice')}</Link>
             </li>
             <li>
-              <Link to="/privacypolicy">Datenschutz</Link>
+              <Link to="/privacypolicy">{t('footer.privacyPolicy')}</Link>
             </li>
             <li>
-              <Link to="/cancellationpolicy">Widerrufsrecht</Link>
+              <Link to="/cancellationpolicy">{t('footer.cancellationPolicy')}</Link>
             </li>
           </ul>
         </div>
@@ -63,7 +65,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.bottomStripe}>
-        <p>Immo Tonn. All rights reserved 2025</p>
+        <p>{t('footer.rightsReserved', { name: 'Immo Tonn', year: 2025 })}</p>
       </div>
     </footer>
   );

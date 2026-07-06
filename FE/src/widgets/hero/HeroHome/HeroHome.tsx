@@ -3,7 +3,9 @@ import styles from './HeroHome.module.css';
 import { Link } from 'react-router-dom';
 import { fadeInOnScroll, parallaxMouseEffect } from '@shared/anim/animations';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 const HeroHome = () => {
+  const { t } = useTranslation();
   const wrapperRef = useRef<any | null>(null);
   const textRef = useRef<any | null>(null);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
@@ -34,11 +36,11 @@ const HeroHome = () => {
       >
         <div className={styles.topTextWrapper} ref={wrapperRef}>
           <p className={styles.topText} ref={textRef}>
-            Der richtige Partner für Ihren
+            {t('heroHome.line1')}
             <br />
-            Immobilienverkauf
+            {t('heroHome.line2')}
             <br />
-            im Münsterland
+            {t('heroHome.line3')}
           </p>
         </div>
 
@@ -51,16 +53,16 @@ const HeroHome = () => {
           <div className={styles.buttonWrapper}>
             <Link to="/wertermittlung">
               <Button
-                initialText="Kostenlose Wertermittlung"
-                clickedText="Weiterleitung..."
+                initialText={t('heroHome.ctaValuation')}
+                clickedText={t('common.redirecting')}
               />
             </Link>
           </div>
           <div className={styles.buttonWrapper}>
             <Link to="/kontakt">
               <Button
-                initialText="direkt anfordern"
-                clickedText="Weiterleitung..."
+                initialText={t('heroHome.ctaRequest')}
+                clickedText={t('common.redirecting')}
               />
             </Link>
           </div>

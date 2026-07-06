@@ -4,8 +4,10 @@ import valuationPhoto from '@shared/assets/valuation-cta/valuation-photo.webp';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll, runningBoxShadow } from '@shared/anim/animations';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ValuationCTA = () => {
+  const { t } = useTranslation();
   const imgRef = useRef<HTMLImageElement | null>(null);
 
   const refs = useRef<(HTMLDivElement | null)[]>([]);
@@ -34,20 +36,10 @@ const ValuationCTA = () => {
         }}
       >
         <h2 className={styles.firstTitle}>
-          <b>
-            Viele Eigentümer fragen sich: Was ist meine Immobilie heute wert?
-          </b>
+          <b>{t('valuationCTA.firstTitle')}</b>
         </h2>
-        <p className={styles.description}>
-          Ob aus Interesse, für eine mögliche Verkaufsentscheidung oder zur
-          besseren finanziellen Planung – eine fundierte Wertermittlung schafft
-          Sicherheit und Klarheit.
-        </p>
-        <p className={styles.description}>
-          Als erfahrene Partner in der Versicherungs- und Immobilienbranche
-          wissen wir bei Immo Tonn, worauf es ankommt: Marktkenntnis und
-          persönliche Beratung.
-        </p>
+        <p className={styles.description}>{t('valuationCTA.paragraph1')}</p>
+        <p className={styles.description}>{t('valuationCTA.paragraph2')}</p>
       </div>
       <div
         className={styles.imageWrapper}
@@ -55,9 +47,7 @@ const ValuationCTA = () => {
           refs.current[1] = el;
         }}
       >
-        <h1 className={styles.secondTitle}>
-          Lassen Sie Ihre Immobilie jetzt bewerten!
-        </h1>
+        <h1 className={styles.secondTitle}>{t('valuationCTA.secondTitle')}</h1>
         <img
           ref={imgRef}
           src={valuationPhoto}
@@ -72,16 +62,8 @@ const ValuationCTA = () => {
           refs.current[2] = el;
         }}
       >
-        <h2 className={styles.thirdTitle}>
-          warum ist eine professionelle wertermittlung so wichtig?
-        </h2>
-        <p>
-          Der Immobilienmarkt ist ständig in Bewegung. Faktoren wie Inflation,
-          Zinssätze und die Lageentwicklung beeinflussen den Wert einer
-          Immobilie. Wer verkaufen möchte, braucht eine zuverlässige
-          Einschätzung – idealerweise von Experten, die sowohl den Immobilien-
-          als auch den Versicherungsmarkt verstehen.
-        </p>
+        <h2 className={styles.thirdTitle}>{t('valuationCTA.thirdTitle')}</h2>
+        <p>{t('valuationCTA.thirdParagraph')}</p>
       </div>
 
       <div
@@ -92,8 +74,8 @@ const ValuationCTA = () => {
       >
         <Link to="/finanzierung">
           <Button
-            initialText="Wie viel ist mein Haus wert?"
-            clickedText="Weiterleitung..."
+            initialText={t('valuationCTA.cta')}
+            clickedText={t('common.redirecting')}
           />
         </Link>
       </div>

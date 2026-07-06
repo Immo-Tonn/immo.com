@@ -1,6 +1,7 @@
 import axios from 'axios';
 export type ContactData = {
   name: string;
+  surname: string;
   phone: string;
   email: string;
   message: string;

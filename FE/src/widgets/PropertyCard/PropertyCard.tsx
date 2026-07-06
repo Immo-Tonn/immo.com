@@ -3,9 +3,11 @@ import styles from './PropertyCard.module.css';
 import { PropertyHeroProps } from '@shared/types/propertyTypes';
 import { NavLink } from 'react-router-dom';
 import { formatGermanCurrency } from '@features/utils/formatGermanCurrency';
+import { useTranslation } from 'react-i18next';
 
 const PropertyCard = forwardRef<HTMLLIElement, PropertyHeroProps>(
   ({ object, images, residentialHouse }, ref) => {
+    const { t } = useTranslation();
     console.log('object.images:', object?.images);
     console.log('images prop:', images);
 
@@ -34,12 +36,12 @@ const PropertyCard = forwardRef<HTMLLIElement, PropertyHeroProps>(
                 loading="lazy"
               />
             ) : (
-              <p className={styles.errorTitle}>Kein Foto verfügbar</p>
+              <p className={styles.errorTitle}>{t('propertyCard.noPhoto')}</p>
             )}
             {(status === 'sold' || status === 'reserved') && (
               <span className={styles.status}>
-                {status === 'sold' && 'Verkauft'}
-                {status === 'reserved' && 'Reserviert'}
+                {status === 'sold' && t('propertyCard.sold')}
+                {status === 'reserved' && t('propertyCard.reserved')}
               </span>
             )}
 
@@ -48,12 +50,18 @@ const PropertyCard = forwardRef<HTMLLIElement, PropertyHeroProps>(
               <p className={styles.address}>{address?.city}</p>
               <div className={styles.details}>
                 {price !== undefined && (
-                  <p>Kaufpreis: {formatGermanCurrency(price)} €</p>
+                  <p>
+                    {t('propertyCard.price')}: {formatGermanCurrency(price)} €
+                  </p>
                 )}
                 {livingArea !== undefined && (
-                  <p>| Wohnfläche: {livingArea} m² | </p>
+                  <p>
+                    | {t('propertyCard.livingArea')}: {livingArea} m² |{' '}
+                  </p>
                 )}
-                {numberOfRooms !== undefined && <p> {numberOfRooms} Zimmer</p>}
+                {numberOfRooms !== undefined && (
+                  <p> {t('propertyCard.rooms', { count: numberOfRooms })}</p>
+                )}
               </div>
             </div>
           </div>

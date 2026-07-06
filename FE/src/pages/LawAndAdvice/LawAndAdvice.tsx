@@ -5,8 +5,10 @@ import rechtMain from '@shared/assets/law-and-advice/law-and-advice.webp';
 import rechtSecondary from '@shared/assets/law-and-advice/law-and-advice_2.webp';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll, runningBoxShadow } from '@shared/anim/animations';
+import { useTranslation } from 'react-i18next';
 
 const LawAndAdvice = () => {
+  const { t } = useTranslation();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const imgRef = useRef<HTMLImageElement | null>(null);
   useEffect(() => {
@@ -32,7 +34,7 @@ const LawAndAdvice = () => {
           }}
         />
         <div className={styles.firstTitleWrapper}>
-          <h1>Recht & Rat</h1>
+          <h1>{t('lawAndAdvice.pageTitle')}</h1>
         </div>
       </div>
 
@@ -41,8 +43,8 @@ const LawAndAdvice = () => {
           refs.current[2] = el;
         }}
       >
-        rechtliche sicherheit & praktische <br />
-        tipps rund um kauf und verkauf
+        {t('lawAndAdvice.introLine1')} <br />
+        {t('lawAndAdvice.introLine2')}
       </h2>
 
       <div
@@ -52,18 +54,10 @@ const LawAndAdvice = () => {
         }}
       >
         <div className={styles.blockTitle}>
-          <h2>Vorbereitung schafft Sicherheit und Erfolg</h2>
+          <h2>{t('lawAndAdvice.block1Title')}</h2>
         </div>
         <div className={styles.blockText}>
-          <p>
-            Wir begleiten Sie von Anfang an. <br /> Für Verkäufer helfen wir bei
-            der Zusammenstellung aller notwendigen Unterlagen – wie
-            Grundbuchauszug, Energieausweis und Informationen zu Renovierungen.
-            <br /> Käufern stellen wir alle verfügbaren Objektunterlagen
-            transparent zur Verfügung und erklären die Details verständlich –
-            von der rechtlichen Situation bis zu technischen Merkmalen und
-            versteckten Kosten.
-          </p>
+          <p>{t('lawAndAdvice.block1Text')}</p>
         </div>
       </div>
 
@@ -76,18 +70,10 @@ const LawAndAdvice = () => {
         }}
       >
         <div className={styles.blockText}>
-          <p>
-            Wir wissen, wie man eine Immobilie optimal präsentiert. <br />
-            Verkäufern geben wir wertvolle Tipps zur Vorbereitung der Immobilie
-            für Besichtigungen: Beleuchtung, Ordnung, neutrale Einrichtung und
-            angenehme Atmosphäre – alles spielt eine Rolle. Zusätzlich bieten
-            wir professionellen Objekt-Styling an. <br /> Käufern helfen wir,
-            die entscheidenden Faktoren zu bewerten, die den Preis und die
-            Wohnqualität beeinflussen können.
-          </p>
+          <p>{t('lawAndAdvice.block2Text')}</p>
         </div>
         <div className={styles.blockTitle}>
-          <h2>Mit Stil und Übersicht zur erfolgreichen Besichtigung</h2>
+          <h2>{t('lawAndAdvice.block2Title')}</h2>
         </div>
       </div>
       <div
@@ -109,18 +95,10 @@ const LawAndAdvice = () => {
         }}
       >
         <div className={styles.blockTitle}>
-          <h2>Sicherheit und Struktur bei jedem Schritt.</h2>
+          <h2>{t('lawAndAdvice.block3Title')}</h2>
         </div>
         <div className={styles.blockText}>
-          <p>
-            Rechtliche Klarheit ist die Grundlage für Vertrauen. <br /> Wir
-            prüfen den Eigentumsnachweis, mögliche Belastungen, Baugenehmigungen
-            und die Richtigkeit aller Unterlagen. <br /> Verkäufern helfen wir,
-            potenzielle rechtliche Hürden im Vorfeld zu beseitigen. <br />
-            Käufern erklären wir die Dokumente verständlich und beraten zu allen
-            wichtigen Vertragspunkten. <br /> Auf Wunsch empfehlen wir Ihnen
-            Notare aus unserem Partnernetzwerk – für eine sichere Abwicklung.
-          </p>
+          <p>{t('lawAndAdvice.block3Text')}</p>
         </div>
       </div>
 
@@ -133,18 +111,10 @@ const LawAndAdvice = () => {
         }}
       >
         <div className={styles.blockText}>
-          <p>
-            Ein realistischer Preis und eine gute Verhandlungsführung sind
-            entscheidend. <br /> Verkäufern helfen wir bei der
-            Marktwertermittlung auf Basis von Lage, Zustand und
-            Vergleichsobjekten. <br /> Käufern erklären wir die Preisstruktur
-            und geben eine Einschätzung, wo faire Verhandlungsspielräume
-            bestehen. <br /> Wir moderieren Gespräche respektvoll und
-            lösungsorientiert.
-          </p>
+          <p>{t('lawAndAdvice.block4Text')}</p>
         </div>
         <div className={styles.blockTitle}>
-          <h2>Faire Preisfindung und erfolgreiche Verhandlungen</h2>
+          <h2>{t('lawAndAdvice.block4Title')}</h2>
         </div>
       </div>
 
@@ -164,7 +134,7 @@ const LawAndAdvice = () => {
             refs.current[9] = el;
           }}
         >
-          <h2>Keine übereilten Entscheidungen treffen</h2>
+          <h2>{t('lawAndAdvice.block5Title')}</h2>
         </div>
         <div
           className={styles.blockText}
@@ -172,12 +142,7 @@ const LawAndAdvice = () => {
             refs.current[10] = el;
           }}
         >
-          <p>
-            Immobilientransaktionen brauchen Zeit und Klarheit. <br /> Wir
-            schaffen einen geschützten Rahmen, in dem Käufer und Verkäufer in
-            Ruhe und gut informiert Entscheidungen treffen können. Dabei sorgen
-            wir für Sicherheit und Transparenz auf allen Ebenen.
-          </p>
+          <p>{t('lawAndAdvice.block5Text')}</p>
         </div>
       </div>
 
@@ -189,10 +154,8 @@ const LawAndAdvice = () => {
           refs.current[8] = el;
         }}
       >
-        Unser Ziel ist es, Kauf und Verkauf von Immobilien klar, verständlich
-        und sicher zu gestalten. <br />
-        Wir setzen uns dafür ein, dass die Interessen beider Seiten
-        berücksichtigt werden - und das Ergebnis für alle stimmt.
+        {t('lawAndAdvice.goalLine1')} <br />
+        {t('lawAndAdvice.goalLine2')}
       </p>
 
       <ContactForm />

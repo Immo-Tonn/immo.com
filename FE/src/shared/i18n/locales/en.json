@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Home",
+    "valuation": "Valuation",
+    "realEstate": "Properties",
+    "financing": "Financing",
+    "contact": "Contact"
+  },
+  "header": {
+    "toHome": "Go to homepage",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "cancellationPolicy": "Right of Withdrawal",
+    "rightsReserved": "{{name}}. All rights reserved {{year}}"
+  },
+  "common": {
+    "redirecting": "Redirecting..."
+  },
+  "heroHome": {
+    "line1": "The right partner for selling",
+    "line2": "your property",
+    "line3": "in the Münsterland region",
+    "ctaValuation": "Free property valuation",
+    "ctaRequest": "Request directly"
+  },
+  "aboutUs": {
+    "titleLine1": "Your reliable partner for",
+    "titleLine2": "real estate in NRW –",
+    "titleLine3": "here's what you can expect from us:",
+    "paragraph1": "With a professional real estate agent by your side, you can be sure that the entire process – from the first idea to a successful sale – runs efficiently, safely and in your best interest.",
+    "paragraph2": "Since 1985 we have specialized in selling existing and new-build properties in the <0>Münsterland region</0>, using exclusive marketing strategies and a regional network built up over decades to achieve the best result for every property.",
+    "paragraph3": "Our experienced team supports you personally, takes care of the details, and keeps improving so you always get the best possible service.",
+    "bottomLine1": "Your agent team for residential properties,",
+    "bottomLine2": "commercial buildings and high-value investments"
+  },
+  "fiveSteps": {
+    "titleLine1": "More than just real estate – a partnership",
+    "titleLine2": "that unfolds for you",
+    "subtitle": "Selling your property in 5 steps",
+    "cta": "Sell",
+    "steps": [
+      {
+        "title": "Free property valuation & initial consultation",
+        "body": "The key facts about your property – location, size, year built and living space – give an initial price estimate. We determine the actual market value during an on-site appointment, where we take all relevant details into account. In a personal conversation you'll receive our valuation, the marketing strategy and tips on increasing the value."
+      },
+      {
+        "title": "Signing the agency agreement",
+        "body": "Take your time to review our valuation and recommendations. We're available any time for questions or requests. Once you're convinced, a written agency agreement seals our cooperation. From that point on, we support you comprehensively, including valuable contacts – for example to local tradespeople for renovations or financing."
+      },
+      {
+        "title": "Photo shoot, listing creation & publication",
+        "body": "We obtain all relevant information from authorities and administrations to inform prospective buyers as well as possible. With complete documents, professional photos and a compelling listing, we present your property optimally. Marketing follows the jointly agreed strategy – targeted at the right media and channels."
+      },
+      {
+        "title": "Inquiries and viewings",
+        "body": "Rest assured: only serious buyers with genuine intent will view your property. We ensure this through detailed preliminary talks with all potential buyers. There's no \"viewing tourism\" with us. If you still live in the property, we'll of course coordinate viewing appointments flexibly with you."
+      },
+      {
+        "title": "Notary appointment and certification",
+        "body": "Professional negotiation & a smooth closing. As your real estate partner, we handle price negotiations in your interest. Thanks to a clearly defined strategy and close coordination with you, you don't need to get involved in the negotiations yourself. As agents, we act as mediators aiming for a fair agreement both sides are happy with. Once agreed, we forward all details to the notary, who drafts the purchase contract and sends it to both parties for review. Once both sides agree, the notary appointment for signing is scheduled. After payment is received in your account, we take care of the property handover as well as notifications to the insurer and the relevant municipality. And then it's official: #SUCCESSFULLY SOLD!"
+      }
+    ]
+  },
+  "categories": {
+    "items": {
+      "immobilienangebote": "Property listings",
+      "verkaufssupport": "Sales support",
+      "recht-und-rat": "Legal advice",
+      "objektstyling": "Property styling",
+      "wertermittlung": "Valuation",
+      "finanzierung": "Financing"
+    }
+  },
+  "realEstate": {
+    "available_one": "property available",
+    "available_other": "properties available",
+    "title": "Property listings",
+    "createButton": "+ Create property",
+    "noneFoundTitle": "No properties found",
+    "noneFoundAdmin": "No properties have been created yet. Create your first property!",
+    "noneFoundVisitor": "No properties are currently available.",
+    "adminInfoTitle": "Information for administrators",
+    "adminInfoAllUsers": "All visitors see all properties created on the website.",
+    "adminInfoManage": "To manage properties, use the \"Edit\" and \"Delete\" buttons in the detail view, or create a new property using the \"+ Create property\" button.",
+    "adminInfoEmpty": "There are currently no properties in the database.",
+    "adminInfoCreateFirst": "Create your first property using the \"+ Create property\" button at the top of the page."
+  },
+  "propertyCard": {
+    "noPhoto": "No photo available",
+    "sold": "Sold",
+    "reserved": "Reserved",
+    "price": "Price",
+    "livingArea": "Living area",
+    "rooms_one": "{{count}} room",
+    "rooms_other": "{{count}} rooms"
+  },
+  "mortgageCalculator": {
+    "pageTitle": "Mortgage Financing Calculator",
+    "priceLabel": "Property price (€)",
+    "errorPriceTooLow": "The property price must be higher than your equity.",
+    "taxLabel": "Real estate transfer tax",
+    "notaryLabel": "Notary / land registry",
+    "brokerLabel": "Buyer's agent commission",
+    "totalPrice": "Total price",
+    "equityLabel": "Equity",
+    "errorEquityTooHigh": "Equity must be lower than the total price.",
+    "errorEquityDecimals": "No more than two digits after the decimal point are allowed.",
+    "repaymentLabel": "Repayment rate",
+    "interestLabel": "Nominal interest rate p.a. (%)",
+    "errorInterestDecimals": "Only one digit after the decimal point is allowed.",
+    "errorInterestRange": "The interest rate must be greater than 0 and less than 14.",
+    "yearsLabel": "Term (years)",
+    "loanAmountLabel": "Loan amount",
+    "monthlyRate": "Monthly installment",
+    "calculateButton": "Calculate",
+    "inProgress": "Processing",
+    "exportPdfButton": "Export as PDF",
+    "validationHint": "The monthly installment is calculated once you enter valid values.",
+    "hintTitle": "Important note:",
+    "hintBody1": "The monthly installment calculated here is only a non-binding example calculation",
+    "hintBody2": "and is intended for initial orientation only. It does not replace individual financing advice. The",
+    "hintBody3": "actual terms may vary depending on the provider, creditworthiness and other factors.",
+    "hintBody4": "No liability is assumed for the accuracy, completeness or timeliness of the information provided.",
+    "close": "Close",
+    "customValue": "Custom value",
+    "customValueError": "Please enter a valid value between 0 and 10 (max. two decimal places).",
+    "info": {
+      "tax": {
+        "title": "Real estate transfer tax",
+        "body": "The real estate transfer tax rate is not uniform in Germany and varies by federal state."
+      },
+      "notary": {
+        "title": "Notary & land registry",
+        "body": "The costs for the notary and land registry entry are usually borne by the buyer."
+      },
+      "broker": {
+        "title": "Buyer's agent commission",
+        "body": "The buyer's agent commission is based on the details in the listing."
+      }
+    },
+    "pdf": {
+      "title": "Financing Calculator",
+      "createdOn": "Created on",
+      "price": "Property price",
+      "equity": "Equity",
+      "brokerCommission": "Agent commission",
+      "loanAmount": "Loan amount",
+      "interestRate": "Interest rate",
+      "term": "Term",
+      "years": "years",
+      "contact": "Contact"
+    }
+  },
+  "contactForm": {
+    "heading": "Arrange your personal consultation now",
+    "firstNamePlaceholder": "First name*",
+    "firstNameRequired": "First name is required",
+    "lastNamePlaceholder": "Last name*",
+    "lastNameRequired": "Last name is required",
+    "emailPlaceholder": "Email*",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Invalid email address",
+    "phonePlaceholder": "Phone*",
+    "phoneRequired": "Phone number is required",
+    "phoneInvalid": "Invalid phone number",
+    "messagePlaceholder": "Message",
+    "messageRequired": "Message is required",
+    "messageTooShort": "Message is too short",
+    "consentRequired": "Please agree to the privacy policy.",
+    "consentLabel": "Yes, I have read the privacy policy and agree that my details will be stored and processed electronically for contact and follow-up questions.",
+    "captchaRequired": "Please confirm the CAPTCHA.",
+    "captchaExpired": "The CAPTCHA has expired, please confirm again.",
+    "captchaNotConfigured": "reCAPTCHA is not configured (VITE_RECAPTCHA_SITE_KEY is missing in .env).",
+    "submitError": "Error sending message. Please try again.",
+    "submitButton": "Send",
+    "submitting": "Sending...",
+    "sideHeading": "Write to us",
+    "phoneLabel": "Phone"
+  },
+  "heroValuation": {
+    "eyebrow": "Property valuation with Immo Tonn – We know the value of your home",
+    "title": "Property valuation with heart and expertise"
+  },
+  "valuationCTA": {
+    "firstTitle": "Many owners ask themselves: what is my property worth today?",
+    "paragraph1": "Whether out of curiosity, for a possible decision to sell, or for better financial planning – a well-founded valuation provides certainty and clarity.",
+    "paragraph2": "As experienced partners in the insurance and real estate industry, at Immo Tonn we know what matters: market knowledge and personal advice.",
+    "secondTitle": "Have your property valued now!",
+    "thirdTitle": "Why is a professional valuation so important?",
+    "thirdParagraph": "The property market is constantly moving. Factors such as inflation, interest rates and location development affect a property's value. Anyone who wants to sell needs a reliable assessment – ideally from experts who understand both the real estate and insurance markets.",
+    "cta": "How much is my house worth?"
+  },
+  "competence": {
+    "title": "Trust through expertise",
+    "paragraph1": "Our clients don't just own property – they're often insured with us too. That means we know their situation, their property and their needs.",
+    "paragraph2": "That's exactly our advantage: we combine knowledge from two worlds – property valuation and insurance advice – for holistic support.",
+    "secondTitle": "Get in touch now, no obligation – your Immo Tonn team is here for you!"
+  },
+  "howIsGoing": {
+    "considerTitle": "What we consider in the valuation:",
+    "considerItems": [
+      "Current market and demand situation",
+      "Location and micro-location of the property",
+      "Year built, condition, fittings",
+      "Comparable values of similar properties",
+      "Potential for modernization or energy-efficient renovation"
+    ],
+    "processTitle": "How does the valuation work?",
+    "processItems": [
+      "Non-binding initial consultation – by phone or on site",
+      "Analysis of property documents and viewing",
+      "Market-based valuation with a transparent result",
+      "On request: advice on selling, financing or renovation"
+    ],
+    "cta": "Get in touch"
+  },
+  "lawAndAdvice": {
+    "pageTitle": "Legal Advice",
+    "introLine1": "Legal security & practical",
+    "introLine2": "tips on buying and selling",
+    "block1Title": "Preparation creates security and success",
+    "block1Text": "We support you from the very beginning. For sellers, we help compile all necessary documents – such as the land registry extract, energy certificate and renovation records. For buyers, we transparently provide all available property documents and explain the details clearly – from the legal situation to technical features and hidden costs.",
+    "block2Title": "Style and structure for a successful viewing",
+    "block2Text": "We know how to present a property optimally. For sellers, we give valuable tips on preparing the property for viewings: lighting, tidiness, neutral furnishing and a pleasant atmosphere all play a role. We also offer professional property styling. For buyers, we help evaluate the key factors that can affect price and living quality.",
+    "block3Title": "Security and structure at every step.",
+    "block3Text": "Legal clarity is the foundation of trust. We check proof of ownership, possible encumbrances, building permits and the accuracy of all documents. For sellers, we help eliminate potential legal obstacles in advance. For buyers, we explain the documents clearly and advise on all important contract points. On request, we recommend notaries from our partner network for a secure process.",
+    "block4Title": "Fair pricing and successful negotiations",
+    "block4Text": "A realistic price and good negotiation are crucial. For sellers, we help determine market value based on location, condition and comparable properties. For buyers, we explain the price structure and assess where fair negotiation margins exist. We moderate discussions respectfully and with a solution-oriented approach.",
+    "block5Title": "No rushed decisions",
+    "block5Text": "Property transactions need time and clarity. We create a protected environment in which buyers and sellers can make well-informed decisions calmly. We ensure security and transparency at every level.",
+    "goalLine1": "Our goal is to make buying and selling property clear, understandable and secure.",
+    "goalLine2": "We are committed to ensuring both parties' interests are considered - so the outcome works for everyone."
+  },
+  "heroSupport": {
+    "line1": "Sales support - more than",
+    "line2": "just brokerage - full service from a",
+    "line3": "professional"
+  },
+  "agentBenefits": {
+    "title": "Why use an agent?",
+    "items": [
+      {
+        "title": "Market analysis & advice",
+        "text": "The agent analyzes the market and recommends the optimal asking price for your property."
+      },
+      {
+        "title": "Property valuation",
+        "text": "Using modern methods, the agent determines the realistic market value."
+      },
+      {
+        "title": "Effective marketing",
+        "text": "Professional photos, listings and targeted advertising ensure maximum visibility."
+      },
+      {
+        "title": "Negotiation expertise",
+        "text": "As an intermediary, the agent conducts fair and goal-oriented sales negotiations."
+      }
+    ]
+  },
+  "immoTonnContent": {
+    "line1": "Reliable.",
+    "line2": "Personal.",
+    "line3": "On-site.",
+    "items": [
+      {
+        "title": "Legal security",
+        "description": "They assist with contracts, clarify questions and provide legal support through to closing."
+      },
+      {
+        "title": "Organization and viewings",
+        "description": "The agent plans and coordinates all appointments with interested parties efficiently and reliably."
+      },
+      {
+        "title": "Financing advice",
+        "description": "The agent plans and coordinates all appointments with interested parties efficiently and reliably."
+      },
+      {
+        "title": "Support after the sale",
+        "description": "Even after closing, the agent remains a point of contact for questions and handovers."
+      }
+    ],
+    "cta": "GET IN TOUCH"
+  },
+  "propertyPage": {
+    "confirmDelete": "Really delete? This action cannot be undone.",
+    "deleteSuccess": "The property was successfully deleted",
+    "deletedTitle": "Property has been deleted",
+    "deletedText": "The requested property was successfully deleted.",
+    "deletedRedirect": "You will be redirected to the property overview in a few seconds...",
+    "backToOverview": "Go to overview now",
+    "loading": "Loading...",
+    "notFoundTitle": "Property not found",
+    "notFoundText": "The requested property could not be found.",
+    "notFoundHint": "It may have been deleted or the URL is invalid.",
+    "toOverview": "To property overview",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "propertyHero": {
+    "sold": "SOLD",
+    "reserved": "RESERVED",
+    "noMedia": "No photos or videos have been uploaded yet.",
+    "moreMedia": "More media",
+    "price": "Price",
+    "livingArea": "Living area",
+    "rooms": "Rooms",
+    "plotArea": "Plot size",
+    "area": "Area"
+  },
+  "propertyDetails": {
+    "financingCalculator": "Financing calculator",
+    "objectData": "PROPERTY DATA",
+    "objectStatus": "Property status",
+    "statusActive": "active",
+    "statusSold": "sold",
+    "statusReserved": "reserved",
+    "statusArchived": "archived",
+    "features": "FEATURES",
+    "description": "PROPERTY DESCRIPTION",
+    "location": "LOCATION",
+    "miscellaneous": "MISCELLANEOUS",
+    "fields": {
+      "country": "Country",
+      "idNumber": "ID number",
+      "objectType": "Property type",
+      "apartmentType": "Apartment type",
+      "houseType": "House type",
+      "buildingType": "Building type",
+      "landPlotType": "Plot type",
+      "livingArea": "Living area",
+      "area": "Area",
+      "plotArea": "Plot size",
+      "usableArea": "Usable area",
+      "yearBuilt": "Year built",
+      "rooms": "Rooms",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "floor": "Floor",
+      "totalFloors": "Number of floors",
+      "parkingSpaces": "Parking spaces",
+      "energyEfficiencyClass": "Energy efficiency class",
+      "energySource": "Energy source",
+      "heating": "Heating",
+      "freeFrom": "Available from",
+      "usage": "Usage",
+      "infrastructure": "Infrastructure",
+      "buildingRegulations": "Building regulations"
+    }
+  },
+  "propertyMap": {
+    "title": "MAP",
+    "disclaimer": "You will receive the full address of the property from the provider.",
+    "loadError": "The map could not be loaded.",
+    "loading": "Loading map..."
+  },
+  "dankePage": {
+    "loadingAnimation": "Loading animation...",
+    "title": "Thank you!",
+    "text": "Your message was sent successfully.",
+    "backHome": "Back to homepage"
+  },
+  "notFound": {
+    "backHome": "Back to homepage",
+    "text": "Oops! This page could not be found."
+  }
+}

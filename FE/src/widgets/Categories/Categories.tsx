@@ -3,8 +3,10 @@ import styles from './Categories.module.css';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll } from '@shared/anim/animations';
+import { useTranslation } from 'react-i18next';
 
 const Categories = () => {
+  const { t } = useTranslation();
   const refs = useRef<any[]>([]) || null;
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const Categories = () => {
                   item.id === 3 || item.id === 5 ? { color: '#160c20' } : {}
                 }
               >
-                {item.title}
+                {t(`categories.items.${item.alt}`)}
               </p>
               <div className={styles.imageWrapper}>
                 <img

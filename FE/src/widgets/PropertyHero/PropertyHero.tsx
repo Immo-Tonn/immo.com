@@ -12,6 +12,7 @@ import {
   Video,
 } from '@shared/types/propertyTypes';
 import { fadeInOnScroll } from '@shared/anim/animations';
+import { useTranslation } from 'react-i18next';
 
 interface PropertyHeroProps {
   object: RealEstateObject;
@@ -34,6 +35,7 @@ const PropertyHero: React.FC<PropertyHeroProps> = ({
   commercialBuilding,
   isAdmin = false,
 }) => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -102,7 +104,8 @@ const PropertyHero: React.FC<PropertyHeroProps> = ({
   };
 
   const shouldShowStatus = status === 'sold' || status === 'reserved';
-  const statusLabel = status === 'sold' ? 'VERKAUFT' : 'RESERVIERT';
+  const statusLabel =
+    status === 'sold' ? t('propertyHero.sold') : t('propertyHero.reserved');
 
   const isVideo = (item: Image | Video): item is Video =>
     'thumbnailUrl' in item &&
@@ -189,7 +192,7 @@ const renderAddress = () => {
         ) : (
           <div className={styles.placeholderWrapper}>
             <span className={styles.placeholderText}>
-              Es wurden noch keine Fotos oder Videos hochgeladen.
+              {t('propertyHero.noMedia')}
             </span>
           </div>
         )
@@ -279,7 +282,7 @@ const renderAddress = () => {
                     />
                   )}
                   {isLastPreview && hasMoreMedia && (
-                    <div className={styles.overlay}>Mehr Medien</div>
+                    <div className={styles.overlay}>{t('propertyHero.moreMedia')}</div>
                   )}
                 </div>
               );
@@ -307,7 +310,7 @@ const renderAddress = () => {
       >
         <div className={styles.feature}>
           <h3>{formatGermanCurrency(price)} €</h3>
-          <h6>Kaufpreis</h6>
+          <h6>{t('propertyHero.price')}</h6>
         </div>
 
         {livingArea !== undefined && (
@@ -315,7 +318,7 @@ const renderAddress = () => {
             <div className={styles.divider} />
             <div className={styles.feature}>
               <h3>{livingArea} m²</h3>
-              <h6>Wohnfläche</h6>
+              <h6>{t('propertyHero.livingArea')}</h6>
             </div>
           </>
         )}
@@ -325,7 +328,7 @@ const renderAddress = () => {
             <div className={styles.divider} />
             <div className={styles.feature}>
               <h3>{numberOfRooms}</h3>
-              <h6>Zimmer</h6>
+              <h6>{t('propertyHero.rooms')}</h6>
             </div>
           </>
         )}
@@ -335,7 +338,7 @@ const renderAddress = () => {
             <div className={styles.divider} />
             <div className={styles.feature}>
               <h3>{plotArea} m²</h3>
-              <h6>Grundstück</h6>
+              <h6>{t('propertyHero.plotArea')}</h6>
             </div>
           </>
         )}
@@ -345,7 +348,7 @@ const renderAddress = () => {
             <div className={styles.divider} />
             <div className={styles.feature}>
               <h3>{commercialArea} m²</h3>
-              <h6>Fläche</h6>
+              <h6>{t('propertyHero.area')}</h6>
             </div>
           </>
         )}

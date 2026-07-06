@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { formatGermanCurrency } from '@features/utils/formatGermanCurrency';
 import { getObjectTypeLabel } from '@features/utils/objectTypeMapping';
 import { ObjectType } from '@features/utils/types';
+import { useTranslation } from 'react-i18next';
 
 interface PropertyDetailsProps {
   object: RealEstateObject;
@@ -41,43 +42,62 @@ const Section = ({
   </div>
 );
 
-const getPropertyDetails = (
+const getPropertyDetailEntries = (
+  t: (key: string) => string,
   object: RealEstateObject,
   apartment?: Apartment,
   commercial?: CommercialBuilding,
   land?: LandPlot,
   house?: ResidentialHouse,
-): Record<string, any> => {
-  return {
-    Land: object.address?.country,
-    'Nummer ID': object.number,
-    Objektart: getObjectTypeLabel(object.type as ObjectType),
-    ...(apartment?.type && { Wohnungstyp: apartment.type }),
-    ...(house?.type && { Haustyp: house.type }),
-    ...(commercial?.buildingType && { Gebäudetyp: commercial.buildingType }),
-    ...(land?.landPlottype && { 'Art des Grundstücks': land.landPlottype}),
+): { key: string; label: string; value: any }[] => {
+  const raw: Record<string, any> = {
+    country: object.address?.country,
+    idNumber: object.number,
+    objectType: getObjectTypeLabel(object.type as ObjectType),
+    ...(apartment?.type && { apartmentType: apartment.type }),
+    ...(house?.type && { houseType: house.type }),
+    ...(commercial?.buildingType && { buildingType: commercial.buildingType }),
+    ...(land?.landPlottype && { landPlotType: land.landPlottype }),
 
-    Wohnfläche: house?.livingArea ? `${house.livingArea} m²` : apartment?.livingArea ? `${apartment.livingArea} m²` : undefined,
-    Fläche: commercial?.area ? `${commercial.area} m²` : undefined,
-    Grundstück: house?.plotArea ? `${house.plotArea} m²` : land?.plotArea ? `${land.plotArea} m²` :  commercial?.plotArea ? `${commercial.plotArea} m²`: undefined,
-    Nutzfläche: house?.usableArea ? `${house.usableArea} m²` : undefined,
-    Baujahr: house?.yearBuilt ?? apartment?.yearBuilt ?? commercial?.yearBuilt,
-    Zimmer: house?.numberOfRooms ?? apartment?.numberOfRooms,
-    Schlafzimmer: house?.numberOfBedrooms ?? apartment?.numberOfBedrooms,
-    Badezimmer: house?.numberOfBathrooms ?? apartment?.numberOfBathrooms,
-    Etage: apartment?.floor,
-    'Anzahl Etagen': apartment?.totalFloors ?? house?.numberOfFloors,
-    Stellplätze: house?.garageParkingSpaces,
-    Energieeffizienzklasse:
+    livingArea: house?.livingArea
+      ? `${house.livingArea} m²`
+      : apartment?.livingArea
+        ? `${apartment.livingArea} m²`
+        : undefined,
+    area: commercial?.area ? `${commercial.area} m²` : undefined,
+    plotArea: house?.plotArea
+      ? `${house.plotArea} m²`
+      : land?.plotArea
+        ? `${land.plotArea} m²`
+        : commercial?.plotArea
+          ? `${commercial.plotArea} m²`
+          : undefined,
+    usableArea: house?.usableArea ? `${house.usableArea} m²` : undefined,
+    yearBuilt: house?.yearBuilt ?? apartment?.yearBuilt ?? commercial?.yearBuilt,
+    rooms: house?.numberOfRooms ?? apartment?.numberOfRooms,
+    bedrooms: house?.numberOfBedrooms ?? apartment?.numberOfBedrooms,
+    bathrooms: house?.numberOfBathrooms ?? apartment?.numberOfBathrooms,
+    floor: apartment?.floor,
+    totalFloors: apartment?.totalFloors ?? house?.numberOfFloors,
+    parkingSpaces: house?.garageParkingSpaces,
+    energyEfficiencyClass:
       house?.energyEfficiencyClass ?? apartment?.energyEfficiencyClass,
-    Energieträger: house?.energySource ?? apartment?.energySource,
-    Heizung: house?.heatingType ?? apartment?.heatingType,
-    'Frei ab': object.freeWith,
-    Nutzung:
+    energySource: house?.energySource ?? apartment?.energySource,
+    heating: house?.heatingType ?? apartment?.heatingType,
+    freeFrom: object.freeWith,
+    usage:
       commercial?.purpose ?? land?.recommendedUsage ?? land?.recommendedUsage,
-    Infrastruktur: land?.infrastructureConnection,
-    Bebauungsplan: land?.buildingRegulations,
+    infrastructure: land?.infrastructureConnection,
+    buildingRegulations: land?.buildingRegulations,
   };
+
+  return Object.entries(raw)
+    .filter(([, value]) => value !== undefined && value !== null)
+    .map(([key, value]) => ({
+      key,
+      label: t(`propertyDetails.fields.${key}`),
+      value,
+    }));
 };
 
 const PropertyDetails: React.FC<PropertyDetailsProps> = ({
@@ -87,7 +107,9 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
   landPlot,
   residentialHouse,
 }) => {
-  const details = getPropertyDetails(
+  const { t } = useTranslation();
+  const detailEntries = getPropertyDetailEntries(
+    t,
     object,
     apartment,
     commercialBuilding,
@@ -104,6 +126,13 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
     };
   }, []);
 
+  const statusLabels: Record<string, string> = {
+    active: t('propertyDetails.statusActive'),
+    sold: t('propertyDetails.statusSold'),
+    reserved: t('propertyDetails.statusReserved'),
+    archived: t('propertyDetails.statusArchived'),
+  };
+
   return (
     <div className={styles.propertyLayout}>
       <div className={styles.mainContent}>
@@ -112,36 +141,33 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
             className={styles.calcButton}
             onClick={() => navigate('/finanzierung')}
           >
-            Finanzierungsrechner
+            {t('propertyDetails.financingCalculator')}
           </button>
         </div>
 
-        <Section title="OBJEKTDATEN">
+        <Section title={t('propertyDetails.objectData')}>
           {object.status && (
             <div className={styles.status}>
-              <span className={styles.label}>Objektstatus:</span>
+              <span className={styles.label}>
+                {t('propertyDetails.objectStatus')}:
+              </span>
               <div className={styles.statusBanner}>
-                {object.status === 'active' && 'aktiv'}
-                {object.status === 'sold' && 'verkauft'}
-                {object.status === 'reserved' && 'reserviert'}
-                {object.status === 'archived' && 'archiviert'}
+                {statusLabels[object.status]}
               </div>
             </div>
           )}
 
           <div className={styles.detailsLeft}>
-            {Object.entries(details)
-              .filter(([_, value]) => value !== undefined && value !== null)
-              .map(([label, value]) => (
-                <DetailRow key={label} label={label} value={value} />
-              ))}
+            {detailEntries.map(({ key, label, value }) => (
+              <DetailRow key={key} label={label} value={value} />
+            ))}
           </div>
         </Section>
 
         {(apartment?.additionalFeatures ||
           residentialHouse?.additionalFeatures ||
           commercialBuilding?.additionalFeatures) && (
-          <Section title="AUSSTATTUNG">
+          <Section title={t('propertyDetails.features')}>
             <p className={styles.narrowText}>
               {apartment?.additionalFeatures ??
                 residentialHouse?.additionalFeatures ??
@@ -151,19 +177,19 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
         )}
 
         {object.description && (
-          <Section title="OBJEKTBESCHREIBUNG">
+          <Section title={t('propertyDetails.description')}>
             <p className={styles.narrowText}>{object.description}</p>
           </Section>
         )}
 
         {object.location && (
-          <Section title="LAGE">
+          <Section title={t('propertyDetails.location')}>
             <p className={styles.narrowText}>{object.location}</p>
           </Section>
         )}
 
         {object.miscellaneous && (
-          <Section title="SONSTIGES">
+          <Section title={t('propertyDetails.miscellaneous')}>
             <p className={styles.narrowText}>{object.miscellaneous}</p>
           </Section>
         )}
@@ -173,9 +199,9 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
         <div className={styles.verticalDividerRight} />
         <div className={styles.detailsRight}>
           <div className={styles.tagline}>
-            <p>Verlässlich.</p>
-            <p>Persönlich.</p>
-            <p>Vor Ort.</p>
+            <p>{t('immoTonnContent.line1')}</p>
+            <p>{t('immoTonnContent.line2')}</p>
+            <p>{t('immoTonnContent.line3')}</p>
           </div>
           <div className={styles.rightButton}>
             <button
@@ -186,7 +212,7 @@ const PropertyDetails: React.FC<PropertyDetailsProps> = ({
                 })
               }
             >
-              Finanzierungsrechner
+              {t('propertyDetails.financingCalculator')}
             </button>
           </div>
         </div>

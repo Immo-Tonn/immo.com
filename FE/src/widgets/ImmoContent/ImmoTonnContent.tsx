@@ -3,8 +3,15 @@ import styles from './ImmoTonnContent.module.css';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll } from '@shared/anim/animations';
+import { useTranslation } from 'react-i18next';
+
+interface ListItem {
+  title: string;
+  description: string;
+}
 
 const ImmoTonnContent: React.FC = () => {
+  const { t } = useTranslation();
   const refs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -20,35 +27,17 @@ const ImmoTonnContent: React.FC = () => {
     });
   }, []);
 
-  const listItemData = [
-    {
-      title: 'Rechtliche Sicherheit',
-      description:
-        'Er unterstützt bei Verträgen, klärt Fragen und begleitet rechtlich bis zum Abschluss.',
-    },
-    {
-      title: 'Organisation und Besichtigungen',
-      description:
-        'Der Makler plant und koordiniert alle Termine mit Interessenten effizient und zuverlässig.',
-    },
-    {
-      title: 'Finanzierungsberatung',
-      description:
-        'Der Makler plant und koordiniert alle Termine mit Interessenten effizient und zuverlässig.',
-    },
-    {
-      title: 'Betreuung nach dem Verkauf',
-      description:
-        'Auch nach dem Abschluss bleibt der Makler Ansprechpartner für Fragen und Übergaben.',
-    },
-  ];
+  const listItemData = t('immoTonnContent.items', {
+    returnObjects: true,
+  }) as ListItem[];
 
   return (
     <>
       <section className={styles.immoTonnContentSection}>
         <div className={styles.immoTonnLeftSectionWrapper}>
           <p className={styles.immoTonnBigPhrase}>
-            Verlässlich. <br /> Persönlich. <br /> Vor Ort.
+            {t('immoTonnContent.line1')} <br /> {t('immoTonnContent.line2')} <br />{' '}
+            {t('immoTonnContent.line3')}
           </p>
           <span className={styles.immoTonnLine}></span>
         </div>
@@ -70,8 +59,8 @@ const ImmoTonnContent: React.FC = () => {
         <Link to="/kontakt">
           <Button
             className={styles.salesSupportButton}
-            initialText="KONTAKTAUFNEHMEN"
-            clickedText="Weiterleitung..."
+            initialText={t('immoTonnContent.cta')}
+            clickedText={t('common.redirecting')}
           />
         </Link>
       </div>

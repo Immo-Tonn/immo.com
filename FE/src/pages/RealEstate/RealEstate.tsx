@@ -6,8 +6,10 @@ import styles from './RealEstate.module.css';
 import { usePropertysData } from '@shared/api/usePropertyData';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
 import { fadeInOnScroll } from '@shared/anim/animations';
+import { useTranslation } from 'react-i18next';
 
 const RealEstate = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { objectData, err, loading, images } = usePropertysData();
   const refs = useRef<(HTMLLIElement | null)[]>([]);
@@ -52,15 +54,15 @@ const RealEstate = () => {
                 <div className={styles.statItem}>
                   <span className={styles.statNumber}>{objectData.length}</span>
                   <span className={styles.statLabel}>
-                    {objectData.length === 1 ? 'Objekt' : 'Objekte'} verfügbar
+                    {t('realEstate.available', { count: objectData.length })}
                   </span>
                 </div>
               </div>
             )}
-            <h1 className={styles.title}>Immobilienangebote</h1>
+            <h1 className={styles.title}>{t('realEstate.title')}</h1>
             {isAdmin && (
               <button className={styles.createButton} onClick={handleCreateNew}>
-                + Objekt erstellen
+                {t('realEstate.createButton')}
               </button>
             )}
           </div>
@@ -83,11 +85,11 @@ const RealEstate = () => {
             !err && (
               <div className={styles.noProperties}>
                 <div className={styles.noPropertiesIcon}>🏠</div>
-                <h3>Immobilien objekte nicht gefunden</h3>
+                <h3>{t('realEstate.noneFoundTitle')}</h3>
                 <p>
                   {isAdmin
-                    ? 'Es wurden noch keine Immobilien erstellt. Erstellen Sie Ihre erste Immobilie!'
-                    : 'Derzeit sind keine Immobilien verfügbar.'}
+                    ? t('realEstate.noneFoundAdmin')
+                    : t('realEstate.noneFoundVisitor')}
                 </p>
               </div>
             )
@@ -95,26 +97,16 @@ const RealEstate = () => {
 
           {isAdmin && (
             <div className={styles.adminInfo}>
-              <h4>Informationen für Administratoren</h4>
+              <h4>{t('realEstate.adminInfoTitle')}</h4>
               {objectData && objectData.length > 0 ? (
                 <>
-                  <p>
-                    Alle Nutzer sehen alle erstellten Objekte auf der Website.
-                  </p>
-                  <p>
-                    Um Objekte zu verwalten, verwenden Sie die Schaltflächen
-                    „Bearbeiten" und „Löschen" in der Detailansicht oder
-                    erstellen Sie ein neues Objekt über die Schaltfläche „+
-                    Objekt erstellen".
-                  </p>
+                  <p>{t('realEstate.adminInfoAllUsers')}</p>
+                  <p>{t('realEstate.adminInfoManage')}</p>
                 </>
               ) : (
                 <>
-                  <p>Derzeit sind keine Objekte in der Datenbank vorhanden.</p>
-                  <p>
-                    Erstellen Sie Ihr erstes Objekt über die Schaltfläche „+
-                    Objekt erstellen" oben auf der Seite.
-                  </p>
+                  <p>{t('realEstate.adminInfoEmpty')}</p>
+                  <p>{t('realEstate.adminInfoCreateFirst')}</p>
                 </>
               )}
             </div>

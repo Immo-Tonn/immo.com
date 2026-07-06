@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Home",
+    "valuation": "Wertermittlung",
+    "realEstate": "Immobilien",
+    "financing": "Finanzierung",
+    "contact": "Kontakt"
+  },
+  "header": {
+    "toHome": "Zur Startseite",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen"
+  },
+  "footer": {
+    "legalNotice": "Impressum",
+    "privacyPolicy": "Datenschutz",
+    "cancellationPolicy": "Widerrufsrecht",
+    "rightsReserved": "{{name}}. Alle Rechte vorbehalten {{year}}"
+  },
+  "common": {
+    "redirecting": "Weiterleitung..."
+  },
+  "heroHome": {
+    "line1": "Der richtige Partner für Ihren",
+    "line2": "Immobilienverkauf",
+    "line3": "im Münsterland",
+    "ctaValuation": "Kostenlose Wertermittlung",
+    "ctaRequest": "direkt anfordern"
+  },
+  "aboutUs": {
+    "titleLine1": "Ihr zuverlässiger Partner für",
+    "titleLine2": "Immobilien in NRW –",
+    "titleLine3": "Das dürfen Sie von uns erwarten:",
+    "paragraph1": "Mit einem professionellen Immobilienmakler an Ihrer Seite können Sie sicherstellen, dass der gesamte Prozess – von der ersten Idee bis zum erfolgreichen Abschluss – effizient, sicher und in Ihrem besten Interesse verläuft.",
+    "paragraph2": "Seit 1985 sind wir im <0>Münsterland</0> auf den Verkauf von Bestands- und Neubauimmobilien spezialisiert und nutzen exklusive Vermarktungsstrategien sowie ein über Jahrzehnte gewachsenes regionales Netzwerk, um für jedes Objekt das optimale Ergebnis zu erzielen.",
+    "paragraph3": "Unser erfahrenes Team begleitet Sie persönlich, hält Ihnen den Rücken frei und entwickelt sich kontinuierlich weiter, damit Sie jederzeit den besten Service erhalten.",
+    "bottomLine1": "Ihr Maklerteam für Wohnimmobilien,",
+    "bottomLine2": "Geschäftshäuser und hochwertige Investments"
+  },
+  "fiveSteps": {
+    "titleLine1": "Mehr als nur Immobilien – eine Partnerschaft,",
+    "titleLine2": "die sich für Sie entfaltet",
+    "subtitle": "in 5 Schritten zum Verkauf Ihrer Immobilie",
+    "cta": "Verkauf",
+    "steps": [
+      {
+        "title": "Kostenlose Immobilienbewertung & Erstberatung",
+        "body": "Die Eckdaten Ihrer Immobilie – Lage, Größe, Baujahr und Wohnfläche – geben eine erste Preiseinschätzung. Den tatsächlichen Marktwert bestimmen wir jedoch bei einem Vor-Ort-Termin, bei dem wir alle wichtigen Details berücksichtigen. In einem persönlichen Gespräch erhalten Sie unsere Bewertung, die Vermarktungsstrategie und Tipps zur möglichen Wertsteigerung."
+      },
+      {
+        "title": "Auftragserteilung",
+        "body": "Nehmen Sie sich Zeit, unsere Bewertung und Empfehlungen in Ruhe zu prüfen. Bei Fragen oder Wünschen stehen wir Ihnen jederzeit zur Verfügung. Sobald Sie überzeugt sind, besiegelt ein schriftlicher Vermittlungsauftrag unsere Zusammenarbeit. Ab diesem Moment begleiten wir Sie mit umfassender Unterstützung und wertvollen Kontakten – etwa zu lokalen Handwerksbetrieben für Modernisierungen oder Finanzierungen."
+      },
+      {
+        "title": "Fototermin, Expose-Erstellung & Veröffentlichung",
+        "body": "Wir holen alle relevanten Informationen von Ämtern und Verwaltungen ein, um Interessenten bestmöglich zu informieren. Mit vollständigen Unterlagen, professionellen Fotos und einem aussagekräftigen Exposé präsentieren wir Ihre Immobilie optimal. Die Vermarktung erfolgt nach der gemeinsam festgelegten Strategie – gezielt über passende Medien und Kanäle."
+      },
+      {
+        "title": "Anfragen und Besichtigungen",
+        "body": "Seien Sie sicher: Nur ernsthafte Kaufinteressenten mit konkreten Absichten werden Ihre Immobilie besichtigen. Dies gewährleisten wir durch ausführliche Vorgespräche mit allen potenziellen Käufern. \"Besichtigungstourismus\" gibt es bei uns nicht. Sollten Sie noch in Ihrer Immobilie wohnen, stimmen wir die Besichtigungstermine selbstverständlich flexibel mit Ihnen ab."
+      },
+      {
+        "title": "Notartermin und Beurkundung",
+        "body": "Professionelle Verhandlungsführung & reibungsloser Verkaufsabschluss. Als Ihr Immobilienpartner übernehmen wir die Preisverhandlungen in Ihrem Sinne. Dank einer klar definierten Strategie und enger Abstimmung mit Ihnen müssen Sie sich nicht selbst in die Verhandlungen einbringen. Als Makler agieren wir als Vermittler mit dem Ziel, eine faire Einigung zu erzielen, mit der beide Seiten zufrieden sind. Nach der Einigung übermitteln wir alle Details an den Notar, der den Kaufvertragsentwurf erstellt und beiden Parteien zur Prüfung zusendet. Sobald beide Seiten zustimmen, wird der Notartermin zur Vertragsunterzeichnung festgelegt. Nach Zahlungseingang auf Ihrem Konto kümmern wir uns um die Immobilienübergabe sowie die Meldungen an den Versicherer und die zuständige Kommune. Und dann ist es offiziell: #ERFOLGREICH VERKAUFT!"
+      }
+    ]
+  },
+  "categories": {
+    "items": {
+      "immobilienangebote": "Immobilienangebote",
+      "verkaufssupport": "Verkaufssupport",
+      "recht-und-rat": "Recht und Rat",
+      "objektstyling": "Objektstyling",
+      "wertermittlung": "Wertermittlung",
+      "finanzierung": "Finanzierung"
+    }
+  },
+  "realEstate": {
+    "available_one": "Objekt verfügbar",
+    "available_other": "Objekte verfügbar",
+    "title": "Immobilienangebote",
+    "createButton": "+ Objekt erstellen",
+    "noneFoundTitle": "Immobilienobjekte nicht gefunden",
+    "noneFoundAdmin": "Es wurden noch keine Immobilien erstellt. Erstellen Sie Ihre erste Immobilie!",
+    "noneFoundVisitor": "Derzeit sind keine Immobilien verfügbar.",
+    "adminInfoTitle": "Informationen für Administratoren",
+    "adminInfoAllUsers": "Alle Nutzer sehen alle erstellten Objekte auf der Website.",
+    "adminInfoManage": "Um Objekte zu verwalten, verwenden Sie die Schaltflächen „Bearbeiten\" und „Löschen\" in der Detailansicht oder erstellen Sie ein neues Objekt über die Schaltfläche „+ Objekt erstellen\".",
+    "adminInfoEmpty": "Derzeit sind keine Objekte in der Datenbank vorhanden.",
+    "adminInfoCreateFirst": "Erstellen Sie Ihr erstes Objekt über die Schaltfläche „+ Objekt erstellen\" oben auf der Seite."
+  },
+  "propertyCard": {
+    "noPhoto": "Kein Foto verfügbar",
+    "sold": "Verkauft",
+    "reserved": "Reserviert",
+    "price": "Kaufpreis",
+    "livingArea": "Wohnfläche",
+    "rooms_one": "{{count}} Zimmer",
+    "rooms_other": "{{count}} Zimmer"
+  },
+  "mortgageCalculator": {
+    "pageTitle": "Immobilien Finanzierung Rechner",
+    "priceLabel": "Immobilienpreis (€)",
+    "errorPriceTooLow": "Der Immobilienpreis muss größer als das Eigenkapital sein.",
+    "taxLabel": "Grunderwerbsteuer",
+    "notaryLabel": "Notar/Grundbuch",
+    "brokerLabel": "Käufer Maklerprovision",
+    "totalPrice": "Gesamtpreis",
+    "equityLabel": "Eigenkapital",
+    "errorEquityTooHigh": "Eigenkapital muss kleiner als der Gesamtpreis sein.",
+    "errorEquityDecimals": "Es dürfen nicht mehr als zwei Ziffern nach dem Komma eingegeben werden.",
+    "repaymentLabel": "Tilgung",
+    "interestLabel": "Sollzins p. a.(%)",
+    "errorInterestDecimals": "Nach dem Komma darf nur eine Ziffer eingegeben werden.",
+    "errorInterestRange": "Der Sollzins muss größer als 0 und kleiner als 14 sein.",
+    "yearsLabel": "Laufzeit (Jahre)",
+    "loanAmountLabel": "Darlehenssumme",
+    "monthlyRate": "Monatliche Rate",
+    "calculateButton": "Berechnen",
+    "inProgress": "im Prozess",
+    "exportPdfButton": "Export als PDF",
+    "validationHint": "Die monatliche Rate wird nach der Eingabe gültiger Werte berechnet.",
+    "hintTitle": "Wichtiger Hinweis:",
+    "hintBody1": "Die hier berechnete monatliche Rate stellt lediglich eine unverbindliche Beispielrechnung dar",
+    "hintBody2": "und dient nur zur ersten Orientierung. Sie ersetzt keine individuelle Finanzierungsberatung. Die",
+    "hintBody3": "tatsächlichen Konditionen können je nach Anbieter, Bonität und weiteren Faktoren abweichen.",
+    "hintBody4": "Für die Richtigkeit, Vollständigkeit und Aktualität der Angaben wird keine Haftung übernommen.",
+    "close": "Schließen",
+    "customValue": "eigener Wert",
+    "customValueError": "Bitte geben Sie einen gültigen Wert zwischen 0 und 10 ein (max. zwei Nachkommastellen).",
+    "info": {
+      "tax": {
+        "title": "Grunderwerbsteuer",
+        "body": "Die Höhe der Grunderwerbsteuer ist in Deutschland nicht einheitlich und variiert je nach Bundesland."
+      },
+      "notary": {
+        "title": "Notar & Grundbuch",
+        "body": "Die Kosten für Notar und Grundbucheintrag trägt in der Regel der Käufer."
+      },
+      "broker": {
+        "title": "Käufer-Maklerprovision",
+        "body": "Die Käufer-Maklerprovision richtet sich nach den Angaben im Exposé."
+      }
+    },
+    "pdf": {
+      "title": "Finanzierungsrechner",
+      "createdOn": "Erstellt am",
+      "price": "Immobilienpreis",
+      "equity": "Eigenkapital",
+      "brokerCommission": "Maklerprovision",
+      "loanAmount": "Darlehenssumme",
+      "interestRate": "Zinssatz",
+      "term": "Laufzeit",
+      "years": "Jahre",
+      "contact": "Kontakt"
+    }
+  },
+  "contactForm": {
+    "heading": "Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin",
+    "firstNamePlaceholder": "Vorname*",
+    "firstNameRequired": "Vorname ist erforderlich",
+    "lastNamePlaceholder": "Nachname*",
+    "lastNameRequired": "Nachname ist erforderlich",
+    "emailPlaceholder": "E-Mail*",
+    "emailRequired": "E-Mail ist erforderlich",
+    "emailInvalid": "Ungültige E-Mail-Adresse",
+    "phonePlaceholder": "Telefon*",
+    "phoneRequired": "Telefon ist erforderlich",
+    "phoneInvalid": "Ungültige Telefonnummer",
+    "messagePlaceholder": "Nachricht",
+    "messageRequired": "Nachricht ist erforderlich",
+    "messageTooShort": "Nachricht ist zu kurz",
+    "consentRequired": "Bitte stimmen Sie der Datenschutzerklärung zu.",
+    "consentLabel": "Ja, ich habe die Datenschutzerklärung gelesen und bin damit einverstanden, dass meine Angaben zur Kontaktaufnahme und für Rückfragen elektronisch gespeichert und verarbeitet werden.",
+    "captchaRequired": "Bitte bestätigen Sie das CAPTCHA.",
+    "captchaExpired": "CAPTCHA ist abgelaufen, bitte erneut bestätigen.",
+    "captchaNotConfigured": "reCAPTCHA ist nicht konfiguriert (VITE_RECAPTCHA_SITE_KEY fehlt in .env).",
+    "submitError": "Fehler beim Versenden. Bitte erneut versuchen.",
+    "submitButton": "Absenden",
+    "submitting": "Wird gesendet...",
+    "sideHeading": "Schreiben Sie uns",
+    "phoneLabel": "Telefon"
+  },
+  "heroValuation": {
+    "eyebrow": "Immobilienbewertung mit Immo Tonn – Wir kennen den Wert Ihres Zuhauses",
+    "title": "Immobilienbewertung mit Herz und Verstand"
+  },
+  "valuationCTA": {
+    "firstTitle": "Viele Eigentümer fragen sich: Was ist meine Immobilie heute wert?",
+    "paragraph1": "Ob aus Interesse, für eine mögliche Verkaufsentscheidung oder zur besseren finanziellen Planung – eine fundierte Wertermittlung schafft Sicherheit und Klarheit.",
+    "paragraph2": "Als erfahrene Partner in der Versicherungs- und Immobilienbranche wissen wir bei Immo Tonn, worauf es ankommt: Marktkenntnis und persönliche Beratung.",
+    "secondTitle": "Lassen Sie Ihre Immobilie jetzt bewerten!",
+    "thirdTitle": "Warum ist eine professionelle Wertermittlung so wichtig?",
+    "thirdParagraph": "Der Immobilienmarkt ist ständig in Bewegung. Faktoren wie Inflation, Zinssätze und die Lageentwicklung beeinflussen den Wert einer Immobilie. Wer verkaufen möchte, braucht eine zuverlässige Einschätzung – idealerweise von Experten, die sowohl den Immobilien- als auch den Versicherungsmarkt verstehen.",
+    "cta": "Wie viel ist mein Haus wert?"
+  },
+  "competence": {
+    "title": "Vertrauen durch Kompetenz",
+    "paragraph1": "Unsere Kunden besitzen nicht nur Immobilien – sie sind oft auch bei uns versichert. Das heißt: Wir kennen ihre Situation, ihre Immobilie und ihre Bedürfnisse.",
+    "paragraph2": "Genau darin liegt unser Vorteil: Wir kombinieren Wissen aus zwei Welten – Immobilienbewertung und Versicherungsberatung – für eine ganzheitliche Betreuung.",
+    "secondTitle": "Jetzt unverbindlich anfragen – Ihr Immo Tonn Team ist für Sie da!"
+  },
+  "howIsGoing": {
+    "considerTitle": "Was wir bei der Bewertung berücksichtigen:",
+    "considerItems": [
+      "Aktuelle Markt- und Nachfragesituation",
+      "Lage und Mikrolage der Immobilien",
+      "Baujahr, Zustand, Ausstattung",
+      "Vergleichswerte ähnlicher Objekte",
+      "Potenziale für Modernisierung oder energetische Sanierung"
+    ],
+    "processTitle": "Wie läuft die Bewertung ab?",
+    "processItems": [
+      "Unverbindliches Erstgespräch – telefonisch oder vor Ort",
+      "Analyse der Objektunterlagen und Besichtigung",
+      "Marktgerechte Bewertung mit transparentem Ergebnis",
+      "Auf Wunsch: Beratung zu Verkauf, Finanzierung oder Sanierung"
+    ],
+    "cta": "Kontakt knüpfen"
+  },
+  "lawAndAdvice": {
+    "pageTitle": "Recht & Rat",
+    "introLine1": "Rechtliche Sicherheit & praktische",
+    "introLine2": "Tipps rund um Kauf und Verkauf",
+    "block1Title": "Vorbereitung schafft Sicherheit und Erfolg",
+    "block1Text": "Wir begleiten Sie von Anfang an. Für Verkäufer helfen wir bei der Zusammenstellung aller notwendigen Unterlagen – wie Grundbuchauszug, Energieausweis und Informationen zu Renovierungen. Käufern stellen wir alle verfügbaren Objektunterlagen transparent zur Verfügung und erklären die Details verständlich – von der rechtlichen Situation bis zu technischen Merkmalen und versteckten Kosten.",
+    "block2Title": "Mit Stil und Übersicht zur erfolgreichen Besichtigung",
+    "block2Text": "Wir wissen, wie man eine Immobilie optimal präsentiert. Verkäufern geben wir wertvolle Tipps zur Vorbereitung der Immobilie für Besichtigungen: Beleuchtung, Ordnung, neutrale Einrichtung und angenehme Atmosphäre – alles spielt eine Rolle. Zusätzlich bieten wir professionellen Objekt-Styling an. Käufern helfen wir, die entscheidenden Faktoren zu bewerten, die den Preis und die Wohnqualität beeinflussen können.",
+    "block3Title": "Sicherheit und Struktur bei jedem Schritt.",
+    "block3Text": "Rechtliche Klarheit ist die Grundlage für Vertrauen. Wir prüfen den Eigentumsnachweis, mögliche Belastungen, Baugenehmigungen und die Richtigkeit aller Unterlagen. Verkäufern helfen wir, potenzielle rechtliche Hürden im Vorfeld zu beseitigen. Käufern erklären wir die Dokumente verständlich und beraten zu allen wichtigen Vertragspunkten. Auf Wunsch empfehlen wir Ihnen Notare aus unserem Partnernetzwerk – für eine sichere Abwicklung.",
+    "block4Title": "Faire Preisfindung und erfolgreiche Verhandlungen",
+    "block4Text": "Ein realistischer Preis und eine gute Verhandlungsführung sind entscheidend. Verkäufern helfen wir bei der Marktwertermittlung auf Basis von Lage, Zustand und Vergleichsobjekten. Käufern erklären wir die Preisstruktur und geben eine Einschätzung, wo faire Verhandlungsspielräume bestehen. Wir moderieren Gespräche respektvoll und lösungsorientiert.",
+    "block5Title": "Keine übereilten Entscheidungen treffen",
+    "block5Text": "Immobilientransaktionen brauchen Zeit und Klarheit. Wir schaffen einen geschützten Rahmen, in dem Käufer und Verkäufer in Ruhe und gut informiert Entscheidungen treffen können. Dabei sorgen wir für Sicherheit und Transparenz auf allen Ebenen.",
+    "goalLine1": "Unser Ziel ist es, Kauf und Verkauf von Immobilien klar, verständlich und sicher zu gestalten.",
+    "goalLine2": "Wir setzen uns dafür ein, dass die Interessen beider Seiten berücksichtigt werden - und das Ergebnis für alle stimmt."
+  },
+  "heroSupport": {
+    "line1": "Verkaufssupport - mehr als",
+    "line2": "nur Vermittlung - Rundum-Service vom",
+    "line3": "Profi"
+  },
+  "agentBenefits": {
+    "title": "Warum ein Makler?",
+    "items": [
+      {
+        "title": "Marktanalyse & Beratung",
+        "text": "Der Makler analysiert den Markt und empfiehlt den optimalen Angebotspreis für Ihre Immobilie."
+      },
+      {
+        "title": "Immobilienbewertung",
+        "text": "Mit modernen Verfahren ermittelt der Makler den realistischen Marktwert."
+      },
+      {
+        "title": "Effektives Marketing",
+        "text": "Professionelle Fotos, Exposés und gezielte Werbung sorgen für maximale Sichtbarkeit."
+      },
+      {
+        "title": "Verhandlungsexpertise",
+        "text": "Als Vermittler führt der Makler faire und zielführende Verkaufsverhandlungen."
+      }
+    ]
+  },
+  "immoTonnContent": {
+    "line1": "Verlässlich.",
+    "line2": "Persönlich.",
+    "line3": "Vor Ort.",
+    "items": [
+      {
+        "title": "Rechtliche Sicherheit",
+        "description": "Er unterstützt bei Verträgen, klärt Fragen und begleitet rechtlich bis zum Abschluss."
+      },
+      {
+        "title": "Organisation und Besichtigungen",
+        "description": "Der Makler plant und koordiniert alle Termine mit Interessenten effizient und zuverlässig."
+      },
+      {
+        "title": "Finanzierungsberatung",
+        "description": "Der Makler plant und koordiniert alle Termine mit Interessenten effizient und zuverlässig."
+      },
+      {
+        "title": "Betreuung nach dem Verkauf",
+        "description": "Auch nach dem Abschluss bleibt der Makler Ansprechpartner für Fragen und Übergaben."
+      }
+    ],
+    "cta": "KONTAKT AUFNEHMEN"
+  },
+  "propertyPage": {
+    "confirmDelete": "Wirklich löschen? Diese Aktion ist unwiderruflich.",
+    "deleteSuccess": "Das Objekt wurde erfolgreich gelöscht",
+    "deletedTitle": "Objekt wurde gelöscht",
+    "deletedText": "Das angeforderte Objekt wurde erfolgreich gelöscht.",
+    "deletedRedirect": "Sie werden in wenigen Sekunden zur Objektübersicht weitergeleitet...",
+    "backToOverview": "Sofort zur Übersicht",
+    "loading": "Laden...",
+    "notFoundTitle": "Objekt nicht gefunden",
+    "notFoundText": "Das angeforderte Objekt konnte nicht gefunden werden.",
+    "notFoundHint": "Möglicherweise wurde es gelöscht oder die URL ist ungültig.",
+    "toOverview": "Zur Objektübersicht",
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
+  },
+  "propertyHero": {
+    "sold": "VERKAUFT",
+    "reserved": "RESERVIERT",
+    "noMedia": "Es wurden noch keine Fotos oder Videos hochgeladen.",
+    "moreMedia": "Mehr Medien",
+    "price": "Kaufpreis",
+    "livingArea": "Wohnfläche",
+    "rooms": "Zimmer",
+    "plotArea": "Grundstück",
+    "area": "Fläche"
+  },
+  "propertyDetails": {
+    "financingCalculator": "Finanzierungsrechner",
+    "objectData": "OBJEKTDATEN",
+    "objectStatus": "Objektstatus",
+    "statusActive": "aktiv",
+    "statusSold": "verkauft",
+    "statusReserved": "reserviert",
+    "statusArchived": "archiviert",
+    "features": "AUSSTATTUNG",
+    "description": "OBJEKTBESCHREIBUNG",
+    "location": "LAGE",
+    "miscellaneous": "SONSTIGES",
+    "fields": {
+      "country": "Land",
+      "idNumber": "Nummer ID",
+      "objectType": "Objektart",
+      "apartmentType": "Wohnungstyp",
+      "houseType": "Haustyp",
+      "buildingType": "Gebäudetyp",
+      "landPlotType": "Art des Grundstücks",
+      "livingArea": "Wohnfläche",
+      "area": "Fläche",
+      "plotArea": "Grundstück",
+      "usableArea": "Nutzfläche",
+      "yearBuilt": "Baujahr",
+      "rooms": "Zimmer",
+      "bedrooms": "Schlafzimmer",
+      "bathrooms": "Badezimmer",
+      "floor": "Etage",
+      "totalFloors": "Anzahl Etagen",
+      "parkingSpaces": "Stellplätze",
+      "energyEfficiencyClass": "Energieeffizienzklasse",
+      "energySource": "Energieträger",
+      "heating": "Heizung",
+      "freeFrom": "Frei ab",
+      "usage": "Nutzung",
+      "infrastructure": "Infrastruktur",
+      "buildingRegulations": "Bebauungsplan"
+    }
+  },
+  "propertyMap": {
+    "title": "KARTE",
+    "disclaimer": "Die vollständige Adresse der Immobilie erhalten Sie vom Anbieter.",
+    "loadError": "Karte konnte nicht geladen werden.",
+    "loading": "Lade Karte..."
+  },
+  "dankePage": {
+    "loadingAnimation": "Animation wird geladen...",
+    "title": "Vielen Dank!",
+    "text": "Ihre Nachricht wurde erfolgreich versendet.",
+    "backHome": "Zurück zur Startseite"
+  },
+  "notFound": {
+    "backHome": "Zurück zur Startseite",
+    "text": "Ups! Diese Seite wurde nicht gefunden."
+  }
+}

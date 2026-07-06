@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import styles from './AboutUs.module.css';
 import { fadeInOnScroll, parallaxMouseEffect } from '@shared/anim/animations';
+import { Trans, useTranslation } from 'react-i18next';
 
 const AboutUs = () => {
+  const { t } = useTranslation();
   const wrapperRef = useRef<any | null>(null);
   const logoRef = useRef<any | null>(null);
   const textRef = useRef<any | null>(null);
@@ -41,9 +43,9 @@ const AboutUs = () => {
             }}
           >
             <h1>
-              Ihr zuverlässiger Partner für <br />
-              Immobilien in NRW – <br />
-              Das dürfen Sie von uns erwarten:
+              {t('aboutUs.titleLine1')} <br />
+              {t('aboutUs.titleLine2')} <br />
+              {t('aboutUs.titleLine3')}
             </h1>
             <div
               className={styles.textWrapper}
@@ -51,24 +53,17 @@ const AboutUs = () => {
                 refs.current[1] = el;
               }}
             >
+              <p>{t('aboutUs.paragraph1')}</p>
               <p>
-                Mit einem professionellen Immobilienmakler an Ihrer Seite können
-                Sie sicherstellen, dass der gesamte Prozess – von der ersten
-                Idee bis zum erfolgreichen Abschluss – effizient, sicher und in
-                Ihrem besten Interesse verläuft.
+                <Trans i18nKey="aboutUs.paragraph2">
+                  Seit 1985 sind wir im <strong>Münsterland</strong> auf den
+                  Verkauf von Bestands- und Neubauimmobilien spezialisiert und
+                  nutzen exklusive Vermarktungsstrategien sowie ein über
+                  Jahrzehnte gewachsenes regionales Netzwerk, um für jedes
+                  Objekt das optimale Ergebnis zu erzielen.
+                </Trans>
               </p>
-              <p>
-                Seit 1985 sind wir im <strong>Münsterland</strong> auf den
-                Verkauf von Bestands‑ und Neubauimmobilien spezialisiert und
-                nutzen exklusive Vermarktungsstrategien sowie ein über
-                Jahrzehnte gewachsenes regionales Netzwerk, um für jedes Objekt
-                das optimale Ergebnis zu erzielen.
-              </p>
-              <p>
-                Unser erfahrenes Team begleitet Sie persönlich, hält Ihnen den
-                Rücken frei und entwickelt sich kontinuierlich weiter, damit Sie
-                jederzeit den besten Service erhalten.
-              </p>
+              <p>{t('aboutUs.paragraph3')}</p>
             </div>
           </div>
         </div>
@@ -80,8 +75,8 @@ const AboutUs = () => {
       >
         <p className={styles.textBottom} ref={bottomTextRef}>
           <b>
-            Ihr Maklerteam für Wohnimmobilien, <br />
-            Geschäftshäuser und hochwertige Investments
+            {t('aboutUs.bottomLine1')} <br />
+            {t('aboutUs.bottomLine2')}
           </b>
         </p>
       </div>

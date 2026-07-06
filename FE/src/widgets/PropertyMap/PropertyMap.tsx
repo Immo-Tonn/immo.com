@@ -4,11 +4,13 @@ import { Address } from '@shared/types/propertyTypes';
 import { LatLngTuple } from 'leaflet';
 import styles from './PropertyMap.module.css';
 import Fuse from 'fuse.js';
+import { useTranslation } from 'react-i18next';
 interface PropertyMapProps {
   address: Address;
 }
 
 const PropertyMap: React.FC<PropertyMapProps> = ({ address }) => {
+  const { t } = useTranslation();
   const { district, zip, city, country } = address;
 
   const [fuseCountry, setFuseCountry] = useState<Fuse<string> | null>(null);
@@ -121,7 +123,7 @@ const PropertyMap: React.FC<PropertyMapProps> = ({ address }) => {
   return (
     <section className={styles.mapSection}>
       <hr className={styles.hr} />
-      <h2 className={styles.title}>KARTE</h2>
+      <h2 className={styles.title}>{t('propertyMap.title')}</h2>
 
       <div className={styles.infoLine}>
         <span>{district},</span>{' '}
@@ -130,12 +132,10 @@ const PropertyMap: React.FC<PropertyMapProps> = ({ address }) => {
         </span>
       </div>
 
-      <p className={styles.disclaimer}>
-        Die vollständige Adresse der Immobilie erhalten Sie vom Anbieter.
-      </p>
+      <p className={styles.disclaimer}>{t('propertyMap.disclaimer')}</p>
 
       {error ? (
-        <p className={styles.error}>Karte konnte nicht geladen werden.</p>
+        <p className={styles.error}>{t('propertyMap.loadError')}</p>
       ) : polygonCoords && center ? (
         <MapContainer
           center={center}
@@ -159,7 +159,7 @@ const PropertyMap: React.FC<PropertyMapProps> = ({ address }) => {
           ))}
         </MapContainer>
       ) : (
-        <p className={styles.loading}>Lade Karte...</p>
+        <p className={styles.loading}>{t('propertyMap.loading')}</p>
       )}
     </section>
   );
