@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 import logo from '@shared/assets/about-us/logo-white.svg';
 import instagram from '@shared/assets/footer/instagram.svg';
 import linkedIn from '@shared/assets/footer/linkedin.svg';
-import youtube from '@shared/assets/footer/youtube.svg';
+// import youtube from '@shared/assets/footer/youtube.svg'; // пока не подключаем
 const Footer = () => {
   const { t } = useTranslation();
   return (
@@ -29,17 +29,27 @@ const Footer = () => {
         <div className={styles.footerMiddle}>
           <ul className={styles.footerIcons}>
             <li>
-              <a>
+              <a
+                href="https://www.instagram.com/immo_tonn/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={instagram} alt="instagram" />
               </a>
             </li>
+            {/* YouTube пока не подключаем — нет активной страницы
             <li>
               <a>
                 <img src={youtube} alt="youtube" />
               </a>
             </li>
+            */}
             <li>
-              <a>
+              <a
+                href="https://www.linkedin.com/company/immo-tonn-m%C3%BCnster/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={linkedIn} alt="linked-in" />
               </a>
             </li>
@@ -65,7 +75,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.bottomStripe}>
-        <p>{t('footer.rightsReserved', { name: 'Immo Tonn', year: 2025 })}</p>
+        <p>{t('footer.rightsReserved', { name: 'Immo Tonn', year: 2026 })}</p>
       </div>
     </footer>
   );
