@@ -9,4 +9,4 @@ Disallow: /edit-object/
 Disallow: /preview-object/
 Disallow: /kontakt/danke
 
-Sitemap: https://immo-tonn.de/sitemap.xml
+Sitemap: https://immo-tonn.com/sitemap.xml

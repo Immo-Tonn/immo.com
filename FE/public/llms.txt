@@ -12,7 +12,7 @@ Kontakt: tonn_andreas@web.de, +49 174 345 44 19
 Adresse: Sessendrupweg 54, 48161 Münster, Deutschland
 
 ## Wichtige Seiten
-- [Startseite](https://immo-tonn.de/): Übersicht und Immobilienbewertung
-- [Immobilien](https://immo-tonn.de/immobilien): Aktuelle Angebote
-- [Finanzierung](https://immo-tonn.de/finanzierung): Finanzierungsberatung
-- [Kontakt](https://immo-tonn.de/kontakt): Kontaktformular und Beratungstermin
+- [Startseite](https://immo-tonn.com/): Übersicht und Immobilienbewertung
+- [Immobilien](https://immo-tonn.com/immobilien): Aktuelle Angebote
+- [Finanzierung](https://immo-tonn.com/finanzierung): Finanzierungsberatung
+- [Kontakt](https://immo-tonn.com/kontakt): Kontaktformular und Beratungstermin

@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://immo-tonn.de/</loc>
+    <loc>https://immo-tonn.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/immobilien</loc>
+    <loc>https://immo-tonn.com/immobilien</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/wertermittlung</loc>
+    <loc>https://immo-tonn.com/wertermittlung</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/finanzierung</loc>
+    <loc>https://immo-tonn.com/finanzierung</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/rechner</loc>
+    <loc>https://immo-tonn.com/rechner</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/verkaufssupport</loc>
+    <loc>https://immo-tonn.com/verkaufssupport</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/kontakt</loc>
+    <loc>https://immo-tonn.com/kontakt</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/recht-und-rat</loc>
+    <loc>https://immo-tonn.com/recht-und-rat</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/objectstyling</loc>
+    <loc>https://immo-tonn.com/objectstyling</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/legalnotice</loc>
+    <loc>https://immo-tonn.com/legalnotice</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/privacypolicy</loc>
+    <loc>https://immo-tonn.com/privacypolicy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://immo-tonn.de/cancellationpolicy</loc>
+    <loc>https://immo-tonn.com/cancellationpolicy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
