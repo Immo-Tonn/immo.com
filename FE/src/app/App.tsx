@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Layout from '@widgets/Layout/Layout';
 import 'leaflet/dist/leaflet.css';
 import ScrollToTop from '@shared/ui/ScrollToTop/ScrollToTop';
@@ -85,6 +86,7 @@ const App = () => {
           />
         </Routes>
       </Layout>
+      <Analytics />
     </Router>
   );
 };
