@@ -55,13 +55,10 @@ const AboutUs = () => {
             >
               <p>{t('aboutUs.paragraph1')}</p>
               <p>
-                <Trans i18nKey="aboutUs.paragraph2">
-                  Seit 1985 sind wir im <strong>Münsterland</strong> auf den
-                  Verkauf von Bestands- und Neubauimmobilien spezialisiert und
-                  nutzen exklusive Vermarktungsstrategien sowie ein über
-                  Jahrzehnte gewachsenes regionales Netzwerk, um für jedes
-                  Objekt das optimale Ergebnis zu erzielen.
-                </Trans>
+                <Trans
+                  i18nKey="aboutUs.paragraph2"
+                  components={{ 0: <strong /> }}
+                />
               </p>
               <p>{t('aboutUs.paragraph3')}</p>
             </div>

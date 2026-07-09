@@ -28,11 +28,11 @@
     "ctaRequest": "direkt anfordern"
   },
   "aboutUs": {
-    "titleLine1": "Ihr zuverlässiger Partner für",
-    "titleLine2": "Immobilien in NRW –",
+    "titleLine1": "Ihr zuverlässiger Immobilienmakler für",
+    "titleLine2": "Münster, das Münsterland und ganz NRW –",
     "titleLine3": "Das dürfen Sie von uns erwarten:",
     "paragraph1": "Mit einem professionellen Immobilienmakler an Ihrer Seite können Sie sicherstellen, dass der gesamte Prozess – von der ersten Idee bis zum erfolgreichen Abschluss – effizient, sicher und in Ihrem besten Interesse verläuft.",
-    "paragraph2": "Seit 1985 sind wir im <0>Münsterland</0> auf den Verkauf von Bestands- und Neubauimmobilien spezialisiert und nutzen exklusive Vermarktungsstrategien sowie ein über Jahrzehnte gewachsenes regionales Netzwerk, um für jedes Objekt das optimale Ergebnis zu erzielen.",
+    "paragraph2": "Seit 1985 – seit über 40 Jahren – sind wir im <0>Münsterland</0> auf den Verkauf von Bestands- und Neubauimmobilien spezialisiert und nutzen exklusive Vermarktungsstrategien sowie ein über Jahrzehnte gewachsenes regionales Netzwerk, um für jedes Objekt das optimale Ergebnis zu erzielen.",
     "paragraph3": "Unser erfahrenes Team begleitet Sie persönlich, hält Ihnen den Rücken frei und entwickelt sich kontinuierlich weiter, damit Sie jederzeit den besten Service erhalten.",
     "bottomLine1": "Ihr Maklerteam für Wohnimmobilien,",
     "bottomLine2": "Geschäftshäuser und hochwertige Investments"
@@ -62,6 +62,55 @@
       {
         "title": "Notartermin und Beurkundung",
         "body": "Professionelle Verhandlungsführung & reibungsloser Verkaufsabschluss. Als Ihr Immobilienpartner übernehmen wir die Preisverhandlungen in Ihrem Sinne. Dank einer klar definierten Strategie und enger Abstimmung mit Ihnen müssen Sie sich nicht selbst in die Verhandlungen einbringen. Als Makler agieren wir als Vermittler mit dem Ziel, eine faire Einigung zu erzielen, mit der beide Seiten zufrieden sind. Nach der Einigung übermitteln wir alle Details an den Notar, der den Kaufvertragsentwurf erstellt und beiden Parteien zur Prüfung zusendet. Sobald beide Seiten zustimmen, wird der Notartermin zur Vertragsunterzeichnung festgelegt. Nach Zahlungseingang auf Ihrem Konto kümmern wir uns um die Immobilienübergabe sowie die Meldungen an den Versicherer und die zuständige Kommune. Und dann ist es offiziell: #ERFOLGREICH VERKAUFT!"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "items": [
+      {
+        "question": "Was passiert, wenn ich meine Immobilie über Sie verkaufe – begleiten Sie den gesamten Prozess?",
+        "answer": "Ja, unser Team begleitet Sie persönlich von der ersten Beratung bis zum Notartermin und hält Ihnen dabei den Rücken frei."
+      },
+      {
+        "question": "Wie erhalte ich ein Exposé für meine Immobilie?",
+        "answer": "Nach dem Fototermin erstellen wir ein professionelles Exposé und veröffentlichen es für Sie – das ist im Verkaufsprozess bereits enthalten."
+      },
+      {
+        "question": "Kann ich auch ein Geschäftshaus oder eine Gewerbeimmobilie über Sie verkaufen?",
+        "answer": "Ja, wir vermitteln neben Wohnimmobilien auch Geschäftshäuser und hochwertige Investmentobjekte."
+      },
+      {
+        "question": "Wie schnell bekomme ich das Ergebnis der Wertermittlung?",
+        "answer": "Nach der Anfrage melden wir uns zeitnah bei Ihnen und vereinbaren einen Termin zur kostenlosen Erstberatung."
+      },
+      {
+        "question": "Was kostet eine Immobilienbewertung bei Immo Tonn?",
+        "answer": "Die Wertermittlung ist für Sie kostenlos und unverbindlich."
+      },
+      {
+        "question": "Wie lange sind Sie schon im Immobiliengeschäft tätig?",
+        "answer": "Seit 1985 – also seit über 40 Jahren – sind wir im Münsterland auf den Verkauf von Immobilien spezialisiert."
+      },
+      {
+        "question": "In welchen Regionen sind Sie tätig?",
+        "answer": "Wir sind in Münster, im gesamten Münsterland und in Nordrhein-Westfalen für Sie da."
+      },
+      {
+        "question": "Wie läuft der Verkauf meiner Immobilie ab?",
+        "answer": "In 5 Schritten: kostenlose Immobilienbewertung & Erstberatung, Auftragserteilung, Fototermin & Exposé-Erstellung, Anfragen und Besichtigungen, Notartermin und Verkauf."
+      },
+      {
+        "question": "Verkaufen Sie auch Neubauimmobilien, oder nur Bestandsimmobilien?",
+        "answer": "Beides – wir sind sowohl auf den Verkauf von Bestands- als auch von Neubauimmobilien spezialisiert."
+      },
+      {
+        "question": "Unterstützen Sie auch bei der Finanzierung?",
+        "answer": "Ja, wir beraten Sie auf Wunsch auch zur Finanzierung Ihrer neuen Immobilie."
+      },
+      {
+        "question": "Bieten Sie Unterstützung beim Home Staging an?",
+        "answer": "Ja, mit professionellem Objektstyling bereiten wir Ihre Immobilie optimal für die Vermarktung vor."
       }
     ]
   },

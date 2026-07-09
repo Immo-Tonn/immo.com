@@ -65,6 +65,55 @@
       }
     ]
   },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "What happens if I sell my property through you – do you support the whole process?",
+        "answer": "Yes, our team supports you personally from the first consultation through to the notary appointment, taking care of the details for you."
+      },
+      {
+        "question": "How do I get a listing brochure (Exposé) for my property?",
+        "answer": "After the photo session, we create a professional listing brochure and publish it for you – this is already included in the sales process."
+      },
+      {
+        "question": "Can I also sell a commercial building or business property through you?",
+        "answer": "Yes, alongside residential properties we also broker commercial buildings and high-value investment properties."
+      },
+      {
+        "question": "How quickly do I get the results of the valuation?",
+        "answer": "After your enquiry we get back to you promptly and arrange an appointment for a free initial consultation."
+      },
+      {
+        "question": "How much does a property valuation from Immo Tonn cost?",
+        "answer": "The valuation is free of charge and non-binding."
+      },
+      {
+        "question": "How long have you been in the real estate business?",
+        "answer": "Since 1985 – that's over 40 years – we have specialized in selling properties in the Münsterland region."
+      },
+      {
+        "question": "In which regions are you active?",
+        "answer": "We are here for you in Münster, throughout the Münsterland region and in North Rhine-Westphalia."
+      },
+      {
+        "question": "How does the sale of my property work?",
+        "answer": "In 5 steps: free property valuation & initial consultation, signing the agreement, photo session & listing creation, enquiries and viewings, notary appointment and sale."
+      },
+      {
+        "question": "Do you also sell new-build properties, or only existing ones?",
+        "answer": "Both – we specialize in selling existing as well as new-build properties."
+      },
+      {
+        "question": "Do you also help with financing?",
+        "answer": "Yes, on request we're also happy to advise you on financing your new property."
+      },
+      {
+        "question": "Do you offer support with home staging?",
+        "answer": "Yes, with professional home staging we prepare your property optimally for marketing."
+      }
+    ]
+  },
   "categories": {
     "items": {
       "immobilienangebote": "Property listings",
