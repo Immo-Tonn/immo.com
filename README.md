@@ -127,3 +127,4 @@ docker-compose up -d --build --force-recreate
 
 > В `.github/workflows/` лежат заготовки для автодеплоя через SSH + PM2 (`deploy-backend.yml`, `deploy-frontend.yml`). На данный момент это не рабочий путь деплоя — реальный деплой выполняется вручную через docker-compose выше.
 
+
