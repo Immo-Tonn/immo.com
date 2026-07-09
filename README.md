@@ -126,3 +126,4 @@ docker-compose up -d --build --force-recreate
 - `nginx-proxy` — реверс-прокси на 80/443 с TLS-сертификатами Let's Encrypt для `immo-tonn.de`
 
 > В `.github/workflows/` лежат заготовки для автодеплоя через SSH + PM2 (`deploy-backend.yml`, `deploy-frontend.yml`). На данный момент это не рабочий путь деплоя — реальный деплой выполняется вручную через docker-compose выше.
+
