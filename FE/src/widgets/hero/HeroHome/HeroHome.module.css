@@ -18,7 +18,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .heroSection::before {
   content: '';
@@ -42,10 +42,11 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    180deg,
-    rgba(10, 8, 15, 0.45) 0%,
-    rgba(10, 8, 15, 0.35) 45%,
-    rgba(10, 8, 15, 0.7) 100%
+    90deg,
+    rgba(10, 8, 15, 0.75) 0%,
+    rgba(10, 8, 15, 0.45) 35%,
+    rgba(10, 8, 15, 0.15) 65%,
+    rgba(10, 8, 15, 0) 100%
   );
   z-index: 2;
 }
@@ -55,16 +56,16 @@
   padding-left: 3rem;
   padding-top: 56px;
   z-index: 3;
-  max-width: 560px;
+  max-width: 800px;
 }
 
 .topText {
   text-align: left;
   font-family: var(--Inter);
   font-weight: 400;
-  font-size: var(--font-h1);
-  line-height: var(--line-height-tight);
-  letter-spacing: -0.01em;
+  font-size: clamp(1.75rem, 1rem + 3.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: #fff;
   z-index: 3;
 }
@@ -72,40 +73,59 @@
 .bottomBar {
   position: relative;
   z-index: 3;
-  max-width: var(--container-max-width);
-  width: 100%;
-  margin: 0 auto 32px auto;
-  background-color: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(2px);
-  border-radius: 8px;
+  margin: clamp(70px, 32vh, 300px) 0 0 3rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 18px;
+  /* TEMP: scroll-анимация (fadeInOnScroll в HeroHome.tsx) временно перекрыта,
+     чтобы кнопки были видны сразу при загрузке страницы, без изменения JS/JSX.
+     Логика анимации не тронута и продолжает выполняться, просто её inline-стили
+     opacity/transform ниже перебиваются через !important.
+     Чтобы вернуть анимацию — удалите 2 строки ниже (opacity/transform). */
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .buttonWrapper:first-child Button {
-  padding: 0 36px 10px 36px;
+  margin: 0;
+  padding: 16px 32px;
   font-family: var(--Monserat);
-  font-weight: var(--font-weight-main);
-  font-size: clamp(22px, 2vw + 14px, 32px);
-  background-color: transparent;
-  color: #eae3cf;
+  font-weight: 900;
+  -webkit-text-stroke: 0.4px currentColor;
+  font-size: 19px;
+  background-color: #efe8da;
+  color: #160c20;
   border: none;
+  border-radius: 4px;
   line-height: 1.3;
   letter-spacing: 0.02em;
   text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.buttonWrapper:first-child Button:hover {
+  background-color: #e3dcc9;
 }
 
 .buttonWrapper:last-child Button {
-  padding: 0 36px 10px 36px;
+  margin: 0;
+  padding: 15px 31px;
   font-family: var(--Inter);
-  font-weight: var(--font-weight-main);
-  font-size: clamp(16px, 0.8vw + 14px, 20px);
-  background-color: transparent;
-  color: #f5f5f5;
-  border: none;
+  font-weight: 900;
+  -webkit-text-stroke: 0.4px currentColor;
+  font-size: 19px;
+  background-color: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  line-height: 1.3;
   letter-spacing: 0.02em;
   text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.buttonWrapper:last-child Button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 @media (max-width: 765px) {
@@ -115,11 +135,21 @@
 }
 
 @media (max-width: 576px) {
-  .bottomBar {
-    display: block;
+  .topTextWrapper {
+    padding-left: 1.5rem;
   }
-  .buttonWrapper {
-    display: flex;
-    justify-content: center;
+  .bottomBar {
+    margin: clamp(28px, 7vh, 56px) 0 0 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .buttonWrapper:first-child Button {
+    padding: 13px 20px;
+    font-size: 13px;
+  }
+  .buttonWrapper:last-child Button {
+    padding: 12px 19px;
+    font-size: 13px;
   }
 }

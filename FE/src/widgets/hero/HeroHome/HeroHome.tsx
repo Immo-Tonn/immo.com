@@ -35,13 +35,13 @@ const HeroHome = () => {
         }}
       >
         <div className={styles.topTextWrapper} ref={wrapperRef}>
-          <p className={styles.topText} ref={textRef}>
+          <h1 className={styles.topText} ref={textRef}>
             {t('heroHome.line1')}
             <br />
             {t('heroHome.line2')}
             <br />
             {t('heroHome.line3')}
-          </p>
+          </h1>
         </div>
 
         <div
@@ -59,7 +59,7 @@ const HeroHome = () => {
             </Link>
           </div>
           <div className={styles.buttonWrapper}>
-            <Link to="/kontakt">
+            <Link to="/immobilien">
               <Button
                 initialText={t('heroHome.ctaRequest')}
                 clickedText={t('common.redirecting')}

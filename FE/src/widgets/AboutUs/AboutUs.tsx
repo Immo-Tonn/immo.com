@@ -42,11 +42,11 @@ const AboutUs = () => {
               refs.current[0] = el;
             }}
           >
-            <h1>
+            <h2>
               {t('aboutUs.titleLine1')} <br />
               {t('aboutUs.titleLine2')} <br />
               {t('aboutUs.titleLine3')}
-            </h1>
+            </h2>
             <div
               className={styles.textWrapper}
               ref={el => {

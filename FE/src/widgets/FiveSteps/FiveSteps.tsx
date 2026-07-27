@@ -39,13 +39,13 @@ const FiveSteps = () => {
           refs.current[1] = el;
         }}
       >
-        <h3 className={styles.firstTitle}>
+        <h2 className={styles.firstTitle}>
           {t('fiveSteps.titleLine1')} <br />
           {t('fiveSteps.titleLine2')}
-        </h3>
+        </h2>
       </div>
       <div className={styles.secondTitleWrap}>
-        <h2 className={styles.secondTitle}>{t('fiveSteps.subtitle')}</h2>
+        <h3 className={styles.secondTitle}>{t('fiveSteps.subtitle')}</h3>
       </div>
 
       <div className={styles.contentWrapper}>

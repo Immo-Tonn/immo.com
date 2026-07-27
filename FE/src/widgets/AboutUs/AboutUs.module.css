@@ -43,7 +43,7 @@
   letter-spacing: 0.1em;
   color: #120922;
 }
-.titleWrapper > h1 {
+.titleWrapper > h2 {
   text-align: left;
   font-size: clamp(35px, 5vw, var(--font-size-main));
   font-family: var(--Roboto);
