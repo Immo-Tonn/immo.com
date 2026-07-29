@@ -14,8 +14,22 @@ const FAQ = () => {
   const { t } = useTranslation();
   const items = t('faq.items', { returnObjects: true }) as FaqItem[];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <section className={styles.faqSection}>
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       <h2 className={styles.title}>{t('faq.title')}</h2>
       <div className={styles.itemList}>
         {items.map((item, i) => (

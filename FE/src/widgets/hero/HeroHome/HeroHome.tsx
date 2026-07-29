@@ -42,6 +42,8 @@ const HeroHome = () => {
             <br />
             {t('heroHome.line3')}
           </h1>
+          <div className={styles.taglineDivider} />
+          <p className={styles.tagline}>{t('heroHome.tagline')}</p>
         </div>
 
         <div

@@ -73,7 +73,7 @@
 .bottomBar {
   position: relative;
   z-index: 3;
-  margin: clamp(70px, 32vh, 300px) 0 0 3rem;
+  margin: clamp(120px, 21vh, 230px) 0 0 3rem;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -128,28 +128,62 @@
   background-color: rgba(255, 255, 255, 0.12);
 }
 
+.taglineDivider {
+  width: 180px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 20px 0 12px 0;
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--Inter);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+}
+
 @media (max-width: 765px) {
   .topText {
     text-align: left;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 760px) {
   .topTextWrapper {
     padding-left: 1.5rem;
   }
+  .heroContentWrapper {
+    justify-content: space-between;
+  }
+  .heroSection::before {
+    background-position: 100% 35%;
+  }
   .bottomBar {
-    margin: clamp(28px, 7vh, 56px) 0 0 1.5rem;
+    margin: 0 1.5rem clamp(28px, 7vh, 56px) 1.5rem;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 10px;
   }
   .buttonWrapper:first-child Button {
     padding: 13px 20px;
     font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .buttonWrapper:last-child Button {
     padding: 12px 19px;
+    font-size: 13px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .taglineDivider {
+    width: 110px;
+    margin: 16px 0 10px 0;
+  }
+  .tagline {
     font-size: 13px;
   }
 }
