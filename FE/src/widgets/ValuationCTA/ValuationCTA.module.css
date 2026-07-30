@@ -11,18 +11,18 @@
 }
 .firstTitle {
   max-width: 625px;
-  font-size: clamp(13px, 7vw, var(--font-size-secondary));
-  text-shadow: 2px 4px 2.4px rgba(0, 0, 0, 0.5);
+  font-size: clamp(var(--font-size-secondary), 5vw, 40px);
   font-family: var(--Inter);
-  font-weight: 500;
+  font-weight: var(--font-weight-main);
+  color: #000;
   text-align: left;
 }
 .secondTitle {
-  font-weight: 500;
+  font-weight: var(--font-weight-main);
   text-align: left;
   max-width: 317px;
   font-family: var(--Inter);
-  font-size: clamp(36px, 5vw, var(--font-size-big));
+  font-size: clamp(var(--font-size-secondary), 5vw, 40px);
 }
 .description {
   max-width: 625px;
@@ -83,7 +83,7 @@
   .valuationCTASection .imageWrapper {
     margin: 0;
   }
-  .valuationCTASection h1 {
+  .valuationCTASection .secondTitle {
     max-width: 742px;
     padding: clamp(8px, 2vw, 16px);
   }
@@ -99,7 +99,7 @@
   }
 }
 @media (max-width: 576px) {
-  .valuationCTASection h1 {
+  .valuationCTASection .secondTitle {
     text-align: center;
   }
   .valuationCTASection .textWrapper {

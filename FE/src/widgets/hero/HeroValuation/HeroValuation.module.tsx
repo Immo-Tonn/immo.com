@@ -14,7 +14,7 @@ const HeroValuation = () => {
       <p>{t('heroValuation.eyebrow')}</p>
       <div className={styles.contentWrapper}>
         <div className={styles.textWrapper}>
-          <p>{t('heroValuation.title')}</p>
+          <h1>{t('heroValuation.title')}</h1>
         </div>
       </div>
     </section>

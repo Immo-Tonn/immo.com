@@ -52,7 +52,8 @@
   height: 89px;
 }
 
-.textWrapper > p {
+.textWrapper > h1 {
+  margin: 0;
   color: white;
   font-family: var(--Inter);
   font-size: clamp(var(--font-size-small), 4.5vw, 40px);

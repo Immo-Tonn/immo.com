@@ -35,9 +35,7 @@ const ValuationCTA = () => {
           refs.current[0] = el;
         }}
       >
-        <h2 className={styles.firstTitle}>
-          <b>{t('valuationCTA.firstTitle')}</b>
-        </h2>
+        <h2 className={styles.firstTitle}>{t('valuationCTA.firstTitle')}</h2>
         <p className={styles.description}>{t('valuationCTA.paragraph1')}</p>
         <p className={styles.description}>{t('valuationCTA.paragraph2')}</p>
       </div>
@@ -47,7 +45,7 @@ const ValuationCTA = () => {
           refs.current[1] = el;
         }}
       >
-        <h1 className={styles.secondTitle}>{t('valuationCTA.secondTitle')}</h1>
+        <h2 className={styles.secondTitle}>{t('valuationCTA.secondTitle')}</h2>
         <img
           ref={imgRef}
           src={valuationPhoto}
