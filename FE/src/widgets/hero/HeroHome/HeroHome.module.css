@@ -77,7 +77,7 @@
 .bottomBar {
   position: relative;
   z-index: 3;
-  margin: clamp(108px, 19.6vh, 218px) 0 0 3rem;
+  margin: clamp(128px, 21.5vh, 238px) 0 0 3rem;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -85,9 +85,13 @@
      чтобы кнопки были видны сразу при загрузке страницы, без изменения JS/JSX.
      Логика анимации не тронута и продолжает выполняться, просто её inline-стили
      opacity/transform ниже перебиваются через !important.
-     Чтобы вернуть анимацию — удалите 2 строки ниже (opacity/transform). */
+     pointer-events: auto перебивает inline pointer-events:none, который
+     fadeInOnScroll ставит до срабатывания ScrollTrigger onEnter — без этого
+     кнопки были видны, но некликабельны до первого скролла страницы.
+     Чтобы вернуть анимацию — удалите 3 строки ниже (opacity/transform/pointer-events). */
   opacity: 1 !important;
   transform: none !important;
+  pointer-events: auto !important;
 }
 
 .buttonWrapper:first-child Button {
@@ -97,7 +101,7 @@
   font-weight: 900;
   -webkit-text-stroke: 0.4px currentColor;
   font-size: 19px;
-  background-color: #efe8da;
+  background-color: rgba(255, 255, 255, 0.72);
   color: #160c20;
   border: none;
   border-radius: 4px;
@@ -108,7 +112,7 @@
 }
 
 .buttonWrapper:first-child Button:hover {
-  background-color: #e3dcc9;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .buttonWrapper:last-child Button {
@@ -174,13 +178,13 @@
   }
   .buttonWrapper:first-child Button {
     padding: 13px 20px;
-    font-size: 13px;
+    font-size: 16px;
     width: 100%;
     box-sizing: border-box;
   }
   .buttonWrapper:last-child Button {
     padding: 12px 19px;
-    font-size: 13px;
+    font-size: 16px;
     width: 100%;
     box-sizing: border-box;
   }
@@ -190,5 +194,19 @@
   }
   .tagline {
     font-size: 13px;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1200px) {
+  .bottomBar {
+    margin-top: clamp(160px, 28vh, 280px);
+  }
+  .buttonWrapper:first-child Button {
+    padding: 17px 34px;
+    font-size: 20px;
+  }
+  .buttonWrapper:last-child Button {
+    padding: 16px 33px;
+    font-size: 20px;
   }
 }
