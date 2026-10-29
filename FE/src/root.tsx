@@ -31,7 +31,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="index, follow" />
         <meta
           name="keywords"
           content="Immobilienmakler Münster, Immobilienbewertung Münster, Haus verkaufen Münster, Wohnung verkaufen Münsterland, Immobilienmakler NRW, Immobilien Nordrhein-Westfalen, Grundstück verkaufen Münster"

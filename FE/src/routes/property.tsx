@@ -29,6 +29,7 @@ export function meta({
     description: description.replace(/\s+/g, ' ').trim().slice(0, 160),
     lang,
     path: `/immobilien/${params.id}`,
+    key: '/immobilien/:id',
   });
 }
 

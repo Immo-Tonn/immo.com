@@ -1,0 +1,15 @@
+{
+  "/": ["de"],
+  "/wertermittlung": ["de", "en", "ru"],
+  "/immobilien": ["de"],
+  "/immobilien/:id": ["de"],
+  "/finanzierung": ["de"],
+  "/rechner": ["de"],
+  "/verkaufssupport": ["de"],
+  "/kontakt": ["de"],
+  "/recht-und-rat": ["de"],
+  "/objectstyling": ["de"],
+  "/legalnotice": ["de"],
+  "/privacypolicy": ["de"],
+  "/cancellationpolicy": ["de"]
+}
