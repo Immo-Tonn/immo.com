@@ -1,9 +1,12 @@
 // ./src/pages/RealEstate/RealEstate.tsx
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 import PropertyCard from '@widgets/PropertyCard/PropertyCard';
 import styles from './RealEstate.module.css';
-import { usePropertysData } from '@shared/api/usePropertyData';
+import {
+  usePropertysData,
+  type PropertyListBundle,
+} from '@shared/api/usePropertyData';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +14,8 @@ import { useTranslation } from 'react-i18next';
 const RealEstate = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { objectData, err, loading, images } = usePropertysData();
+  const initial = useLoaderData() as PropertyListBundle | undefined;
+  const { objectData, err, loading, images } = usePropertysData(initial);
   const refs = useRef<(HTMLLIElement | null)[]>([]);
   const listRef = useRef<HTMLUListElement | null>(null);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);

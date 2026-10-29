@@ -1,5 +1,14 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "build/client",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(add-property|register|forgot-password|change-password|create-object)",
+      "destination": "/__spa-fallback.html"
+    },
+    {
+      "source": "/(preview-object|edit-object)/:id",
+      "destination": "/__spa-fallback.html"
+    }
   ]
 }

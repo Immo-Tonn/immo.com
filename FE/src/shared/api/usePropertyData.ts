@@ -2,12 +2,21 @@ import { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import { RealEstateObject, Image, Video } from '@shared/types/propertyTypes';
 
-export const usePropertyData = (id?: string) => {
-  const [objectData, setObjectData] = useState<RealEstateObject | null>(null);
+export interface PropertyBundle {
+  object: RealEstateObject;
+  images: Image[];
+  videos: Video[];
+}
+
+// initial — данные, полученные loader'ом при prerender (попадают в готовый HTML)
+export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
+  const [objectData, setObjectData] = useState<RealEstateObject | null>(
+    initial?.object ?? null,
+  );
   const [err, setErr] = useState<string | null>(null);
-  const [images, setImages] = useState<Image[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [videos, setVideos] = useState<Video[]>([]);
+  const [images, setImages] = useState<Image[]>(initial?.images ?? []);
+  const [loading, setLoading] = useState(!initial);
+  const [videos, setVideos] = useState<Video[]>(initial?.videos ?? []);
   const [isDeleted, setIsDeleted] = useState(false);
 
   // Function for updating data
@@ -127,11 +136,18 @@ export const usePropertyData = (id?: string) => {
 };
 
 // Hook for list of objects (without ID)
-export const usePropertysData = () => {
-  const [objectData, setObjectData] = useState<RealEstateObject[]>([]);
+export interface PropertyListBundle {
+  objects: RealEstateObject[];
+  images: Image[];
+}
+
+export const usePropertysData = (initial?: PropertyListBundle) => {
+  const [objectData, setObjectData] = useState<RealEstateObject[]>(
+    initial?.objects ?? [],
+  );
   const [err, setErr] = useState<string | null>(null);
-  const [images, setImages] = useState<Image[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<Image[]>(initial?.images ?? []);
+  const [loading, setLoading] = useState(!initial);
 
   useEffect(() => {
     const fetchData = async () => {
