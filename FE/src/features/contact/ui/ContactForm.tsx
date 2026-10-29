@@ -35,6 +35,8 @@ const ContactForm = () => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const onSubmit = async (data: ContactData) => {
@@ -177,7 +179,9 @@ const ContactForm = () => {
 
             <div className={styles.captchaContainer}>
               {import.meta.env.VITE_RECAPTCHA_SITE_KEY ? (
-                <ReCAPTCHA
+                // reCAPTCHA только в браузере: при prerender компонент CJS-пакета
+                // не рендерится (иначе сборка падает на Vercel, где ключ задан)
+                mounted && <ReCAPTCHA
                   hl={i18n.language?.split('-')[0] ?? 'de'}
                   ref={recaptchaRef}
                   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}

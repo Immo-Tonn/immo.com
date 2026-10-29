@@ -39,6 +39,7 @@
 | `@react-router/dev` конфликтует по peer-зависимостям с `react-router@7.7.1` | `FE/.npmrc`: `legacy-peer-deps=true` (иначе `npm ci` падает на Vercel) |
 | `@react-router/node` должен быть в `dependencies`, а не в `devDependencies` | перенесён |
 | при `ssr:false` export `loader` вырезается из клиентской сборки | `clientLoader` не ссылается на `loader` |
+| на Vercel задан `VITE_RECAPTCHA_SITE_KEY` → при prerender рендерился `ReCAPTCHA` (CJS-пакет) и сборка падала (`Element type is invalid`); локально без ключа не воспроизводилось | `ReCAPTCHA` рендерится только после монтирования; воспроизводится локально с любым значением ключа |
 | prerender передаёт путь со слэшем (`/immobilien/`) | нормализация в переключателе языка |
 | в API невалидный ID объекта даёт 500, а не 404 | не исправлено (backend); loader считает это ошибкой |
 
