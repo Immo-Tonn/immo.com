@@ -2,7 +2,7 @@ import styles from './FAQ.module.css';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import ArrowDropDownCircleIcon from '@mui/icons-material/ArrowDropDownCircle';
+import AddIcon from '@mui/icons-material/Add';
 import { useTranslation } from 'react-i18next';
 
 interface FaqItem {
@@ -28,24 +28,34 @@ const FAQ = () => {
   };
 
   return (
-    <section className={styles.faqSection}>
+    <section className={styles.section}>
       <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      <h2 className={styles.title}>{t('faq.title')}</h2>
-      <div className={styles.itemList}>
-        {items.map((item, i) => (
-          <Accordion key={i} className={styles.accordion}>
-            <AccordionSummary
-              expandIcon={<ArrowDropDownCircleIcon />}
-              aria-controls={`faq-panel${i + 1}-content`}
-              id={`faq-panel${i + 1}-header`}
+      <div className={styles.inner}>
+        <h2 className={styles.title} data-reveal="">
+          {t('faq.title')}
+        </h2>
+        <div className={styles.list} data-reveal="" style={{ '--d': '120ms' } as React.CSSProperties}>
+          {items.map((item, i) => (
+            <Accordion
+              key={i}
+              disableGutters
+              square
+              className={styles.accordion}
             >
-              <div className={styles.question}>{item.question}</div>
-            </AccordionSummary>
-            <AccordionDetails className={styles.answer}>
-              {item.answer}
-            </AccordionDetails>
-          </Accordion>
-        ))}
+              <AccordionSummary
+                expandIcon={<AddIcon />}
+                aria-controls={`faq-panel${i + 1}-content`}
+                id={`faq-panel${i + 1}-header`}
+                className={styles.summary}
+              >
+                <div className={styles.question}>{item.question}</div>
+              </AccordionSummary>
+              <AccordionDetails className={styles.answer}>
+                {item.answer}
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </div>
       </div>
     </section>
   );

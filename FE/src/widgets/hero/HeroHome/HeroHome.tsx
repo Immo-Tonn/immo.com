@@ -1,73 +1,76 @@
-import Button from '@shared/ui/Button/Button';
 import styles from './HeroHome.module.css';
 import { Link } from 'react-router-dom';
-import { fadeInOnScroll, parallaxMouseEffect } from '@shared/anim/animations';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import heroImage from '@shared/assets/hero-home/hero-home-3.webp';
+
 const HeroHome = () => {
   const { t } = useTranslation();
-  const wrapperRef = useRef<any | null>(null);
-  const textRef = useRef<any | null>(null);
-  const refs = useRef<(HTMLDivElement | null)[]>([]);
-  useEffect(() => {
-    refs.current.forEach((ref, i) => {
-      if (ref) {
-        fadeInOnScroll(
-          { current: ref },
-          i % 2 === 0
-            ? { x: -100, y: 0, duration: 0.85 }
-            : { x: 100, y: -50, duration: 0.2 },
-        );
-      }
-    });
-    const cleanup = parallaxMouseEffect({
-      wrapperRef,
-      targets: [{ ref: textRef, factor: 2 }],
-    });
-    return cleanup;
-  }, []);
-  return (
-    <section className={styles.heroSection}>
-      <div
-        className={styles.heroContentWrapper}
-        ref={el => {
-          refs.current[0] = el;
-        }}
-      >
-        <div className={styles.topTextWrapper} ref={wrapperRef}>
-          <h1 className={styles.topText} ref={textRef}>
-            {t('heroHome.line1')}
-            <br />
-            {t('heroHome.line2')}
-            <br />
-            {t('heroHome.line3')}
-          </h1>
-          <div className={styles.taglineDivider} />
-          <p className={styles.tagline}>{t('heroHome.tagline')}</p>
-        </div>
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-        <div
-          className={styles.bottomBar}
-          ref={el => {
-            refs.current[2] = el;
-          }}
-        >
-          <div className={styles.buttonWrapper}>
-            <Link to="/wertermittlung">
-              <Button
-                initialText={t('heroHome.ctaValuation')}
-                clickedText={t('common.redirecting')}
-              />
-            </Link>
-          </div>
-          <div className={styles.buttonWrapper}>
-            <Link to="/immobilien">
-              <Button
-                initialText={t('heroHome.ctaRequest')}
-                clickedText={t('common.redirecting')}
-              />
-            </Link>
-          </div>
+  // мягкий параллакс фото при скролле (отключён при prefers-reduced-motion)
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const y = Math.min(window.scrollY, section.offsetHeight);
+      section.style.setProperty('--hero-shift', `${(y * 0.18).toFixed(1)}px`);
+      section.style.setProperty('--hero-fade', `${1 - y / section.offsetHeight}`);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} className={styles.hero}>
+      <div className={styles.media} aria-hidden="true">
+        <img
+          className={styles.image}
+          src={heroImage}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
+      <div className={styles.shade} aria-hidden="true" />
+
+      <div className={styles.inner}>
+        <h1 className={styles.title}>
+          <span className={styles.line}>{t('heroHome.line1')}</span>{' '}
+          <span className={`${styles.line} ${styles.lineAccent}`}>
+            {t('heroHome.line2')}
+          </span>{' '}
+          <span className={styles.line}>{t('heroHome.line3')}</span>
+        </h1>
+
+        <p className={styles.since}>
+          <span className={styles.sinceRule} aria-hidden="true" />
+          {t('heroHome.tagline')}
+        </p>
+
+        <div className={styles.actions}>
+          <Link
+            to="/wertermittlung"
+            className={`${styles.cta} ${styles.ctaPrimary}`}
+          >
+            {t('heroHome.ctaValuation')}
+          </Link>
+          <Link
+            to="/immobilien"
+            className={`${styles.cta} ${styles.ctaGhost}`}
+          >
+            {t('heroHome.ctaRequest')}
+          </Link>
         </div>
       </div>
     </section>
