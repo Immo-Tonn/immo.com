@@ -1,6 +1,7 @@
-import { Outlet, useLocation } from 'react-router';
+import { isRouteErrorResponse, Outlet, useLocation, useRouteError } from 'react-router';
 import Layout from '@widgets/Layout/Layout';
 import NotFound from '@pages/NotFound/NotFound';
+import LoadError from '@pages/NotFound/LoadError';
 import i18n from '@shared/i18n/i18n';
 import { langOf, readinessKey, readyLangs, toLang } from './seo/meta';
 
@@ -32,11 +33,20 @@ export default function LangLayout() {
 }
 
 export function ErrorBoundary() {
+  const error = useRouteError();
+  // 404 — страница/объект не существует; любая другая ошибка (сеть, 5xx) — не 404
+  const notFound = isRouteErrorResponse(error) && error.status === 404;
   return (
     <Layout>
-      <title>404 | Immo Tonn</title>
       <meta name="robots" content="noindex" />
-      <NotFound />
+      {notFound ? (
+        <>
+          <title>404 | Immo Tonn</title>
+          <NotFound />
+        </>
+      ) : (
+        <LoadError />
+      )}
     </Layout>
   );
 }

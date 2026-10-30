@@ -22,18 +22,37 @@ export const langPath = (lang: Lang, path: string) =>
  */
 export const readyLangs = (key: string): Lang[] =>
   ((readiness as Record<string, string[]>)[key] as Lang[] | undefined) ?? ['de'];
+// пустой список — страница закрыта от индексации на всех языках
 
 /** Ключ реестра по pathname: без языкового префикса и слэша в конце. */
 export const readinessKey = (pathname: string) => {
   const clean = pathname.replace(/\/+$/, '') || '/';
   const m = clean.match(/^\/(en|ru)(\/.*)?$/);
   const path = m ? m[2] || '/' : clean;
-  return /^\/immobilien\/[^/]+$/.test(path) ? '/immobilien/:id' : path;
+  if (/^\/immobilien\/[^/]+$/.test(path)) return '/immobilien/:id';
+  if (/^\/preview-object\/[^/]+$/.test(path)) return '/preview-object/:id';
+  if (/^\/edit-object\/[^/]+$/.test(path)) return '/edit-object/:id';
+  return path;
 };
 
 export const langOf = (pathname: string): Lang => {
   const first = pathname.split('/')[1];
   return first === 'en' || first === 'ru' ? first : 'de';
+};
+
+/** Добавляет языковой префикс к внутреннему пути (строка или объект To). */
+export const localizeTo = <T extends string | { pathname?: string }>(
+  lang: Lang,
+  to: T,
+): T => {
+  if (lang === 'de') return to;
+  const fix = (p: string) =>
+    !p.startsWith('/') || p.startsWith('//') || /^\/(en|ru)(\/|$|\?|#)/.test(p)
+      ? p
+      : `/${lang}${p === '/' ? '' : p}`;
+  if (typeof to === 'string') return fix(to) as T;
+  const obj = to as { pathname?: string };
+  return obj.pathname ? ({ ...obj, pathname: fix(obj.pathname) } as T) : to;
 };
 
 interface MetaInput {

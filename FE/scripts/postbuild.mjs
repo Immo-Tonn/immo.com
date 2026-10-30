@@ -1,13 +1,14 @@
 // Шаги после `react-router build`:
 //  1) 404.html = SPA-fallback → неизвестный URL получает HTTP 404, но SPA
 //     всё равно запускается (например, показывает объект, ещё не попавший в prerender);
-//  2) sitemap.xml со всеми языковыми версиями и объектами (данные из API).
-// При недоступности API сборка падает — прежний деплой остаётся на production.
+//  2) built-objects.json — какие объекты есть в этой сборке
+//  3) sitemap.xml: только готовые языковые версии (src/seo/readiness.json) и собранные объекты.
+// Список объектов берётся из prerender (API при сборке читает react-router.config.ts;
+// при его недоступности сборка падает — прежний деплой остаётся на production).
 import { copyFile, readFile, writeFile } from 'node:fs/promises';
 
 const OUT = 'build/client';
 const SITE = 'https://immo-tonn.com';
-const API = 'https://immo-tonn.de/api';
 const PAGES = [
   '/', '/immobilien', '/wertermittlung', '/finanzierung', '/rechner',
   '/verkaufssupport', '/kontakt', '/recht-und-rat', '/objectstyling',
@@ -21,12 +22,14 @@ const url = (lang, p) =>
 
 await copyFile(`${OUT}/__spa-fallback.html`, `${OUT}/404.html`);
 
-const res = await fetch(`${API}/objects`);
-if (!res.ok) throw new Error(`Objects API failed: ${res.status}`);
-const objects = await res.json();
+// Список объектов — тот же, что prerender'ился (его пишет react-router.config.ts)
+const ids = JSON.parse(await readFile('.react-router/prerender-objects.json', 'utf8'));
+// Манифест собранных объектов: приложение показывает только их (см. built-objects.ts)
+await writeFile(`${OUT}/built-objects.json`, JSON.stringify(ids));
+
 const items = [
   ...PAGES.map(p => ({ path: p, key: p })),
-  ...objects.map(o => ({ path: `/immobilien/${o._id}`, key: '/immobilien/:id' })),
+  ...ids.map(id => ({ path: `/immobilien/${id}`, key: '/immobilien/:id' })),
 ];
 
 const entry = ({ path: p, key }) => {

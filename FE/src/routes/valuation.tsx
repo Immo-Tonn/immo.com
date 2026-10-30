@@ -1,10 +1,6 @@
 import Valuation from '@pages/Valuation/Valuation';
-import { buildMeta, dict, toLang } from '../seo/meta';
+import { pageMeta } from '../seo/pageMeta';
 
-export function meta({ params }: { params: { lang?: string } }) {
-  const lang = toLang(params.lang);
-  const { title, description } = dict[lang].seo.wertermittlung;
-  return buildMeta({ title, description, lang, path: '/wertermittlung' });
-}
+export const meta = pageMeta('wertermittlung', '/wertermittlung');
 
 export default Valuation;

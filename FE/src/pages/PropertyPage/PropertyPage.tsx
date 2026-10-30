@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import { useParams, useNavigate, useLoaderData } from 'react-router-dom';
+import { useParams, useLoaderData } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 import PropertyHero from '@widgets/PropertyHero/PropertyHero';
 import PropertyDetails from '@widgets/PropertyDetails/PropertyDetails';

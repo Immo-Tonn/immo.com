@@ -1,6 +1,7 @@
 // ./src/pages/RealEstate/RealEstate.tsx
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import PropertyCard from '@widgets/PropertyCard/PropertyCard';
 import styles from './RealEstate.module.css';
 import {

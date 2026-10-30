@@ -8,7 +8,8 @@
     "format": "prettier --write ./src",
     "build": "tsc",
     "start": "node dist/app.js",
-    "init-ts": "tsc --init"
+    "init-ts": "tsc --init",
+    "test:rebuild": "tsc && node --test test/rebuild-hook.test.mjs"
   },
   "keywords": [
     "api",

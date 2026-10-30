@@ -3,6 +3,34 @@
     "wertermittlung": {
       "title": "Property Valuation Münster – Free Appraisal | Immo Tonn",
       "description": "Free, no-obligation property valuation in Münster and the surrounding area. Find out transparently and reliably what your property is worth today – with Immo Tonn."
+    },
+    "home": {
+      "title": "Immo Tonn – Property Valuation with Heart and Expertise",
+      "description": "Immo-Tonn in Münster: reliable property valuation, sale and brokerage of apartments, houses and plots of land. Get your free valuation now!"
+    },
+    "immobilien": {
+      "title": "Property listings | Immo Tonn",
+      "description": "Current property listings from Immo Tonn: houses, apartments, plots of land and commercial properties."
+    },
+    "finanzierung": {
+      "title": "Mortgage Financing Calculator | Immo Tonn",
+      "description": "Calculate the monthly installment of your property financing as a non-binding example and arrange a personal consultation with Immo Tonn."
+    },
+    "rechner": {
+      "title": "Mortgage Calculator for Properties | Immo Tonn",
+      "description": "Non-binding example calculation of the monthly installment for your property financing – for initial orientation, not a substitute for individual financing advice."
+    },
+    "kontakt": {
+      "title": "Contact and Consultation | Immo Tonn",
+      "description": "Arrange your personal consultation with Immo Tonn in Münster now – via the contact form, by phone or by email."
+    },
+    "verkaufssupport": {
+      "title": "Sales Support – More Than Just Brokerage | Immo Tonn",
+      "description": "Full service from a professional: the agent analyzes the market and recommends the optimal asking price for your property."
+    },
+    "rechtUndRat": {
+      "title": "Legal Advice – Security When Buying and Selling | Immo Tonn",
+      "description": "Legal security and practical tips on buying and selling: support with documents such as the land registry extract and energy certificate, and with preparing for viewings."
     }
   },
   "nav": {
@@ -421,6 +449,14 @@
   },
   "notFound": {
     "backHome": "Back to homepage",
-    "text": "Oops! This page could not be found."
+    "text": "Oops! This page could not be found.",
+    "title": "Page not found",
+    "hint": "The address does not exist or the page has been moved.",
+    "catalog": "View property listings"
+  },
+  "loadError": {
+    "title": "The page could not be loaded",
+    "text": "An error occurred while loading. Please try again.",
+    "retry": "Reload page"
   }
 }

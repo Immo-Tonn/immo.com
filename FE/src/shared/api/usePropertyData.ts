@@ -1,11 +1,19 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { RealEstateObject, Image, Video } from '@shared/types/propertyTypes';
+import { getBuiltObjectIds } from '@shared/api/builtObjects';
+
+// Данные loader'а свежее этого порога повторно не запрашиваем (иначе дубли запросов).
+// Данные из prerender (время сборки) старше порога — их тихо обновляем после гидратации.
+const FRESH_MS = 15_000;
+const isFresh = (initial?: { fetchedAt: number }) =>
+  !!initial && Date.now() - initial.fetchedAt < FRESH_MS;
 
 export interface PropertyBundle {
   object: RealEstateObject;
   images: Image[];
   videos: Video[];
+  fetchedAt: number;
 }
 
 // initial — данные, полученные loader'ом при prerender (попадают в готовый HTML)
@@ -73,7 +81,6 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
       setIsDeleted(false);
     } catch (err: any) {
       console.error('Fehler beim Laden der Daten:', err);
-      setErr(err?.message || 'Unbekannter Fehler');
       if (err?.response?.status === 404) {
         console.log(
           'Объект не найден (возможно удален), помечаем как удаленный',
@@ -83,6 +90,11 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
         setImages([]);
         setVideos([]);
         setErr('Objekt nicht gefunden oder wurde gelöscht');
+      } else if (initial) {
+        // тихое обновление не удалось (сеть, 5xx): оставляем данные из prerender/loader,
+        // а не заменяем готовую страницу сообщением об ошибке
+        console.warn('Aktualisierung fehlgeschlagen – zeige vorhandene Daten');
+        setErr(null);
       } else {
         setErr(err?.message || 'Unbekannter Fehler');
       }
@@ -91,8 +103,13 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
     }
   }, [id, isDeleted]);
 
-  // Initial data loading
+  // Initial data loading (пропускаем, если loader только что загрузил данные)
+  const skipInitialFetch = useRef(isFresh(initial));
   useEffect(() => {
+    if (skipInitialFetch.current) {
+      skipInitialFetch.current = false;
+      return;
+    }
     fetchData();
   }, [fetchData]);
 
@@ -139,6 +156,7 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
 export interface PropertyListBundle {
   objects: RealEstateObject[];
   images: Image[];
+  fetchedAt: number;
 }
 
 export const usePropertysData = (initial?: PropertyListBundle) => {
@@ -150,6 +168,9 @@ export const usePropertysData = (initial?: PropertyListBundle) => {
   const [loading, setLoading] = useState(!initial);
 
   useEffect(() => {
+    // loader только что загрузил список — повторный запрос не нужен
+    if (isFresh(initial)) return;
+
     const fetchData = async () => {
       try {
         console.log('Loading list of all objects');
@@ -157,7 +178,11 @@ export const usePropertysData = (initial?: PropertyListBundle) => {
         const objectRes = await axios.get<RealEstateObject[]>(
           `https://immo-tonn.de:443/api/objects/`,
         );
-        const data = objectRes.data;
+        // показываем только объекты, попавшие в текущую сборку
+        const built = await getBuiltObjectIds();
+        const data = built
+          ? objectRes.data.filter(o => built.has(o._id))
+          : objectRes.data;
         setObjectData(data);
 
         // Loading all images
@@ -218,7 +243,12 @@ export const usePropertysData = (initial?: PropertyListBundle) => {
           console.log('Объекты не найдены - показываем пустое состояние');
         } else {
           // Other errors (network, server, etc.)
-          setErr(err?.message || 'Unbekannter Fehler');
+          if (initial) {
+            // обновление списка не удалось — оставляем данные из prerender/loader
+            console.warn('Aktualisierung fehlgeschlagen – zeige vorhandene Daten');
+          } else {
+            setErr(err?.message || 'Unbekannter Fehler');
+          }
         }
       } finally {
         setLoading(false);

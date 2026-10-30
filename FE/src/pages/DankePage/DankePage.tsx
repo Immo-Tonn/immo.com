@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 const Lottie = lazy(() => import('lottie-react'));
 import animationData from '@shared/assets/lottie/mail-sent.json';
 import Confetti from 'react-confetti';
@@ -14,6 +14,8 @@ const DankePage = () => {
     width: 0,
     height: 0,
   });
+
+  const mounted = windowSize.width > 0;
 
   useEffect(() => {
     const updateSize = () => {
@@ -31,15 +33,22 @@ const DankePage = () => {
 
   return (
     <div className={styles.dankeWrapper}>
-      <Confetti width={windowSize.width} height={windowSize.height} />
+      {/* конфетти и анимация — только в браузере (размер окна известен после монтирования) */}
+      {mounted && (
+        <Confetti width={windowSize.width} height={windowSize.height} />
+      )}
 
       <div className={styles.card}>
-        <Suspense fallback={<div>{t('dankePage.loadingAnimation')}</div>}>
-          <Lottie
-            animationData={animationData}
-            style={{ width: 180, height: 180, marginBottom: 20 }}
-          />
-        </Suspense>
+        {mounted ? (
+          <Suspense fallback={<div>{t('dankePage.loadingAnimation')}</div>}>
+            <Lottie
+              animationData={animationData}
+              style={{ width: 180, height: 180, marginBottom: 20 }}
+            />
+          </Suspense>
+        ) : (
+          <div>{t('dankePage.loadingAnimation')}</div>
+        )}
         <h1>{t('dankePage.title')}</h1>
         <p>{t('dankePage.text')}</p>
         <Button

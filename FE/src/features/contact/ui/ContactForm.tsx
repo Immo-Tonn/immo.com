@@ -4,7 +4,7 @@ import Input from '@shared/ui/Input/Input';
 import { ContactData, sendContactForm } from '../model/model';
 import { useEffect, useRef, useState } from 'react';
 import styles from './ContactForm.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import Button from '@shared/ui/Button/Button';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';

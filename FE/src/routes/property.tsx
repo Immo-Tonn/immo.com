@@ -1,5 +1,6 @@
 import PropertyPage from '@pages/PropertyPage/PropertyPage';
 import { loadObjectBundle } from '@shared/api/propertyLoaders';
+import { getBuiltObjectIds } from '@shared/api/builtObjects';
 import type { PropertyBundle } from '@shared/api/usePropertyData';
 import { buildMeta, toLang } from '../seo/meta';
 
@@ -10,7 +11,17 @@ const load = ({ params }: { params: { id?: string } }) =>
 // prerender (новый объект). При ssr:false export `loader` вырезается из клиентской
 // сборки, поэтому clientLoader не должен ссылаться на него напрямую.
 export const loader = load;
-export const clientLoader = load;
+
+// В браузере показываем только объекты из текущей сборки: URL нового объекта,
+// которого ещё нет в prerender, отвечает HTTP 404 — страница не должна показывать
+// карточку поверх этого ответа (ни при прямом открытии, ни при переходе из приложения).
+export const clientLoader = async (args: { params: { id?: string } }) => {
+  const built = await getBuiltObjectIds();
+  if (built && !built.has(args.params.id!)) {
+    throw new Response(null, { status: 404 });
+  }
+  return load(args);
+};
 
 export function meta({
   data,

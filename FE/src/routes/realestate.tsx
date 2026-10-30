@@ -1,19 +1,18 @@
 import RealEstate from '@pages/RealEstate/RealEstate';
 import { loadObjectList } from '@shared/api/propertyLoaders';
-import { buildMeta, dict, toLang } from '../seo/meta';
+import { getBuiltObjectIds } from '@shared/api/builtObjects';
+import { pageMeta } from '../seo/pageMeta';
 
 export const loader = () => loadObjectList();
-export const clientLoader = () => loadObjectList();
 
-export function meta({ params }: { params: { lang?: string } }) {
-  const lang = toLang(params.lang);
-  const title = `${dict[lang].realEstate.title} | Immo Tonn`;
-  return buildMeta({
-    title,
-    description: dict[lang].aboutUs.paragraph1,
-    lang,
-    path: '/immobilien',
-  });
-}
+// В браузере список ограничен объектами из текущей сборки
+export const clientLoader = async () => {
+  const [list, built] = await Promise.all([loadObjectList(), getBuiltObjectIds()]);
+  return built
+    ? { ...list, objects: list.objects.filter(o => built.has(o._id)) }
+    : list;
+};
+
+export const meta = pageMeta('immobilien', '/immobilien');
 
 export default RealEstate;

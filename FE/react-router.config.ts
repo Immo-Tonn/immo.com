@@ -1,3 +1,4 @@
+import { mkdirSync, writeFileSync } from 'node:fs';
 import type { Config } from '@react-router/dev/config';
 
 const API = 'https://immo-tonn.de/api';
@@ -14,6 +15,7 @@ const PAGES = [
   '/legalnotice',
   '/privacypolicy',
   '/cancellationpolicy',
+  '/kontakt/danke',
 ];
 
 export default {
@@ -26,6 +28,10 @@ export default {
     if (!res.ok) throw new Error(`Objects API failed: ${res.status}`);
     const objects = (await res.json()) as { _id: string }[];
     const ids = objects.map(o => o._id);
+    // Единый список для postbuild: sitemap и built-objects.json строятся ровно из
+    // того, что prerender'ится (иначе данные могли бы разойтись между шагами)
+    mkdirSync('.react-router', { recursive: true });
+    writeFileSync('.react-router/prerender-objects.json', JSON.stringify(ids));
     const langs = ['', '/en', '/ru'];
     const pages = langs.flatMap(l =>
       PAGES.map(p => (l + p === '' ? '/' : l === '' ? p : p === '/' ? l : l + p)),

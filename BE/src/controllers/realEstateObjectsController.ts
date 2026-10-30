@@ -8,6 +8,7 @@ import LandPlotsModel from '../models/LandPlotsModel';
 import CommercialNonResidentialBuildingsModel from '../models/Commercial_NonResidentialBuildingsModel';
 import { deleteFromBunny } from '../utils/deleteImages';
 import { deleteFromBunnyVideo } from '../utils/deleteBunnyVideo';
+import { requestFrontendRebuild } from '../utils/rebuildHook';
 
 export const getAllObjects = async (req: Request, res: Response) => {
   try {
@@ -49,6 +50,8 @@ export const createObject = async (req: Request, res: Response) => {
     const newObject = new RealEstateObjectsModel(req.body);
     const saved = await newObject.save();
     res.status(201).json(saved);
+    // после успешного сохранения и ответа: пересборка публичного сайта (не влияет на ответ)
+    requestFrontendRebuild('object:create');
   } catch (error) {
     res
       .status(400)
@@ -146,6 +149,7 @@ export const updateObject = async (req: Request, res: Response) => {
     
     // console.log('✅ КОНТРОЛЛЕР: Объект успешно обновлен');
     res.json(updated);
+    requestFrontendRebuild('object:update');
   } catch (error) {
     console.error('❌ КОНТРОЛЛЕР: Ошибка при обновлении объекта:', error);
     console.error('❌ Стек ошибки:', (error as Error).stack);
@@ -333,6 +337,7 @@ export const deleteObject = async (
         specificData: 1,
       },
     });
+    requestFrontendRebuild('object:delete');
   } catch (error) {
     console.error('❌ КРИТИЧЕСКАЯ ОШИБКА при каскадном удалении:', error);
     console.error('❌ Стек ошибки:', (error as Error).stack);

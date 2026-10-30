@@ -2,7 +2,7 @@ import ObjectPreview from '@pages/AdminObject/ObjectPrewiew/ObjectPrewiew';
 import ProtectedRoute from '@features/utils/ProtectedRoute';
 
 export function meta() {
-  return [{ title: 'Immo Tonn' }, { name: 'robots', content: 'noindex, nofollow' }];
+  return [{ title: 'Immo Tonn' }];
 }
 
 export default function Route() {

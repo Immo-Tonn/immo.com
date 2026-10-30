@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  min-height: max(100vh, 760px);
   background: #90abd0;
   overflow: hidden;
   font-family: Arial, sans-serif;
@@ -181,14 +181,83 @@
   animation: textAnim 3s ease-in-out forwards;
 }
 
-.textBox h1 {
+.textBox {
+  z-index: 20;
+  left: 4%;
+  width: 34%;
+}
+
+/* корова — декоративный фон справа; на узких экранах не показываем */
+@media (max-width: 900px) {
+  .cow {
+    display: none;
+  }
+
+  .textBox {
+    left: 5%;
+    width: 90%;
+  }
+
+  .textBox .code {
+    font-size: 6rem;
+  }
+
+  .textBox h1 {
+    font-size: 2.4rem;
+  }
+}
+
+.textBox .code {
   font-size: 8rem;
+  font-weight: bold;
+  line-height: 1;
   margin: 0;
 }
 
+.textBox h1 {
+  font-size: 3.2rem;
+  margin: 0 0 1rem;
+}
+
 .textBox p {
-  font-size: 2rem;
-  margin: 0;
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.primaryLink,
+.secondaryLink {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  color: #fff;
+}
+
+.primaryLink {
+  background: #0e5dbd;
+}
+
+.secondaryLink {
+  border: 2px solid #fff;
+}
+
+.primaryLink:hover,
+.primaryLink:focus-visible {
+  background: #282725;
+}
+
+.secondaryLink:hover,
+.secondaryLink:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 @keyframes move {
@@ -230,7 +299,7 @@
 
   to {
     opacity: 1;
-    top: 28%;
+    top: 14%;
   }
 }
 

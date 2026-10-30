@@ -30,7 +30,7 @@ export const loadObjectBundle = async (id: string): Promise<PropertyBundle> => {
     optional<Image>(`${API}/images/by-object?objectId=${object._id}`),
     optional<Video>(`${API}/videos/by-object?objectId=${object._id}`),
   ]);
-  return { object, images, videos };
+  return { object, images, videos, fetchedAt: Date.now() };
 };
 
 export const loadObjectList = async (): Promise<PropertyListBundle> => {
@@ -41,5 +41,5 @@ export const loadObjectList = async (): Promise<PropertyListBundle> => {
     }),
     optional<Image>(`${API}/images/`),
   ]);
-  return { objects, images };
+  return { objects, images, fetchedAt: Date.now() };
 };
