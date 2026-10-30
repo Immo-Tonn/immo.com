@@ -317,17 +317,15 @@ if (
     setValidationError('');
     setMonthly(null);
     if (equityTooHighError) {
-      setValidationError(
-        'Eigenkapital darf den Gesamtpreis nicht überschreiten.',
-      );
+      setValidationError(t('mortgageCalculator.errorEquityTooHigh'));
       return;          
     }
 if (priceTooLowError) {
-  setValidationError('Der Immobilienpreis muss größer als das Eigenkapital sein.');
+  setValidationError(t('mortgageCalculator.errorPriceTooLow'));
   return;
 }
     if (!equity || equity.trim() === '') {
-      setValidationError('Bitte geben Sie Ihr Eigenkapital ein.');
+      setValidationError(t('mortgageCalculator.equityRequired'));
       return;
     }
     if (
@@ -335,9 +333,7 @@ if (priceTooLowError) {
       (notary === 'custom' && (!customNotary || customNotaryError)) ||
       (broker === 'custom' && (!customBroker || customBrokerError))
     ) {
-      setValidationError(
-        'Bitte korrigieren Sie die Eingabefehler in den benutzerdefinierten Feldern.',
-      );
+      setValidationError(t('mortgageCalculator.customFieldsInvalid'));
       return;
     }
     const validRepayment = parsedRepayment > 0;
@@ -484,7 +480,7 @@ if (!brokerOptions.includes('3,57')) {
 }
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.title}>{t('mortgageCalculator.pageTitle')}</h2>
+      <h1 className={styles.title}>{t('mortgageCalculator.pageTitle')}</h1>
       <div className={styles.grid}>
         <div className={styles.col}>
           <label htmlFor="price">{t('mortgageCalculator.priceLabel')}</label>

@@ -1,0 +1,63 @@
+{
+  "/": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/wertermittlung": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/finanzierung": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/kontakt": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/verkaufssupport": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/recht-und-rat": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/rechner": [
+    "de",
+    "en",
+    "ru"
+  ],
+  "/immobilien": [
+    "de"
+  ],
+  "/immobilien/:id": [
+    "de"
+  ],
+  "/objectstyling": [
+    "de"
+  ],
+  "/legalnotice": [
+    "de"
+  ],
+  "/privacypolicy": [
+    "de"
+  ],
+  "/cancellationpolicy": [
+    "de"
+  ],
+  "/kontakt/danke": [],
+  "/add-property": [],
+  "/register": [],
+  "/forgot-password": [],
+  "/change-password": [],
+  "/create-object": [],
+  "/preview-object/:id": [],
+  "/edit-object/:id": []
+}

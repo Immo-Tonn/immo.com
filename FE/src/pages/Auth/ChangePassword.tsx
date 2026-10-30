@@ -1,6 +1,6 @@
 // src/pages/Auth/ChangePassword.tsx
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 
 const ChangePassword: React.FC = () => {

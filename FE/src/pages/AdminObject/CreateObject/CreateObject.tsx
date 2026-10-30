@@ -7,7 +7,8 @@ import {
   useRef,
   DragEvent,
 } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 import axiosInstance from '@features/utils/axiosConfig';
 import { ObjectType, ObjectStatus } from '@features/utils/types';

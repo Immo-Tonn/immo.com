@@ -1,6 +1,6 @@
 import Button from '@shared/ui/Button/Button';
 import styles from './HeroHome.module.css';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { fadeInOnScroll, parallaxMouseEffect } from '@shared/anim/animations';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';

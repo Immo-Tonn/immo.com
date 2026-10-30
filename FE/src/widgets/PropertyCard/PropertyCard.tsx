@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import styles from './PropertyCard.module.css';
 import { PropertyHeroProps } from '@shared/types/propertyTypes';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from '@shared/lib/localeRouter';
 import { formatGermanCurrency } from '@features/utils/formatGermanCurrency';
 import { useTranslation } from 'react-i18next';
 

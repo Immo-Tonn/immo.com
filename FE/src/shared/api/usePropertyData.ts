@@ -1,13 +1,31 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { RealEstateObject, Image, Video } from '@shared/types/propertyTypes';
+import { getBuiltObjectIds } from '@shared/api/builtObjects';
+import { API_BASE } from '@shared/api/config';
 
-export const usePropertyData = (id?: string) => {
-  const [objectData, setObjectData] = useState<RealEstateObject | null>(null);
+// Данные loader'а свежее этого порога повторно не запрашиваем (иначе дубли запросов).
+// Данные из prerender (время сборки) старше порога — их тихо обновляем после гидратации.
+const FRESH_MS = 15_000;
+const isFresh = (initial?: { fetchedAt: number }) =>
+  !!initial && Date.now() - initial.fetchedAt < FRESH_MS;
+
+export interface PropertyBundle {
+  object: RealEstateObject;
+  images: Image[];
+  videos: Video[];
+  fetchedAt: number;
+}
+
+// initial — данные, полученные loader'ом при prerender (попадают в готовый HTML)
+export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
+  const [objectData, setObjectData] = useState<RealEstateObject | null>(
+    initial?.object ?? null,
+  );
   const [err, setErr] = useState<string | null>(null);
-  const [images, setImages] = useState<Image[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [videos, setVideos] = useState<Video[]>([]);
+  const [images, setImages] = useState<Image[]>(initial?.images ?? []);
+  const [loading, setLoading] = useState(!initial);
+  const [videos, setVideos] = useState<Video[]>(initial?.videos ?? []);
   const [isDeleted, setIsDeleted] = useState(false);
 
   // Function for updating data
@@ -30,7 +48,7 @@ export const usePropertyData = (id?: string) => {
       console.log('Loading object data:', id);
 
       const objectRes = await axios.get<RealEstateObject>(
-        `https://immo-tonn.de:443/api/objects/${id}`,
+        `${API_BASE}/objects/${id}`,
       );
       const data = objectRes.data;
       setObjectData(data);
@@ -39,7 +57,7 @@ export const usePropertyData = (id?: string) => {
       if (data._id) {
         try {
           const imagesRes = await axios.get<Image[]>(
-            `https://immo-tonn.de:443/api/images/by-object?objectId=${data._id}`,
+            `${API_BASE}/images/by-object?objectId=${data._id}`,
           );
           console.log('Images uploaded:', imagesRes.data);
           setImages(imagesRes.data);
@@ -51,7 +69,7 @@ export const usePropertyData = (id?: string) => {
         // Uploading video
         try {
           const videosRes = await axios.get<Video[]>(
-            `https://immo-tonn.de:443/api/videos/by-object?objectId=${data._id}`,
+            `${API_BASE}/videos/by-object?objectId=${data._id}`,
           );
           setVideos(videosRes.data);
         } catch (videoError) {
@@ -64,7 +82,6 @@ export const usePropertyData = (id?: string) => {
       setIsDeleted(false);
     } catch (err: any) {
       console.error('Fehler beim Laden der Daten:', err);
-      setErr(err?.message || 'Unbekannter Fehler');
       if (err?.response?.status === 404) {
         console.log(
           'Объект не найден (возможно удален), помечаем как удаленный',
@@ -74,6 +91,11 @@ export const usePropertyData = (id?: string) => {
         setImages([]);
         setVideos([]);
         setErr('Objekt nicht gefunden oder wurde gelöscht');
+      } else if (initial) {
+        // тихое обновление не удалось (сеть, 5xx): оставляем данные из prerender/loader,
+        // а не заменяем готовую страницу сообщением об ошибке
+        console.warn('Aktualisierung fehlgeschlagen – zeige vorhandene Daten');
+        setErr(null);
       } else {
         setErr(err?.message || 'Unbekannter Fehler');
       }
@@ -82,8 +104,13 @@ export const usePropertyData = (id?: string) => {
     }
   }, [id, isDeleted]);
 
-  // Initial data loading
+  // Initial data loading (пропускаем, если loader только что загрузил данные)
+  const skipInitialFetch = useRef(isFresh(initial));
   useEffect(() => {
+    if (skipInitialFetch.current) {
+      skipInitialFetch.current = false;
+      return;
+    }
     fetchData();
   }, [fetchData]);
 
@@ -127,28 +154,43 @@ export const usePropertyData = (id?: string) => {
 };
 
 // Hook for list of objects (without ID)
-export const usePropertysData = () => {
-  const [objectData, setObjectData] = useState<RealEstateObject[]>([]);
+export interface PropertyListBundle {
+  objects: RealEstateObject[];
+  images: Image[];
+  fetchedAt: number;
+}
+
+export const usePropertysData = (initial?: PropertyListBundle) => {
+  const [objectData, setObjectData] = useState<RealEstateObject[]>(
+    initial?.objects ?? [],
+  );
   const [err, setErr] = useState<string | null>(null);
-  const [images, setImages] = useState<Image[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState<Image[]>(initial?.images ?? []);
+  const [loading, setLoading] = useState(!initial);
 
   useEffect(() => {
+    // loader только что загрузил список — повторный запрос не нужен
+    if (isFresh(initial)) return;
+
     const fetchData = async () => {
       try {
         console.log('Loading list of all objects');
 
         const objectRes = await axios.get<RealEstateObject[]>(
-          `https://immo-tonn.de:443/api/objects/`,
+          `${API_BASE}/objects/`,
         );
-        const data = objectRes.data;
+        // показываем только объекты, попавшие в текущую сборку
+        const built = await getBuiltObjectIds();
+        const data = built
+          ? objectRes.data.filter(o => built.has(o._id))
+          : objectRes.data;
         setObjectData(data);
 
         // Loading all images
         let loadedImages: Image[] = [];
         try {
           const imagesRes = await axios.get<Image[]>(
-            `https://immo-tonn.de:443/api/images/`,
+            `${API_BASE}/images/`,
           );
           loadedImages = imagesRes.data || [];
           setImages(loadedImages);
@@ -202,7 +244,12 @@ export const usePropertysData = () => {
           console.log('Объекты не найдены - показываем пустое состояние');
         } else {
           // Other errors (network, server, etc.)
-          setErr(err?.message || 'Unbekannter Fehler');
+          if (initial) {
+            // обновление списка не удалось — оставляем данные из prerender/loader
+            console.warn('Aktualisierung fehlgeschlagen – zeige vorhandene Daten');
+          } else {
+            setErr(err?.message || 'Unbekannter Fehler');
+          }
         }
       } finally {
         setLoading(false);

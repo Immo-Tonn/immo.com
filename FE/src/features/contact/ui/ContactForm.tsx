@@ -4,12 +4,18 @@ import Input from '@shared/ui/Input/Input';
 import { ContactData, sendContactForm } from '../model/model';
 import { useEffect, useRef, useState } from 'react';
 import styles from './ContactForm.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import Button from '@shared/ui/Button/Button';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
 
-const ContactForm = () => {
+interface ContactFormProps {
+  /** 1 — форма главная на странице (/kontakt); 2 — форма внутри другой страницы */
+  headingLevel?: 1 | 2;
+}
+
+const ContactForm = ({ headingLevel = 2 }: ContactFormProps) => {
+  const Heading = headingLevel === 1 ? 'h1' : 'h2';
   const { t, i18n } = useTranslation();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -35,6 +41,8 @@ const ContactForm = () => {
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [captchaError, setCaptchaError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const onSubmit = async (data: ContactData) => {
@@ -73,7 +81,7 @@ const ContactForm = () => {
       }}
     >
       <div className={styles.container}>
-        <h2 className={styles.heading}>{t('contactForm.heading')}</h2>
+        <Heading className={styles.heading}>{t('contactForm.heading')}</Heading>
 
         <div className={styles.layout}>
           <form
@@ -177,7 +185,9 @@ const ContactForm = () => {
 
             <div className={styles.captchaContainer}>
               {import.meta.env.VITE_RECAPTCHA_SITE_KEY ? (
-                <ReCAPTCHA
+                // reCAPTCHA только в браузере: при prerender компонент CJS-пакета
+                // не рендерится (иначе сборка падает на Vercel, где ключ задан)
+                mounted && <ReCAPTCHA
                   hl={i18n.language?.split('-')[0] ?? 'de'}
                   ref={recaptchaRef}
                   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}

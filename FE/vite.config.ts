@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import { reactRouter } from '@react-router/dev/vite';
 import compression from 'vite-plugin-compression';
 import path from 'path';
 
 export default defineConfig({
-  plugins: [react(), compression()],
+  plugins: [reactRouter(), compression()],
   resolve: {
     alias: {
       '@shared': path.resolve(__dirname, 'src/shared'),

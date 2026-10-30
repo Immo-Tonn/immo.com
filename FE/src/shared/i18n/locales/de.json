@@ -3,6 +3,50 @@
     "wertermittlung": {
       "title": "Immobilienbewertung Münster – Kostenlose Wertermittlung | Immo Tonn",
       "description": "Kostenlose, unverbindliche Immobilienbewertung in Münster und Umgebung: Erfahren Sie transparent und fundiert, was Ihre Immobilie heute wert ist – von Immo Tonn."
+    },
+    "home": {
+      "title": "Immo Tonn – Immobilienbewertung mit Herz und Verstand",
+      "description": "Immo-Tonn in Münster: Verlässliche Immobilienbewertung, Verkauf und Vermittlung von Wohnungen, Häusern und Grundstücken. Jetzt kostenlos bewerten lassen!"
+    },
+    "immobilien": {
+      "title": "Immobilienangebote | Immo Tonn",
+      "description": "Aktuelle Immobilienangebote von Immo Tonn: Häuser, Wohnungen, Grundstücke und Gewerbeimmobilien."
+    },
+    "finanzierung": {
+      "title": "Immobilienfinanzierung Rechner | Immo Tonn",
+      "description": "Berechnen Sie die monatliche Rate Ihrer Immobilienfinanzierung als unverbindliche Beispielrechnung und vereinbaren Sie einen persönlichen Beratungstermin mit Immo Tonn."
+    },
+    "rechner": {
+      "title": "Finanzierungsrechner für Immobilien | Immo Tonn",
+      "description": "Unverbindliche Beispielrechnung der monatlichen Rate für Ihre Immobilienfinanzierung – zur ersten Orientierung, ohne eine individuelle Finanzierungsberatung zu ersetzen."
+    },
+    "kontakt": {
+      "title": "Kontakt und Beratungstermin | Immo Tonn",
+      "description": "Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin bei Immo Tonn in Münster – über das Kontaktformular, per Telefon oder E-Mail."
+    },
+    "verkaufssupport": {
+      "title": "Verkaufssupport – mehr als nur Vermittlung | Immo Tonn",
+      "description": "Rundum-Service vom Profi: Der Makler analysiert den Markt und empfiehlt den optimalen Angebotspreis für Ihre Immobilie."
+    },
+    "rechtUndRat": {
+      "title": "Recht & Rat – Informationen zu Kauf und Verkauf | Immo Tonn",
+      "description": "Praktische Informationen und Begleitung rund um Kauf und Verkauf: Unterstützung bei Unterlagen wie Grundbuchauszug und Energieausweis sowie bei Besichtigungen."
+    },
+    "objektstyling": {
+      "title": "Objektstyling – Ästhetik trifft Emotion | Immo Tonn",
+      "description": "Objektstyling ist mehr als Dekoration: Wir inszenieren Immobilien mit Licht, Perspektive und Wirkung, damit sie sich wie ein Zuhause anfühlen."
+    },
+    "impressum": {
+      "title": "Impressum | Immo Tonn",
+      "description": "Impressum und Anbieterkennzeichnung von Immo-Tonn, Inhaber Andreas Tonn, Münster."
+    },
+    "datenschutz": {
+      "title": "Datenschutzerklärung | Immo Tonn",
+      "description": "Informationen darüber, welche personenbezogenen Daten Immo-Tonn zu welchen Zwecken und in welchem Umfang verarbeitet."
+    },
+    "widerruf": {
+      "title": "Widerrufsbelehrung | Immo Tonn",
+      "description": "Widerrufsrecht: Den Vertrag können Sie binnen vierzehn Tagen ohne Angabe von Gründen widerrufen – Informationen zu Frist, Ausübung und Folgen."
     }
   },
   "nav": {
@@ -209,7 +253,9 @@
       "term": "Laufzeit",
       "years": "Jahre",
       "contact": "Kontakt"
-    }
+    },
+    "equityRequired": "Bitte geben Sie Ihr Eigenkapital ein.",
+    "customFieldsInvalid": "Bitte korrigieren Sie die Eingabefehler in den benutzerdefinierten Feldern."
   },
   "contactForm": {
     "heading": "Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin",
@@ -421,6 +467,14 @@
   },
   "notFound": {
     "backHome": "Zurück zur Startseite",
-    "text": "Ups! Diese Seite wurde nicht gefunden."
+    "text": "Ups! Diese Seite wurde nicht gefunden.",
+    "title": "Seite nicht gefunden",
+    "hint": "Die Adresse existiert nicht oder die Seite wurde verschoben.",
+    "catalog": "Zu den Immobilienangeboten"
+  },
+  "loadError": {
+    "title": "Seite konnte nicht geladen werden",
+    "text": "Beim Laden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "retry": "Seite neu laden"
   }
 }

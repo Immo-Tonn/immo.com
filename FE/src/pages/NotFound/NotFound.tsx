@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import styles from './NotFound.module.css';
 import cowSound from '@shared/assets/audio/cow-moo.mp3';
-import Button from '@shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 
 const NotFound = () => {
@@ -24,14 +23,6 @@ const NotFound = () => {
     <div className={styles.container}>
       <audio ref={audioRef} src={cowSound} />
       <div className={styles.cowWrapper}>
-        <Link to="/">
-          <Button
-            initialText={t('notFound.backHome')}
-            clickedText={t('common.redirecting')}
-            className={styles.homeBtn}
-          />
-        </Link>
-
         <div className={styles.cow}>
           <div className={styles.head}>
             <div className={styles.face}></div>
@@ -44,8 +35,20 @@ const NotFound = () => {
         </div>
 
         <div className={styles.textBox}>
-          <h1>404</h1>
-          <p>{t('notFound.text')}</p>
+          <p className={styles.code} aria-hidden="true">
+            404
+          </p>
+          <h1>{t('notFound.title')}</h1>
+          <p className={styles.text}>{t('notFound.text')}</p>
+          <p className={styles.hint}>{t('notFound.hint')}</p>
+          <div className={styles.actions}>
+            <Link to="/immobilien" className={styles.primaryLink}>
+              {t('notFound.catalog')}
+            </Link>
+            <Link to="/" className={styles.secondaryLink}>
+              {t('notFound.backHome')}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

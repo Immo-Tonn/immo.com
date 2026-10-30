@@ -1,10 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import { useParams, useLoaderData } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 import PropertyHero from '@widgets/PropertyHero/PropertyHero';
 import PropertyDetails from '@widgets/PropertyDetails/PropertyDetails';
-import PropertyMap from '@widgets/PropertyMap/PropertyMap';
-import { usePropertyData } from '@shared/api/usePropertyData';
+// leaflet обращается к window при импорте — карту грузим только в браузере
+const PropertyMap = lazy(() => import('@widgets/PropertyMap/PropertyMap'));
+import {
+  usePropertyData,
+  type PropertyBundle,
+} from '@shared/api/usePropertyData';
 import ContactForm from '@features/contact/ui/ContactForm';
 import styles from './PropertyPage.module.css';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
@@ -14,10 +19,13 @@ const PropertyPage: React.FC = () => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const initial = useLoaderData() as PropertyBundle | undefined;
 
   const { objectData, images, loading, err, videos, isDeleted, markAsDeleted } =
-    usePropertyData(id);
+    usePropertyData(id, initial);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [mapReady, setMapReady] = useState(false);
+  useEffect(() => setMapReady(true), []);
 
   // Checking admin authorization
   useEffect(() => {
@@ -158,7 +166,11 @@ const PropertyPage: React.FC = () => {
             landPlot={objectData.landPlots}
             residentialHouse={objectData.residentialHouses}
           />
-          <PropertyMap address={objectData.address} />
+          {mapReady && (
+            <Suspense fallback={null}>
+              <PropertyMap address={objectData.address} />
+            </Suspense>
+          )}
 
           <ContactForm />
         </>

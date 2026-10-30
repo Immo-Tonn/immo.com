@@ -1,6 +1,6 @@
 import { CategoriesData, CategoryItem } from './CategoriesData';
 import styles from './Categories.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from '@shared/lib/localeRouter';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';

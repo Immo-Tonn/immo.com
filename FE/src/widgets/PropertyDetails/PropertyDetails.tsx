@@ -7,7 +7,7 @@ import {
   LandPlot,
   CommercialBuilding,
 } from '@shared/types/propertyTypes';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import { formatGermanCurrency } from '@features/utils/formatGermanCurrency';
 import { getObjectTypeLabel } from '@features/utils/objectTypeMapping';
 import { ObjectType } from '@features/utils/types';
