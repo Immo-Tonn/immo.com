@@ -29,8 +29,8 @@
       "description": "Full service from a professional: the agent analyzes the market and recommends the optimal asking price for your property."
     },
     "rechtUndRat": {
-      "title": "Legal Advice – Security When Buying and Selling | Immo Tonn",
-      "description": "Legal security and practical tips on buying and selling: support with documents such as the land registry extract and energy certificate, and with preparing for viewings."
+      "title": "Information and Support for Buying and Selling | Immo Tonn",
+      "description": "Practical information and support for property transactions: help with documents such as the land registry extract and energy certificate, and with viewings."
     }
   },
   "nav": {
@@ -66,17 +66,17 @@
     "titleLine1": "Your trusted real estate agent in",
     "titleLine2": "Münster, the Münsterland and across NRW –",
     "titleLine3": "here's what you can expect from us:",
-    "paragraph1": "With a professional real estate agent by your side, you can be sure that the entire process – from the first idea to a successful sale – runs efficiently, safely and in your best interest.",
-    "paragraph2": "Since 1985 we have specialized in selling existing and new-build properties in the <0>Münsterland region</0>, using exclusive marketing strategies and a regional network built up over decades to achieve the best result for every property.",
+    "paragraph1": "With a professional real estate agent by your side, you can be sure that the entire process – from the first idea to a successful completion – runs efficiently, safely and in your best interest.",
+    "paragraph2": "Since 1985 – for over 40 years – we have specialized in selling existing and new-build properties in the <0>Münsterland region</0>, using exclusive marketing strategies and a regional network built up over decades to achieve the best result for every property.",
     "paragraph3": "Our experienced team supports you personally, takes care of the details, and keeps improving so you always get the best possible service.",
     "bottomLine1": "Your agent team for residential properties,",
-    "bottomLine2": "commercial buildings and high-value investments"
+    "bottomLine2": "commercial buildings and high-quality investments"
   },
   "fiveSteps": {
     "titleLine1": "More than just real estate – a partnership",
     "titleLine2": "that unfolds for you",
     "subtitle": "Selling your property in 5 steps",
-    "cta": "Sell",
+    "cta": "Selling",
     "steps": [
       {
         "title": "Free property valuation & initial consultation",
@@ -112,8 +112,8 @@
         "answer": "After the photo session, we create a professional listing brochure and publish it for you – this is already included in the sales process."
       },
       {
-        "question": "Can I also sell a commercial building or business property through you?",
-        "answer": "Yes, alongside residential properties we also broker commercial buildings and high-value investment properties."
+        "question": "Can I also sell a commercial building or commercial property through you?",
+        "answer": "Yes, alongside residential properties we also broker commercial buildings and high-quality investment properties."
       },
       {
         "question": "How quickly do I get the results of the valuation?",
@@ -153,7 +153,7 @@
     "items": {
       "immobilienangebote": "Property listings",
       "verkaufssupport": "Sales support",
-      "recht-und-rat": "Legal advice",
+      "recht-und-rat": "Law and advice",
       "objektstyling": "Property styling",
       "wertermittlung": "Valuation",
       "finanzierung": "Financing"
@@ -237,7 +237,9 @@
       "term": "Term",
       "years": "years",
       "contact": "Contact"
-    }
+    },
+    "equityRequired": "Please enter your equity.",
+    "customFieldsInvalid": "Please correct the input errors in the custom fields."
   },
   "contactForm": {
     "heading": "Arrange your personal consultation now",

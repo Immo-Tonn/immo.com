@@ -29,8 +29,8 @@
       "description": "Rundum-Service vom Profi: Der Makler analysiert den Markt und empfiehlt den optimalen Angebotspreis für Ihre Immobilie."
     },
     "rechtUndRat": {
-      "title": "Recht & Rat – rechtliche Sicherheit beim Kauf und Verkauf | Immo Tonn",
-      "description": "Rechtliche Sicherheit und praktische Tipps rund um Kauf und Verkauf: Unterstützung bei Unterlagen wie Grundbuchauszug und Energieausweis sowie bei der Vorbereitung auf Besichtigungen."
+      "title": "Recht & Rat – Informationen zu Kauf und Verkauf | Immo Tonn",
+      "description": "Praktische Informationen und Begleitung rund um Kauf und Verkauf: Unterstützung bei Unterlagen wie Grundbuchauszug und Energieausweis sowie bei Besichtigungen."
     },
     "objektstyling": {
       "title": "Objektstyling – Ästhetik trifft Emotion | Immo Tonn",
@@ -253,7 +253,9 @@
       "term": "Laufzeit",
       "years": "Jahre",
       "contact": "Kontakt"
-    }
+    },
+    "equityRequired": "Bitte geben Sie Ihr Eigenkapital ein.",
+    "customFieldsInvalid": "Bitte korrigieren Sie die Eingabefehler in den benutzerdefinierten Feldern."
   },
   "contactForm": {
     "heading": "Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin",
