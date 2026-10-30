@@ -6,12 +6,14 @@ import {
   ScrollRestoration,
   useLocation,
 } from 'react-router';
+import { useEffect } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import ScrollToTop from '@shared/ui/ScrollToTop/ScrollToTop';
 import 'leaflet/dist/leaflet.css';
 import '@shared/styles/global.css';
 import '@shared/i18n/i18n';
 import { siteStructuredData } from './seo/structuredData';
+import { langOf } from './seo/meta';
 
 const GA_ID = 'G-H21BY7YBZM';
 
@@ -78,6 +80,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function Root() {
+  const { pathname } = useLocation();
+  // Оболочка 404.html общая для всех URL (lang="de"); при гидратации React не
+  // обновляет атрибуты, поэтому выставляем язык документа явно по URL.
+  useEffect(() => {
+    document.documentElement.lang = langOf(pathname);
+  }, [pathname]);
+
   return (
     <>
       <ScrollToTop />
