@@ -484,7 +484,7 @@ if (!brokerOptions.includes('3,57')) {
 }
   return (
     <section className={styles.wrapper}>
-      <h2 className={styles.title}>{t('mortgageCalculator.pageTitle')}</h2>
+      <h1 className={styles.title}>{t('mortgageCalculator.pageTitle')}</h1>
       <div className={styles.grid}>
         <div className={styles.col}>
           <label htmlFor="price">{t('mortgageCalculator.priceLabel')}</label>

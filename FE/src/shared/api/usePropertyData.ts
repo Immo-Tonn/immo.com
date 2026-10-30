@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import { RealEstateObject, Image, Video } from '@shared/types/propertyTypes';
 import { getBuiltObjectIds } from '@shared/api/builtObjects';
+import { API_BASE } from '@shared/api/config';
 
 // Данные loader'а свежее этого порога повторно не запрашиваем (иначе дубли запросов).
 // Данные из prerender (время сборки) старше порога — их тихо обновляем после гидратации.
@@ -47,7 +48,7 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
       console.log('Loading object data:', id);
 
       const objectRes = await axios.get<RealEstateObject>(
-        `https://immo-tonn.de:443/api/objects/${id}`,
+        `${API_BASE}/objects/${id}`,
       );
       const data = objectRes.data;
       setObjectData(data);
@@ -56,7 +57,7 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
       if (data._id) {
         try {
           const imagesRes = await axios.get<Image[]>(
-            `https://immo-tonn.de:443/api/images/by-object?objectId=${data._id}`,
+            `${API_BASE}/images/by-object?objectId=${data._id}`,
           );
           console.log('Images uploaded:', imagesRes.data);
           setImages(imagesRes.data);
@@ -68,7 +69,7 @@ export const usePropertyData = (id?: string, initial?: PropertyBundle) => {
         // Uploading video
         try {
           const videosRes = await axios.get<Video[]>(
-            `https://immo-tonn.de:443/api/videos/by-object?objectId=${data._id}`,
+            `${API_BASE}/videos/by-object?objectId=${data._id}`,
           );
           setVideos(videosRes.data);
         } catch (videoError) {
@@ -176,7 +177,7 @@ export const usePropertysData = (initial?: PropertyListBundle) => {
         console.log('Loading list of all objects');
 
         const objectRes = await axios.get<RealEstateObject[]>(
-          `https://immo-tonn.de:443/api/objects/`,
+          `${API_BASE}/objects/`,
         );
         // показываем только объекты, попавшие в текущую сборку
         const built = await getBuiltObjectIds();
@@ -189,7 +190,7 @@ export const usePropertysData = (initial?: PropertyListBundle) => {
         let loadedImages: Image[] = [];
         try {
           const imagesRes = await axios.get<Image[]>(
-            `https://immo-tonn.de:443/api/images/`,
+            `${API_BASE}/images/`,
           );
           loadedImages = imagesRes.data || [];
           setImages(loadedImages);

@@ -36,7 +36,7 @@
   background-color: rgba(20, 31, 40, 0.7);
 }
 
-.textOverlay > p {
+.textOverlay > h1 {
   color: white;
   padding: 0 2rem 1.5rem 3rem;
   font-family: var(--Roboto);
@@ -58,7 +58,7 @@
     font-size: var(--font-size-size-xs);
     padding: 10px;
   }
-  .textOverlay > p {
+  .textOverlay > h1 {
     padding: 0 1rem 1rem 1rem;
     text-align: left;
   }

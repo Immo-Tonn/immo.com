@@ -21,6 +21,23 @@ export const rebuildConfig = {
   timeoutMs: 10_000,
 };
 
+/**
+ * ВАЖНО: успешный ответ Deploy Hook означает лишь, что Vercel ПРИНЯЛ запуск сборки
+ * (job в очереди). Это не значит, что сайт опубликован: сборка может упасть. Что сайт
+ * действительно обновлён, видно только по build-info.json на самом сайте (см.
+ * rebuildReconciler.ts).
+ */
+export interface HookResult {
+  accepted: boolean;
+  jobId?: string;
+  attempts: number;
+}
+
+/** Часы подменяются в тестах. */
+export const clock = { now: () => Date.now() };
+
+export const rebuildState = { lastAcceptedAt: 0, lastJobId: undefined as string | undefined };
+
 let timer: NodeJS.Timeout | null = null;
 let firstPendingAt = 0;
 let pendingReasons: string[] = [];
@@ -41,19 +58,22 @@ const isAllowedUrl = (raw: string): boolean => {
 
 const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
-/** Вызывает хук с ограниченными повторами. Возвращает true при успехе, не бросает. */
+/** Вызывает хук с ограниченными повторами. Не бросает. accepted=true — запуск ПРИНЯТ. */
 export const callDeployHook = async (
   url: string,
   reasons: string[],
-): Promise<boolean> => {
+): Promise<HookResult> => {
   const attempts = rebuildConfig.retryDelaysMs.length + 1;
   for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
-      await axios.post(url, null, { timeout: rebuildConfig.timeoutMs });
+      const res = await axios.post(url, null, { timeout: rebuildConfig.timeoutMs });
+      const jobId = (res.data as { job?: { id?: string } } | undefined)?.job?.id;
+      rebuildState.lastAcceptedAt = clock.now();
+      rebuildState.lastJobId = jobId;
       console.log(
-        `[rebuild] пересборка frontend запущена (попытка ${attempt}; причины: ${reasons.join(', ')})`,
+        `[rebuild] запуск сборки ПРИНЯТ Vercel${jobId ? ` (job ${jobId})` : ''}, попытка ${attempt}; причины: ${reasons.join(', ')}. Это ещё не публикация — сайт обновится после успешной сборки`,
       );
-      return true;
+      return { accepted: true, jobId, attempts: attempt };
     } catch (error) {
       // В лог — только статус/код: сообщение axios может содержать адрес хука
       const e = error as { response?: { status?: number }; code?: string };
@@ -66,10 +86,13 @@ export const callDeployHook = async (
     }
   }
   console.error(
-    '[rebuild] пересборка frontend НЕ запущена после всех попыток; изменения объекта сохранены, сайт обновится при следующей сборке',
+    '[rebuild] пересборка frontend НЕ запущена после всех попыток; изменения объекта сохранены, сайт обновится при следующей сверке/запуске',
   );
-  return false;
+  return { accepted: false, attempts };
 };
+
+/** Есть ли отложенный запуск (изменения ждут окончания паузы). */
+export const hasPendingRebuild = (): boolean => timer !== null;
 
 /** Сообщить, что объект создан/изменён/удалён. Безопасно вызывать после ответа клиенту. */
 export const requestFrontendRebuild = (reason: string): void => {
@@ -110,4 +133,6 @@ export const __resetRebuildState = () => {
   timer = null;
   pendingReasons = [];
   firstPendingAt = 0;
+  rebuildState.lastAcceptedAt = 0;
+  rebuildState.lastJobId = undefined;
 };

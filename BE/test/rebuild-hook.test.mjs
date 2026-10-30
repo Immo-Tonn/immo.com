@@ -58,20 +58,20 @@ test('серия изменений сливается в один запуск'
 
 test('временный сбой: 500, 500, затем 200 → 3 попытки, успех', async () => {
   statusPlan = [500, 500, 200];
-  assert.equal(await hook.callDeployHook(url(), ['t']), true);
+  assert.equal((await hook.callDeployHook(url(), ['t'])).accepted, true);
   assert.equal(requests.length, 3);
 });
 
 test('постоянный сбой: ровно 3 попытки, без исключения', async () => {
   statusPlan = [500, 500, 500, 500, 500];
-  assert.equal(await hook.callDeployHook(url(), ['t']), false);
+  assert.equal((await hook.callDeployHook(url(), ['t'])).accepted, false);
   assert.equal(requests.length, 3);
 });
 
 test('сервер недоступен: 3 попытки, без исключения', async () => {
   const dead = http.createServer(); await new Promise(r => dead.listen(0, '127.0.0.1', r));
   const p = dead.address().port; dead.close();
-  assert.equal(await hook.callDeployHook(`http://127.0.0.1:${p}/x/${SECRET}`, ['t']), false);
+  assert.equal((await hook.callDeployHook(`http://127.0.0.1:${p}/x/${SECRET}`, ['t'])).accepted, false);
   assert.ok(logs.filter(l => l.includes('попытка')).length >= 3);
 });
 

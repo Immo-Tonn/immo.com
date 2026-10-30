@@ -13,6 +13,7 @@ import residentialHousesRoutes from './routes/residentialHousesRoutes';
 import emailRoutes from './routes/emailRoutes';
 import videosRoutes from './routes/videosRoutes';
 import mongoose from 'mongoose';
+import { startRebuildReconciler } from './utils/rebuildReconciler';
 import {
   errorLogger,
   errorHandler,
@@ -110,6 +111,8 @@ const PORT: number | string = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port http://localhost:${PORT}`);
+  // сверка опубликованного сайта с данными (включается только при заданных переменных)
+  startRebuildReconciler();
 });
 
 export default app;

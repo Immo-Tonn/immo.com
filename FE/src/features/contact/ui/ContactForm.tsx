@@ -9,7 +9,13 @@ import Button from '@shared/ui/Button/Button';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
 
-const ContactForm = () => {
+interface ContactFormProps {
+  /** 1 — форма главная на странице (/kontakt); 2 — форма внутри другой страницы */
+  headingLevel?: 1 | 2;
+}
+
+const ContactForm = ({ headingLevel = 2 }: ContactFormProps) => {
+  const Heading = headingLevel === 1 ? 'h1' : 'h2';
   const { t, i18n } = useTranslation();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -75,7 +81,7 @@ const ContactForm = () => {
       }}
     >
       <div className={styles.container}>
-        <h2 className={styles.heading}>{t('contactForm.heading')}</h2>
+        <Heading className={styles.heading}>{t('contactForm.heading')}</Heading>
 
         <div className={styles.layout}>
           <form

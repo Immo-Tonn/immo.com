@@ -2,7 +2,8 @@
 //  1) 404.html = SPA-fallback → неизвестный URL получает HTTP 404, но SPA
 //     всё равно запускается (например, показывает объект, ещё не попавший в prerender);
 //  2) built-objects.json — какие объекты есть в этой сборке
-//  3) sitemap.xml: только готовые языковые версии (src/seo/readiness.json) и собранные объекты.
+//  3) build-info.json — отпечаток данных, с которыми собран сайт
+//  4) sitemap.xml: только готовые языковые версии (src/seo/readiness.json) и собранные объекты.
 // Список объектов берётся из prerender (API при сборке читает react-router.config.ts;
 // при его недоступности сборка падает — прежний деплой остаётся на production).
 import { copyFile, readFile, writeFile } from 'node:fs/promises';
@@ -23,9 +24,17 @@ const url = (lang, p) =>
 await copyFile(`${OUT}/__spa-fallback.html`, `${OUT}/404.html`);
 
 // Список объектов — тот же, что prerender'ился (его пишет react-router.config.ts)
-const ids = JSON.parse(await readFile('.react-router/prerender-objects.json', 'utf8'));
+const { ids, fingerprint } = JSON.parse(
+  await readFile('.react-router/prerender-objects.json', 'utf8'),
+);
 // Манифест собранных объектов: приложение показывает только их (см. built-objects.ts)
 await writeFile(`${OUT}/built-objects.json`, JSON.stringify(ids));
+// build-info.json: что именно опубликовано. Backend сверяет отпечаток с текущими данными
+// и так обнаруживает пропущенные обновления (см. docs/AUTO-REBUILD.md).
+await writeFile(
+  `${OUT}/build-info.json`,
+  JSON.stringify({ fingerprint, objectCount: ids.length, builtAt: new Date().toISOString() }),
+);
 
 const items = [
   ...PAGES.map(p => ({ path: p, key: p })),

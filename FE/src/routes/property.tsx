@@ -10,7 +10,9 @@ const load = ({ params }: { params: { id?: string } }) =>
 // loader — данные при prerender; clientLoader — в браузере, когда объекта нет в
 // prerender (новый объект). При ssr:false export `loader` вырезается из клиентской
 // сборки, поэтому clientLoader не должен ссылаться на него напрямую.
-export const loader = load;
+// '_empty' — служебный путь для пустого каталога (см. react-router.config.ts)
+export const loader = (args: { params: { id?: string } }) =>
+  args.params.id === '_empty' ? null : load(args);
 
 // В браузере показываем только объекты из текущей сборки: URL нового объекта,
 // которого ещё нет в prerender, отвечает HTTP 404 — страница не должна показывать

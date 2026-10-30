@@ -1,4 +1,5 @@
 import type { Image, Video } from '@shared/types/propertyTypes';
+import { API_BASE } from '@shared/api/config';
 import type {
   PropertyBundle,
   PropertyListBundle,
@@ -6,7 +7,7 @@ import type {
 
 // Загрузчики данных для route loader'ов: работают и в Node (prerender при
 // сборке), и в браузере (clientLoader). Хост API тот же, что в usePropertyData.
-const API = 'https://immo-tonn.de/api';
+const API = API_BASE;
 
 const getJson = async <T>(url: string): Promise<T> => {
   const res = await fetch(url);
