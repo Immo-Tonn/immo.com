@@ -1,38 +1,123 @@
+/* Юридические страницы: «лист бумаги» на баклажановом фоне, антиква в заголовках */
 .container {
-  max-width: 70%;
-  margin: 0 auto;
-  padding: 40px 20px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 22px;
-  line-height: 1.6;
-  max-width: 1200px;
-  color: var(--secondary-color);
-  background-color: #f5f5f5;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-  margin: 2rem auto;
+  max-width: 920px;
+  margin: clamp(32px, 5vw, 80px) auto;
+  padding: clamp(28px, 5vw, 72px) clamp(22px, 5vw, 72px);
+  background: var(--h-paper);
+  color: var(--h-on-paper);
+  font-family: var(--h-sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  border-radius: 4px;
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.75);
+  animation: pRise 0.9s var(--h-ease) both;
 }
 
-.container > h1,
+/* несколько блоков подряд (Datenschutz) выглядят как один лист */
+.container:has(+ .container) {
+  margin-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+}
+.container + .container {
+  margin-top: 0;
+  padding-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  animation: none;
+}
+
+.container h1 {
+  margin: 0 0 0.6em;
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 1.4rem + 3.4vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--h-on-paper);
+}
+
+.container h1::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin-top: 22px;
+  background: var(--h-accent);
+}
+
+.container h2 {
+  margin: 2.2em 0 0.5em;
+  padding-top: 1.1em;
+  border-top: 1px solid var(--h-line-paper);
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem);
+  line-height: 1.15;
+  color: var(--h-on-paper);
+}
+
+.container h3,
+.container h4 {
+  margin: 1.6em 0 0.4em;
+  font-family: var(--h-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--h-accent);
+}
+
+.container p {
+  margin: 0 0 1em;
+  max-width: 68ch;
+  color: var(--h-on-paper-muted);
+}
+
+.container ul,
+.container ol {
+  margin: 0 0 1.2em;
+  padding-left: 1.4em;
+  max-width: 68ch;
+  color: var(--h-on-paper-muted);
+}
+
+.container li {
+  margin-bottom: 0.45em;
+}
+
+.container strong {
+  font-weight: 600;
+  color: var(--h-on-paper);
+}
+
+.container a {
+  color: var(--h-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  overflow-wrap: anywhere;
+  transition: color 0.25s var(--h-ease);
+}
+.container a:hover {
+  color: var(--h-accent-hover);
+}
+.container a:focus-visible {
+  outline-color: var(--h-accent);
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 0;
+    border-radius: 0;
+    font-size: 1rem;
+  }
+}
+
+/* Глобальные правила прежнего файла (действовали на весь сайт) — сохранены без изменений */
 h2,
 h3 {
   font-weight: bold;
   margin-bottom: 0.5em;
-}
-
-.container > ul {
-  list-style-type: disc;
-  padding-left: 40px;
-  margin-bottom: 1em;
-}
-
-.container > p {
-  margin-bottom: 1em;
-}
-
-.container > a {
-  color: #0056b3;
-  text-decoration: underline;
-}
-.container a:hover {
-  color: #003b80 !important;
 }

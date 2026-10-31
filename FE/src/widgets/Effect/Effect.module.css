@@ -1,117 +1,159 @@
+/* Objektstyling — «Wirkung»: тёмная секция, лид + фото с заголовком + преимущества */
 .effectSection {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--h-gutter), 1fr)
+    [content-start] minmax(0, var(--h-max))
+    [content-end] minmax(var(--h-gutter), 1fr)
+    [full-end];
+  row-gap: clamp(40px, 6vw, 88px);
+  padding: clamp(72px, 9vw, 140px) 0 0;
+  background:
+    radial-gradient(
+      ellipse at 10% 0%,
+      rgba(36, 87, 197, 0.2) 0%,
+      rgba(36, 87, 197, 0) 55%
+    ),
+    var(--h-ink);
+  color: var(--h-on-dark);
+}
+.effectSection > * {
+  grid-column: content;
+  min-width: 0;
 }
 
 .descriptionWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 141px 0 91px;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: block;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  margin: 0;
 }
 
 .line {
-  width: 1px;
-  height: 274px;
-  background-color: #000;
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin: 0 0 28px;
+  background: var(--h-accent-light);
 }
 
 .description {
-  font-family: var(--Inter);
-  font-size: var(--font-size-small);
-  color: #000;
-  font-weight: var(--font-weight-secondary);
-  max-width: 579px;
-}
-
-.descriptionWrapper:last-of-type .description {
-  max-width: 705px;
-}
-
-.effectSection h2 {
-  font-family: var(--Inter);
-  font-weight: 700;
-  font-size: var(--font-size-main);
-  color: #000;
-  margin-left: 146px;
+  margin: 0;
+  max-width: 34ch;
+  font-family: var(--h-display);
+  font-size: clamp(1.7rem, 1rem + 2.6vw, 3.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   text-align: left;
+  color: var(--h-on-dark);
 }
 
+/* фото с заголовком поверх */
+.effectSection > div:nth-child(2) {
+  grid-column: full;
+}
 .imageWrapper {
-  display: flex;
-  align-items: center;
-  max-width: 459px;
-  margin-bottom: 76px;
-  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  height: clamp(320px, 52vw, 680px);
+  isolation: isolate;
+}
+.imageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(22, 12, 32, 0.8) 0%, rgba(22, 12, 32, 0) 55%);
+}
+.effectPhoto {
+  position: absolute;
+  inset: -3%;
+  width: 106%;
+  height: 106%;
+  object-fit: cover;
+  z-index: -1;
+}
+.imageWrapper h2 {
+  position: absolute;
+  z-index: 1;
+  left: max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  right: var(--h-gutter);
+  bottom: clamp(24px, 4vw, 56px);
+  margin: 0;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 1rem + 4vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--h-on-dark);
+  text-shadow: none;
 }
 
-.imageWrapper img {
-  max-width: 574px;
-  max-height: 383px;
-  width: 100%;
-  height: auto;
+/* вторая описательная часть: текст | преимущества */
+.effectSection > div:nth-child(3) > div {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(28px, 6vw, 96px);
+  align-items: start;
 }
-
-.effectSection > img {
-  max-height: 682px;
-  width: 100%;
-  object-fit: contain;
+.effectSection > div:nth-child(3) .description {
+  max-width: 46ch;
+  font-family: var(--h-sans);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--h-on-dark-muted);
 }
-
+.advantagesTitle {
+  display: block;
+  margin-top: 1.4rem;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--h-accent-light);
+}
 .advantagesList {
+  margin: 0;
+  padding: 0;
   list-style: none;
-  margin: 20px 0 0;
-  font-family: var(--Inter);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-secondary);
+  border-top: 1px solid var(--h-line-dark);
+}
+.advantagesList li {
+  position: relative;
+  padding: 1.1rem 0 1.1rem 2.2rem;
+  border-bottom: 1px solid var(--h-line-dark);
+  list-style: none;
+}
+.advantagesList li::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 1.8rem;
+  width: 12px;
+  height: 1px;
+  background: var(--h-accent-light);
+}
+.advantagesList strong {
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.55rem);
+  line-height: 1.3;
+  color: var(--h-on-dark);
 }
 
-.advantagesList > li {
-  margin-top: 20px;
+/* финальное фото */
+.effectSection > img {
+  grid-column: full;
+  display: block;
+  width: 100%;
+  height: clamp(280px, 44vw, 600px);
+  object-fit: cover;
 }
 
-@media (max-width: 765px) {
-  .descriptionWrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 60px 0;
-  }
-
-  .line {
-    display: none;
-  }
-
-  .description {
-    max-width: 100%;
-    margin-left: 0;
-  }
-
-  .effectSection > h2 {
-    margin-left: 30px;
-  }
-
-  .imageWrapper {
-    max-width: 100%;
-    flex-direction: column;
-  }
-
-  .imageWrapper > img {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .effectSection > h2 {
-    margin-left: 0;
-    margin-top: 40px;
-    max-width: 343px;
-  }
-
-  .effectSection > img {
-    max-height: 324px;
-    object-fit: cover;
+@media (max-width: 900px) {
+  .effectSection > div:nth-child(3) > div {
+    grid-template-columns: 1fr;
   }
 }

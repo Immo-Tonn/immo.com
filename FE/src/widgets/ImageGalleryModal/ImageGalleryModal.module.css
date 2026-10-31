@@ -132,3 +132,35 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Редизайн в стиле Home — галерея */
+.videoModal {
+  background: rgba(14, 7, 22, 0.94);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.mediaContent {
+  border-radius: 2px;
+}
+.thumbnail,
+.thumbnail img,
+.thumbnail iframe {
+  border-radius: 2px;
+}
+.active {
+  border-color: var(--h-accent-light);
+}
+.prevButton,
+.nextButton,
+.closeButton {
+  border: 1px solid var(--h-line-dark);
+  background: rgba(22, 12, 32, 0.7);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.prevButton:hover,
+.nextButton:hover,
+.closeButton:hover {
+  background: var(--h-accent);
+  border-color: var(--h-accent);
+}

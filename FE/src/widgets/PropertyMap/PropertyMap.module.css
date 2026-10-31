@@ -96,3 +96,40 @@
     width: 85%;
   }
 }
+
+/* Редизайн в стиле Home — рамка и подписи (сама карта и её логика не затронуты) */
+.mapSection {
+  margin-top: 0;
+  padding: 0 max(var(--h-gutter), calc((100% - var(--h-max)) / 2)) clamp(56px, 7vw, 110px);
+  background: var(--h-paper);
+  color: var(--h-on-paper);
+  font-family: var(--h-sans);
+}
+.hr {
+  width: 100%;
+  margin-left: 0;
+  background-color: var(--h-line-paper);
+}
+.title {
+  margin: 0 0 1rem;
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 1.1rem + 2vw, 3rem);
+  line-height: 1.1;
+  color: var(--h-on-paper);
+}
+.infoLine {
+  margin: 12px 0;
+  font-size: 1.0625rem;
+  color: var(--h-on-paper-muted);
+}
+.disclaimer {
+  margin: 16px 0;
+  font-size: 0.9375rem;
+  color: var(--h-on-paper-muted);
+}
+.map {
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--h-line-paper);
+}

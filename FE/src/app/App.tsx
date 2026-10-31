@@ -16,6 +16,7 @@ import PrivacyPolicy from '@pages/PrivacyPolicy/PrivacyPolicy';
 import DankePage from '@pages/DankePage/DankePage';
 import ObjectStyling from '@pages/ObjectStyling/ObjectStyling';
 import '@shared/styles/global.css';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 import PropertyPage from '@pages/PropertyPage/PropertyPage';
 import SalesSupport from '@pages/SalesSupport/SalesSupport';
 import MortgageCalculator from '@features/mortgage/ui/MortgageCalculator';
@@ -27,6 +28,12 @@ import ProtectedRoute from '@features/utils/ProtectedRoute';
 import ChangePassword from '@pages/Auth/ChangePassword';
 import CreateObject from '@pages/AdminObject/CreateObject/CreateObject';
 
+
+// Страницы, у которых компонент используется и вне маршрута, оборачиваем здесь (только оформление)
+const ContactPage = withPageShell(ContactForm);
+const CalculatorPage = withPageShell(MortgageCalculator);
+const ThanksPage = withPageShell(DankePage);
+const NotFoundPage = withPageShell(NotFound);
 
 const App = () => {
   return (
@@ -40,15 +47,15 @@ const App = () => {
           <Route path="/immobilien/:id" element={<PropertyPage />} />
           <Route path="/objectstyling" element={<ObjectStyling />} />
           <Route path="/finanzierung" element={<Financing />} />
-          <Route path="/kontakt" element={<ContactForm />} />
+          <Route path="/kontakt" element={<ContactPage />} />
           <Route path="/legalnotice" element={<LegalNotice />} />
           <Route path="/recht-und-rat" element={<LawAndAdvice />} />
           <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/kontakt/danke" element={<DankePage />} />
+          <Route path="/kontakt/danke" element={<ThanksPage />} />
           <Route path="/cancellationpolicy" element={<CancellationPolicy />} />
           <Route path="/verkaufssupport" element={<SalesSupport />} />
-          <Route path="/rechner" element={<MortgageCalculator />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/rechner" element={<CalculatorPage />} />
+          <Route path="*" element={<NotFoundPage />} />
 
                     {/* Authentication pages */}
           <Route path="/add-property" element={<Login />} />

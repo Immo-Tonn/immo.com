@@ -184,3 +184,121 @@
     display: none;
   }
 }
+
+/* ==========================================================================
+   Редизайн в стиле Home — светлая секция «бумага»
+   ========================================================================== */
+.propertyLayout {
+  gap: clamp(32px, 6vw, 96px);
+  padding: clamp(56px, 7vw, 110px) max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  background: var(--h-paper);
+  color: var(--h-on-paper);
+  font-family: var(--h-sans);
+}
+.section {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.sectionTitle {
+  margin: 0 0 0.8rem;
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 1.1rem + 2vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--h-on-paper);
+}
+.hr {
+  width: 100%;
+  margin: 0 0 1.2rem;
+  background-color: var(--h-line-paper);
+}
+.detailRow {
+  margin: 0;
+  padding: 14px 0;
+  gap: 24px;
+  border-bottom: 1px solid var(--h-line-paper);
+}
+.status {
+  margin: 0;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--h-line-paper);
+}
+.label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--h-on-paper-muted);
+}
+.value {
+  font-size: 1.0625rem;
+  text-align: right;
+  color: var(--h-on-paper);
+}
+.narrowText {
+  max-width: 64ch;
+  margin: 0 0 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--h-on-paper-muted);
+}
+.stickyAside {
+  top: calc(var(--header-height) + 24px);
+}
+.verticalDividerRight {
+  background-color: var(--h-line-paper);
+}
+.detailsRight {
+  align-items: flex-start;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+}
+.tagline {
+  text-align: left;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 1.1rem + 2.2vw, 3.1rem);
+  line-height: 1.1;
+  color: var(--h-accent);
+}
+.tagline p {
+  margin: 0;
+}
+.calcButton {
+  min-height: 52px;
+  padding: 0 28px;
+  border: 1px solid var(--h-accent);
+  border-radius: 999px;
+  background-color: var(--h-accent);
+  color: #fff;
+  font-family: var(--h-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  box-shadow: 0 10px 30px -12px rgba(36, 87, 197, 0.7);
+  transition:
+    background-color 0.35s var(--h-ease),
+    transform 0.35s var(--h-ease);
+}
+.calcButton:hover {
+  background-color: var(--h-accent-hover);
+  border-color: var(--h-accent-hover);
+  transform: translateY(-2px);
+}
+.statusBanner {
+  font-size: 1.0625rem;
+  color: var(--h-accent);
+}
+@media (max-width: 900px) {
+  .propertyLayout {
+    flex-direction: column;
+  }
+  .stickyAside {
+    position: static;
+    flex-basis: auto;
+    width: 100%;
+  }
+  .calcButton {
+    width: auto;
+  }
+}
