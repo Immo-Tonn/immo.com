@@ -189,3 +189,79 @@
   border-radius: 999px;
   font-family: var(--h-sans);
 }
+
+/* ==========================================================================
+   Сетка страницы объекта: название → галерея | цена и характеристики → действие
+   → подробности. Секции hero/details растворены (display: contents) и
+   занимают именованные области; DOM, порядок и обработчики не менялись.
+   ========================================================================== */
+.propertyPageContainer:has(> section) {
+  --pg: max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: var(--pg) minmax(0, 62fr) minmax(0, 38fr) var(--pg);
+  grid-template-rows: auto auto auto auto minmax(0, 1fr) clamp(32px, 4vw, 56px) auto auto auto;
+  grid-template-areas:
+    'admin admin admin admin'
+    '. title title .'
+    '. gallery facts .'
+    '. gallery place .'
+    '. gallery action .'
+    '. . . .'
+    '. body aside .'
+    'map map map map'
+    'form form form form';
+  max-width: none;
+}
+.propertyPageContainer:has(> section)::before,
+.propertyPageContainer:has(> section)::after {
+  content: '';
+  grid-column: 1 / -1;
+  z-index: -1;
+}
+.propertyPageContainer:has(> section)::before {
+  grid-row: 2 / 7;
+  background:
+    radial-gradient(
+      ellipse at 85% 0%,
+      rgba(36, 87, 197, 0.2) 0%,
+      rgba(36, 87, 197, 0) 55%
+    ),
+    var(--h-ink);
+}
+.propertyPageContainer:has(> section)::after {
+  grid-row: 7 / 8;
+  background: var(--h-paper);
+}
+.propertyPageContainer:has(> section) > p {
+  grid-area: admin;
+}
+.adminActions {
+  grid-area: admin;
+}
+
+@media (max-width: 900px) {
+  .propertyPageContainer:has(> section) {
+    grid-template-columns: var(--pg) minmax(0, 1fr) var(--pg);
+    grid-template-rows: auto auto auto auto auto auto clamp(24px, 6vw, 40px) auto auto auto auto;
+    grid-template-areas:
+      'admin admin admin'
+      '. title .'
+      '. facts .'
+      '. place .'
+      '. gallery .'
+      '. action .'
+      '. . .'
+      '. body .'
+      '. aside .'
+      'map map map'
+      'form form form';
+  }
+  .propertyPageContainer:has(> section)::before {
+    grid-row: 2 / 8;
+  }
+  .propertyPageContainer:has(> section)::after {
+    grid-row: 8 / 10;
+  }
+}

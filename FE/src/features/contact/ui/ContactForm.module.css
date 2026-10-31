@@ -262,3 +262,7 @@
 :global(main):has(.formWrapper) {
   background: var(--h-paper, #f4efe8);
 }
+
+.formWrapper {
+  grid-area: form;
+}

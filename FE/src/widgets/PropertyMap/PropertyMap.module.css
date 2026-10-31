@@ -133,3 +133,8 @@
   border-radius: 2px;
   box-shadow: 0 0 0 1px var(--h-line-paper);
 }
+
+.mapSection {
+  grid-area: map;
+  min-width: 0;
+}

@@ -637,3 +637,135 @@ iframe {
     display: none;
   }
 }
+
+/* ==========================================================================
+   Компактная раскладка объекта: секция растворяется в сетке страницы
+   (PropertyPage.module.css), элементы встают в именованные области
+   ========================================================================== */
+.section {
+  display: contents;
+}
+.title {
+  grid-area: title;
+  margin: 0;
+  padding: clamp(28px, 3.4vw, 52px) 0 clamp(16px, 2vw, 26px);
+  font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.5rem);
+  line-height: 1.12;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.imageContainer,
+.carouselContainer,
+.placeholderWrapper {
+  grid-area: gallery;
+  min-width: 0;
+}
+.imageContainer {
+  height: clamp(300px, calc(100vh - 340px), 480px);
+  max-height: none;
+  margin-bottom: 0;
+}
+.placeholderWrapper {
+  height: clamp(220px, 30vw, 320px);
+  margin-top: 0;
+}
+.features {
+  grid-area: facts;
+  align-self: start;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+  margin: 0;
+  padding: 0 0 22px clamp(24px, 3vw, 48px);
+  border-top: 0;
+}
+.feature {
+  min-width: 0;
+  padding: 0;
+  flex-direction: column-reverse;
+}
+.features > .feature:first-child {
+  grid-column: 1 / -1;
+  padding: 0;
+}
+.features > .feature:first-child h3 {
+  font-size: clamp(2rem, 1.2rem + 1.8vw, 2.75rem);
+}
+.feature h3 {
+  font-size: clamp(1.4rem, 1.1rem + 0.9vw, 1.75rem);
+  overflow-wrap: anywhere;
+}
+.feature h6 {
+  margin: 0 0 6px;
+}
+.divider {
+  display: none;
+}
+.address {
+  grid-area: place;
+  align-self: start;
+  margin: 0;
+  padding: 18px 0 22px clamp(24px, 3vw, 48px);
+  font-size: 1rem;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 900px) {
+  .imageContainer {
+    height: clamp(240px, 52vw, 420px);
+  }
+  .features,
+  .address {
+    padding-left: 0;
+  }
+  .features {
+    padding-bottom: 18px;
+  }
+  .address {
+    padding: 16px 0 20px;
+    border-bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .carouselContainer {
+    margin-bottom: 0;
+  }
+  .carouselWrapper {
+    height: clamp(220px, 68vw, 300px);
+    max-height: none;
+  }
+  .carouselImage {
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+  }
+  .videoFrameWrapper {
+    height: 100%;
+  }
+  .feature h3 {
+    font-size: 1.4rem;
+  }
+  .feature h6 {
+    font-size: 0.75rem;
+  }
+  .address {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.625rem;
+  }
+  .features > .feature:first-child h3 {
+    font-size: 2rem;
+  }
+  .feature h3 {
+    font-size: 1.35rem;
+  }
+  .feature h6 {
+    font-size: 0.75rem;
+  }
+  .address {
+    font-size: 1rem;
+  }
+}
