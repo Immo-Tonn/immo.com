@@ -1,85 +1,84 @@
+/* Objektstyling — «Vom Raum zum Wunschobjekt»: светлая секция + форма */
 .interiorStylingSection {
-  max-width: 1200px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--h-gutter), 1fr)
+    [content-start] minmax(0, var(--h-max))
+    [content-end] minmax(var(--h-gutter), 1fr)
+    [full-end];
+  row-gap: clamp(20px, 2.4vw, 32px);
+  padding: clamp(72px, 9vw, 140px) 0 0;
+  background: var(--h-paper);
+  color: var(--h-on-paper);
 }
-.interiorStylingSection > h2 {
-  text-align: center;
-  font-family: var(--Inter);
-  font-weight: var(--font-weight-main);
-  margin: 70px;
-  font-size: clamp(21px, 5vw, var(--font-size-main));
-  color: #000;
-  text-transform: uppercase;
+.interiorStylingSection > * {
+  grid-column: content;
+  min-width: 0;
 }
-.interiorStylingSection > p {
-  font-weight: var(--font-weight-secondary);
-  margin: 20px 0 0 108px;
-  font-size: var(--font-size-xs);
-  font-family: var(--Inter);
-  color: #000;
-  max-width: 702px;
-}
-.formWrapper {
-  display: flex;
-  align-items: center;
-  margin: 139px 0 168px 0;
-}
-.formWrapper > p {
-  font-family: var(--Lato);
-  font-weight: 700;
-  font-size: clamp(var(--font-size-secondary), 5vw, var(--font-size-big));
 
-  text-align: center;
-  color: #000;
-  margin: 0 clamp(10px, 4vw, 20px) 0 clamp(20px, 6vw, 50px);
+.interiorStylingSection > h2 {
+  margin: 0 0 clamp(8px, 2vw, 24px);
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 500;
+  text-transform: none;
+  font-size: clamp(2.4rem, 1.2rem + 4.6vw, 5.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--h-on-paper);
+  max-width: 14ch;
 }
+
+.interiorStylingSection > p {
+  margin: 0;
+  max-width: 52ch;
+  text-align: left;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  line-height: 1.7;
+  color: var(--h-on-paper-muted);
+}
+.interiorStylingSection > p:first-of-type {
+  font-family: var(--h-display);
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.3rem);
+  line-height: 1.25;
+  color: var(--h-on-paper);
+}
+
 .lineWrapper {
-  display: flex;
-  justify-content: center;
+  padding: 0;
+  margin: clamp(16px, 3vw, 40px) 0 0;
 }
 .line {
-  margin-top: 94px;
-  width: 922px;
+  display: block;
+  width: 72px;
   height: 1px;
-  background-color: #000;
-}
-.interiorStylingSection .lineVertical {
-  background-color: #000;
-  width: 1px;
-  margin-left: clamp(20px, 6vw, 97px);
-
-  display: flex;
-  height: 647px;
-}
-.buttonWrapper Button {
-  background-color: #000;
-  text-transform: uppercase;
-  color: white;
-  max-width: 347px;
-  font-family: var(--Inter);
-  height: 47px;
-}
-.buttonWrapper {
-  display: flex;
-  justify-content: center;
+  background: var(--h-accent);
 }
 
-@media (max-width: 576px) {
-  .lineWrapper {
-    display: flex;
-    width: 60%;
-    margin: 0 auto;
-  }
-  .formWrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 139px 0 168px 0;
-  }
-  .interiorStylingSection .lineVertical {
-    display: none;
-  }
-  .formWrapper > p {
-    margin-left: 0;
-  }
+.formWrapper {
+  grid-column: full;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: clamp(16px, 3vw, 40px);
+}
+
+.lineVertical {
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin: 0 0 20px max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  background: var(--h-accent);
+}
+
+.formWrapper > p {
+  margin: 0;
+  padding: 0 var(--h-gutter) clamp(48px, 6vw, 88px)
+    max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 1rem + 3vw, 3.6rem);
+  line-height: 1.15;
+  color: var(--h-accent);
+  background: transparent;
 }

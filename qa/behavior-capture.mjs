@@ -31,7 +31,7 @@ const settle = async p => {
     same = cur === prev ? same + 1 : 0; prev = cur; await sleep(150);
   }
 };
-const safe = async (name, fn) => { try { R[name] = await fn(); } catch (e) { R[name] = { ERROR: String(e.message).slice(0, 200) }; } console.log('✓', name); };
+const safe = async (name, fn) => { if (process.env.ONLY && !process.env.ONLY.split(',').includes(name.split(' ')[0])) return; try { R[name] = await fn(); } catch (e) { R[name] = { ERROR: String(e.message).slice(0, 200) }; } console.log('✓', name); };
 
 const objects = await (await fetch(`${API}/objects`)).json();
 const ids = objects.map(o => o._id);
@@ -44,17 +44,27 @@ await safe('pages', async () => {
     const p = await newPage(lang);
     for (const path of PAGES) {
       await go(p, path);
-      out[`${lang} ${path.replace(/[0-9a-f]{24}/, ':id')}`] = await p.evaluate(() => {
+      const grab = () => p.evaluate(() => {
         const main = document.querySelector('main');
-        const lines = main.innerText.split('\n').map(s => s.replace(/\s+/g, ' ').trim()).filter(Boolean);
+        // сырой текст узлов: не зависит от CSS (text-transform, display) — сравниваются сами тексты
+        const lines = [];
+        const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT);
+        for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+          if (['SCRIPT', 'STYLE'].includes(n.parentElement?.tagName)) continue;
+          const t = n.textContent.replace(/\s+/g, ' ').trim();
+          if (t) lines.push(t);
+        }
         const controls = [...main.querySelectorAll('input,select,textarea,button')].map(e => ({
           tag: e.tagName, type: e.type || '', id: e.id, name: e.name, ph: e.placeholder || '', ro: !!e.readOnly,
-          text: e.tagName === 'BUTTON' ? e.innerText.replace(/\s+/g, ' ').trim() : '',
+          text: e.tagName === 'BUTTON' ? e.textContent.replace(/\s+/g, ' ').trim() : '',
           opts: e.tagName === 'SELECT' ? [...e.options].map(o => o.value + '=' + o.text) : undefined,
         }));
         const links = [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href')).filter(h => h && !h.startsWith('#'));
-        return { lines, controls, links: [...new Set(links)].sort(), images: main.querySelectorAll('img').length, h1: [...main.querySelectorAll('h1')].map(h => h.innerText.trim()) };
+        return { lines, controls, links: [...new Set(links)].sort(), images: main.querySelectorAll('img').length, h1: [...main.querySelectorAll('h1')].map(h => h.textContent.trim()) };
       });
+      let snap;
+      for (let k = 0; k < 4 && !snap; k++) { try { snap = await grab(); } catch (e) { if (!/context was destroyed|navigation/.test(e.message)) throw e; await sleep(1500); } }
+      out[`${lang} ${path.replace(/[0-9a-f]{24}/, ':id')}`] = snap;
     }
     await p.ctx.close();
   }
@@ -141,7 +151,7 @@ await safe('pdf', async () => {
     const [dl] = await Promise.all([p.waitForEvent('download', { timeout: 8000 }), p.locator('main button').nth(1).click()]);
     const path = await dl.path();
     const bytes = fs.readFileSync(path).toString('latin1');
-    const texts = [...bytes.matchAll(/\(([^)]*)\)\s*Tj/g)].map(m => m[1]).filter(t => !/^\d{1,2}[./]\d{1,2}[./]\d{2,4}$/.test(t));
+    const texts = [...bytes.matchAll(/\(([^)]*)\)\s*Tj/g)].map(m => m[1].replace(/\x00/g, '').replace(/\d{1,2}\.\d{1,2}\.\d{4}/g, 'DATE'));
     out[lang] = { name: dl.suggestedFilename().replace(/\d{4}-\d{2}-\d{2}/, 'DATE'), texts };
     await p.ctx.close();
   }
@@ -211,7 +221,7 @@ if (GOOD_KEY) for (const m of ['ok', 'err500', 'err400']) await safe(`contact su
 // ---------- 4. Объекты: порядок, карточки, переходы, действия ----------
 await safe('listing', async () => {
   const p = await newPage('de'); await go(p, '/immobilien');
-  const cards = await p.evaluate(() => [...document.querySelectorAll('main a[href^="/immobilien/"]')].map(a => ({ href: a.getAttribute('href'), text: a.innerText.replace(/\s+/g, ' ').trim(), imgs: a.querySelectorAll('img').length })));
+  const cards = await p.evaluate(() => [...document.querySelectorAll('main a[href^="/immobilien/"]')].map(a => ({ href: a.getAttribute('href'), text: a.textContent.replace(/\s+/g, ' ').trim(), imgs: a.querySelectorAll('img').length })));
   const apiOrder = ids;
   await p.locator('main a[href^="/immobilien/"]').first().click(); await sleep(1200);
   const afterClick = new URL(p.url()).pathname;
@@ -223,7 +233,7 @@ await safe('detail actions', async () => {
   for (const id of ids.slice(0, 2)) {
     const p = await newPage('de'); await go(p, `/immobilien/${id}`); await sleep(1200);
     const info = await p.evaluate(() => ({
-      buttons: [...document.querySelectorAll('main button')].map(b => b.innerText.replace(/\s+/g, ' ').trim()).filter(Boolean),
+      buttons: [...document.querySelectorAll('main button')].map(b => b.textContent.replace(/\s+/g, ' ').trim()).filter(Boolean),
       imgs: document.querySelectorAll('main img').length,
       links: [...document.querySelectorAll('main a[href]')].map(a => a.getAttribute('href')),
     }));
@@ -245,7 +255,7 @@ await safe('detail actions', async () => {
 await safe('language switch', async () => {
   const p = await newPage('de'); await go(p, '/wertermittlung');
   const out = {};
-  const h1 = () => p.evaluate(() => (document.querySelector('main h1')?.innerText || '').replace(/\s+/g, ' ').trim());
+  const h1 = () => p.evaluate(() => (document.querySelector('main h1')?.textContent || '').replace(/\s+/g, ' ').trim());
   const btn = l => p.locator('button:visible, a:visible', { hasText: new RegExp(`^${l}$`) }).first();
   out.de = await h1();
   await btn('EN').click(); await sleep(700); out.en = { h1: await h1(), ls: await p.evaluate(() => localStorage.getItem('immoTonnLanguage')), path: new URL(p.url()).pathname };

@@ -1,6 +1,7 @@
 import PrivacyPolicyThree from '@widgets/PrivacyPoliceComponents/PrivacyPolicyThree';
 import styles from '@shared/styles/PrivacyPolicy.module.css';
 import PrivacyPolicyTwo from '@widgets/PrivacyPoliceComponents/PrivacyPolicyTwo';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const PrivacyPolicy = () => {
   return (
@@ -1011,4 +1012,4 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+export default withPageShell(PrivacyPolicy);

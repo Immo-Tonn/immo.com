@@ -4,6 +4,7 @@ import ValuationCTA from '@widgets/ValuationCTA/ValuationCTA';
 import HeroValuation from '@widgets/hero/HeroValuation/HeroValuation.module';
 import Seo from '@shared/ui/Seo/Seo';
 import { useTranslation } from 'react-i18next';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const valuationSchema = {
   '@context': 'https://schema.org',
@@ -41,4 +42,4 @@ const Valuation = () => {
     </>
   );
 };
-export default Valuation;
+export default withPageShell(Valuation);

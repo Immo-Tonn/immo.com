@@ -1,62 +1,128 @@
-.textBlock {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 1200px;
-}
-.textBlock h3 {
-  margin: 20px;
-  font-family: var(--Inter);
-  font-weight: var(--font-weight-main);
-  font-size: clamp(var(--font-size-secondary), 5vw, 40px);
-  color: #000;
-}
-.textBlock ol,
-.textBlock ul {
-  display: flex;
-  flex-direction: column;
-  font-weight: var(--font-weight-secondary);
-  font-family: var(--Inter);
-  font-size: var(--font-size-small);
-  color: #000;
-  max-width: 600px;
-}
-
-.textBlock .listWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.buttonWrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 97px;
-}
-.buttonWrapper Button {
-  max-width: 832px;
-  background-color: var(--secondary-color);
-  font-weight: var(--font-weight-secondary);
-  font-size: clamp(10px, 5vw, 36px);
-  color: #fcfdff;
-}
+/* Wertermittlung — «Worauf ist zu achten / Ablauf»: светлая секция, два столбца */
 .howIsGoingSection {
-  margin-top: clamp(40px, 6vh, 91px);
+  padding: clamp(72px, 9vw, 140px)
+    max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  background: var(--h-paper);
+  color: var(--h-on-paper);
 }
 
-@media (max-width: 765px) {
+.textBlock {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(32px, 7vw, 120px);
+  row-gap: 0;
+  align-items: start;
+}
+
+.textBlock > h3 {
+  margin: 0 0 1.4rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--h-line-paper);
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 1.1rem + 1.8vw, 2.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--h-on-paper);
+}
+
+.textBlock > :nth-child(1) { grid-column: 1; grid-row: 1; }
+.textBlock > :nth-child(2) { grid-column: 1; grid-row: 2; }
+.textBlock > :nth-child(3) { grid-column: 2; grid-row: 1; }
+.textBlock > :nth-child(4) { grid-column: 2; grid-row: 2; }
+.textBlock > :nth-child(5) { grid-column: 1 / -1; grid-row: 3; }
+
+.listWrapper ul,
+.listWrapper ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.listWrapper li {
+  position: relative;
+  padding: 0.95rem 0 0.95rem 2.4rem;
+  border-bottom: 1px solid var(--h-line-paper);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--h-on-paper-muted);
+}
+
+.listWrapper ul li::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 1.55rem;
+  width: 10px;
+  height: 1px;
+  background: var(--h-accent);
+}
+
+.listWrapper ol li {
+  counter-increment: step;
+}
+.listWrapper ol li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.95rem;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--h-accent);
+}
+
+.buttonWrapper {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+@media (max-width: 900px) {
   .textBlock {
-    align-items: center;
+    grid-template-columns: 1fr;
+  }
+  .textBlock > :nth-child(n) {
+    grid-column: 1;
+    grid-row: auto;
   }
   .textBlock > h3 {
-    text-align: center;
+    margin-top: 2.2rem;
+  }
+  .textBlock > h3:first-child {
+    margin-top: 0;
   }
 }
-@media (max-width: 576px) {
-  .textBlock .textWrapper {
-    max-width: 353px;
-  }
-  .textBlock ol,
-  .textBlock ul {
-    padding-left: clamp(12px, 2vw, 24px);
-  }
+
+.buttonWrapper a {
+  display: inline-flex;
+  margin-top: 0 !important;
+  border-radius: 999px;
+  text-decoration: none;
+}
+.buttonWrapper button {
+  min-height: 56px;
+  padding: 0 34px;
+  border: 1px solid var(--h-accent);
+  border-radius: 999px;
+  background: var(--h-accent);
+  color: #fff;
+  font-family: var(--h-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  box-shadow: 0 10px 30px -12px rgba(36, 87, 197, 0.7);
+  cursor: pointer;
+  transition:
+    background-color 0.35s var(--h-ease),
+    transform 0.35s var(--h-ease);
+}
+.buttonWrapper button:hover {
+  background: var(--h-accent-hover);
+  border-color: var(--h-accent-hover);
+  transform: translateY(-2px);
+}
+.buttonWrapper button:disabled {
+  opacity: 0.75;
+  cursor: progress;
 }

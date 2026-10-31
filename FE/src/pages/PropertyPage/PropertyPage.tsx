@@ -9,6 +9,7 @@ import ContactForm from '@features/contact/ui/ContactForm';
 import styles from './PropertyPage.module.css';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
 import { useTranslation } from 'react-i18next';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const PropertyPage: React.FC = () => {
   const { t } = useTranslation();
@@ -167,4 +168,4 @@ const PropertyPage: React.FC = () => {
   );
 };
 
-export default PropertyPage;
+export default withPageShell(PropertyPage);

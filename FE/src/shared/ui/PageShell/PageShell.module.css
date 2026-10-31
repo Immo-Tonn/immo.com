@@ -1,0 +1,137 @@
+/* ==========================================================================
+   PageShell — оболочка остальных публичных страниц в стиле новой Home
+   («Nachtarchitektur»). Токены те же, что у .home; изолированы областью .shell.
+   Шрифты Cormorant (самохостинг) + Inter. Header/Footer и админка не затрагиваются.
+   ========================================================================== */
+
+@font-face {
+  font-family: 'ImmoDisplay';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/home/cormorant-cyrillic-wght-normal.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'ImmoDisplay';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/home/cormorant-cyrillic-wght-italic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'ImmoDisplay';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/home/cormorant-latin-ext-wght-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'ImmoDisplay';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/home/cormorant-latin-ext-wght-italic.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'ImmoDisplay';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/home/cormorant-latin-wght-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'ImmoDisplay';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/home/cormorant-latin-wght-italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.shell {
+  --h-ink: #160c20;
+  --h-ink-2: #1d1229;
+  --h-ink-3: #2a1c3a;
+  --h-paper: #f4efe8;
+  --h-paper-2: #e9e1d4;
+  --h-accent-light: #7da6f5;
+  --h-accent: #2457c5;
+  --h-accent-hover: #3b6fd9;
+  --h-on-dark: #f6f1ea;
+  --h-on-dark-muted: rgba(246, 241, 234, 0.78);
+  --h-on-paper: #1a1024;
+  --h-on-paper-muted: #4d4358;
+  --h-line-dark: rgba(246, 241, 234, 0.16);
+  --h-line-paper: rgba(26, 16, 36, 0.16);
+  --h-danger: #b3261e;
+  --h-danger-light: #ff9b94;
+
+  --h-display: 'ImmoDisplay', 'Cormorant Garamond', Georgia, 'Times New Roman',
+    serif;
+  --h-sans: var(--Inter), system-ui, sans-serif;
+
+  --h-gutter: clamp(20px, 5vw, 72px);
+  --h-max: 1320px;
+  --h-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: var(--h-sans);
+  color: var(--h-on-dark);
+  background: var(--h-ink);
+  overflow-x: clip;
+  display: flow-root;
+}
+
+/* глобальные a:hover / p > a:hover не должны сдвигать элементы внутри страниц */
+.shell a,
+.shell a:hover {
+  transform: none;
+}
+
+.shell :focus-visible {
+  outline: 2px solid var(--h-accent-light);
+  outline-offset: 3px;
+}
+
+/* плавное появление (без JS; контент виден, если анимация не сработала) */
+@keyframes :global(pRise) {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes :global(pFade) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell *,
+  .shell *::before,
+  .shell *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

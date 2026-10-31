@@ -7,6 +7,7 @@ import { usePropertysData } from '@shared/api/usePropertyData';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const RealEstate = () => {
   const { t } = useTranslation();
@@ -117,4 +118,4 @@ const RealEstate = () => {
   );
 };
 
-export default RealEstate;
+export default withPageShell(RealEstate);

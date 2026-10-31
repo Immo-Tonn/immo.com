@@ -1,134 +1,180 @@
-.image {
-  width: 100%;
-  position: relative;
-  box-shadow: 0 4px 25px 4px rgba(0, 0, 0, 0.25);
-}
-.imageWrapper {
-  position: relative;
-  width: 100%;
-}
+/* Recht & Rat — редакционная раскладка: сетка с «вылетами» для фото и формы */
 .rechtSection {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.firstTitleWrapper {
-  top: clamp(20px, 5vw, 196px);
-  left: clamp(20px, 5vw, 53px);
-  position: absolute;
-}
-
-.firstTitleWrapper > h1 {
-  font-family: var(--Roboto);
-  font-weight: var(--font-weight-main);
-  font-size: clamp(var(--font-size-main), 10vw, 96px);
-  color: #fff;
-  text-shadow: 6px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.rechtSection > h2 {
-  font-family: var(--Roboto);
-  font-size: 36px;
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 40px;
-}
-
-.textBlockL {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 150px;
-  padding: 2rem 1rem;
-  margin: 70px 50px;
-  grid-template-areas: 'blockTitle blockText ';
+  grid-template-columns:
+    [full-start] minmax(var(--h-gutter), 1fr)
+    [content-start] minmax(0, var(--h-max))
+    [content-end] minmax(var(--h-gutter), 1fr)
+    [full-end];
+  row-gap: clamp(40px, 6vw, 88px);
+  padding: 0;
+  background:
+    radial-gradient(
+      ellipse at 90% 18%,
+      rgba(36, 87, 197, 0.16) 0%,
+      rgba(36, 87, 197, 0) 50%
+    ),
+    var(--h-ink);
+  color: var(--h-on-dark);
 }
 
+.rechtSection > * {
+  grid-column: content;
+  min-width: 0;
+}
+
+/* hero: фото + заголовок поверх */
+.imageWrapper {
+  grid-column: full;
+  position: relative;
+  display: block;
+  min-height: clamp(420px, 66vh, 640px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.imageWrapper .image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.imageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(22, 12, 32, 0.82) 0%, rgba(22, 12, 32, 0.25) 70%),
+    linear-gradient(0deg, var(--h-ink) 0%, rgba(22, 12, 32, 0) 35%);
+}
+.firstTitleWrapper {
+  position: absolute;
+  left: max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  right: var(--h-gutter);
+  bottom: clamp(32px, 6vw, 80px);
+  padding: 0;
+  background: none;
+}
+.firstTitleWrapper h1 {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(2.8rem, 1.2rem + 6vw, 6.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--h-on-dark);
+  text-wrap: balance;
+  animation: pRise 1.1s var(--h-ease) 0.2s both;
+}
+
+/* вводная фраза */
+.rechtSection > h2 {
+  margin: clamp(24px, 4vw, 56px) 0 0;
+  max-width: 30ch;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 1rem + 2.8vw, 3.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--h-accent-light);
+  text-wrap: balance;
+}
+
+/* блоки «заголовок | текст» */
+.textBlockL,
 .textBlockR {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 150px;
-  padding: 2rem 1rem;
-  margin: 70px 50px;
-  grid-template-areas: 'blockText blockTitle';
+  gap: clamp(20px, 5vw, 80px);
+  align-items: start;
+  padding-top: clamp(24px, 3vw, 40px);
+  border-top: 1px solid var(--h-line-dark);
+}
+.textBlockL {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+.textBlockR {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
 }
 
-.blockTitle {
-  grid-area: blockText;
+.blockTitle h2 {
+  margin: 0;
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 1.1rem + 2vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--h-on-dark);
+}
+.textBlockR .blockTitle {
+  text-align: right;
 }
 
-.blockTitle {
-  grid-area: blockTitle;
+.blockText p {
+  margin: 0;
+  max-width: 58ch;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--h-on-dark-muted);
 }
 
-.blockTitle > h2 {
-  font-size: clamp(var(--font-size-small), 6vw, 40px);
-  font-weight: bold;
-  margin-top: 100px;
-  font-family: var(--Roboto);
+/* фото между блоками */
+.rechtSection > div:not([class]),
+.rechtSection > .image {
+  grid-column: full;
+}
+.rechtSection > div:not([class]) .image,
+.rechtSection > .image {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 42vw, 560px);
+  object-fit: cover;
 }
 
-.blockText > p {
-  font-size: var(--font-size-small);
-  line-height: 1.6;
-  font-family: var(--Roboto);
+.rechtSection > hr {
+  width: 100%;
+  margin: clamp(8px, 2vw, 24px) 0 0;
+  border: 0;
+  border-top: 1px solid var(--h-line-dark);
 }
 
 .ziel {
-  font-family: var(--Roboto);
-  max-width: 981px;
-  text-align: center;
-  margin-top: 80px;
-  font-weight: var(--font-weight-secondary);
-  font-size: clamp(20px, 4vw, var(--font-size-small));
+  margin: 0;
+  max-width: 24ch;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 1.1rem + 3.6vw, 4.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--h-on-dark);
+  text-wrap: balance;
+}
+.ziel br + * {
+  color: var(--h-accent-light);
 }
 
+/* форма контакта в конце страницы — на всю ширину */
+.rechtSection > :last-child {
+  grid-column: full;
+}
+
+@media (max-width: 900px) {
+  .textBlockL,
+  .textBlockR {
+    grid-template-columns: 1fr;
+  }
+  .textBlockR .blockTitle {
+    text-align: left;
+    order: -1;
+  }
+}
+
+/* Глобальное правило прежнего файла (действовало на весь сайт) — сохранено без изменений */
 hr {
   margin: 0 auto;
   width: 80%;
-}
-
-@media (max-width: 765px) {
-  .blockText > p {
-    font-size: 18px;
-  }
-
-  .textBlockL,
-  .textBlockR {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 'blockText' 'blockTitle';
-    gap: 50px;
-    padding:
-      1rem 0,
-      5rem;
-    margin: 50px 30px;
-  }
-
-  .textBlockR .blockTitle {
-    margin-left: 150px;
-  }
-
-  .textBlockL .blockTitle {
-    margin-right: 150px;
-  }
-
-  .textBlockR .blockText {
-    margin-right: 150px;
-  }
-
-  .textBlockL .blockText {
-    margin-left: 150px;
-  }
-}
-
-@media (max-width: 576px) {
-  h2 {
-    font-size: var(--font-size-small);
-  }
-
-  .textBlockR .blockText,
-  .textBlockL .blockText {
-    margin: 0;
-  }
 }

@@ -1,58 +1,110 @@
+/* Wertermittlung — «Vertrauen durch Kompetenz»: тёмная секция, текст + фото */
 .competenceSection {
-  background-color: #f2f1f1;
-  padding: 66px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  grid-template-areas:
+    'title img'
+    'line img'
+    'p1 img'
+    'p2 img'
+    'second second';
+  column-gap: clamp(32px, 7vw, 120px);
+  align-content: start;
+  padding: clamp(72px, 9vw, 140px)
+    max(var(--h-gutter), calc((100% - var(--h-max)) / 2));
+  background:
+    radial-gradient(
+      ellipse at 85% 10%,
+      rgba(36, 87, 197, 0.2) 0%,
+      rgba(36, 87, 197, 0) 55%
+    ),
+    var(--h-ink);
+  color: var(--h-on-dark);
 }
+
 .firstTitle {
-  margin-bottom: 20px;
-  font-family: var(--Inter);
-  font-weight: var(--font-weight-secondary);
-  font-size: clamp(10px, 5vw, var(--font-size-big));
-  color: #000;
-}
-.secondTitle {
-  position: relative;
-  font-weight: 900;
-  font-size: clamp(var(--font-size-secondary), 5vw, var(--font-size-main));
-  text-align: center;
-  color: #fbfbfe;
-  font-family: var(--Inter);
-  max-width: 1044px;
+  grid-area: title;
+  margin: 0;
+  font-family: var(--h-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 1.1rem + 3.6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--h-on-dark);
+  text-wrap: balance;
 }
 
 .line {
-  width: 100%;
-  max-width: 582px;
-  border-bottom: 1px solid #000;
+  grid-area: line;
+  display: block;
+  width: 72px;
+  height: 1px;
+  margin: 24px 0 28px;
+  background: var(--h-accent-light);
 }
 
 .competenceSection > p {
-  font-weight: var(--font-weight-secondary);
-  font-family: var(--Inter);
-  margin: 20px 20px 0 50px;
-  font-size: clamp(10px, 5vw, var(--font-size-small));
-  max-width: 1028px;
+  margin: 0 0 1.2rem;
+  max-width: 54ch;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--h-on-dark-muted);
 }
-.titleWrapper {
-  display: flex;
-  width: 1214px;
-  height: 216px;
-  align-items: center;
-  background-color: var(--secondary-color);
-  width: 100%;
-  justify-content: center;
+.competenceSection > p:nth-of-type(1) {
+  grid-area: p1;
+  font-family: var(--h-display);
+  font-size: clamp(1.3rem, 1rem + 0.9vw, 1.7rem);
+  line-height: 1.38;
+  color: var(--h-on-dark);
+}
+.competenceSection > p:nth-of-type(2) {
+  grid-area: p2;
 }
 
 .competenceSection > img {
-  margin-top: clamp(40px, 6vh, 91px);
+  grid-area: img;
+  align-self: start;
   width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.85);
 }
 
-@media (max-width: 765px) {
+.titleWrapper {
+  grid-area: second;
+  margin-top: clamp(56px, 8vw, 120px);
+  padding-top: clamp(28px, 4vw, 48px);
+  border-top: 1px solid var(--h-line-dark);
+}
+
+.secondTitle {
+  margin: 0;
+  max-width: 28ch;
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 1rem + 2.6vw, 3.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--h-accent-light);
+  text-wrap: balance;
+}
+
+@media (max-width: 900px) {
+  .competenceSection {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'line'
+      'p1'
+      'p2'
+      'img'
+      'second';
+  }
   .competenceSection > img {
-    margin-top: clamp(40px, 6vh, 91px);
-    max-width: 768px;
+    aspect-ratio: 4 / 3;
+    margin-top: 1.5rem;
   }
 }

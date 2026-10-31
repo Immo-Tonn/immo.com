@@ -1,5 +1,6 @@
 import ContactForm from '@features/contact/ui/ContactForm';
 import MortgageCalculator from '@features/mortgage/ui/MortgageCalculator';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const Financing = () => {
   return (
@@ -10,4 +11,4 @@ const Financing = () => {
   );
 };
 
-export default Financing;
+export default withPageShell(Financing);
