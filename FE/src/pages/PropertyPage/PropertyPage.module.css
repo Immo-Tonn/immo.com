@@ -237,6 +237,9 @@
 .propertyPageContainer:has(> section) > p {
   grid-area: admin;
 }
+.propertyPageContainer:has(> section) > :last-child {
+  grid-area: form;
+}
 .adminActions {
   grid-area: admin;
 }
