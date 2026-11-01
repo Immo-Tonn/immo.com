@@ -93,3 +93,13 @@
     padding: 28px 22px;
   }
 }
+
+/* Компактнее */
+.dankeWrapper {
+  min-height: clamp(380px, 62vh, 560px);
+  padding-top: clamp(28px, 4vw, 56px);
+  padding-bottom: clamp(28px, 4vw, 56px);
+}
+.card h1 {
+  font-size: var(--h-h1);
+}

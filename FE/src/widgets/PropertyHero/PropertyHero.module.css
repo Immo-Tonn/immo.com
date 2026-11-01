@@ -649,7 +649,7 @@ iframe {
   grid-area: title;
   margin: 0;
   padding: clamp(28px, 3.4vw, 52px) 0 clamp(16px, 2vw, 26px);
-  font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2.5rem);
+  font-size: var(--h-h1-long);
   line-height: 1.12;
   overflow-wrap: break-word;
   hyphens: auto;

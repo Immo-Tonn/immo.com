@@ -54,3 +54,20 @@
 .firstTitle::first-line {
   font-style: normal;
 }
+
+/* Компактный hero */
+.objectSection {
+  min-height: clamp(240px, 36vh, 360px);
+  padding-bottom: clamp(24px, 3.5vw, 44px);
+}
+.firstTitle {
+  max-width: var(--h-max);
+  font-size: var(--h-h1);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 765px) {
+  .objectSection {
+    min-height: clamp(200px, 32vh, 280px);
+  }
+}

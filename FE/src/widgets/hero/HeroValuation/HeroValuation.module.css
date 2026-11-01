@@ -97,3 +97,28 @@
       url('@shared/assets/hero-valuation/hero-valuation-photo.webp');
   }
 }
+
+/* Компактный hero: фото-полоса, заголовок H1 в 1–2 строки */
+.heroValuationSection {
+  min-height: clamp(240px, 36vh, 360px);
+  padding-bottom: clamp(24px, 3.5vw, 44px);
+}
+.contentWrapper::before {
+  margin-bottom: calc(-1 * clamp(24px, 3.5vw, 44px));
+}
+.heroValuationSection > p {
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+.textWrapper > h1 {
+  max-width: 26ch;
+  font-size: var(--h-h1);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 765px) {
+  .heroValuationSection {
+    min-height: clamp(200px, 32vh, 280px);
+  }
+}

@@ -65,3 +65,26 @@
     min-height: clamp(420px, 70vh, 560px);
   }
 }
+
+/* Компактный hero */
+.textWrapper {
+  min-height: clamp(240px, 36vh, 360px);
+  padding-bottom: clamp(24px, 3.5vw, 44px);
+}
+.textOverlay > p,
+.textOverlay > h1 {
+  max-width: 30ch;
+  font-size: var(--h-h1);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+@media (max-width: 765px) {
+  .textWrapper {
+    min-height: clamp(200px, 32vh, 280px);
+  }
+}
+
+.textOverlay > p,
+.textOverlay > h1 {
+  max-width: 60ch;
+}

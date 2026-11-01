@@ -126,3 +126,8 @@
   opacity: 0.75;
   cursor: progress;
 }
+
+.howIsGoingSection {
+  padding-top: clamp(40px, 5vw, 72px);
+  padding-bottom: clamp(40px, 5vw, 72px);
+}

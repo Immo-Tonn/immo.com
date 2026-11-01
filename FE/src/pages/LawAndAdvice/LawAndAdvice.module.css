@@ -181,3 +181,29 @@ hr {
   margin: 0 auto;
   width: 80%;
 }
+
+/* Компактный вводный блок */
+.rechtSection {
+  row-gap: clamp(28px, 4vw, 56px);
+}
+.imageWrapper {
+  min-height: clamp(240px, 36vh, 360px);
+}
+.firstTitleWrapper {
+  bottom: clamp(24px, 3.5vw, 44px);
+}
+.firstTitleWrapper h1 {
+  max-width: 24ch;
+  font-size: var(--h-h1);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.rechtSection > h2 {
+  margin-top: clamp(4px, 1vw, 12px);
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
+}
+@media (max-width: 765px) {
+  .imageWrapper {
+    min-height: clamp(200px, 32vh, 280px);
+  }
+}

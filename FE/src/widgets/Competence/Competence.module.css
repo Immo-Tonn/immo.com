@@ -108,3 +108,13 @@
     margin-top: 1.5rem;
   }
 }
+
+/* Компактнее: вводный блок секции */
+.competenceSection {
+  padding-top: clamp(40px, 5vw, 72px);
+  padding-bottom: clamp(40px, 5vw, 72px);
+}
+.firstTitle {
+  font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3.25rem);
+  line-height: 1.1;
+}

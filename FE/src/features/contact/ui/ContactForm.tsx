@@ -14,7 +14,7 @@ const ContactForm = () => {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    refs.current.forEach((ref, i) => {
+    refs.current.forEach(ref => {
       if (ref)
         fadeInOnScroll(
           { current: ref },

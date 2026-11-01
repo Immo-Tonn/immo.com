@@ -157,3 +157,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+.effectSection {
+  padding-top: clamp(40px, 5vw, 72px);
+}
