@@ -14,8 +14,8 @@ const Effect = () => {
         fadeInOnScroll(
           { current: ref },
           i % 2 === 0
-            ? { x: -100, y: 0, duration: 0.3, start: 'top 95%' }
-            : { x: 100, y: -50, duration: 0.2, start: 'top 95%' },
+            ? { x: -100, y: 0, duration: 0.3, start: 'top bottom' }
+            : { x: 100, y: -50, duration: 0.2, start: 'top bottom' },
         );
       }
     });

@@ -13,8 +13,8 @@ const Competence = () => {
         fadeInOnScroll(
           { current: ref },
           i % 2 === 0
-            ? { x: -100, y: 0, start: 'top 95%' }
-            : { x: 150, y: -150, start: 'top 95%' },
+            ? { x: -100, y: 0, start: 'top bottom' }
+            : { x: 150, y: -150, start: 'top bottom' },
         );
       }
     });

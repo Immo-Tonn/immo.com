@@ -19,8 +19,8 @@ const LawAndAdvice = () => {
         fadeInOnScroll(
           { current: ref },
           i % 2 === 0
-            ? { x: -100, y: 50, start: 'top 95%' }
-            : { x: 100, y: -50, start: 'top 95%' },
+            ? { x: -100, y: 50, start: 'top bottom' }
+            : { x: 100, y: -50, start: 'top bottom' },
         );
     });
   }, []);

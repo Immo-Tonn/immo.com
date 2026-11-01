@@ -14,7 +14,7 @@ const AgentBenefits: React.FC = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    fadeInOnScroll(ref, { y: 100, x: -40, start: 'top 95%' });
+    fadeInOnScroll(ref, { y: 100, x: -40, start: 'top bottom' });
   }, []);
 
   return (
