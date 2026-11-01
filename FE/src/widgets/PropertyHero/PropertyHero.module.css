@@ -648,7 +648,7 @@ iframe {
 .title {
   grid-area: title;
   margin: 0;
-  padding: clamp(28px, 3.4vw, 52px) 0 clamp(16px, 2vw, 26px);
+  padding: var(--h-top) 0 var(--h-after);
   font-size: var(--h-h1-long);
   line-height: 1.12;
   overflow-wrap: break-word;

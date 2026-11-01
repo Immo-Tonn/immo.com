@@ -87,6 +87,8 @@
   --h-max: 1320px;
   /* компактный H1 внутренних страниц (Home не использует PageShell) */
   --h-h1: clamp(1.625rem, 1.2rem + 1.5vw, 2.75rem);
+  --h-top: clamp(24px, 0.5rem + 2.8vw, 56px); /* от Header до первого заголовка */
+  --h-after: clamp(20px, 0.9rem + 0.9vw, 32px); /* после заголовка до содержимого */
   --h-h1-long: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
   --h-ease: cubic-bezier(0.22, 1, 0.36, 1);
 

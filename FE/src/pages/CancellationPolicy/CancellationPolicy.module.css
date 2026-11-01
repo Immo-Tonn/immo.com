@@ -117,7 +117,7 @@
 
 /* Компактный заголовок и отступы листа */
 .container {
-  margin-top: clamp(16px, 2.4vw, 36px);
+  margin-top: var(--h-top);
   padding-top: clamp(24px, 3.4vw, 44px);
 }
 .container + .container {

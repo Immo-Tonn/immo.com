@@ -150,14 +150,14 @@
    ========================================================================== */
 .realEstateSection,
 .container {
-  padding-top: clamp(24px, 2.6vw, 40px);
+  padding-top: var(--h-top);
   padding-bottom: clamp(48px, 6vw, 88px);
 }
 .pageHeader {
   align-items: baseline;
   gap: 8px 28px;
-  margin-bottom: clamp(18px, 2.2vw, 30px);
-  padding-bottom: clamp(12px, 1.6vw, 18px);
+  margin-bottom: var(--h-after);
+  padding-bottom: clamp(14px, 1.6vw, 20px);
 }
 .title {
   font-size: var(--h-h1);

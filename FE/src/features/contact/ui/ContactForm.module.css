@@ -2,7 +2,7 @@
 .formWrapper {
   display: flex;
   justify-content: center;
-  padding: clamp(28px, 3.2vw, 48px) var(--h-gutter) clamp(48px, 6vw, 88px);
+  padding: var(--h-top) var(--h-gutter) clamp(48px, 6vw, 88px);
   background: var(--h-paper);
   color: var(--h-on-paper);
 }
@@ -15,7 +15,7 @@
 
 .heading {
   max-width: 30ch;
-  margin: 0 0 clamp(14px, 1.8vw, 22px);
+  margin: 0 0 var(--h-after);
   font-family: var(--h-display);
   font-size: var(--h-h1);
   font-weight: 500;

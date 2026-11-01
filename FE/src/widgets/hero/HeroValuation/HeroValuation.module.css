@@ -98,27 +98,46 @@
   }
 }
 
-/* Компактный hero: фото-полоса, заголовок H1 в 1–2 строки */
+/* Компактный hero: фото-полоса, текст — единый блок с общей левой границей */
 .heroValuationSection {
-  min-height: clamp(240px, 36vh, 360px);
-  padding-bottom: clamp(24px, 3.5vw, 44px);
+  min-height: clamp(260px, 38vh, 380px);
+  padding-top: var(--h-top);
+  padding-bottom: clamp(28px, 3.6vw, 52px);
 }
 .contentWrapper::before {
-  margin-bottom: calc(-1 * clamp(24px, 3.5vw, 44px));
+  margin: calc(-1 * var(--h-top)) calc(-1 * var(--h-gutter)) calc(-1 * clamp(28px, 3.6vw, 52px));
 }
 .heroValuationSection > p {
-  margin-bottom: 10px;
+  display: block;
+  width: min(100%, 52ch);
+  max-width: none;
+  margin: 0 0 12px max(0px, calc((100% - var(--h-max)) / 2));
+  padding: 0;
   font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-wrap: balance;
+}
+/* короткая линия над подписью вместо линии в строке — общий левый край с заголовком */
+.heroValuationSection > p::before {
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin-bottom: 12px;
 }
 .textWrapper > h1 {
-  max-width: 26ch;
+  max-width: min(100%, 34ch);
   font-size: var(--h-h1);
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 @media (max-width: 765px) {
   .heroValuationSection {
-    min-height: clamp(200px, 32vh, 280px);
+    min-height: clamp(240px, 36vh, 320px);
+  }
+  .heroValuationSection > p {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
   }
 }
