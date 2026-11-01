@@ -166,3 +166,22 @@
   font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3.25rem);
   line-height: 1.1;
 }
+
+/* масштаб заголовков секции согласован с hero (40 px) и правой колонкой */
+.firstTitle {
+  max-width: 22ch;
+  font-size: clamp(1.5rem, 1rem + 1.3vw, 2.25rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+.firstTitle::after {
+  width: 56px;
+  height: 2px;
+  margin-top: 18px;
+}
+.valuationCTASection {
+  gap: clamp(32px, 4vw, 64px) clamp(32px, 6vw, 96px);
+}
+.secondTitle {
+  font-size: clamp(1.4rem, 1rem + 1.2vw, 2.1rem);
+}
