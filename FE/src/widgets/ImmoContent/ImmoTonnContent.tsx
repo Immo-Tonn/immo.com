@@ -22,6 +22,7 @@ const ImmoTonnContent: React.FC = () => {
           {
             x: i % 2 === 0 ? 50 : -100,
             y: i % 2 === 0 ? 0 : -50,
+            start: 'top bottom',
           },
         );
     });
