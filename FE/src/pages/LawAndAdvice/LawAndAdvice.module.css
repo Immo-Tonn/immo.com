@@ -271,3 +271,37 @@ hr {
 .ziel {
   font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.6rem);
 }
+
+/* Высокий фотоблок: больше кадра по вертикали, текст внизу, затемнение плавно растёт к низу */
+.imageWrapper {
+  min-height: clamp(360px, 60vh, 580px);
+}
+.imageWrapper .image {
+  object-position: center 40%;
+}
+.imageWrapper::after {
+  background: linear-gradient(
+    0deg,
+    rgba(22, 12, 32, 0.86) 0%,
+    rgba(22, 12, 32, 0.6) 18%,
+    rgba(22, 12, 32, 0.24) 38%,
+    rgba(22, 12, 32, 0) 58%
+  );
+}
+@media (max-width: 765px) {
+  .imageWrapper {
+    min-height: clamp(380px, 60vh, 500px);
+  }
+  .imageWrapper .image {
+    object-position: 42% center;
+  }
+  .imageWrapper::after {
+    background: linear-gradient(
+      0deg,
+      rgba(22, 12, 32, 0.88) 0%,
+      rgba(22, 12, 32, 0.64) 24%,
+      rgba(22, 12, 32, 0.26) 46%,
+      rgba(22, 12, 32, 0) 66%
+    );
+  }
+}

@@ -163,3 +163,37 @@
     background-position: 22% center;
   }
 }
+
+/* Высокий фотоблок: больше кадра по вертикали, текст внизу, затемнение плавно растёт к низу */
+.heroValuationSection {
+  min-height: clamp(420px, 72vh, 700px);
+}
+.contentWrapper::before {
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(22, 12, 32, 0.86) 0%,
+      rgba(22, 12, 32, 0.62) 18%,
+      rgba(22, 12, 32, 0.26) 38%,
+      rgba(22, 12, 32, 0) 58%
+    ),
+    url('@shared/assets/hero-valuation/hero-valuation-photo.webp');
+  background-position: center 22%;
+}
+@media (max-width: 765px) {
+  .heroValuationSection {
+    min-height: clamp(400px, 64vh, 540px);
+  }
+  .contentWrapper::before {
+    background-image:
+      linear-gradient(
+        0deg,
+        rgba(22, 12, 32, 0.88) 0%,
+        rgba(22, 12, 32, 0.64) 24%,
+        rgba(22, 12, 32, 0.26) 46%,
+        rgba(22, 12, 32, 0) 66%
+      ),
+      url('@shared/assets/hero-valuation/hero-valuation-photo.webp');
+    background-position: 10% center;
+  }
+}
