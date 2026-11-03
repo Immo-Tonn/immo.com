@@ -317,8 +317,10 @@
   grid-row: 1 / span 2;
   grid-column: 3;
   justify-self: end;
-  align-self: center;
-  margin-bottom: 14px;
+  align-self: end;
+  margin-bottom: 7.5px;
+  position: relative;
+  z-index: 5;
   display: flex;
   align-items: center;
   gap: 18px;
@@ -533,6 +535,8 @@
 
 .headerLang {
   margin-left: 14px;
+  position: relative;
+  top: 1.5px; /* центр текста языка на линии меню */
 }
 
 /* глобальный a:hover { transform: scale(1.1) } здесь не нужен: размеры при hover не меняются */
@@ -549,4 +553,9 @@
 .callButton,
 .callIconButton {
   box-sizing: border-box;
+}
+
+/* меню слишком длинное для одной линии с правым блоком — блок выше меню */
+.contactStacked {
+  margin-bottom: 46px;
 }
