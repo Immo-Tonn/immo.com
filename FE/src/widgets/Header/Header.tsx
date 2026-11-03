@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -45,29 +45,6 @@ const Header = () => {
   const toggleDrawer = (open: boolean) => () => {
     setIsMenuOpen(open);
   };
-
-  /* Правый блок стоит на уровне меню; если меню (например, на RU) занимает
-     слишком много места и блок на него наезжает, блок остаётся выше меню */
-  const navRef = useRef<HTMLElement | null>(null);
-  const contactRef = useRef<HTMLDivElement | null>(null);
-  const [stacked, setStacked] = useState<boolean>(false);
-  useLayoutEffect(() => {
-    const check = () => {
-      const nav = navRef.current;
-      const block = contactRef.current;
-      if (!nav || !block || block.offsetParent === null) return;
-      const lastLink = nav.lastElementChild as HTMLElement | null;
-      if (!lastLink) return;
-      setStacked(
-        lastLink.getBoundingClientRect().right + 24 >
-          block.getBoundingClientRect().left,
-      );
-    };
-    check();
-    window.addEventListener('resize', check);
-    document.fonts?.ready.then(check);
-    return () => window.removeEventListener('resize', check);
-  });
 
   /* ---------- Admin state ---------- */
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
@@ -124,7 +101,7 @@ const Header = () => {
           </NavLink>
 
           <div className={styles.navContainer}>
-            <nav className={styles.nav} ref={navRef}>
+            <nav className={styles.nav}>
               {navLinks.map(link => (
                 <NavLink
                   key={link.path}
@@ -222,10 +199,7 @@ const Header = () => {
             </div>
           </Drawer>
 
-          <div
-            className={`${styles.contactColumn} ${stacked ? styles.contactStacked : ''}`}
-            ref={contactRef}
-          >
+          <div className={styles.contactColumn}>
             <a href="tel:01743454419" className={styles.callButton}>
               <PhoneIcon />
               <span>{t('header.call')}</span>

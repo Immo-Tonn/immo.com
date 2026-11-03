@@ -529,7 +529,7 @@
   /* меню остаётся на прежней высоте */
   .navContainer {
     position: relative;
-    top: 6px;
+    top: 4.5px;
   }
 }
 
@@ -555,7 +555,25 @@
   box-sizing: border-box;
 }
 
-/* меню слишком длинное для одной линии с правым блоком — блок выше меню */
-.contactStacked {
-  margin-bottom: 46px;
+/* Меню и правый блок делят одну линию: промежутки и шрифт подстраиваются под ширину окна */
+@media (min-width: 1201px) {
+  .nav {
+    gap: clamp(14px, 1.6vw, 24px);
+  }
+  .nav a {
+    font-size: clamp(16px, 1.18vw, 17px);
+    white-space: nowrap;
+  }
+  .contactColumn {
+    gap: clamp(10px, 0.9vw, 14px);
+  }
+  .callButton {
+    padding: 0 clamp(12px, 1.1vw, 16px);
+  }
+  .addressLink {
+    padding-left: clamp(10px, 1vw, 14px);
+  }
+  .headerLang {
+    margin-left: clamp(4px, 0.5vw, 8px);
+  }
 }
