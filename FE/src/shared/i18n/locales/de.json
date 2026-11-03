@@ -13,6 +13,8 @@
     "contact": "Kontakt"
   },
   "header": {
+    "call": "Anrufen",
+    "language": "Sprache wählen",
     "toHome": "Zur Startseite",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen"

@@ -68,71 +68,6 @@
   font-size: clamp(16px, 3vw, 20px) !important;
 }
 
-.contactColumn {
-  grid-row: 1 / span 2;
-  grid-column: 3;
-  justify-self: end;
-  align-self: end;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.bottomLangSwitcher {
-  margin-bottom: 5px;
-  padding-left: 26px;
-}
-
-
-.headerContacts {
-  align-items: center;
-  text-align: left;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.headerContacts > li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.headerContacts > li:last-child {
-  margin-bottom: 0;
-}
-
-.contactIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-}
-
-.contactIcon > img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  opacity: 0.9;
-}
-
-.contactTextWrapper > span {
-  display: block;
-  line-height: 1.4;
-}
-
-.contactText {
-  text-decoration: none;
-  color: #d9d9d9;
-  font-size: 14px;
-  letter-spacing: 0.01em;
-  display: flex;
-  transition:
-    transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1),
-    color 200ms;
-}
-
 .nav a {
   font-weight: var(--font-weight-secondary);
   font-size: 19px;
@@ -155,10 +90,6 @@
 }
 
 .nav a:hover::after {
-  width: 100%;
-}
-
-.contactText:hover::after {
   width: 100%;
 }
 
@@ -317,15 +248,6 @@
     align-self: flex-start;
   }
 
-  .contactText {
-    font-size: 11px;
-  }
-
-  .contactIcon > img {
-    width: 12px;
-    height: 12px;
-  }
-
   .nav a {
     font-size: 13px;
   }
@@ -388,4 +310,243 @@
   .drawerList {
     flex-direction: column;
   }
+}
+
+/* ---------- Правая часть (desktop): Anrufen | адрес | язык ---------- */
+.contactColumn {
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.callButton,
+.callIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  background: #14275f;
+  border: 1px solid rgba(125, 166, 245, 0.85);
+  box-shadow:
+    0 0 10px rgba(125, 166, 245, 0.38),
+    inset 0 0 8px rgba(125, 166, 245, 0.14);
+  transition:
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+.callButton {
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.callIcon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.callButton:hover,
+.callIconButton:hover,
+.callButton:focus-visible,
+.callIconButton:focus-visible {
+  border-color: #a9c4f8;
+  background: #17306f;
+  box-shadow:
+    0 0 16px rgba(125, 166, 245, 0.6),
+    inset 0 0 10px rgba(125, 166, 245, 0.22);
+}
+.callButton:focus-visible,
+.callIconButton:focus-visible {
+  outline: 2px solid #a9c4f8;
+  outline-offset: 2px;
+}
+
+.addressLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 18px;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
+  min-height: 40px;
+  color: #fff;
+  text-decoration: none;
+}
+.addressIcon {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+.addressText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.addressCity {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+.addressStreet {
+  font-size: 12px;
+  color: #d9d9d9;
+  white-space: nowrap;
+}
+.addressLink:hover .addressStreet,
+.addressLink:focus-visible .addressStreet {
+  color: #fff;
+}
+.addressLink:focus-visible {
+  outline: 2px solid #a9c4f8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- Переключатель языка (выпадающий) ---------- */
+.langDropdown {
+  position: relative;
+}
+.langTrigger {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 6px 2px 7px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #3d6fe0;
+  border-radius: 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+.langTrigger:focus-visible {
+  outline: 2px solid #a9c4f8;
+  outline-offset: 3px;
+}
+.langChevron {
+  width: 11px;
+  height: 11px;
+  transition: transform 180ms ease;
+}
+.langChevronOpen {
+  transform: rotate(180deg);
+}
+.langMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 60;
+  min-width: 76px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #1c1829;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.6);
+}
+.langOption {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 9px 12px;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  color: #d9d9d9;
+  font-family: inherit;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+.langOption:hover,
+.langOption:focus-visible {
+  background: rgba(125, 166, 245, 0.16);
+  color: #fff;
+  outline: none;
+}
+.langOptionActive {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- Планшет и мобильный: иконка звонка + язык + бургер ---------- */
+.callIconButton {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+}
+.callIconButton .callIcon {
+  width: 19px;
+  height: 19px;
+}
+@media (max-width: 1200px) {
+  .contactColumn {
+    display: none;
+  }
+  .callIconButton {
+    display: inline-flex;
+  }
+  .mobileActions {
+    gap: 12px;
+  }
+  .mobileActions .langTrigger {
+    font-size: 14px;
+  }
+}
+@media (max-width: 380px) {
+  .mobileActions {
+    gap: 8px;
+  }
+}
+
+/* Высота шапки на desktop прежняя (раньше её задавала правая колонка контактов) */
+@media (min-width: 1201px) {
+  .headerTop {
+    min-height: 125px;
+  }
+  /* меню остаётся на прежней высоте */
+  .navContainer {
+    position: relative;
+    top: 6px;
+  }
+}
+
+.headerLang {
+  margin-left: 14px;
+}
+
+/* глобальный a:hover { transform: scale(1.1) } здесь не нужен: размеры при hover не меняются */
+.callButton:hover,
+.callIconButton:hover,
+.addressLink:hover {
+  transform: none;
+}
+.callButton:hover,
+.callIconButton:hover {
+  color: #fff;
+}
+
+.callButton,
+.callIconButton {
+  box-sizing: border-box;
 }
