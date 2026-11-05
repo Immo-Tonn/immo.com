@@ -83,6 +83,7 @@ const RealEstate = () => {
                     refs.current[i] = el;
                   }}
                   residentialHouse={obj.residentialHouses}
+                  priority={i === 0}
                 />
               ))}
             </ul>

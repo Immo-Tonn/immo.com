@@ -131,7 +131,7 @@ const Header = () => {
 
           <div className={styles.mobileActions}>
             <a
-              href="tel:01743454419"
+              href="tel:+491743454419"
               className={styles.callIconButton}
               aria-label={t('header.call')}
             >
@@ -200,7 +200,7 @@ const Header = () => {
           </Drawer>
 
           <div className={styles.contactColumn}>
-            <a href="tel:01743454419" className={styles.callButton}>
+            <a href="tel:+491743454419" className={styles.callButton}>
               <PhoneIcon />
               <span>{t('header.call')}</span>
             </a>

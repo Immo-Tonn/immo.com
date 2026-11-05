@@ -1,6 +1,7 @@
 import { isRouteErrorResponse, Outlet, useLocation, useRouteError } from 'react-router';
 import Layout from '@widgets/Layout/Layout';
 import NotFound from '@pages/NotFound/NotFound';
+import PageShell from '@shared/ui/PageShell/PageShell';
 import LoadError from '@pages/NotFound/LoadError';
 import i18n from '@shared/i18n/i18n';
 import { langOf, readinessKey, readyLangs, toLang } from './seo/meta';
@@ -42,10 +43,14 @@ export function ErrorBoundary() {
       {notFound ? (
         <>
           <title>404 | Immo Tonn</title>
-          <NotFound />
+          <PageShell>
+            <NotFound />
+          </PageShell>
         </>
       ) : (
-        <LoadError />
+        <PageShell>
+          <LoadError />
+        </PageShell>
       )}
     </Layout>
   );

@@ -5,16 +5,12 @@ import { NavLink } from '@shared/lib/localeRouter';
 import { formatGermanCurrency } from '@features/utils/formatGermanCurrency';
 import { useTranslation } from 'react-i18next';
 
-const PropertyCard = forwardRef<HTMLLIElement, PropertyHeroProps>(
-  ({ object, images, residentialHouse }, ref) => {
+const PropertyCard = forwardRef<HTMLLIElement, PropertyHeroProps & { priority?: boolean }>(
+  ({ object, images, residentialHouse, priority }, ref) => {
     const { t } = useTranslation();
-    console.log('object.images:', object?.images);
-    console.log('images prop:', images);
 
     const imageId = object?.images?.[0];
-    console.log('imageId:', imageId);
     const imageObj = images?.find(img => img._id === imageId);
-    console.log('found imageObj:', imageObj);
     const backgroundUrl = imageObj?.url || null;
 
     const { title, address, price, status } = object;
@@ -33,7 +29,9 @@ const PropertyCard = forwardRef<HTMLLIElement, PropertyHeroProps>(
                 className={styles.image}
                 width="600"
                 height="300"
-                loading="lazy"
+                // первое фото каталога — вероятный LCP: не откладываем загрузку
+                loading={priority ? 'eager' : 'lazy'}
+                fetchPriority={priority ? 'high' : undefined}
               />
             ) : (
               <p className={styles.errorTitle}>{t('propertyCard.noPhoto')}</p>

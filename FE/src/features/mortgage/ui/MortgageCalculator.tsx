@@ -629,7 +629,7 @@ if (!brokerOptions.includes('3,57')) {
     }}
     inputMode="decimal"
   />
-  <img src={MarkerIcon} className={styles.markerIcon} />
+  <img src={MarkerIcon} alt="" className={styles.markerIcon} />
 </div>
 
           {interestDecimalError && (
