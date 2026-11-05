@@ -72,10 +72,15 @@ footer {
   margin-top: 8px;
   color: #7da6f5;
 }
-/* адрес в подвале: при наведении и фокусе — синий */
-.footerRight > a.footerAddress:hover,
-.footerRight > a.footerAddress:focus-visible {
+/* все ссылки правой колонки подвала (телефоны, сайт, адрес): при наведении и фокусе — синие */
+.footerRight > a:hover,
+.footerRight > a:focus-visible {
   color: #7da6f5;
+}
+/* e-mail уже синий — при наведении становится светлее */
+.footerRight > a.footerEmail:hover,
+.footerRight > a.footerEmail:focus-visible {
+  color: #a9c4f8;
 }
 .footerLinks > li > a::after {
   content: '';
