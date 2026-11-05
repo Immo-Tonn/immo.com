@@ -204,18 +204,28 @@ const Header = () => {
               <PhoneIcon />
               <span>{t('header.call')}</span>
             </a>
-            <a
-              href="https://www.google.com/maps/place/Sessendrupweg+54,+48161+M%C3%BCnster"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.addressLink}
-            >
-              <img className={styles.addressIcon} src={location} alt="" />
-              <span className={styles.addressText}>
-                <span className={styles.addressCity}>Münster</span>
-                <span className={styles.addressStreet}>Sessendrupweg 54</span>
-              </span>
-            </a>
+            <div className={styles.addressGroup}>
+              <a
+                href="https://www.google.com/maps/place/Sessendrupweg+54,+48161+M%C3%BCnster"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.addressLink}
+              >
+                <img className={styles.addressIcon} src={location} alt="" />
+                <span className={styles.addressText}>
+                  <span className={styles.addressCity}>Münster</span>
+                  <span className={styles.addressStreet}>
+                    Sessendrupweg 54
+                  </span>
+                </span>
+              </a>
+              <a
+                href="mailto:tonn_andreas@web.de"
+                className={styles.emailLink}
+              >
+                tonn_andreas@web.de
+              </a>
+            </div>
             <LanguageSwitcher className={styles.headerLang} />
           </div>
         </div>
