@@ -72,6 +72,9 @@ const Footer = () => {
           >
             Sessendrupweg 54 <p>48161 Münster</p>
           </a>
+          <a href="mailto:tonn_andreas@web.de" className={styles.footerEmail}>
+            tonn_andreas@web.de
+          </a>
         </div>
       </div>
       <div className={styles.bottomStripe}>

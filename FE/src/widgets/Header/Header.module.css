@@ -391,16 +391,8 @@
   color: #fff;
   text-decoration: none;
 }
-.emailLink {
-  font-size: 11px;
-  line-height: 1.2;
-  color: #a9c4f8;
-  text-decoration: none;
-  white-space: nowrap;
-}
 /* мягкое голубое свечение при hover и клавиатурном фокусе — без движения и смены размеров */
-.addressLink,
-.emailLink {
+.addressLink {
   padding: 2px 6px;
   margin: -2px -6px;
   border-radius: 8px;
@@ -409,16 +401,10 @@
     color 220ms ease;
 }
 .addressLink:hover,
-.addressLink:focus-visible,
-.emailLink:hover,
-.emailLink:focus-visible {
+.addressLink:focus-visible {
   box-shadow:
     0 0 14px rgba(125, 166, 245, 0.55),
     inset 0 0 8px rgba(125, 166, 245, 0.16);
-}
-.emailLink:hover,
-.emailLink:focus-visible {
-  color: #fff;
 }
 .addressIcon {
   width: 26px;
@@ -444,8 +430,7 @@
 .addressLink:focus-visible .addressStreet {
   color: #fff;
 }
-.addressLink:focus-visible,
-.emailLink:focus-visible {
+.addressLink:focus-visible {
   outline: 2px solid #a9c4f8;
   outline-offset: 2px;
 }
@@ -578,8 +563,7 @@
 /* глобальный a:hover { transform: scale(1.1) } здесь не нужен: размеры при hover не меняются */
 .callButton:hover,
 .callIconButton:hover,
-.addressLink:hover,
-.emailLink:hover {
+.addressLink:hover {
   transform: none;
 }
 .callButton:hover,

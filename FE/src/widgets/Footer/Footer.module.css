@@ -68,6 +68,9 @@ footer {
   text-align: left;
   color: white;
 }
+.footerRight > a.footerEmail {
+  margin-top: 8px;
+}
 .footerLinks > li > a::after {
   content: '';
   position: absolute;

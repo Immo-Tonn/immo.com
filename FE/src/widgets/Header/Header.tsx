@@ -219,12 +219,6 @@ const Header = () => {
                   </span>
                 </span>
               </a>
-              <a
-                href="mailto:tonn_andreas@web.de"
-                className={styles.emailLink}
-              >
-                tonn_andreas@web.de
-              </a>
             </div>
             <LanguageSwitcher className={styles.headerLang} />
           </div>
