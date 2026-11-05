@@ -13,5 +13,10 @@ export const pageMeta =
   ({ params }: { params: { lang?: string } }) => {
     const lang = toLang(params.lang);
     const { title, description } = seoOf(lang, seoKey);
-    return buildMeta({ title, description, lang, path });
+    const names = dict[lang].seo.breadcrumb as Record<string, string>;
+    const crumbs =
+      path !== '/' && names[seoKey]
+        ? [{ name: names[seoKey]!, path }]
+        : undefined;
+    return buildMeta({ title, description, lang, path, crumbs });
   };

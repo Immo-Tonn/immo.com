@@ -2,7 +2,8 @@ import PropertyPage from '@pages/PropertyPage/PropertyPage';
 import { loadObjectBundle } from '@shared/api/propertyLoaders';
 import { getBuiltObjectIds } from '@shared/api/builtObjects';
 import type { PropertyBundle } from '@shared/api/usePropertyData';
-import { buildMeta, toLang } from '../seo/meta';
+import { buildMeta, dict, fitTitle, langPath, SITE_URL, toLang } from '../seo/meta';
+import { ORGANIZATION_ID } from '../seo/structuredData';
 
 const load = ({ params }: { params: { id?: string } }) =>
   loadObjectBundle(params.id!);
@@ -36,13 +37,51 @@ export function meta({
   if (!data) {
     return [{ title: '404 | Immo Tonn' }, { name: 'robots', content: 'noindex' }];
   }
-  const { title, description } = data.object;
+  const { object, images } = data;
+  const flat = object.description.replace(/\s+/g, ' ').trim();
+  // описание для сниппета — до 160 символов, обрезка по слову
+  const description =
+    flat.length <= 160 ? flat : `${flat.slice(0, 159).replace(/\s+\S*$/, '')}…`;
+  const path = `/immobilien/${params.id}`;
+  const url = SITE_URL + langPath(lang, path);
+  // главное фото объекта; служебный параметр ?t= (метка времени) в адрес не берём
+  const main = images.find(i => i.type === 'main') ?? images[0];
+  const image = main ? encodeURI(main.url.split('?')[0]!) : undefined;
+  const sold = object.status === 'sold';
+  // Разметка соответствует видимому содержимому страницы; предложение (цена) — только
+  // для активных объектов, проданный объект остаётся страницей-архивом без оферты
+  const listing = {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateListing',
+    '@id': `${url}#listing`,
+    url,
+    name: object.title,
+    description,
+    datePosted: object.dateAdded,
+    ...(image ? { image } : {}),
+    provider: { '@id': ORGANIZATION_ID },
+    ...(!sold && Number(object.price) > 0
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: String(Number(object.price)),
+            priceCurrency: 'EUR',
+          },
+        }
+      : {}),
+  };
   return buildMeta({
-    title: `${title} | Immo Tonn`,
-    description: description.replace(/\s+/g, ' ').trim().slice(0, 160),
+    title: fitTitle(object.title),
+    description,
     lang,
-    path: `/immobilien/${params.id}`,
+    path,
     key: '/immobilien/:id',
+    image,
+    crumbs: [
+      { name: dict[lang].seo.breadcrumb.immobilien, path: '/immobilien' },
+      { name: object.title, path },
+    ],
+    ld: [listing],
   });
 }
 

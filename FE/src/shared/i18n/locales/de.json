@@ -47,6 +47,16 @@
     "widerruf": {
       "title": "Widerrufsbelehrung | Immo Tonn",
       "description": "Widerrufsrecht: Den Vertrag können Sie binnen vierzehn Tagen ohne Angabe von Gründen widerrufen – Informationen zu Frist, Ausübung und Folgen."
+    },
+    "breadcrumb": {
+      "home": "Startseite",
+      "immobilien": "Immobilien",
+      "wertermittlung": "Wertermittlung",
+      "finanzierung": "Finanzierung",
+      "rechner": "Finanzierungsrechner",
+      "kontakt": "Kontakt",
+      "verkaufssupport": "Verkaufssupport",
+      "rechtUndRat": "Recht & Rat"
     }
   },
   "nav": {

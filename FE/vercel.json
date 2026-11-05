@@ -19,5 +19,34 @@
       "source": "/(en|ru)/(preview-object|edit-object)/:id",
       "destination": "/__spa-fallback.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/(en/|ru/)?(add-property|register|forgot-password|change-password|create-object|edit-object/:id|preview-object/:id)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/:path*.data",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/(built-objects|build-info).json",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }

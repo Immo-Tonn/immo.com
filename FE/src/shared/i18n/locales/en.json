@@ -31,6 +31,16 @@
     "rechtUndRat": {
       "title": "Information and Support for Buying and Selling | Immo Tonn",
       "description": "Practical information and support for property transactions: help with documents such as the land registry extract and energy certificate, and with viewings."
+    },
+    "breadcrumb": {
+      "home": "Home",
+      "immobilien": "Properties",
+      "wertermittlung": "Property valuation",
+      "finanzierung": "Financing",
+      "rechner": "Financing calculator",
+      "kontakt": "Contact",
+      "verkaufssupport": "Sales support",
+      "rechtUndRat": "Law and advice"
     }
   },
   "nav": {

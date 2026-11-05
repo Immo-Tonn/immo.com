@@ -3,6 +3,7 @@ export const siteStructuredData = [
   {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
+    "@id": "https://immo-tonn.com/#organization",
     "name": "Immo-Tonn",
     "url": "https://immo-tonn.com/",
     "image": "https://immo-tonn.com/og-image.png",
@@ -40,13 +41,22 @@ export const siteStructuredData = [
         "name": "Nordrhein-Westfalen"
       }
     ],
-    "description": "Immobilienbewertung, Verkauf und Vermittlung von Wohnungen, Häusern, Grundstücken und Gewerbeimmobilien in Münster, Münsterland und Nordrhein-Westfalen."
+    "description": "Immobilienbewertung, Verkauf und Vermittlung von Wohnungen, Häusern, Grundstücken und Gewerbeimmobilien in Münster, Münsterland und Nordrhein-Westfalen.",
+    "employee": {
+      "@type": "Person",
+      "name": "Andreas Tonn",
+      "jobTitle": "Inhaber"
+    }
   },
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://immo-tonn.com/#website",
     "name": "Immo Tonn",
     "url": "https://immo-tonn.com/",
-    "inLanguage": "de-DE"
+    "inLanguage": "de-DE",
+    "publisher": { "@id": "https://immo-tonn.com/#organization" }
   }
 ] as const;
+
+export const ORGANIZATION_ID = 'https://immo-tonn.com/#organization';

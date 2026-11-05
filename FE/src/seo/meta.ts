@@ -55,6 +55,34 @@ export const localizeTo = <T extends string | { pathname?: string }>(
   return obj.pathname ? ({ ...obj, pathname: fix(obj.pathname) } as T) : to;
 };
 
+export interface Crumb {
+  name: string;
+  path: string; // путь без языкового префикса
+}
+
+/** BreadcrumbList: Startseite → … → текущая страница (названия — из locales seo.breadcrumb). */
+export const breadcrumbLd = (lang: Lang, crumbs: Crumb[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { name: dict[lang].seo.breadcrumb.home, path: '/' },
+    ...crumbs,
+  ].map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: SITE_URL + (langPath(lang, c.path) === '/' ? '/' : langPath(lang, c.path)),
+  })),
+});
+
+/** Title для сниппета: не длиннее ~65 символов (обрезка по слову), полное название остаётся в H1. */
+export const fitTitle = (name: string, suffix = ' | Immo Tonn', max = 65) => {
+  const limit = max - suffix.length;
+  if (name.length <= limit) return name + suffix;
+  const cut = name.slice(0, limit - 1).replace(/[\s,;:–-]+\S*$/, '');
+  return `${cut}…${suffix}`;
+};
+
 interface MetaInput {
   title: string;
   description: string;
@@ -63,6 +91,8 @@ interface MetaInput {
   key?: string; // ключ в readiness.json (по умолчанию path)
   image?: string;
   noindex?: boolean; // только для служебных страниц (не для неготовых языков)
+  crumbs?: Crumb[]; // хлебные крошки (без Startseite); только для индексируемых версий
+  ld?: object[]; // дополнительные JSON-LD страницы
 }
 
 export const buildMeta = ({
@@ -73,6 +103,8 @@ export const buildMeta = ({
   key = path,
   image = `${SITE_URL}/og-image.png`,
   noindex,
+  crumbs,
+  ld = [],
 }: MetaInput) => {
   const url = SITE_URL + langPath(lang, path);
   const ready = readyLangs(key);
@@ -104,5 +136,11 @@ export const buildMeta = ({
     { property: 'og:locale', content: { de: 'de_DE', en: 'en_US', ru: 'ru_RU' }[lang] },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
+    ...(!noindex && ready.includes(lang)
+      ? [
+          ...(crumbs?.length ? [breadcrumbLd(lang, crumbs)] : []),
+          ...ld,
+        ].map(data => ({ 'script:ld+json': data }))
+      : []),
   ];
 };

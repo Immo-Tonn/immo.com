@@ -22,6 +22,13 @@ const url = (lang, p) =>
   SITE + (lang === 'de' ? p : p === '/' ? `/${lang}` : `/${lang}${p}`);
 
 await copyFile(`${OUT}/__spa-fallback.html`, `${OUT}/404.html`);
+// __spa-fallback.html отдаётся на служебных маршрутах (админка, вход) и напрямую по своему
+// адресу: закрываем от индексации. 404.html копируется выше (HTTP 404 сам не индексируется).
+const fb = await readFile(`${OUT}/__spa-fallback.html`, 'utf8');
+await writeFile(
+  `${OUT}/__spa-fallback.html`,
+  fb.replace('<head>', '<head><meta name="robots" content="noindex, nofollow"/>'),
+);
 
 // Список объектов — тот же, что prerender'ился (его пишет react-router.config.ts)
 const { ids, fingerprint } = JSON.parse(
