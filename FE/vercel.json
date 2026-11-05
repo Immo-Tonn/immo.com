@@ -22,7 +22,34 @@
   ],
   "headers": [
     {
-      "source": "/(en/|ru/)?(add-property|register|forgot-password|change-password|create-object|edit-object/:id|preview-object/:id)",
+      "source": "/(add-property|register|forgot-password|change-password|create-object)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(edit-object|preview-object)/:id",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(en|ru)/(add-property|register|forgot-password|change-password|create-object)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/(en|ru)/(edit-object|preview-object)/:id",
       "headers": [
         {
           "key": "X-Robots-Tag",
