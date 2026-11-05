@@ -56,8 +56,8 @@ const Footer = () => {
           </ul>
         </div>
         <div className={styles.footerRight}>
-          <a href="tel:01743454419">Tel.: 0251 625 60 763</a>
-          <a href="tel:01743454419">Mobil: 0174 345 44 19</a>
+          <a href="tel:+4925162560763">Tel.: 0251 625 60 763</a>
+          <a href="tel:+491743454419">Mobil: 0174 345 44 19</a>
           <a
             href="https://ig.al/tonn"
             target="_blank"

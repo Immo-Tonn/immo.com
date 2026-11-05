@@ -1,5 +1,7 @@
 // Фиксация поведения сайта (КРОМЕ админки) для сравнения «до/после» визуального редизайна.
 // Запуск: PLAYWRIGHT_CORE=<путь к playwright-core> BASE=http://localhost:5392 node qa/behavior-capture.mjs <out.json>
+// Языки EN/RU открываются по настоящим URL (/en/…, /ru/…): язык задаёт адрес, а не localStorage.
+// Для снимка старого сайта, где язык хранился в localStorage: LANG_MODE=storage.
 // Ничего не отправляется наружу: запросы формы перехватываются в браузере (route.fulfill),
 // список/карточки объектов читаются боевым API только методом GET.
 import fs from 'node:fs';
@@ -14,15 +16,18 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
 const R = { meta: { base: BASE, capturedAt: new Date().toISOString() } };
 
 const browser = await chromium.launch();
+const URL_LANGS = (process.env.LANG_MODE ?? 'url') === 'url';
 const newPage = async (lang = 'de', viewport = { width: 1280, height: 900 }) => {
   const ctx = await browser.newContext({ viewport, acceptDownloads: true });
-  // язык задаётся один раз; дальше его хранит само приложение (проверка сохранения после обновления)
-  await ctx.addInitScript(l => { if (!localStorage.getItem('immoTonnLanguage')) localStorage.setItem('immoTonnLanguage', l); }, lang);
+  // режим storage (старый сайт): язык задаётся один раз в localStorage
+  if (!URL_LANGS) await ctx.addInitScript(l => { if (!localStorage.getItem('immoTonnLanguage')) localStorage.setItem('immoTonnLanguage', l); }, lang);
   const page = await ctx.newPage();
-  page.ctx = ctx;
+  page.ctx = ctx; page.lang = lang;
   return page;
 };
-const go = async (p, path) => { await p.goto(BASE + path, { waitUntil: 'networkidle' }); await sleep(900); };
+// режим url: адрес получает языковой префикс страницы (de — без префикса)
+const withLang = (p, path) => (URL_LANGS && p.lang && p.lang !== 'de' && !/^\/(en|ru)(\/|$)/.test(path) ? `/${p.lang}${path === '/' ? '' : path}` : path);
+const go = async (p, path) => { await p.goto(BASE + withLang(p, path), { waitUntil: 'networkidle' }); await sleep(900); };
 // ждём, пока значения полей перестанут меняться (в калькуляторе годы ↔ погашение пересчитываются эффектами)
 const settle = async p => {
   let prev = '', same = 0;
@@ -240,8 +245,19 @@ await safe('detail actions', async () => {
     // галерея: клик по первой картинке
     const imgClick = await p.locator('main img').first().click({ timeout: 2500 }).then(() => true).catch(() => false);
     await sleep(600);
-    info.afterImageClick = await p.evaluate(() => ({ dialog: !!document.querySelector('[role=dialog],[class*=modal],[class*=Modal]'), imgs: document.querySelectorAll('img').length }));
+    // дожидаемся загрузки всех изображений галереи, считаем отдельно шапку/подвал/основную часть
+    await p.waitForLoadState('networkidle'); await sleep(1500);
+    info.afterImageClick = await p.evaluate(() => {
+      const g = s => document.querySelectorAll(s).length;
+      return {
+        dialog: !!document.querySelector('[role=dialog],[class*=modal],[class*=Modal]'), imgs: g('img'),
+        header: g('header img'), footer: g('footer img'), main: g('main img'),
+        broken: [...document.querySelectorAll('img')].filter(i => i.complete && i.naturalWidth === 0).length,
+      };
+    });
     info.imgClick = imgClick;
+    // эталон из API на момент снимка: в галерее должно быть ровно «фото объекта + 1 (крупный кадр)»
+    info.apiImages = (await (await fetch(`${API}/images/by-object?objectId=${id}`)).json()).length;
     // кнопка «Finanzierung» → переход и предзаполнение цены
     await go(p, `/immobilien/${id}`); await sleep(800);
     const fin = p.locator('main button', { hasText: /Finanz/i }).first();
@@ -252,16 +268,71 @@ await safe('detail actions', async () => {
 });
 
 // ---------- 5. Язык и переходы ----------
+// Выпадающий переключатель: триггер (aria-controls) + ссылки <a hreflang>, язык задаёт URL.
+const switchTo = async (p, code, how = 'mouse') => {
+  const trigger = p.locator('header button[aria-controls][aria-expanded]:visible').first();
+  await trigger.click(); await sleep(250);
+  const link = p.locator(`header a[hreflang="${code}"]:visible`).first();
+  if (how === 'keyboard') { await link.focus(); await p.keyboard.press('Enter'); } else await link.click();
+  await p.waitForLoadState('networkidle'); await sleep(900);
+};
+const state = p => p.evaluate(() => ({
+  path: location.pathname, htmlLang: document.documentElement.lang,
+  h1: (document.querySelector('main h1')?.textContent || '').replace(/\s+/g, ' ').trim(),
+  ls: localStorage.getItem('immoTonnLanguage'),
+  canonical: document.querySelector('link[rel=canonical]')?.href ?? null,
+}));
 await safe('language switch', async () => {
-  const p = await newPage('de'); await go(p, '/wertermittlung');
   const out = {};
-  const h1 = () => p.evaluate(() => (document.querySelector('main h1')?.textContent || '').replace(/\s+/g, ' ').trim());
-  const btn = l => p.locator('button:visible, a:visible', { hasText: new RegExp(`^${l}$`) }).first();
-  out.de = await h1();
-  await btn('EN').click(); await sleep(700); out.en = { h1: await h1(), ls: await p.evaluate(() => localStorage.getItem('immoTonnLanguage')), path: new URL(p.url()).pathname };
-  await btn('RU').click(); await sleep(700); out.ru = { h1: await h1(), ls: await p.evaluate(() => localStorage.getItem('immoTonnLanguage')) };
-  await p.reload({ waitUntil: 'networkidle' }); await sleep(700); out.afterReload = await h1();
-  await btn('DE').click(); await sleep(700); out.backDe = await h1();
+  for (const path of ['/wertermittlung', '/kontakt', '/finanzierung']) {
+    const p = await newPage('de'); await go(p, path);
+    const seq = {}; seq.de = await state(p);
+    await switchTo(p, 'en'); seq.en = await state(p);
+    await switchTo(p, 'ru'); seq.ru = await state(p);
+    await p.reload({ waitUntil: 'networkidle' }); await sleep(700); seq.afterReloadRu = await state(p);
+    await switchTo(p, 'de', 'keyboard'); seq.backDeKeyboard = await state(p);
+    await p.ctx.close();
+    out[path] = seq;
+  }
+  return out;
+});
+// Языковые ссылки в исходном HTML (без выполнения JS), включая закрытое состояние списка, и согласованность
+// canonical / hreflang / lang / sitemap.
+await safe('language urls', async () => {
+  const out = {};
+  const sitemap = await (await fetch(BASE + '/sitemap.xml')).text();
+  const locs = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
+  const pathsOf = lang => ['/', '/wertermittlung', '/kontakt', '/finanzierung', '/rechner', '/verkaufssupport', '/recht-und-rat'].map(x => (lang === 'de' ? x : x === '/' ? `/${lang}` : `/${lang}${x}`));
+  for (const lang of ['de', 'en', 'ru']) for (const path of pathsOf(lang)) {
+    const res = await fetch(BASE + path); const html = await res.text();
+    const attr = (re) => (html.match(re) || [])[1] ?? null;
+    const switcher = [...html.matchAll(/<a [^>]*hrefLang="(de|en|ru)"[^>]*>/gi)].map(m => m[0]);
+    const hrefOf = a => (a.match(/href="([^"]*)"/) || [])[1];
+    const hreflangs = [...html.matchAll(/<link rel="alternate" hrefLang="([^"]+)" href="([^"]+)"/gi)].map(m => `${m[1]}=${m[2]}`);
+    const canonical = attr(/<link rel="canonical" href="([^"]+)"/);
+    const htmlLang = attr(/<html[^>]*lang="([^"]+)"/);
+    const basePath = path.replace(/^\/(en|ru)/, '') || '/';
+    out[path] = {
+      status: res.status, htmlLang, canonical,
+      canonicalInSitemap: locs.has(canonical),
+      switcherHrefs: switcher.map(hrefOf).sort(),               // ссылки переключателя в HTML (DE/EN/RU)
+      switcherExpected: ['de', 'en', 'ru'].map(l => (l === 'de' ? basePath : basePath === '/' ? `/${l}` : `/${l}${basePath}`)).sort(),
+      hreflangs,
+      hreflangTargetsInSitemap: hreflangs.map(h => locs.has(h.split('=')[1])),
+    };
+  }
+  return out;
+});
+// Мобильное меню: переключатель в Drawer — ссылки, работают с клавиатуры
+await safe('language mobile', async () => {
+  const p = await newPage('de', { width: 390, height: 844 }); await go(p, '/wertermittlung');
+  const out = {};
+  await p.locator('header button.MuiIconButton-root').first().click();
+  await sleep(500);
+  const links = await p.evaluate(() => [...document.querySelectorAll('[role=presentation] a[hreflang], .MuiDrawer-root a[hreflang]')].map(a => a.getAttribute('href')));
+  out.drawerLinks = links;
+  const en = p.locator('.MuiDrawer-root a[hreflang="en"]').first();
+  if (await en.count()) { await en.focus(); await p.keyboard.press('Enter'); await p.waitForLoadState('networkidle'); await sleep(900); out.afterEnter = await state(p); }
   await p.ctx.close();
   return out;
 });
