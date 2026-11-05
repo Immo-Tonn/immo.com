@@ -1,6 +1,6 @@
 // immo/FE/src/pages/Auth/Register.tsx
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from '@shared/lib/localeRouter';
 // import Layout from "../../components/Layout";
 import axios from '@features/utils/axiosConfig';
 

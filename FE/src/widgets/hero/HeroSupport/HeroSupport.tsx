@@ -18,11 +18,11 @@ const HeroSupport: React.FC = () => {
     <section className={styles.heroValuationSection} ref={ref}>
       <div className={styles.textWrapper} ref={imgRef}>
         <div className={styles.textOverlay}>
-          <p>
+          <h1>
             {t('heroSupport.line1')} <br />
             {t('heroSupport.line2')} <br />
             {t('heroSupport.line3')}
-          </p>
+          </h1>
         </div>
       </div>
     </section>

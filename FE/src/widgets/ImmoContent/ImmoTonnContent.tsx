@@ -1,6 +1,6 @@
 import Button from '@shared/ui/Button/Button';
 import styles from './ImmoTonnContent.module.css';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
@@ -22,6 +22,7 @@ const ImmoTonnContent: React.FC = () => {
           {
             x: i % 2 === 0 ? 50 : -100,
             y: i % 2 === 0 ? 0 : -50,
+            start: 'top bottom',
           },
         );
     });

@@ -1,6 +1,6 @@
 // immo/FE/src/pages/Auth/Login.tsx
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 import {
   dispatchLoginEvent,

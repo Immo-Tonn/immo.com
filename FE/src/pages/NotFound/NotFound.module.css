@@ -1,8 +1,10 @@
 .container {
-  height: 100vh;
-  background: #90abd0;
+  min-height: max(100vh, 760px);
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(36, 87, 197, 0.28) 0%, rgba(36, 87, 197, 0) 60%),
+    var(--h-ink);
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: var(--h-sans);
   position: relative;
 }
 
@@ -153,13 +155,15 @@
 }
 
 .homeBtn {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-  background: #0e5dbd;
+  font-family: var(--h-sans);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--h-accent);
   text-decoration: none;
-  padding: 1.2rem 2.4rem;
-  border-radius: 1rem;
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 999px;
   display: inline-block;
   position: absolute;
   top: -3rem;
@@ -169,7 +173,7 @@
 }
 
 .homeBtn:hover {
-  background: #282725;
+  background: var(--h-accent-hover);
 }
 
 .textBox {
@@ -181,14 +185,90 @@
   animation: textAnim 3s ease-in-out forwards;
 }
 
-.textBox h1 {
+.textBox {
+  z-index: 20;
+  left: 4%;
+  width: 34%;
+}
+
+/* корова — декоративный фон справа; на узких экранах не показываем */
+@media (max-width: 900px) {
+  .cow {
+    display: none;
+  }
+
+  .textBox {
+    left: 5%;
+    width: 90%;
+  }
+
+  .textBox .code {
+    font-size: 6rem;
+  }
+
+  .textBox h1 {
+    font-size: 2.4rem;
+  }
+}
+
+.textBox .code {
+  font-family: var(--h-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--h-accent-light);
   font-size: 8rem;
+  line-height: 1;
   margin: 0;
 }
 
+.textBox h1 {
+  font-family: var(--h-display);
+  font-weight: 500;
+  color: var(--h-on-dark);
+  font-size: 3.2rem;
+  margin: 0 0 1rem;
+}
+
 .textBox p {
-  font-size: 2rem;
-  margin: 0;
+  font-family: var(--h-display);
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.primaryLink,
+.secondaryLink {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  color: #fff;
+}
+
+.primaryLink {
+  background: var(--h-accent);
+}
+
+.secondaryLink {
+  border: 2px solid #fff;
+}
+
+.primaryLink:hover,
+.primaryLink:focus-visible {
+  background: var(--h-accent-hover);
+}
+
+.secondaryLink:hover,
+.secondaryLink:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 @keyframes move {
@@ -230,7 +310,7 @@
 
   to {
     opacity: 1;
-    top: 28%;
+    top: 14%;
   }
 }
 
@@ -256,19 +336,21 @@
   position: absolute;
   top: 2rem;
   left: 10%;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-  background: #b4b9d1;
+  font-family: var(--h-sans);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #fff;
+  background: var(--h-accent);
   text-decoration: none;
-  padding: 1.2rem 2.4rem;
-  border-radius: 0rem;
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 999px;
   transition: background 0.3s ease;
   z-index: 999;
 }
 
 .homeBtn:hover {
-  background: #5d749d;
+  background: var(--h-accent-hover);
 }
 .simpleBox {
   height: 100vh;

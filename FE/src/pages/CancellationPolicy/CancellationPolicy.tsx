@@ -1,4 +1,5 @@
 import styles from './CancellationPolicy.module.css';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const CancellationPolicy: React.FC = () => {
   return (
@@ -94,4 +95,4 @@ const CancellationPolicy: React.FC = () => {
   );
 };
 
-export default CancellationPolicy;
+export default withPageShell(CancellationPolicy);

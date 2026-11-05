@@ -6,6 +6,7 @@ import rechtSecondary from '@shared/assets/law-and-advice/law-and-advice_2.webp'
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll, runningBoxShadow } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const LawAndAdvice = () => {
   const { t } = useTranslation();
@@ -17,7 +18,9 @@ const LawAndAdvice = () => {
       if (ref)
         fadeInOnScroll(
           { current: ref },
-          i % 2 === 0 ? { x: -100, y: 50 } : { x: 100, y: -50 },
+          i % 2 === 0
+            ? { x: -100, y: 50, start: 'top bottom' }
+            : { x: 100, y: -50, start: 'top bottom' },
         );
     });
   }, []);
@@ -163,4 +166,4 @@ const LawAndAdvice = () => {
   );
 };
 
-export default LawAndAdvice;
+export default withPageShell(LawAndAdvice);

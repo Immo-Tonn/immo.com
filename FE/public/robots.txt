@@ -8,5 +8,21 @@ Disallow: /create-object
 Disallow: /edit-object/
 Disallow: /preview-object/
 Disallow: /kontakt/danke
+Disallow: /en/add-property
+Disallow: /ru/add-property
+Disallow: /en/register
+Disallow: /ru/register
+Disallow: /en/forgot-password
+Disallow: /ru/forgot-password
+Disallow: /en/change-password
+Disallow: /ru/change-password
+Disallow: /en/create-object
+Disallow: /ru/create-object
+Disallow: /en/edit-object/
+Disallow: /ru/edit-object/
+Disallow: /en/preview-object/
+Disallow: /ru/preview-object/
+Disallow: /en/kontakt/danke
+Disallow: /ru/kontakt/danke
 
 Sitemap: https://immo-tonn.com/sitemap.xml
