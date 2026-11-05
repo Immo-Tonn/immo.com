@@ -43,7 +43,7 @@
   text-align: left;
 }
 
-.textOverlay > p,
+.textOverlay > h1,
 .textOverlay > h1 {
   margin: 0;
   max-width: 22ch;
@@ -72,7 +72,7 @@
   padding-top: var(--h-top);
   padding-bottom: clamp(28px, 3.6vw, 52px);
 }
-.textOverlay > p,
+.textOverlay > h1,
 .textOverlay > h1 {
   max-width: 30ch;
   font-size: var(--h-h1);
@@ -104,12 +104,11 @@
     url('@shared/assets/salessupport/sales-support-image.webp');
   background-position: center 52%;
 }
-.textOverlay > p,
+.textOverlay > h1,
 .textOverlay > h1 {
   max-width: min(100%, 34ch);
   text-wrap: balance;
 }
-.textOverlay > p::before,
 .textOverlay > h1::before {
   content: '';
   display: block;
@@ -118,7 +117,7 @@
   margin-bottom: 14px;
   background: var(--h-accent-light);
 }
-.textOverlay > p br {
+.textOverlay > h1 br {
   display: none; /* жёсткие переносы заменены естественными */
 }
 @media (max-width: 765px) {
@@ -156,14 +155,13 @@
     url('@shared/assets/salessupport/sales-support-image.webp');
   background-position: center 40%;
 }
-.textOverlay > p,
+.textOverlay > h1,
 .textOverlay > h1 {
   max-width: min(100%, 42ch);
   font-size: clamp(1.9rem, 1.35rem + 1.8vw, 3.1rem);
   line-height: 1.12;
   text-shadow: 0 1px 14px rgba(22, 12, 32, 0.35);
 }
-.textOverlay > p::before,
 .textOverlay > h1::before {
   margin-bottom: 16px;
 }
@@ -183,7 +181,7 @@
       url('@shared/assets/salessupport/sales-support-image.webp');
     background-position: 62% center;
   }
-  .textOverlay > p,
+  .textOverlay > h1,
   .textOverlay > h1 {
     font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.1rem);
   }

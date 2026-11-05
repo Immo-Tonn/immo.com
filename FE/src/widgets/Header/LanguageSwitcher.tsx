@@ -1,7 +1,9 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import type { KeyboardEvent } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './Header.module.css';
+import { langPath, type Lang } from '../../seo/meta';
 
 const LANGUAGES = [
   { code: 'de', label: 'DE' },
@@ -11,23 +13,37 @@ const LANGUAGES = [
 
 interface LanguageSwitcherProps {
   className?: string;
-  /** dropdown — компактный выбор в шапке; inline — три кнопки (мобильное меню) */
+  /** dropdown — компактный выбор в шапке; inline — три ссылки (мобильное меню) */
   variant?: 'dropdown' | 'inline';
 }
 
+/**
+ * Переключатель языка — обычные ссылки на ту же страницу с другим языковым префиксом
+ * (язык задаёт URL). Список ссылок всегда есть в HTML, в закрытом состоянии скрыт стилем.
+ */
 const LanguageSwitcher = ({
   className,
   variant = 'dropdown',
 }: LanguageSwitcherProps) => {
   const { t, i18n } = useTranslation();
-  const currentLang = i18n.language?.split('-')[0] ?? 'de';
+  const { pathname, search } = useLocation();
+  const currentLang = (i18n.language?.split('-')[0] ?? 'de') as Lang;
   const current =
     LANGUAGES.find(l => l.code === currentLang) ?? LANGUAGES[0];
+
+  // prerender отдаёт путь со слэшем в конце (/immobilien/) — нормализуем
+  const clean = pathname.replace(/\/+$/, '') || '/';
+  const first = clean.split('/')[1];
+  const basePath =
+    first === 'en' || first === 'ru'
+      ? clean.slice(first.length + 1) || '/'
+      : clean;
+  const hrefFor = (code: Lang) => `${langPath(code, basePath)}${search}`;
 
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const optionRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const optionRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const menuId = useId();
 
   /* закрытие по клику вне меню и по Escape */
@@ -65,33 +81,28 @@ const LanguageSwitcher = ({
     return (
       <div className={`${styles.langSwitcher} ${className ?? ''}`}>
         {LANGUAGES.map(({ code, label }) => (
-          <button
+          <Link
             key={code}
-            type="button"
-            onClick={() => i18n.changeLanguage(code)}
+            to={hrefFor(code)}
+            hrefLang={code}
+            lang={code}
             className={
               currentLang === code
                 ? `${styles.langButton} ${styles.langButtonActive}`
                 : styles.langButton
             }
-            aria-current={currentLang === code}
+            aria-current={currentLang === code ? 'true' : undefined}
           >
             {label}
-          </button>
+          </Link>
         ))}
       </div>
     );
   }
 
-  const select = (code: string) => {
-    i18n.changeLanguage(code);
-    setOpen(false);
-    triggerRef.current?.focus();
-  };
-
   const onMenuKeyDown = (e: KeyboardEvent<HTMLUListElement>) => {
-    const items = optionRefs.current.filter(Boolean) as HTMLButtonElement[];
-    const i = items.indexOf(document.activeElement as HTMLButtonElement);
+    const items = optionRefs.current.filter(Boolean) as HTMLAnchorElement[];
+    const i = items.indexOf(document.activeElement as HTMLAnchorElement);
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       items[(i + 1) % items.length]?.focus();
@@ -118,7 +129,6 @@ const LanguageSwitcher = ({
         ref={triggerRef}
         type="button"
         className={styles.langTrigger}
-        aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={menuId}
         aria-label={`${t('header.language')}: ${current.label}`}
@@ -146,36 +156,35 @@ const LanguageSwitcher = ({
           />
         </svg>
       </button>
-      {open && (
-        <ul
-          id={menuId}
-          role="listbox"
-          className={styles.langMenu}
-          aria-label={t('header.language')}
-          onKeyDown={onMenuKeyDown}
-        >
-          {LANGUAGES.map(({ code, label }, i) => (
-            <li key={code} role="presentation">
-              <button
-                ref={el => {
-                  optionRefs.current[i] = el;
-                }}
-                type="button"
-                role="option"
-                aria-selected={currentLang === code}
-                className={
-                  currentLang === code
-                    ? `${styles.langOption} ${styles.langOptionActive}`
-                    : styles.langOption
-                }
-                onClick={() => select(code)}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul
+        id={menuId}
+        className={styles.langMenu}
+        aria-label={t('header.language')}
+        style={open ? undefined : { display: 'none' }}
+        onKeyDown={onMenuKeyDown}
+      >
+        {LANGUAGES.map(({ code, label }, i) => (
+          <li key={code}>
+            <Link
+              ref={el => {
+                optionRefs.current[i] = el;
+              }}
+              to={hrefFor(code)}
+              hrefLang={code}
+              lang={code}
+              aria-current={currentLang === code ? 'true' : undefined}
+              className={
+                currentLang === code
+                  ? `${styles.langOption} ${styles.langOptionActive}`
+                  : styles.langOption
+              }
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import styles from './HeroHome.module.css';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import heroImage from '@shared/assets/hero-home/hero-home-3.webp';

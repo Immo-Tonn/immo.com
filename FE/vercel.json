@@ -1,5 +1,23 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "build/client",
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(add-property|register|forgot-password|change-password|create-object)",
+      "destination": "/__spa-fallback.html"
+    },
+    {
+      "source": "/(en|ru)/(add-property|register|forgot-password|change-password|create-object)",
+      "destination": "/__spa-fallback.html"
+    },
+    {
+      "source": "/(preview-object|edit-object)/:id",
+      "destination": "/__spa-fallback.html"
+    },
+    {
+      "source": "/(en|ru)/(preview-object|edit-object)/:id",
+      "destination": "/__spa-fallback.html"
+    }
   ]
 }

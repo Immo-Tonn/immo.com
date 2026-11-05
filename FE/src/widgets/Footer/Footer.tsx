@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useTranslation } from 'react-i18next';
 import styles from './Footer.module.css';
 import logo from '@shared/assets/about-us/logo-white.svg';

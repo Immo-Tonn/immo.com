@@ -3,7 +3,7 @@ import styles from './ValuationCTA.module.css';
 import valuationPhoto from '@shared/assets/valuation-cta/valuation-photo.webp';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll, runningBoxShadow } from '@shared/anim/animations';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useTranslation } from 'react-i18next';
 
 const ValuationCTA = () => {

@@ -3,7 +3,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AddIcon from '@mui/icons-material/Add';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useTranslation } from 'react-i18next';
 
 interface Step {

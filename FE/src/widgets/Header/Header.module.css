@@ -577,3 +577,16 @@
     margin-left: clamp(4px, 0.5vw, 8px);
   }
 }
+
+/* опции языка — ссылки (язык задаётся URL) */
+a.langOption,
+a.langOption:hover,
+a.langButton,
+a.langButton:hover {
+  text-decoration: none;
+  transform: none;
+}
+a.langOption {
+  box-sizing: border-box;
+  text-align: left;
+}
