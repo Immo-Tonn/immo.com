@@ -3,6 +3,46 @@
     "wertermittlung": {
       "title": "Property Valuation Münster – Free Appraisal | Immo Tonn",
       "description": "Free, no-obligation property valuation in Münster and the surrounding area. Find out transparently and reliably what your property is worth today – with Immo Tonn."
+    },
+    "realEstate": {
+      "title": "Properties in Münster & Münsterland – Listings | Immo Tonn",
+      "description": "Current property listings in Münster and the Münsterland region: houses, apartments and plots. Browse listings and request a viewing."
+    },
+    "financing": {
+      "title": "Property Financing Münster – Advice | Immo Tonn",
+      "description": "Personal advice on property financing in Münster: find the right financing for your property purchase – clearly explained."
+    },
+    "calculator": {
+      "title": "Mortgage Calculator – Monthly Payment | Immo Tonn",
+      "description": "Calculate your monthly payment for property financing for free – quick and non-binding with the Immo Tonn calculator."
+    },
+    "salesSupport": {
+      "title": "Sell Your Property in Münster – Sales Support | Immo Tonn",
+      "description": "From valuation to the notary appointment: Immo Tonn supports you in selling your property in Münster – transparent, reliable and personal."
+    },
+    "contact": {
+      "title": "Contact – Real Estate Agent Münster | Immo Tonn",
+      "description": "Get in touch with Immo Tonn in Münster: we offer personal advice on valuation, sale and brokerage of your property."
+    },
+    "lawAndAdvice": {
+      "title": "Legal Advice for Property Owners | Immo Tonn",
+      "description": "Important legal information and tips on buying, selling and valuing property – clearly explained by Immo Tonn."
+    },
+    "objectStyling": {
+      "title": "Property Styling & Home Staging in Münster | Immo Tonn",
+      "description": "Professional property styling shows your home at its best – for convincing photos, viewings and a successful sale."
+    },
+    "legalNotice": {
+      "title": "Legal Notice | Immo Tonn",
+      "description": "Legal notice and provider information of Immo Tonn, real estate in Münster."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy | Immo Tonn",
+      "description": "Information on data protection and the processing of personal data on immo-tonn.com."
+    },
+    "cancellationPolicy": {
+      "title": "Cancellation Policy | Immo Tonn",
+      "description": "Cancellation policy and information about your right of withdrawal at Immo Tonn."
     }
   },
   "nav": {

@@ -3,6 +3,46 @@
     "wertermittlung": {
       "title": "Immobilienbewertung Münster – Kostenlose Wertermittlung | Immo Tonn",
       "description": "Kostenlose, unverbindliche Immobilienbewertung in Münster und Umgebung: Erfahren Sie transparent und fundiert, was Ihre Immobilie heute wert ist – von Immo Tonn."
+    },
+    "realEstate": {
+      "title": "Immobilien in Münster & Münsterland – Angebote | Immo Tonn",
+      "description": "Aktuelle Immobilienangebote in Münster und im Münsterland: Häuser, Wohnungen und Grundstücke. Jetzt Angebote ansehen und Besichtigung anfragen."
+    },
+    "financing": {
+      "title": "Immobilienfinanzierung Münster – Beratung | Immo Tonn",
+      "description": "Persönliche Beratung zur Immobilienfinanzierung in Münster: Finden Sie die passende Finanzierung für Ihren Immobilienkauf – verständlich erklärt."
+    },
+    "calculator": {
+      "title": "Finanzierungsrechner – Monatsrate berechnen | Immo Tonn",
+      "description": "Berechnen Sie kostenlos Ihre monatliche Rate für Ihre Immobilienfinanzierung – schnell und unverbindlich mit dem Rechner von Immo Tonn."
+    },
+    "salesSupport": {
+      "title": "Immobilie verkaufen in Münster – Verkaufssupport | Immo Tonn",
+      "description": "Von der Bewertung bis zum Notartermin: Immo Tonn begleitet Sie beim Verkauf Ihrer Immobilie in Münster – transparent, zuverlässig und persönlich."
+    },
+    "contact": {
+      "title": "Kontakt – Immobilienmakler Münster | Immo Tonn",
+      "description": "Nehmen Sie Kontakt mit Immo Tonn in Münster auf: Wir beraten Sie persönlich zu Bewertung, Verkauf und Vermittlung Ihrer Immobilie."
+    },
+    "lawAndAdvice": {
+      "title": "Recht & Rat rund um die Immobilie | Immo Tonn",
+      "description": "Wichtige rechtliche Informationen und Tipps rund um Kauf, Verkauf und Bewertung von Immobilien – verständlich erklärt von Immo Tonn."
+    },
+    "objectStyling": {
+      "title": "Objektstyling & Home Staging in Münster | Immo Tonn",
+      "description": "Professionelles Objektstyling bringt Ihre Immobilie optimal zur Geltung – für überzeugende Fotos, Besichtigungen und einen erfolgreichen Verkauf."
+    },
+    "legalNotice": {
+      "title": "Impressum | Immo Tonn",
+      "description": "Impressum und Anbieterkennzeichnung von Immo Tonn, Immobilien in Münster."
+    },
+    "privacyPolicy": {
+      "title": "Datenschutzerklärung | Immo Tonn",
+      "description": "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten auf immo-tonn.com."
+    },
+    "cancellationPolicy": {
+      "title": "Widerrufsbelehrung | Immo Tonn",
+      "description": "Widerrufsbelehrung und Informationen zu Ihrem Widerrufsrecht bei Immo Tonn."
     }
   },
   "nav": {

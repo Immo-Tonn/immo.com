@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Layout from '@widgets/Layout/Layout';
 import 'leaflet/dist/leaflet.css';
 import ScrollToTop from '@shared/ui/ScrollToTop/ScrollToTop';
+import RouteSeo from '@shared/ui/Seo/RouteSeo';
 import Home from '@pages/Home/Home';
 import NotFound from '@pages/NotFound/NotFound';
 import Valuation from '@pages/Valuation/Valuation';
@@ -36,18 +37,98 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/wertermittlung" element={<Valuation />} />
-          <Route path="/immobilien" element={<RealEstate />} />
+          <Route
+            path="/immobilien"
+            element={
+              <>
+                <RouteSeo page="realEstate" path="/immobilien" />
+                <RealEstate />
+              </>
+            }
+          />
           <Route path="/immobilien/:id" element={<PropertyPage />} />
-          <Route path="/objectstyling" element={<ObjectStyling />} />
-          <Route path="/finanzierung" element={<Financing />} />
-          <Route path="/kontakt" element={<ContactForm />} />
-          <Route path="/legalnotice" element={<LegalNotice />} />
-          <Route path="/recht-und-rat" element={<LawAndAdvice />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route
+            path="/objectstyling"
+            element={
+              <>
+                <RouteSeo page="objectStyling" path="/objectstyling" />
+                <ObjectStyling />
+              </>
+            }
+          />
+          <Route
+            path="/finanzierung"
+            element={
+              <>
+                <RouteSeo page="financing" path="/finanzierung" />
+                <Financing />
+              </>
+            }
+          />
+          <Route
+            path="/kontakt"
+            element={
+              <>
+                <RouteSeo page="contact" path="/kontakt" />
+                <ContactForm />
+              </>
+            }
+          />
+          <Route
+            path="/legalnotice"
+            element={
+              <>
+                <RouteSeo page="legalNotice" path="/legalnotice" />
+                <LegalNotice />
+              </>
+            }
+          />
+          <Route
+            path="/recht-und-rat"
+            element={
+              <>
+                <RouteSeo page="lawAndAdvice" path="/recht-und-rat" />
+                <LawAndAdvice />
+              </>
+            }
+          />
+          <Route
+            path="/privacypolicy"
+            element={
+              <>
+                <RouteSeo page="privacyPolicy" path="/privacypolicy" />
+                <PrivacyPolicy />
+              </>
+            }
+          />
           <Route path="/kontakt/danke" element={<DankePage />} />
-          <Route path="/cancellationpolicy" element={<CancellationPolicy />} />
-          <Route path="/verkaufssupport" element={<SalesSupport />} />
-          <Route path="/rechner" element={<MortgageCalculator />} />
+          <Route
+            path="/cancellationpolicy"
+            element={
+              <>
+                <RouteSeo page="cancellationPolicy" path="/cancellationpolicy" />
+                <CancellationPolicy />
+              </>
+            }
+          />
+          <Route
+            path="/verkaufssupport"
+            element={
+              <>
+                <RouteSeo page="salesSupport" path="/verkaufssupport" />
+                <SalesSupport />
+              </>
+            }
+          />
+          <Route
+            path="/rechner"
+            element={
+              <>
+                <RouteSeo page="calculator" path="/rechner" />
+                <MortgageCalculator />
+              </>
+            }
+          />
           <Route path="*" element={<NotFound />} />
 
                     {/* Authentication pages */}
