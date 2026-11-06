@@ -64,7 +64,16 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 
 let browser;
 try {
-  browser = await chromium.launch();
+  const launchOptions = {};
+  if (process.env.VERCEL) {
+    // Vercel's build image has no browser/system libs: use the serverless Chromium build.
+    // It only unpacks its bundled libs when it believes it runs on AWS Lambda.
+    process.env.AWS_EXECUTION_ENV ??= 'AWS_Lambda_nodejs22.x';
+    const { default: sparticuz } = await import('@sparticuz/chromium');
+    launchOptions.executablePath = await sparticuz.executablePath();
+    launchOptions.args = sparticuz.args;
+  }
+  browser = await chromium.launch(launchOptions);
 } catch (e) {
   console.warn(`[prerender] Chromium unavailable (${e.message.split('\n')[0]}) — skipping`);
   server.close();
