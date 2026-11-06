@@ -86,26 +86,34 @@ const setCanonical = (html, url) =>
     .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${url}$2`);
 
 let failed = 0;
-for (const route of ROUTES) {
+let current = '';
+try {
+  // One page for all routes: serverless Chromium runs --single-process,
+  // so closing a page would kill the whole browser.
   const page = await browser.newPage();
-  page.on('pageerror', (e) => console.warn(`[prerender] ${route} page error: ${e.message.slice(0, 160)}`));
-  try {
-    await page.goto(origin + route, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForSelector('#root > *', { state: 'attached', timeout: 10000 });
-    let html = await page.content();
-    const url = SITE_URL + (route === '/' ? '/' : route);
-    html = setCanonical(html, url);
-    const out = route === '/' ? 'index.html' : path.join(route, 'index.html');
-    await fs.mkdir(path.dirname(path.join(DIST, out)), { recursive: true });
-    await fs.writeFile(path.join(DIST, out), html);
-    console.log(`[prerender] ${route} -> ${out}`);
-  } catch (e) {
-    failed++;
-    console.warn(`[prerender] ${route} failed: ${e.message.split('\n')[0]}`);
-  } finally {
-    await page.close();
+  page.on('pageerror', (e) => console.warn(`[prerender] ${current} page error: ${e.message.slice(0, 160)}`));
+  for (const route of ROUTES) {
+    current = route;
+    try {
+      await page.goto(origin + route, { waitUntil: 'networkidle', timeout: 30000 });
+      await page.waitForSelector('#root > *', { state: 'attached', timeout: 10000 });
+      let html = await page.content();
+      const url = SITE_URL + (route === '/' ? '/' : route);
+      html = setCanonical(html, url);
+      const out = route === '/' ? 'index.html' : path.join(route, 'index.html');
+      await fs.mkdir(path.dirname(path.join(DIST, out)), { recursive: true });
+      await fs.writeFile(path.join(DIST, out), html);
+      console.log(`[prerender] ${route} -> ${out}`);
+    } catch (e) {
+      failed++;
+      console.warn(`[prerender] ${route} failed: ${e.message.split('\n')[0]}`);
+    }
   }
+} catch (e) {
+  // never fail the build because of prerender: SPA is the fallback
+  console.warn(`[prerender] aborted: ${e.message.split('\n')[0]}`);
+} finally {
+  await browser.close().catch(() => {});
+  server.close();
 }
-await browser.close();
-server.close();
 if (failed) console.warn(`[prerender] ${failed} route(s) failed, they fall back to SPA`);
