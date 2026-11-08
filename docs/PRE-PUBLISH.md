@@ -84,7 +84,7 @@ console.log(info.fingerprint === objectsFingerprint(objs) ? `АКТУАЛЬНО 
 
 ## 6. Точка восстановления текущего production
 
-Production сейчас: деплой `dpl_CygAqZzj7hvETqcRnE8EfCtGQyhn` (`immo-cyngewhha-natalia-tonns-projects.vercel.app`), коммит `4e855071` (ветка `dev`), домен `immo-tonn.com`.
+Production сейчас: деплой `dpl_DuegyD5PK3aD7XqaSeYKaR5DXYyY` (`immo-iqhvqxc8x-natalia-tonns-projects.vercel.app`), коммит `d5081ba` (ветка `dev`), домен `immo-tonn.com`. До него был `dpl_CygAqZzj7hvETqcRnE8EfCtGQyhn` (`4e855071`).
 Предыдущий production-деплой `immo-a0wnkz3gw-…` тоже в статусе Ready. Данные установлены через API Vercel (только чтение) 2026-11-05.
 Сохранено в GitHub: ветка `backup/before-seo-migration-2026-10-29` и тег `stable-before-seo-migration-2026-10-29` — оба на `4e855071…`
 (совпадает с `dev` и с production). Порядок отката — [ROLLBACK.md](ROLLBACK.md).

@@ -89,8 +89,7 @@ git push -u origin restore/stable-2026-10-29
 
 ## Быстрый откат через Vercel (не выполнялся)
 
-Production на 2026-11-05: деплой `dpl_CygAqZzj7hvETqcRnE8EfCtGQyhn` (коммит `4e855071`, ветка `dev`). Предыдущий production-деплой
-(`immo-a0wnkz3gw-natalia-tonns-projects.vercel.app`) тоже Ready. После публикации PR #4 прежний деплой остаётся в списке Production-деплоев, и на него можно
+Production на 2026-11-09 (перед публикацией PR #4): деплой `dpl_DuegyD5PK3aD7XqaSeYKaR5DXYyY` (`immo-iqhvqxc8x-natalia-tonns-projects.vercel.app`, коммит `d5081ba` — ранний прототип prerender, ветка `dev`). Это актуальная точка отката через Instant Rollback. Предыдущий деплой — `dpl_CygAqZzj7hvETqcRnE8EfCtGQyhn` (коммит `4e855071`, без prerender, = резервная ветка и тег выше). После публикации PR #4 прежний деплой остаётся в списке Production-деплоев, и на него можно
 переключиться без новой сборки: Vercel → Deployments → нужный деплой → «Instant Rollback», либо `vercel rollback <url-деплоя>` (CLI 62.7). По документации Vercel
 после отката новые деплои перестают автоматически назначаться на домен, пока откат не снят («Promote»/новый ручной деплой) — учитывайте это перед следующим merge.
 Откат через Vercel меняет только то, что отдаёт домен; git-история и ветка `dev` остаются прежними (для постоянного отката — процедура выше).
