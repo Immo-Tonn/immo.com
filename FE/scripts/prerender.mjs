@@ -8,26 +8,39 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const SITE_URL = 'https://immo-tonn.com';
-const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
-const ROUTES = (process.env.ONLY ? [process.env.ONLY] : [
-  '/',
-  '/immobilien',
-  '/wertermittlung',
-  '/finanzierung',
-  '/rechner',
-  '/verkaufssupport',
-  '/kontakt',
-  '/recht-und-rat',
-  '/objectstyling',
-  '/legalnotice',
-  '/privacypolicy',
-  '/cancellationpolicy',
-]);
+const DIST = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../dist',
+);
+const ROUTES = process.env.ONLY
+  ? [process.env.ONLY]
+  : [
+      '/',
+      '/immobilien',
+      '/wertermittlung',
+      '/finanzierung',
+      '/rechner',
+      '/verkaufssupport',
+      '/kontakt',
+      '/recht-und-rat',
+      '/objectstyling',
+      '/legalnotice',
+      '/privacypolicy',
+      '/cancellationpolicy',
+    ];
 const MIME = {
-  '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
-  '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png',
-  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp',
-  '.woff': 'font/woff', '.woff2': 'font/woff2', '.ico': 'image/x-icon',
+  '.html': 'text/html',
+  '.js': 'text/javascript',
+  '.css': 'text/css',
+  '.json': 'application/json',
+  '.svg': 'image/svg+xml',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.ico': 'image/x-icon',
 };
 
 let chromium;
@@ -51,7 +64,10 @@ const server = http.createServer(async (req, res) => {
     if (!file.startsWith(DIST)) throw new Error('outside dist');
     const stat = await fs.stat(file);
     if (!stat.isFile()) throw new Error('not file');
-    res.setHeader('Content-Type', MIME[path.extname(file)] ?? 'application/octet-stream');
+    res.setHeader(
+      'Content-Type',
+      MIME[path.extname(file)] ?? 'application/octet-stream',
+    );
     res.end(await fs.readFile(file));
   } catch {
     // SPA fallback: always the pristine template, never an already prerendered page
@@ -59,7 +75,7 @@ const server = http.createServer(async (req, res) => {
     res.end(template);
   }
 });
-await new Promise((r) => server.listen(0, '127.0.0.1', r));
+await new Promise(r => server.listen(0, '127.0.0.1', r));
 const origin = `http://127.0.0.1:${server.address().port}`;
 
 let browser;
@@ -75,14 +91,19 @@ try {
   }
   browser = await chromium.launch(launchOptions);
 } catch (e) {
-  console.warn(`[prerender] Chromium unavailable (${e.message.split('\n')[0]}) — skipping`);
+  console.warn(
+    `[prerender] Chromium unavailable (${e.message.split('\n')[0]}) — skipping`,
+  );
   server.close();
   process.exit(0);
 }
 
 const setCanonical = (html, url) =>
   html
-    .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, `<link rel="canonical" href="${url}" />`)
+    .replace(
+      /<link rel="canonical" href="[^"]*"\s*\/?>/,
+      `<link rel="canonical" href="${url}" />`,
+    )
     .replace(/(<meta\s+property="og:url"\s+content=")[^"]*(")/, `$1${url}$2`);
 
 let failed = 0;
@@ -91,12 +112,40 @@ try {
   // One page for all routes: serverless Chromium runs --single-process,
   // so closing a page would kill the whole browser.
   const page = await browser.newPage();
-  page.on('pageerror', (e) => console.warn(`[prerender] ${current} page error: ${e.message.slice(0, 160)}`));
+  page.on('pageerror', e =>
+    console.warn(
+      `[prerender] ${current} page error: ${e.message.slice(0, 160)}`,
+    ),
+  );
   for (const route of ROUTES) {
     current = route;
     try {
-      await page.goto(origin + route, { waitUntil: 'networkidle', timeout: 30000 });
-      await page.waitForSelector('#root > *', { state: 'attached', timeout: 10000 });
+      await page.goto(origin + route, {
+        waitUntil: 'networkidle',
+        timeout: 30000,
+      });
+      await page.waitForSelector('#root > *', {
+        state: 'attached',
+        timeout: 10000,
+      });
+      // Drop tags injected at runtime by third parties: the app would inject them
+      // a second time on load (double Usercentrics SDK / reCAPTCHA).
+      await page.evaluate(() => {
+        document
+          .querySelectorAll(
+            [
+              'script[src*="usercentrics.eu/ui/v/"]',
+              'link[href*="usercentrics.eu"]',
+              'script[src*="recaptcha"]',
+              'script[data-sdkn]',
+              'style[data-emotion]',
+              '.grecaptcha-badge',
+              'iframe[src*="recaptcha"]',
+              'textarea[name="g-recaptcha-response"]',
+            ].join(','),
+          )
+          .forEach(el => el.remove());
+      });
       let html = await page.content();
       const url = SITE_URL + (route === '/' ? '/' : route);
       html = setCanonical(html, url);
@@ -116,4 +165,5 @@ try {
   await browser.close().catch(() => {});
   server.close();
 }
-if (failed) console.warn(`[prerender] ${failed} route(s) failed, they fall back to SPA`);
+if (failed)
+  console.warn(`[prerender] ${failed} route(s) failed, they fall back to SPA`);
