@@ -1,6 +1,6 @@
 // immo/FE7src/pages/Auth/ForgotPassword.tsx
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 
 const ForgotPassword: React.FC = () => {

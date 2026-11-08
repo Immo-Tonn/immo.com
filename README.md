@@ -114,6 +114,8 @@ VITE_HOST=http://localhost:4000
 
 ## Деплой
 
+> Восстановление стабильной версии и откат production: [docs/ROLLBACK.md](docs/ROLLBACK.md).
+
 Проект разворачивается на сервере через Docker Compose:
 
 ```bash

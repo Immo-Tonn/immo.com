@@ -1,17 +1,23 @@
 // ./src/pages/RealEstate/RealEstate.tsx
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import PropertyCard from '@widgets/PropertyCard/PropertyCard';
 import styles from './RealEstate.module.css';
-import { usePropertysData } from '@shared/api/usePropertyData';
+import {
+  usePropertysData,
+  type PropertyListBundle,
+} from '@shared/api/usePropertyData';
 import LoadingErrorHandler from '@shared/ui/LoadingErrorHandler/LoadingErrorHandler';
 import { fadeInOnScroll } from '@shared/anim/animations';
 import { useTranslation } from 'react-i18next';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const RealEstate = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { objectData, err, loading, images } = usePropertysData();
+  const initial = useLoaderData() as PropertyListBundle | undefined;
+  const { objectData, err, loading, images } = usePropertysData(initial);
   const refs = useRef<(HTMLLIElement | null)[]>([]);
   const listRef = useRef<HTMLUListElement | null>(null);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
@@ -32,6 +38,8 @@ const RealEstate = () => {
             {
               x: i % 2 === 0 ? -50 : 100,
               y: i % 2 === 0 ? 0 : -50,
+              // карточка появляется, как только её верх входит в окно (а не при 70% высоты)
+              start: 'top bottom',
             },
           );
         }
@@ -77,6 +85,7 @@ const RealEstate = () => {
                     refs.current[i] = el;
                   }}
                   residentialHouse={obj.residentialHouses}
+                  priority={i === 0}
                 />
               ))}
             </ul>
@@ -117,4 +126,4 @@ const RealEstate = () => {
   );
 };
 
-export default RealEstate;
+export default withPageShell(RealEstate);

@@ -2,7 +2,7 @@ import Button from '@shared/ui/Button/Button';
 import styles from './HowIsGoing.module.css';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll } from '@shared/anim/animations';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useTranslation } from 'react-i18next';
 
 const HowIsGoing = () => {

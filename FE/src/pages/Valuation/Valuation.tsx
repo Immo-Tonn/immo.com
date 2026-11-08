@@ -2,38 +2,32 @@ import Competence from '@widgets/Competence/Competence';
 import HowIsGoing from '@widgets/HowIsGoing/HowIsGoing';
 import ValuationCTA from '@widgets/ValuationCTA/ValuationCTA';
 import HeroValuation from '@widgets/hero/HeroValuation/HeroValuation.module';
-import Seo from '@shared/ui/Seo/Seo';
 import { useTranslation } from 'react-i18next';
-
-const valuationSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Immobilienbewertung',
-  name: 'Immobilienbewertung mit Immo Tonn',
-  description:
-    'Kostenlose und unverbindliche Immobilienbewertung für Häuser, Wohnungen und Grundstücke in Münster und Umgebung.',
-  provider: {
-    '@type': 'RealEstateAgent',
-    name: 'Immo Tonn',
-    url: 'https://immo-tonn.com',
-  },
-  areaServed: {
-    '@type': 'State',
-    name: 'Nordrhein-Westfalen',
-  },
-  url: 'https://immo-tonn.com/wertermittlung',
-};
+import { ORGANIZATION_ID } from '../../seo/structuredData';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const Valuation = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.split('-')[0];
+  const url = `https://immo-tonn.com${lang === 'en' || lang === 'ru' ? `/${lang}` : ''}/wertermittlung`;
+  // Разметка совпадает с видимым содержимым и языком страницы
+  const valuationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    serviceType: 'Immobilienbewertung',
+    name: t('seo.wertermittlung.title'),
+    description: t('seo.wertermittlung.description'),
+    provider: { '@id': ORGANIZATION_ID },
+    areaServed: {
+      '@type': 'State',
+      name: 'Nordrhein-Westfalen',
+    },
+    url,
+  };
 
   return (
     <>
-      <Seo
-        title={t('seo.wertermittlung.title')}
-        description={t('seo.wertermittlung.description')}
-        path="/wertermittlung"
-      />
       <script type="application/ld+json">
         {JSON.stringify(valuationSchema)}
       </script>
@@ -41,4 +35,4 @@ const Valuation = () => {
     </>
   );
 };
-export default Valuation;
+export default withPageShell(Valuation);

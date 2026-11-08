@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from '@shared/lib/localeRouter';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import {
@@ -11,8 +11,6 @@ import {
 } from '@mui/material';
 import styles from './Header.module.css';
 import logo from '@shared/assets/header/logo.svg';
-import telephone from '@shared/assets/header/telephone.svg';
-import eMail from '@shared/assets/header/e-mail.svg';
 import location from '@shared/assets/header/google.svg';
 import AdminDropdownMenu from '@widgets/AdminDropdownMenu/AdminDropdownMenu';
 import { dispatchLogoutEvent } from '@features/utils/authEvent';
@@ -23,6 +21,21 @@ interface NavLink {
   label: string;
   path: string;
 }
+
+const PhoneIcon = () => (
+  <svg
+    className={styles.callIcon}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.7"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M5.2 3.5h3l1.6 4-2 1.3a11.5 11.5 0 0 0 6.4 6.4l1.3-2 4 1.6v3a1.9 1.9 0 0 1-2 1.9A15.8 15.8 0 0 1 3.3 5.5a1.9 1.9 0 0 1 1.9-2z" />
+  </svg>
+);
 
 const Header = () => {
   const { t } = useTranslation();
@@ -117,6 +130,13 @@ const Header = () => {
           </div>
 
           <div className={styles.mobileActions}>
+            <a
+              href="tel:+491743454419"
+              className={styles.callIconButton}
+              aria-label={t('header.call')}
+            >
+              <PhoneIcon />
+            </a>
             <LanguageSwitcher />
             <IconButton
               className={styles.burgerButton}
@@ -175,52 +195,32 @@ const Header = () => {
             )}
 
             <div className={styles.drawerLangSwitcher}>
-              <LanguageSwitcher />
+              <LanguageSwitcher variant="inline" />
             </div>
           </Drawer>
 
           <div className={styles.contactColumn}>
-            <div className={styles.contact}>
-              <ul className={styles.headerContacts}>
-                <li>
-                  <div className={styles.contactIcon}>
-                    <img src={telephone} alt="Phone" />
-                  </div>
-                  <a href="tel:01743454419" className={styles.contactText}>
-                    0174 345 44 19
-                  </a>
-                </li>
-                <li>
-                  <div className={styles.contactIcon}>
-                    <img src={eMail} alt="email" />
-                  </div>
-                  <a
-                    href="mailto:tonn_andreas@web.de"
-                    className={styles.contactText}
-                  >
-                    tonn_andreas@web.de
-                  </a>
-                </li>
-                <li className={styles.contactItem}>
-                  <div className={styles.contactIcon}>
-                    <img src={location} alt="address icon" />
-                  </div>
-                  <a
-                    href="https://www.google.com/maps/place/Sessendrupweg+54,+48161+M%C3%BCnster"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.contactText}
-                  >
-                    <div className={styles.contactTextWrapper}>
-                      <span>Sessendrupweg 54</span>
-                      <span>48161 Münster</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+            <a href="tel:+491743454419" className={styles.callButton}>
+              <PhoneIcon />
+              <span>{t('header.call')}</span>
+            </a>
+            <div className={styles.addressGroup}>
+              <a
+                href="https://www.google.com/maps/place/Sessendrupweg+54,+48161+M%C3%BCnster"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.addressLink}
+              >
+                <img className={styles.addressIcon} src={location} alt="" />
+                <span className={styles.addressText}>
+                  <span className={styles.addressCity}>Münster</span>
+                  <span className={styles.addressStreet}>
+                    Sessendrupweg 54
+                  </span>
+                </span>
+              </a>
             </div>
-
-            <LanguageSwitcher className={styles.bottomLangSwitcher} />
+            <LanguageSwitcher className={styles.headerLang} />
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './LegalNotice.module.css';
+import { withPageShell } from '@shared/ui/PageShell/PageShell';
 
 const LegalNotice: React.FC = () => {
   return (
@@ -84,4 +85,4 @@ const LegalNotice: React.FC = () => {
   );
 };
 
-export default LegalNotice;
+export default withPageShell(LegalNotice);

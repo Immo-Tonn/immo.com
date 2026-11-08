@@ -6,7 +6,7 @@ const InteriorStyling = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    fadeInOnScroll(ref, { y: 100, x: 120 });
+    fadeInOnScroll(ref, { y: 100, x: 120, start: 'top bottom' });
   }, []);
 
   return (

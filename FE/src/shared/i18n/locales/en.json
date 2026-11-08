@@ -2,47 +2,45 @@
   "seo": {
     "wertermittlung": {
       "title": "Property Valuation Münster – Free Appraisal | Immo Tonn",
-      "description": "Free, no-obligation property valuation in Münster and the surrounding area. Find out transparently and reliably what your property is worth today – with Immo Tonn."
+      "description": "Free, no-obligation property valuation in Münster and the surrounding area. Find out transparently and reliably what your property is worth today – Immo Tonn."
     },
-    "realEstate": {
-      "title": "Properties in Münster & Münsterland – Listings | Immo Tonn",
-      "description": "Current property listings in Münster and the Münsterland region: houses, apartments and plots. Browse listings and request a viewing."
+    "home": {
+      "title": "Immo Tonn – Property Valuation with Heart and Expertise",
+      "description": "Immo-Tonn in Münster: reliable property valuation, sale and brokerage of apartments, houses and plots of land. Get your free valuation now!"
     },
-    "financing": {
-      "title": "Property Financing Münster – Advice | Immo Tonn",
-      "description": "Personal advice on property financing in Münster: find the right financing for your property purchase – clearly explained."
+    "immobilien": {
+      "title": "Property listings | Immo Tonn",
+      "description": "Current property listings from Immo Tonn: houses, apartments, plots of land and commercial properties."
     },
-    "calculator": {
-      "title": "Mortgage Calculator – Monthly Payment | Immo Tonn",
-      "description": "Calculate your monthly payment for property financing for free – quick and non-binding with the Immo Tonn calculator."
+    "finanzierung": {
+      "title": "Mortgage Financing Calculator | Immo Tonn",
+      "description": "Calculate the monthly installment of your property financing as a non-binding example and arrange a personal consultation with Immo Tonn."
     },
-    "salesSupport": {
-      "title": "Sell Your Property in Münster – Sales Support | Immo Tonn",
-      "description": "From valuation to the notary appointment: Immo Tonn supports you in selling your property in Münster – transparent, reliable and personal."
+    "rechner": {
+      "title": "Mortgage Calculator for Properties | Immo Tonn",
+      "description": "Non-binding example calculation of the monthly installment for your property financing – for initial orientation, not individual financing advice."
     },
-    "contact": {
-      "title": "Contact – Real Estate Agent Münster | Immo Tonn",
-      "description": "Get in touch with Immo Tonn in Münster: we offer personal advice on valuation, sale and brokerage of your property."
+    "kontakt": {
+      "title": "Contact and Consultation | Immo Tonn",
+      "description": "Arrange your personal consultation with Immo Tonn in Münster now – via the contact form, by phone or by email."
     },
-    "lawAndAdvice": {
-      "title": "Legal Advice for Property Owners | Immo Tonn",
-      "description": "Important legal information and tips on buying, selling and valuing property – clearly explained by Immo Tonn."
+    "verkaufssupport": {
+      "title": "Sales Support – More Than Just Brokerage | Immo Tonn",
+      "description": "Full service from a professional: the agent analyzes the market and recommends the optimal asking price for your property."
     },
-    "objectStyling": {
-      "title": "Property Styling & Home Staging in Münster | Immo Tonn",
-      "description": "Professional property styling shows your home at its best – for convincing photos, viewings and a successful sale."
+    "rechtUndRat": {
+      "title": "Information and Support for Buying and Selling | Immo Tonn",
+      "description": "Practical information and support for property transactions: help with documents such as the land registry extract and energy certificate, and with viewings."
     },
-    "legalNotice": {
-      "title": "Legal Notice | Immo Tonn",
-      "description": "Legal notice and provider information of Immo Tonn, real estate in Münster."
-    },
-    "privacyPolicy": {
-      "title": "Privacy Policy | Immo Tonn",
-      "description": "Information on data protection and the processing of personal data on immo-tonn.com."
-    },
-    "cancellationPolicy": {
-      "title": "Cancellation Policy | Immo Tonn",
-      "description": "Cancellation policy and information about your right of withdrawal at Immo Tonn."
+    "breadcrumb": {
+      "home": "Home",
+      "immobilien": "Properties",
+      "wertermittlung": "Property valuation",
+      "finanzierung": "Financing",
+      "rechner": "Financing calculator",
+      "kontakt": "Contact",
+      "verkaufssupport": "Sales support",
+      "rechtUndRat": "Law and advice"
     }
   },
   "nav": {
@@ -53,6 +51,8 @@
     "contact": "Contact"
   },
   "header": {
+    "call": "Call",
+    "language": "Select language",
     "toHome": "Go to homepage",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -78,17 +78,17 @@
     "titleLine1": "Your trusted real estate agent in",
     "titleLine2": "Münster, the Münsterland and across NRW –",
     "titleLine3": "here's what you can expect from us:",
-    "paragraph1": "With a professional real estate agent by your side, you can be sure that the entire process – from the first idea to a successful sale – runs efficiently, safely and in your best interest.",
-    "paragraph2": "Since 1985 we have specialized in selling existing and new-build properties in the <0>Münsterland region</0>, using exclusive marketing strategies and a regional network built up over decades to achieve the best result for every property.",
+    "paragraph1": "With a professional real estate agent by your side, you can be sure that the entire process – from the first idea to a successful completion – runs efficiently, safely and in your best interest.",
+    "paragraph2": "Since 1985 – for over 40 years – we have specialized in selling existing and new-build properties in the <0>Münsterland region</0>, using exclusive marketing strategies and a regional network built up over decades to achieve the best result for every property.",
     "paragraph3": "Our experienced team supports you personally, takes care of the details, and keeps improving so you always get the best possible service.",
     "bottomLine1": "Your agent team for residential properties,",
-    "bottomLine2": "commercial buildings and high-value investments"
+    "bottomLine2": "commercial buildings and high-quality investments"
   },
   "fiveSteps": {
     "titleLine1": "More than just real estate – a partnership",
     "titleLine2": "that unfolds for you",
     "subtitle": "Selling your property in 5 steps",
-    "cta": "Sell",
+    "cta": "Selling",
     "steps": [
       {
         "title": "Free property valuation & initial consultation",
@@ -124,8 +124,8 @@
         "answer": "After the photo session, we create a professional listing brochure and publish it for you – this is already included in the sales process."
       },
       {
-        "question": "Can I also sell a commercial building or business property through you?",
-        "answer": "Yes, alongside residential properties we also broker commercial buildings and high-value investment properties."
+        "question": "Can I also sell a commercial building or commercial property through you?",
+        "answer": "Yes, alongside residential properties we also broker commercial buildings and high-quality investment properties."
       },
       {
         "question": "How quickly do I get the results of the valuation?",
@@ -165,7 +165,7 @@
     "items": {
       "immobilienangebote": "Property listings",
       "verkaufssupport": "Sales support",
-      "recht-und-rat": "Legal advice",
+      "recht-und-rat": "Law and advice",
       "objektstyling": "Property styling",
       "wertermittlung": "Valuation",
       "finanzierung": "Financing"
@@ -249,7 +249,9 @@
       "term": "Term",
       "years": "years",
       "contact": "Contact"
-    }
+    },
+    "equityRequired": "Please enter your equity.",
+    "customFieldsInvalid": "Please correct the input errors in the custom fields."
   },
   "contactForm": {
     "heading": "Arrange your personal consultation now",
@@ -461,6 +463,14 @@
   },
   "notFound": {
     "backHome": "Back to homepage",
-    "text": "Oops! This page could not be found."
+    "text": "Oops! This page could not be found.",
+    "title": "Page not found",
+    "hint": "The address does not exist or the page has been moved.",
+    "catalog": "View property listings"
+  },
+  "loadError": {
+    "title": "The page could not be loaded",
+    "text": "An error occurred while loading. Please try again.",
+    "retry": "Reload page"
   }
 }

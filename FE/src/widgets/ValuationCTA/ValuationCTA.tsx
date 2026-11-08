@@ -3,7 +3,7 @@ import styles from './ValuationCTA.module.css';
 import valuationPhoto from '@shared/assets/valuation-cta/valuation-photo.webp';
 import { useEffect, useRef } from 'react';
 import { fadeInOnScroll, runningBoxShadow } from '@shared/anim/animations';
-import { Link } from 'react-router-dom';
+import { Link } from '@shared/lib/localeRouter';
 import { useTranslation } from 'react-i18next';
 
 const ValuationCTA = () => {
@@ -20,8 +20,8 @@ const ValuationCTA = () => {
         fadeInOnScroll(
           { current: ref },
           i % 2 === 0
-            ? { x: -100, y: 0, duration: 0.3 }
-            : { x: 100, y: -50, duration: 0.6 },
+            ? { x: -100, y: 0, duration: 0.3, start: 'top bottom' }
+            : { x: 100, y: -50, duration: 0.6, start: 'top bottom' },
         );
       }
     });

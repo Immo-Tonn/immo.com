@@ -2,47 +2,61 @@
   "seo": {
     "wertermittlung": {
       "title": "Immobilienbewertung Münster – Kostenlose Wertermittlung | Immo Tonn",
-      "description": "Kostenlose, unverbindliche Immobilienbewertung in Münster und Umgebung: Erfahren Sie transparent und fundiert, was Ihre Immobilie heute wert ist – von Immo Tonn."
+      "description": "Kostenlose, unverbindliche Immobilienbewertung in Münster und Umgebung: Erfahren Sie transparent und fundiert, was Ihre Immobilie heute wert ist – Immo Tonn."
     },
-    "realEstate": {
-      "title": "Immobilien in Münster & Münsterland – Angebote | Immo Tonn",
-      "description": "Aktuelle Immobilienangebote in Münster und im Münsterland: Häuser, Wohnungen und Grundstücke. Jetzt Angebote ansehen und Besichtigung anfragen."
+    "home": {
+      "title": "Immo Tonn – Immobilienbewertung mit Herz und Verstand",
+      "description": "Immo-Tonn in Münster: Verlässliche Immobilienbewertung, Verkauf und Vermittlung von Wohnungen, Häusern und Grundstücken. Jetzt kostenlos bewerten lassen!"
     },
-    "financing": {
-      "title": "Immobilienfinanzierung Münster – Beratung | Immo Tonn",
-      "description": "Persönliche Beratung zur Immobilienfinanzierung in Münster: Finden Sie die passende Finanzierung für Ihren Immobilienkauf – verständlich erklärt."
+    "immobilien": {
+      "title": "Immobilienangebote | Immo Tonn",
+      "description": "Aktuelle Immobilienangebote von Immo Tonn: Häuser, Wohnungen, Grundstücke und Gewerbeimmobilien."
     },
-    "calculator": {
-      "title": "Finanzierungsrechner – Monatsrate berechnen | Immo Tonn",
-      "description": "Berechnen Sie kostenlos Ihre monatliche Rate für Ihre Immobilienfinanzierung – schnell und unverbindlich mit dem Rechner von Immo Tonn."
+    "finanzierung": {
+      "title": "Immobilienfinanzierung Rechner | Immo Tonn",
+      "description": "Berechnen Sie die monatliche Rate Ihrer Immobilienfinanzierung als unverbindliche Beispielrechnung und vereinbaren Sie einen Beratungstermin bei Immo Tonn."
     },
-    "salesSupport": {
-      "title": "Immobilie verkaufen in Münster – Verkaufssupport | Immo Tonn",
-      "description": "Von der Bewertung bis zum Notartermin: Immo Tonn begleitet Sie beim Verkauf Ihrer Immobilie in Münster – transparent, zuverlässig und persönlich."
+    "rechner": {
+      "title": "Finanzierungsrechner für Immobilien | Immo Tonn",
+      "description": "Unverbindliche Beispielrechnung der monatlichen Rate Ihrer Immobilienfinanzierung – zur ersten Orientierung, ersetzt keine individuelle Finanzierungsberatung."
     },
-    "contact": {
-      "title": "Kontakt – Immobilienmakler Münster | Immo Tonn",
-      "description": "Nehmen Sie Kontakt mit Immo Tonn in Münster auf: Wir beraten Sie persönlich zu Bewertung, Verkauf und Vermittlung Ihrer Immobilie."
+    "kontakt": {
+      "title": "Kontakt und Beratungstermin | Immo Tonn",
+      "description": "Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin bei Immo Tonn in Münster – über das Kontaktformular, per Telefon oder E-Mail."
     },
-    "lawAndAdvice": {
-      "title": "Recht & Rat rund um die Immobilie | Immo Tonn",
-      "description": "Wichtige rechtliche Informationen und Tipps rund um Kauf, Verkauf und Bewertung von Immobilien – verständlich erklärt von Immo Tonn."
+    "verkaufssupport": {
+      "title": "Verkaufssupport – mehr als nur Vermittlung | Immo Tonn",
+      "description": "Rundum-Service vom Profi: Der Makler analysiert den Markt und empfiehlt den optimalen Angebotspreis für Ihre Immobilie."
     },
-    "objectStyling": {
-      "title": "Objektstyling & Home Staging in Münster | Immo Tonn",
-      "description": "Professionelles Objektstyling bringt Ihre Immobilie optimal zur Geltung – für überzeugende Fotos, Besichtigungen und einen erfolgreichen Verkauf."
+    "rechtUndRat": {
+      "title": "Recht & Rat – Informationen zu Kauf und Verkauf | Immo Tonn",
+      "description": "Praktische Informationen und Begleitung rund um Kauf und Verkauf: Unterstützung bei Unterlagen wie Grundbuchauszug und Energieausweis sowie bei Besichtigungen."
     },
-    "legalNotice": {
+    "objektstyling": {
+      "title": "Objektstyling – Ästhetik trifft Emotion | Immo Tonn",
+      "description": "Objektstyling ist mehr als Dekoration: Wir inszenieren Immobilien mit Licht, Perspektive und Wirkung, damit sie sich wie ein Zuhause anfühlen."
+    },
+    "impressum": {
       "title": "Impressum | Immo Tonn",
-      "description": "Impressum und Anbieterkennzeichnung von Immo Tonn, Immobilien in Münster."
+      "description": "Impressum und Anbieterkennzeichnung von Immo-Tonn, Inhaber Andreas Tonn, Münster."
     },
-    "privacyPolicy": {
+    "datenschutz": {
       "title": "Datenschutzerklärung | Immo Tonn",
-      "description": "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten auf immo-tonn.com."
+      "description": "Informationen darüber, welche personenbezogenen Daten Immo-Tonn zu welchen Zwecken und in welchem Umfang verarbeitet."
     },
-    "cancellationPolicy": {
+    "widerruf": {
       "title": "Widerrufsbelehrung | Immo Tonn",
-      "description": "Widerrufsbelehrung und Informationen zu Ihrem Widerrufsrecht bei Immo Tonn."
+      "description": "Widerrufsrecht: Den Vertrag können Sie binnen vierzehn Tagen ohne Angabe von Gründen widerrufen – Informationen zu Frist, Ausübung und Folgen."
+    },
+    "breadcrumb": {
+      "home": "Startseite",
+      "immobilien": "Immobilien",
+      "wertermittlung": "Wertermittlung",
+      "finanzierung": "Finanzierung",
+      "rechner": "Finanzierungsrechner",
+      "kontakt": "Kontakt",
+      "verkaufssupport": "Verkaufssupport",
+      "rechtUndRat": "Recht & Rat"
     }
   },
   "nav": {
@@ -53,6 +67,8 @@
     "contact": "Kontakt"
   },
   "header": {
+    "call": "Anrufen",
+    "language": "Sprache wählen",
     "toHome": "Zur Startseite",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen"
@@ -249,7 +265,9 @@
       "term": "Laufzeit",
       "years": "Jahre",
       "contact": "Kontakt"
-    }
+    },
+    "equityRequired": "Bitte geben Sie Ihr Eigenkapital ein.",
+    "customFieldsInvalid": "Bitte korrigieren Sie die Eingabefehler in den benutzerdefinierten Feldern."
   },
   "contactForm": {
     "heading": "Vereinbaren Sie jetzt Ihren persönlichen Beratungstermin",
@@ -461,6 +479,14 @@
   },
   "notFound": {
     "backHome": "Zurück zur Startseite",
-    "text": "Ups! Diese Seite wurde nicht gefunden."
+    "text": "Ups! Diese Seite wurde nicht gefunden.",
+    "title": "Seite nicht gefunden",
+    "hint": "Die Adresse existiert nicht oder die Seite wurde verschoben.",
+    "catalog": "Zu den Immobilienangeboten"
+  },
+  "loadError": {
+    "title": "Seite konnte nicht geladen werden",
+    "text": "Beim Laden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "retry": "Seite neu laden"
   }
 }

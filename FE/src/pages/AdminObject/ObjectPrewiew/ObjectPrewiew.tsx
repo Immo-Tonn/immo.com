@@ -1,6 +1,7 @@
 // immo/FE/src/pages/AdminObject/ObjectPrewiew/ObjectPrewiew.tsx
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate } from '@shared/lib/localeRouter';
 import axios from '@features/utils/axiosConfig';
 import styles from './ObjectPrewiew.module.css';
 import { ObjectType } from '@features/utils/types';
