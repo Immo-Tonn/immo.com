@@ -83,6 +83,7 @@
     "redirecting": "Weiterleitung..."
   },
   "heroHome": {
+    "imageAlt": "Modernes Haus mit beleuchteten Fensterfronten bei Nacht, im Hintergrund eine Stadt",
     "line1": "Immobilienmakler",
     "line2": "für Münster",
     "line3": "und das Münsterland",
@@ -185,6 +186,14 @@
       "objektstyling": "Objektstyling",
       "wertermittlung": "Wertermittlung",
       "finanzierung": "Finanzierung"
+    },
+    "alts": {
+      "immobilienangebote": "Moderne Wohnhäuser mit Glasbalkonen",
+      "verkaufssupport": "Gläserne Bürohochhäuser vor blauem Himmel",
+      "recht-und-rat": "Heller Gang mit geschwungenen weißen Bögen",
+      "objektstyling": "Beleuchtetes Gebäude bei Nacht mit Spiegelung im Wasser",
+      "wertermittlung": "Moderne Gebäudefassade mit dreieckigen Metallpaneelen",
+      "finanzierung": "Geschwungene Stahl- und Glaskonstruktion von unten"
     }
   },
   "realEstate": {

@@ -19,7 +19,7 @@ const Categories = () => {
             <NavLink to={item.link} className={styles.card}>
               <img
                 src={item.image}
-                alt=""
+                alt={t(`categories.alts.${item.alt}`)}
                 className={styles.image}
                 loading="lazy"
                 decoding="async"
