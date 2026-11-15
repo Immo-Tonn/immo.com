@@ -249,12 +249,22 @@
     flex-direction: column;
   }
   .cta {
+    box-sizing: border-box;
     width: 100%;
     justify-content: space-between;
-    padding: 0 26px;
+    min-height: 56px;
+    padding: 0 22px;
+    font-size: 1rem;
   }
   .lineAccent {
     padding-left: 0;
+  }
+}
+
+/* очень узкие экраны: на 16 px длинная надпись переносится — оставляем 15 px */
+@media (max-width: 374px) {
+  .cta {
+    font-size: 0.9375rem;
   }
 }
 
