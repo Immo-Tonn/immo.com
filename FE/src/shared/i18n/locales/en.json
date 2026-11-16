@@ -5,7 +5,7 @@
       "description": "Free, no-obligation property valuation in Münster and the surrounding area. Find out transparently and reliably what your property is worth today – Immo Tonn."
     },
     "home": {
-      "title": "Immo Tonn – Property Valuation with Heart and Expertise",
+      "title": "Property Valuation & Estate Agent in Münster | Immo Tonn",
       "description": "Immo-Tonn in Münster: reliable property valuation, sale and brokerage of apartments, houses and plots of land. Get your free valuation now!"
     },
     "immobilien": {
@@ -67,6 +67,7 @@
     "redirecting": "Redirecting..."
   },
   "heroHome": {
+    "imageAlt": "Modern house with illuminated windows at night, a city in the background",
     "line1": "Real Estate Agent",
     "line2": "for Münster",
     "line3": "and the Münsterland Region",
@@ -169,6 +170,14 @@
       "objektstyling": "Property styling",
       "wertermittlung": "Valuation",
       "finanzierung": "Financing"
+    },
+    "alts": {
+      "immobilienangebote": "Modern houses with glass balconies",
+      "verkaufssupport": "Glass office towers against a blue sky",
+      "recht-und-rat": "Bright corridor with curved white arches",
+      "objektstyling": "Illuminated building at night reflected in water",
+      "wertermittlung": "Modern building facade with triangular metal panels",
+      "finanzierung": "Curved steel and glass structure seen from below"
     }
   },
   "realEstate": {

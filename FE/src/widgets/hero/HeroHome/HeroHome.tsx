@@ -33,11 +33,11 @@ const HeroHome = () => {
 
   return (
     <section ref={sectionRef} className={styles.hero}>
-      <div className={styles.media} aria-hidden="true">
+      <div className={styles.media}>
         <img
           className={styles.image}
           src={heroImage}
-          alt=""
+          alt={t('heroHome.imageAlt')}
           fetchPriority="high"
           decoding="async"
         />

@@ -27,6 +27,21 @@ export const siteStructuredData = [
       "latitude": 51.9607,
       "longitude": 7.6261
     },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Immo+Tonn+Sessendrupweg+54+48161+M%C3%BCnster",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "08:00",
+        "closes": "14:00"
+      }
+    ],
     "areaServed": [
       {
         "@type": "City",
