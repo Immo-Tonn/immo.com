@@ -46,6 +46,7 @@ export default {
     // (ssr:false). Пока в каталоге нет объектов, пререндерим служебный путь: страница
     // под noindex, в sitemap и built-objects.json не попадает.
     if (ids.length === 0) objectPaths.push('/immobilien/_empty');
-    return [...pages, ...objectPaths];
+    // Tippgeber-Programm — только немецкая версия (без /en, /ru)
+    return [...pages, '/tippgeber', ...objectPaths];
   },
 } satisfies Config;
