@@ -72,6 +72,7 @@
     "contact": "Kontakt"
   },
   "header": {
+    "tippgeber": "Tipp geben · bis zu 4.000 €",
     "call": "Anrufen",
     "language": "Sprache wählen",
     "toHome": "Zur Startseite",
@@ -84,6 +85,13 @@
     "cancellationPolicy": "Widerrufsrecht",
     "tippgeber": "Tippgeber-Programm",
     "rightsReserved": "{{name}}. Alle Rechte vorbehalten {{year}}"
+  },
+  "tippgeberPromo": {
+    "line1": "Ihr Tipp.",
+    "line2": "Bis zu 4.000 €.",
+    "text": "Kennen Sie jemanden, der eine Immobilie verkaufen möchte? Empfehlen Sie IMMO TONN weiter und erhalten Sie bei erfolgreichem Verkauf eine Vergütung.",
+    "cta": "Tippgeber-Programm entdecken",
+    "note": "Auszahlung nach erfolgreichem Verkauf und Eingang unserer Maklerprovision. Es gelten die Teilnahmebedingungen."
   },
   "common": {
     "redirecting": "Weiterleitung..."
