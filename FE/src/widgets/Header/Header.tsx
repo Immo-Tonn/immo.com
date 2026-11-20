@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from '@shared/lib/localeRouter';
+import { Link, NavLink, useNavigate } from '@shared/lib/localeRouter';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import {
@@ -38,7 +38,9 @@ const PhoneIcon = () => (
 );
 
 const Header = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  // страница /tippgeber только на немецком — кнопки показываем только в немецкой версии
+  const showTipp = i18n.language.startsWith('de');
 
   /* ---------- navigation state ---------- */
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -129,7 +131,20 @@ const Header = () => {
             )}
           </div>
 
+          {showTipp && (
+            <Link to="/tippgeber" className={styles.tippTop}>
+              <span className={styles.tippDot} aria-hidden="true" />
+              {t('header.tippgeber')}
+            </Link>
+          )}
+
           <div className={styles.mobileActions}>
+            {showTipp && (
+              <Link to="/tippgeber" className={styles.tippTablet}>
+                <span className={styles.tippDot} aria-hidden="true" />
+                {t('header.tippgeber')}
+              </Link>
+            )}
             <a
               href="tel:+491743454419"
               className={styles.callIconButton}
@@ -186,6 +201,19 @@ const Header = () => {
                 </ListItem>
               ))}
             </List>
+
+            {showTipp && (
+              <Link
+                to="/tippgeber"
+                className={styles.drawerTipp}
+                onClick={handleNavLinkClick}
+              >
+                <span className={styles.tippDot} aria-hidden="true" />
+                <span className={styles.drawerTippText}>
+                  {t('header.tippgeber')}
+                </span>
+              </Link>
+            )}
 
             {/* --- ADMIN DROPDOWN (мобильное меню) --- */}
             {isAdmin && (

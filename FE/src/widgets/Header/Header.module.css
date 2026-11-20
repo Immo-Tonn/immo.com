@@ -611,3 +611,115 @@ a.langOption {
   box-sizing: border-box;
   text-align: left;
 }
+
+/* ---------- Кнопка Tippgeber-Programm ---------- */
+.tippDot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4d5e;
+  box-shadow: 0 0 0 3px rgba(255, 77, 94, 0.25);
+}
+.tippTop,
+.tippTablet {
+  box-sizing: border-box;
+  align-items: center;
+  gap: 9px;
+  height: 32px;
+  padding: 0 14px 0 12px;
+  border: 1px solid rgba(125, 166, 245, 0.85);
+  border-radius: 999px;
+  background: #1c3f9a;
+  box-shadow: 0 0 10px rgba(125, 166, 245, 0.3);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  color: #fff;
+  text-decoration: none;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+.tippTop:hover,
+.tippTablet:hover,
+.tippTop:focus-visible,
+.tippTablet:focus-visible {
+  color: #fff;
+  transform: none;
+  border-color: #a9c4f8;
+  background: #2457c5;
+  box-shadow: 0 0 16px rgba(125, 166, 245, 0.55);
+}
+.tippTop:focus-visible,
+.tippTablet:focus-visible,
+.drawerTipp:focus-visible {
+  outline: 2px solid #a9c4f8;
+  outline-offset: 2px;
+}
+/* десктоп: свободная строка над меню, справа */
+.tippTop {
+  display: none;
+}
+@media (min-width: 1201px) {
+  .tippTop {
+    display: inline-flex;
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+    align-self: start;
+    margin-top: 14px;
+  }
+}
+/* планшет: рядом со звонком и языком, пока хватает места */
+.tippTablet {
+  display: none;
+}
+@media (min-width: 600px) and (max-width: 1200px) {
+  .tippTablet {
+    display: inline-flex;
+  }
+}
+/* мобильное меню: отдельная заметная кнопка */
+.drawerTipp {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: calc(100% - 32px);
+  min-height: 52px;
+  margin: 16px;
+  padding: 0 20px;
+  border: 1px solid #2457c5;
+  border-radius: 999px;
+  background: #2457c5;
+  box-shadow: 0 10px 26px -12px rgba(36, 87, 197, 0.8);
+  font-family: var(--Inter), system-ui, sans-serif; /* Drawer рендерится вне шапки */
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  text-decoration: none;
+}
+.drawerTipp:hover {
+  color: #fff;
+  background: #3b6fd9;
+  border-color: #3b6fd9;
+}
+.drawerTipp::after {
+  content: '\2192' / '';
+  margin-left: auto;
+  font-size: 1.15em;
+}
+.drawerTippText {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 374px) {
+  .drawerTipp {
+    font-size: 15px;
+  }
+}
