@@ -162,20 +162,6 @@
   transform: translateY(-2px);
 }
 
-.tippRow {
-  /* третья кнопка — на отдельной строке под двумя основными */
-  flex-basis: 100%;
-  display: flex;
-}
-.tippDot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ff4d5e;
-  box-shadow: 0 0 0 3px rgba(255, 77, 94, 0.25);
-}
-
 /* --- загрузка: ступенчатое появление --- */
 @media (prefers-reduced-motion: no-preference) {
   .image {
@@ -261,9 +247,6 @@
   .actions {
     margin-top: auto;
     flex-direction: column;
-  }
-  .tippRow {
-    flex-basis: auto;
   }
   .cta {
     box-sizing: border-box;

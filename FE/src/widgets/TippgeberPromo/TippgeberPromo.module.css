@@ -43,20 +43,6 @@
   font-weight: 400;
   color: var(--h-accent-light);
 }
-/* небольшая красная точка возле акцента */
-.dot {
-  position: absolute;
-  top: 0.08em;
-  right: -0.24em;
-  width: 0.15em;
-  height: 0.15em;
-  min-width: 9px;
-  min-height: 9px;
-  border-radius: 50%;
-  background: #ff4d5e;
-  box-shadow: 0 0 0 0.07em rgba(255, 77, 94, 0.25);
-}
-
 .body {
   display: flex;
   flex-direction: column;
@@ -111,9 +97,18 @@
 .note {
   max-width: 52ch;
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.55;
-  color: var(--h-on-dark-muted);
+  color: var(--h-on-dark);
+}
+.noteLink {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.noteLink:hover,
+.noteLink:focus-visible {
+  color: var(--h-accent-light);
 }
 
 @media (max-width: 860px) {
