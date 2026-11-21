@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { Link, NavLink, useNavigate } from '@shared/lib/localeRouter';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -41,6 +42,9 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   // страница /tippgeber только на немецком — кнопки показываем только в немецкой версии
   const showTipp = i18n.language.startsWith('de');
+  // на главной кнопка стоит в hero под основными кнопками, наверху её не дублируем
+  const isHome = useLocation().pathname === '/';
+  const showTippTop = showTipp && !isHome;
 
   /* ---------- navigation state ---------- */
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -131,7 +135,7 @@ const Header = () => {
             )}
           </div>
 
-          {showTipp && (
+          {showTippTop && (
             <Link to="/tippgeber" className={styles.tippTop}>
               <span className={styles.tippDot} aria-hidden="true" />
               {t('header.tippgeber')}
@@ -139,7 +143,7 @@ const Header = () => {
           )}
 
           <div className={styles.mobileActions}>
-            {showTipp && (
+            {showTippTop && (
               <Link to="/tippgeber" className={styles.tippTablet}>
                 <span className={styles.tippDot} aria-hidden="true" />
                 {t('header.tippgeber')}
