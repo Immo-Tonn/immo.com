@@ -25,9 +25,9 @@ export const hero = {
   intro:
     'Kennen Sie jemanden, der ein Haus, eine Wohnung oder ein Grundstück in Münster und Umgebung verkaufen möchte? Stellen Sie den Kontakt zu IMMO TONN her. Führt Ihre Empfehlung zu einem erfolgreichen Verkauf über uns, bedanken wir uns mit einer Vergütung.',
   facts: [
-    '1 % des beurkundeten Kaufpreises',
-    'regulär 1.000–4.000 €',
-    'ab 100.000 € Kaufpreis',
+    'ab 30.000 € Kaufpreis',
+    '200 € bis 4.000 €',
+    '1 % ab 100.000 €',
   ],
   note: 'Auszahlung nach erfolgreichem Verkauf und Eingang unserer Maklerprovision. Bei gekürzter Provision kann die Vergütung geringer ausfallen.',
   ctaMail: 'Empfehlung per E-Mail senden',
@@ -68,23 +68,22 @@ export const benefits = {
 
 export const reward = {
   title: 'So berechnet sich Ihre Vergütung',
-  big: '1 %',
-  bigLabel: 'des beurkundeten Kaufpreises',
-  range: '1.000–4.000 €',
-  rangeLabel: 'reguläre Vergütung, ab 100.000 € Kaufpreis',
   intro:
-    'Für eine erfolgreiche Empfehlung erhalten Sie regulär 1 % des beurkundeten Kaufpreises, mindestens 1.000 € und höchstens 4.000 €. Das Programm gilt für Immobilien mit einem beurkundeten Kaufpreis ab 100.000 €. Bei gekürzter Maklerprovision reduziert sich die Vergütung anteilig.',
-  examplesTitle: 'Beispiele bei vollständigem Eingang der vereinbarten Maklerprovision',
-  examples: [
-    { price: '100.000 €', reward: '1.000 €' },
-    { price: '250.000 €', reward: '2.500 €' },
-    { price: '400.000 €', reward: '4.000 €' },
-  ],
-  priceLabel: 'Kaufpreis',
-  rewardLabel: 'Vergütung',
-  cap: 'Bei höheren Kaufpreisen bleibt die reguläre Vergütung auf 4.000 € begrenzt.',
-  reduced:
-    'Wird unsere vereinbarte Maklerprovision gekürzt oder nur teilweise gezahlt, reduziert sich die Vergütung entsprechend. Dabei kann sie auch unter 1.000 € liegen. Die Einzelheiten finden Sie in den Teilnahmebedingungen.',
+    'Die Vergütung richtet sich nach dem im Kaufvertrag notariell beurkundeten Kaufpreis, nicht nach dem Angebotspreis.',
+  table: {
+    head: ['Beurkundeter Kaufpreis', 'Ihre Vergütung'],
+    rows: [
+      ['ab 30.000 €', '200 €'],
+      ['ab 50.000 €', '500 €'],
+      ['ab 100.000 €', '1 % des Kaufpreises, mindestens 1.000 €'],
+      ['ab 400.000 €', '4.000 € (Höchstbetrag)'],
+      ['unter 30.000 €', 'nicht im Programm, im Einzelfall auf Anfrage'],
+    ],
+  },
+  noteBefore:
+    'Die Beträge gelten bei vollständigem Eingang der vereinbarten Maklerprovision. Wird sie gekürzt oder nur teilweise gezahlt, reduziert sich die Vergütung entsprechend und kann dann auch unter den genannten Beträgen liegen. Die Einzelheiten finden Sie in den ',
+  noteLink: 'Teilnahmebedingungen',
+  noteAfter: '.',
 };
 
 export const submit = {
@@ -125,6 +124,10 @@ export const faq = {
       q: 'Was passiert, wenn der Eigentümer uns schon kennt?',
       a: 'Dann kann die Empfehlung nicht berücksichtigt werden. Maßgeblich ist, dass uns die Verkaufsabsicht zum Zeitpunkt Ihrer Empfehlung noch nicht bekannt war.',
     },
+  {
+    q: 'Was gilt bei niedrigeren Kaufpreisen?',
+    a: 'Bei einem beurkundeten Kaufpreis von 30.000 € bis 49.999 € zahlen wir 200 €, von 50.000 € bis 99.999 € zahlen wir 500 €, ab 100.000 € erhalten Sie 1 % des Kaufpreises. Unter 30.000 € gilt das Programm nicht; im Einzelfall sprechen Sie uns gern an. Maßgeblich ist der Kaufpreis im Kaufvertrag, nicht der Angebotspreis.',
+  },
   ],
 };
 
@@ -157,7 +160,8 @@ export const conditions = {
     {
       title: 'Berechnung der Vergütung',
       paragraphs: [
-        'Wird die mit uns vereinbarte Maklerprovision gekürzt oder nur teilweise gezahlt, wird die reguläre Vergütung im gleichen Verhältnis reduziert. Gehen beispielsweise 50 % der vereinbarten Maklerprovision ein, werden 50 % der regulären Tippgebervergütung ausgezahlt. Die Auszahlung kann dadurch unter 1.000 € liegen.',
+        'Die Vergütung richtet sich nach dem im Kaufvertrag notariell beurkundeten Kaufpreis, nicht nach dem Angebotspreis: Ab 100.000 € beträgt sie 1 % des Kaufpreises, mindestens 1.000 € und höchstens 4.000 €. Bei einem Kaufpreis von 50.000 € bis 99.999 € beträgt sie 500 €, bei einem Kaufpreis von 30.000 € bis 49.999 € beträgt sie 200 €. Liegt der beurkundete Kaufpreis unter 30.000 €, besteht kein Anspruch auf Vergütung.',
+        'Wird die mit uns vereinbarte Maklerprovision gekürzt oder nur teilweise gezahlt, wird die reguläre Vergütung im gleichen Verhältnis reduziert. Gehen beispielsweise 50 % der vereinbarten Maklerprovision ein, werden 50 % der regulären Tippgebervergütung ausgezahlt. Die Auszahlung kann dadurch unter dem jeweiligen Betrag liegen.',
         'Bei nachträglichem Eingang weiterer Provisionszahlungen erfolgt eine entsprechende Nachzahlung bis zur Höhe der regulären Vergütung.',
       ],
     },

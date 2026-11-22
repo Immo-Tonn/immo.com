@@ -329,36 +329,6 @@
     var(--h-ink-2);
   color: var(--h-on-dark);
 }
-.rewardHead {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 3vw, 40px);
-  margin-bottom: clamp(24px, 3vw, 40px);
-}
-.rewardBig {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: clamp(20px, 2.6vw, 36px);
-  border: 1px solid rgba(125, 166, 245, 0.4);
-  border-radius: 20px;
-  background: rgba(246, 241, 234, 0.05);
-  min-width: 0;
-}
-.bigValue {
-  font-family: var(--h-display);
-  font-size: clamp(2rem, 0.9rem + 4.2vw, 4.6rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  color: var(--h-accent-light);
-}
-.bigLabel {
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: var(--h-on-dark-muted);
-}
 .bodyDark {
   max-width: 70ch;
   margin: 0 0 16px;
@@ -373,58 +343,66 @@
   line-height: 1.65;
   color: var(--h-on-dark-muted);
 }
-.examplesTitle {
-  margin: clamp(28px, 4vw, 48px) 0 18px;
+
+.priceTable {
+  width: 100%;
+  margin: clamp(24px, 3vw, 40px) 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.priceTable thead th {
+  padding: 0 0 14px;
+  border-bottom: 1px solid rgba(125, 166, 245, 0.4);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   line-height: 1.5;
+  text-align: left;
   text-transform: uppercase;
   color: var(--h-on-dark-muted);
+  overflow-wrap: break-word;
 }
-.examples {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 24px);
-  margin: 0 0 clamp(24px, 3vw, 36px);
-  padding: 0;
-  list-style: none;
+.priceTable tbody th,
+.priceTable tbody td {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--h-line-dark);
+  vertical-align: baseline;
+  text-align: left;
+  overflow-wrap: break-word;
 }
-.example {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  padding: 24px;
-  border: 1px solid var(--h-line-dark);
-  border-radius: 18px;
-  background: rgba(22, 12, 32, 0.5);
-  min-width: 0;
-}
-.exampleLabel {
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--h-on-dark-muted);
-}
-.examplePrice {
+.priceTable tbody th {
+  width: 42%;
+  padding-right: 16px;
   font-family: var(--h-display);
-  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.4rem);
   font-weight: 500;
+  line-height: 1.1;
   color: var(--h-on-dark);
 }
-.exampleArrow {
-  margin: 6px 0;
-  color: var(--h-accent-light);
-  font-size: 1.1rem;
-  line-height: 1;
-}
-.exampleReward {
+.priceTable tbody td {
   font-family: var(--h-display);
-  font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+  font-size: clamp(1.2rem, 1rem + 1vw, 2rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.25;
   color: var(--h-accent-light);
+}
+.priceTable tbody tr:last-child td {
+  font-family: var(--h-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--h-on-dark-muted);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- 4. Передача рекомендации ---------- */
@@ -781,10 +759,6 @@
     font-size: 1rem;
   }
   .steps {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .rewardHead,
-  .examples {
     grid-template-columns: minmax(0, 1fr);
   }
   .clauseBody {

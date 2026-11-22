@@ -125,34 +125,31 @@ const Tippgeber = () => {
           <h2 id="tg-reward" className={styles.h2Dark}>
             {reward.title}
           </h2>
-          <div className={styles.rewardHead}>
-            <div className={styles.rewardBig}>
-              <span className={styles.bigValue}>{reward.big}</span>
-              <span className={styles.bigLabel}>{reward.bigLabel}</span>
-            </div>
-            <div className={styles.rewardBig}>
-              <span className={styles.bigValue}>{reward.range}</span>
-              <span className={styles.bigLabel}>{reward.rangeLabel}</span>
-            </div>
-          </div>
           <p className={styles.bodyDark}>{reward.intro}</p>
-
-          <h3 className={styles.examplesTitle}>{reward.examplesTitle}</h3>
-          <ul className={styles.examples}>
-            {reward.examples.map(e => (
-              <li key={e.price} className={styles.example}>
-                <span className={styles.exampleLabel}>{reward.priceLabel}</span>
-                <span className={styles.examplePrice}>{e.price}</span>
-                <span className={styles.exampleArrow} aria-hidden="true">
-                  ↓
-                </span>
-                <span className={styles.exampleLabel}>{reward.rewardLabel}</span>
-                <span className={styles.exampleReward}>{e.reward}</span>
-              </li>
-            ))}
-          </ul>
-          <p className={styles.bodyDark}>{reward.cap}</p>
-          <p className={styles.bodyDarkMuted}>{reward.reduced}</p>
+          <table className={styles.priceTable}>
+            <caption className={styles.srOnly}>{reward.title}</caption>
+            <thead>
+              <tr>
+                <th scope="col">{reward.table.head[0]}</th>
+                <th scope="col">{reward.table.head[1]}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reward.table.rows.map(([price, fee]) => (
+                <tr key={price}>
+                  <th scope="row">{price}</th>
+                  <td>{fee}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className={styles.bodyDarkMuted}>
+            {reward.noteBefore}
+            <a href="#teilnahmebedingungen" className={styles.inlineLinkLight}>
+              {reward.noteLink}
+            </a>
+            {reward.noteAfter}
+          </p>
         </div>
       </section>
 
