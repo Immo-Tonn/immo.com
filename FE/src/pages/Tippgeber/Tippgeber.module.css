@@ -280,6 +280,43 @@
   color: var(--h-on-paper-muted);
 }
 
+/* ---------- 2a. Что получает знакомый ---------- */
+.benefits {
+  padding: var(--section-padding-y) 0;
+  background: var(--h-ink);
+  color: var(--h-on-dark);
+}
+.benefitList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.benefit {
+  position: relative;
+  min-width: 0;
+  padding: 26px 24px 26px 56px;
+  border: 1px solid rgba(125, 166, 245, 0.4);
+  border-radius: 18px;
+  background: rgba(246, 241, 234, 0.05);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--h-on-dark);
+  overflow-wrap: break-word;
+}
+.benefit::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 33px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--h-accent-light);
+}
+
 /* ---------- 3. Вознаграждение ---------- */
 .reward {
   padding: var(--section-padding-y) 0;
@@ -291,36 +328,6 @@
     ),
     var(--h-ink-2);
   color: var(--h-on-dark);
-}
-.rewardHead {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(16px, 3vw, 40px);
-  margin-bottom: clamp(24px, 3vw, 40px);
-}
-.rewardBig {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: clamp(20px, 2.6vw, 36px);
-  border: 1px solid rgba(125, 166, 245, 0.4);
-  border-radius: 20px;
-  background: rgba(246, 241, 234, 0.05);
-  min-width: 0;
-}
-.bigValue {
-  font-family: var(--h-display);
-  font-size: clamp(2rem, 0.9rem + 4.2vw, 4.6rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  color: var(--h-accent-light);
-}
-.bigLabel {
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: var(--h-on-dark-muted);
 }
 .bodyDark {
   max-width: 70ch;
@@ -336,58 +343,66 @@
   line-height: 1.65;
   color: var(--h-on-dark-muted);
 }
-.examplesTitle {
-  margin: clamp(28px, 4vw, 48px) 0 18px;
+
+.priceTable {
+  width: 100%;
+  margin: clamp(24px, 3vw, 40px) 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.priceTable thead th {
+  padding: 0 0 14px;
+  border-bottom: 1px solid rgba(125, 166, 245, 0.4);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   line-height: 1.5;
+  text-align: left;
   text-transform: uppercase;
   color: var(--h-on-dark-muted);
+  overflow-wrap: break-word;
 }
-.examples {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 24px);
-  margin: 0 0 clamp(24px, 3vw, 36px);
-  padding: 0;
-  list-style: none;
+.priceTable tbody th,
+.priceTable tbody td {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--h-line-dark);
+  vertical-align: baseline;
+  text-align: left;
+  overflow-wrap: break-word;
 }
-.example {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  padding: 24px;
-  border: 1px solid var(--h-line-dark);
-  border-radius: 18px;
-  background: rgba(22, 12, 32, 0.5);
-  min-width: 0;
-}
-.exampleLabel {
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--h-on-dark-muted);
-}
-.examplePrice {
+.priceTable tbody th {
+  width: 42%;
+  padding-right: 16px;
   font-family: var(--h-display);
-  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.4rem);
   font-weight: 500;
+  line-height: 1.1;
   color: var(--h-on-dark);
 }
-.exampleArrow {
-  margin: 6px 0;
-  color: var(--h-accent-light);
-  font-size: 1.1rem;
-  line-height: 1;
-}
-.exampleReward {
+.priceTable tbody td {
   font-family: var(--h-display);
-  font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+  font-size: clamp(1.2rem, 1rem + 1vw, 2rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.25;
   color: var(--h-accent-light);
+}
+.priceTable tbody tr:last-child td {
+  font-family: var(--h-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--h-on-dark-muted);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ---------- 4. Передача рекомендации ---------- */
@@ -474,6 +489,60 @@
   color: #fff;
 }
 
+/* ---------- 4a. FAQ ---------- */
+.faq {
+  padding: var(--section-padding-y) 0;
+  background: var(--h-paper);
+  color: var(--h-on-paper);
+  border-top: 1px solid var(--h-line-paper);
+}
+.faqList {
+  border-bottom: 1px solid var(--h-line-paper);
+}
+.faqItem {
+  border-top: 1px solid var(--h-line-paper);
+}
+.faqSummary {
+  position: relative;
+  padding: 22px 44px 22px 0;
+  font-family: var(--h-display);
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--h-on-paper);
+  cursor: pointer;
+  list-style: none;
+  overflow-wrap: break-word;
+}
+.faqSummary::-webkit-details-marker {
+  display: none;
+}
+.faqSummary::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--h-sans);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--h-accent);
+}
+.faqItem[open] > .faqSummary::after {
+  content: '\2212';
+}
+.faqSummary:hover {
+  color: var(--h-accent);
+}
+.faqAnswer {
+  max-width: 62ch;
+  margin: 0 0 24px;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--h-on-paper-muted);
+}
+
 /* ---------- 5. Условия ---------- */
 .conditions {
   padding: var(--section-padding-y) 0;
@@ -495,30 +564,68 @@
 }
 .clause {
   position: relative;
-  padding: 28px 0 8px 52px;
   border-top: 1px solid var(--h-line-dark);
   counter-increment: clause;
 }
-.clause::before {
+.clause:last-child {
+  border-bottom: 1px solid var(--h-line-dark);
+}
+.clauseSummary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 44px 22px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.clauseSummary::-webkit-details-marker {
+  display: none;
+}
+.clauseSummary::before {
   content: counter(clause) '.';
-  position: absolute;
-  left: 0;
-  top: 26px;
+  flex: none;
+  min-width: 36px;
   font-family: var(--h-display);
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.2;
   color: var(--h-accent-light);
 }
+.clauseSummary::after {
+  content: '+';
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--h-accent-light);
+}
+.clauseDetails[open] > .clauseSummary::after {
+  content: '\2212';
+}
+.clauseSummary:hover .clauseTitle {
+  color: var(--h-accent-light);
+}
+.clauseSummary:focus-visible,
+.faqSummary:focus-visible {
+  outline: 2px solid var(--h-accent-light);
+  outline-offset: 2px;
+}
 .clauseTitle {
-  margin: 0 0 12px;
+  margin: 0;
   font-family: var(--h-display);
   font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.65rem);
   font-weight: 600;
   line-height: 1.2;
   color: var(--h-on-dark);
+  transition: color 0.3s var(--h-ease);
 }
-.clause p {
+.clauseBody {
+  padding: 0 0 12px 52px;
+}
+.clauseBody p {
   margin: 0 0 16px;
   font-size: 1rem;
   line-height: 1.7;
@@ -592,6 +699,9 @@
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .benefitList {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .submitGrid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -651,12 +761,14 @@
   .steps {
     grid-template-columns: minmax(0, 1fr);
   }
-  .rewardHead,
-  .examples {
-    grid-template-columns: minmax(0, 1fr);
+  .clauseBody {
+    padding-left: 0;
   }
-  .clause {
-    padding-left: 40px;
+  .clauseSummary {
+    gap: 12px;
+  }
+  .clauseSummary::before {
+    min-width: 28px;
   }
   .final {
     padding-left: 14px;
