@@ -16,6 +16,7 @@ export default [
     route('objectstyling', 'routes/objectstyling.tsx'),
     route('verkaufssupport', 'routes/verkaufssupport.tsx'),
     route('rechner', 'routes/rechner.tsx'),
+    route('tippgeber', 'routes/tippgeber.tsx'),
     route('add-property', 'pages/Auth/Login.tsx'),
     route('register', 'pages/Auth/Register.tsx'),
     route('forgot-password', 'pages/Auth/ForgotPassword.tsx'),
