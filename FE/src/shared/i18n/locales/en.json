@@ -33,8 +33,8 @@
       "description": "Practical information and support for property transactions: help with documents such as the land registry extract and energy certificate, and with viewings."
     },
     "tippgeber": {
-      "title": "Referral Programme Münster | Up to €4,000 | IMMO TONN",
-      "description": "Refer IMMO TONN and receive a referral fee on a successful sale in Münster: from €200 up to €4,000. View the terms online."
+      "title": "Referral Programme Münster | Up to €5,000 | IMMO TONN",
+      "description": "Refer IMMO TONN and receive a referral fee on a successful sale in Münster: from €200 up to €5,000. View the terms online."
     },
     "breadcrumb": {
       "home": "Home",
@@ -61,7 +61,7 @@
     "toHome": "Go to homepage",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "tippgeber": "Give a tip · up to €4,000"
+    "tippgeber": "Give a tip · up to €5,000"
   },
   "footer": {
     "legalNotice": "Legal Notice",
@@ -72,7 +72,7 @@
   },
   "tippgeberPromo": {
     "line1": "Your tip.",
-    "line2": "Up to €4,000.",
+    "line2": "Up to €5,000.",
     "text": "Do you know someone who wants to sell a property? Recommend IMMO TONN and receive a referral fee if the sale is successful.",
     "cta": "Discover the referral programme",
     "note": "Payout after a successful sale and receipt of our brokerage commission. The <0>Terms of participation</0> apply."

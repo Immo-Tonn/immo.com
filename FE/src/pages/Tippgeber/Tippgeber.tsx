@@ -68,6 +68,7 @@ const Tippgeber = () => {
             ))}
           </ul>
           <p className={styles.factsNote}>{hero.note}</p>
+          <p className={styles.factsNote}>{hero.confirm}</p>
 
           <div className={styles.actions}>
             <a href={MAILTO} className={`${styles.cta} ${styles.ctaPrimary}`}>

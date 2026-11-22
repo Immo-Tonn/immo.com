@@ -6,14 +6,15 @@ export const contentEn: PageContent = {
   hero: {
     eyebrow: 'Referral programme · Münster & surrounding area',
     line1: 'Your tip.',
-    line2: 'Up to €4,000.',
+    line2: 'Up to €5,000.',
     intro:
       'Do you know someone who wants to sell a house, an apartment or a plot of land in Münster and the surrounding area? Put them in touch with IMMO TONN. If your referral leads to a successful sale through us, we will thank you with a referral fee.',
     facts: [
       'from a €30,000 purchase price',
-      '€200 to €4,000',
+      '€200 to €5,000',
       '1% from €100,000',
     ],
+    confirm: 'We confirm your referral within 48 hours.',
     note: 'Payout after a successful sale and receipt of our brokerage commission. If the commission is reduced, the referral fee may be lower.',
     ctaMail: 'Send referral by e-mail',
     ctaCall: 'Call',
@@ -58,7 +59,7 @@ export const contentEn: PageContent = {
         ['from €30,000', '€200'],
         ['from €50,000', '€500'],
         ['from €100,000', '1% of the purchase price, at least €1,000'],
-        ['from €400,000', '€4,000 (maximum)'],
+        ['from €500,000', '€5,000 (maximum)'],
         ['below €30,000', 'not part of the programme, on request in individual cases'],
       ],
     },
@@ -108,6 +109,10 @@ export const contentEn: PageContent = {
       q: 'What applies to lower purchase prices?',
       a: 'For a notarised purchase price of €30,000 to €49,999 we pay €200, from €50,000 to €99,999 we pay €500, and from €100,000 you receive 1% of the purchase price. The programme does not apply below €30,000; please contact us in individual cases. The purchase price in the purchase contract is decisive, not the asking price.',
     },
+      {
+        q: 'How soon will I know whether my referral was accepted?',
+        a: 'We confirm receipt of your referral within 48 hours (on business days) and then keep you informed about its status, for example when a brokerage agreement has been signed. For data protection reasons we do not share details about the owner or the property.',
+      },
     ],
   },
   conditions: {
@@ -127,7 +132,7 @@ export const contentEn: PageContent = {
         title: 'Which referrals are considered',
         paragraphs: [
           'We must not yet be aware of the specific intention to sell the referred property at the time of the referral. No corresponding sales instruction may already exist with us.',
-          'Your referral must reach us by e-mail or by phone before the owner contacts us about this sale themselves. We confirm receipt of your referral by e-mail. The confirmation serves as a record of receipt. A claim to the referral fee only arises once all requirements are met.',
+          "Your referral must reach us by e-mail or by phone before the owner contacts us about this sale themselves. We confirm receipt of your referral by e-mail. The confirmation serves as a record of receipt. The confirmation is sent within 48 hours (on business days); we then keep you informed about the status without disclosing the owner's personal data. A claim to the referral fee only arises once all requirements are met.",
         ],
       },
       {
@@ -139,7 +144,7 @@ export const contentEn: PageContent = {
       {
         title: 'Calculation of the referral fee',
         paragraphs: [
-          'The referral fee depends on the purchase price notarised in the purchase contract, not on the asking price: from €100,000 it is 1% of the purchase price, at least €1,000 and at most €4,000. For a purchase price of €50,000 to €99,999 it is €500, and for a purchase price of €30,000 to €49,999 it is €200. If the notarised purchase price is below €30,000, no referral fee is payable.',
+          'The referral fee depends on the purchase price notarised in the purchase contract, not on the asking price: from €100,000 it is 1% of the purchase price, at least €1,000 and at most €5,000. For a purchase price of €50,000 to €99,999 it is €500, and for a purchase price of €30,000 to €49,999 it is €200. If the notarised purchase price is below €30,000, no referral fee is payable.',
           'If the brokerage commission agreed with us is reduced or only partially paid, the regular referral fee is reduced in the same proportion. For example, if 50% of the agreed brokerage commission is received, 50% of the regular referral fee is paid out. The payout may therefore be lower than the amount stated above.',
           'If further commission payments are received later, a corresponding supplementary payment is made up to the amount of the regular referral fee.',
         ],
