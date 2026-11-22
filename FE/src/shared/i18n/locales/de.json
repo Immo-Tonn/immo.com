@@ -48,6 +48,10 @@
       "title": "Widerrufsbelehrung | Immo Tonn",
       "description": "Widerrufsrecht: Den Vertrag können Sie binnen vierzehn Tagen ohne Angabe von Gründen widerrufen – Informationen zu Frist, Ausübung und Folgen."
     },
+    "tippgeber": {
+      "title": "Tippgeber-Programm Münster | Bis zu 4.000 € | IMMO TONN",
+      "description": "Empfehlen Sie IMMO TONN und erhalten Sie bei erfolgreichem Verkauf in Münster 1 % des Kaufpreises, regulär 1.000–4.000 €. Bedingungen online einsehen."
+    },
     "breadcrumb": {
       "home": "Startseite",
       "immobilien": "Immobilien",
@@ -56,7 +60,8 @@
       "rechner": "Finanzierungsrechner",
       "kontakt": "Kontakt",
       "verkaufssupport": "Verkaufssupport",
-      "rechtUndRat": "Recht & Rat"
+      "rechtUndRat": "Recht & Rat",
+      "tippgeber": "Tippgeber-Programm"
     }
   },
   "nav": {
@@ -77,6 +82,7 @@
     "legalNotice": "Impressum",
     "privacyPolicy": "Datenschutz",
     "cancellationPolicy": "Widerrufsrecht",
+    "tippgeber": "Tippgeber-Programm",
     "rightsReserved": "{{name}}. Alle Rechte vorbehalten {{year}}"
   },
   "common": {

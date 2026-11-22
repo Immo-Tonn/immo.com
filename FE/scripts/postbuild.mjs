@@ -13,7 +13,7 @@ const SITE = 'https://immo-tonn.com';
 const PAGES = [
   '/', '/immobilien', '/wertermittlung', '/finanzierung', '/rechner',
   '/verkaufssupport', '/kontakt', '/recht-und-rat', '/objectstyling',
-  '/legalnotice', '/privacypolicy', '/cancellationpolicy',
+  '/legalnotice', '/privacypolicy', '/cancellationpolicy', '/tippgeber',
 ];
 // В sitemap и hreflang попадают только ГОТОВЫЕ языковые версии (src/seo/readiness.json)
 const readiness = JSON.parse(await readFile('src/seo/readiness.json', 'utf8'));
