@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 import heroImage from '@shared/assets/hero-home/hero-home-3.webp';
 
 const HeroHome = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  // страница /tippgeber только на немецком
+  const showTipp = i18n.language.startsWith('de');
   const sectionRef = useRef<HTMLElement | null>(null);
 
   // мягкий параллакс фото при скролле (отключён при prefers-reduced-motion)
@@ -71,6 +73,17 @@ const HeroHome = () => {
           >
             {t('heroHome.ctaRequest')}
           </Link>
+          {showTipp && (
+            <div className={styles.tippRow}>
+              <Link
+                to="/tippgeber"
+                className={`${styles.cta} ${styles.ctaGhost}`}
+              >
+                <span className={styles.tippDot} aria-hidden="true" />
+                {t('header.tippgeber')}
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

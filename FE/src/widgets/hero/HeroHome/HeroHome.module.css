@@ -150,16 +150,30 @@
 }
 
 .ctaGhost {
-  border: 1px solid rgba(246, 241, 234, 0.55);
-  background: rgba(22, 12, 32, 0.38);
+  border: 1px solid rgba(246, 241, 234, 0.4);
+  background: rgba(22, 12, 32, 0.88);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   color: var(--h-on-dark);
 }
 .ctaGhost.cta:hover {
-  background: rgba(246, 241, 234, 0.14);
+  background: rgba(52, 36, 78, 0.94);
   border-color: var(--h-on-dark);
   transform: translateY(-2px);
+}
+
+.tippRow {
+  /* третья кнопка — на отдельной строке под двумя основными */
+  flex-basis: 100%;
+  display: flex;
+}
+.tippDot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4d5e;
+  box-shadow: 0 0 0 3px rgba(255, 77, 94, 0.25);
 }
 
 /* --- загрузка: ступенчатое появление --- */
@@ -247,6 +261,9 @@
   .actions {
     margin-top: auto;
     flex-direction: column;
+  }
+  .tippRow {
+    flex-basis: auto;
   }
   .cta {
     box-sizing: border-box;
