@@ -91,7 +91,7 @@
     "line2": "Bis zu 4.000 €.",
     "text": "Kennen Sie jemanden, der eine Immobilie verkaufen möchte? Empfehlen Sie IMMO TONN weiter und erhalten Sie bei erfolgreichem Verkauf eine Vergütung.",
     "cta": "Tippgeber-Programm entdecken",
-    "note": "Auszahlung nach erfolgreichem Verkauf und Eingang unserer Maklerprovision. Es gelten die Teilnahmebedingungen."
+    "note": "Auszahlung nach erfolgreichem Verkauf und Eingang unserer Maklerprovision. Es gelten die <0>Teilnahmebedingungen</0>."
   },
   "common": {
     "redirecting": "Weiterleitung..."
@@ -102,7 +102,7 @@
     "line3": "und das Münsterland",
     "ctaValuation": "Kostenlose Immobilienbewertung",
     "ctaRequest": "Immobilien entdecken",
-    "tagline": "Seit 1985"
+    "tagline": "Maklererfahrung seit 1985"
   },
   "aboutUs": {
     "titleLine1": "Ihr zuverlässiger Immobilienmakler für",

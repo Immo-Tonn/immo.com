@@ -17,6 +17,7 @@ import AdminDropdownMenu from '@widgets/AdminDropdownMenu/AdminDropdownMenu';
 import { dispatchLogoutEvent } from '@features/utils/authEvent';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
+import { readinessKey } from '../../seo/meta';
 
 interface NavLink {
   label: string;
@@ -39,12 +40,10 @@ const PhoneIcon = () => (
 );
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
-  // страница /tippgeber только на немецком — кнопки показываем только в немецкой версии
-  const showTipp = i18n.language.startsWith('de');
-  // на главной кнопка стоит в hero под основными кнопками, наверху её не дублируем
-  const isHome = useLocation().pathname === '/';
-  const showTippTop = showTipp && !isHome;
+  const { t } = useTranslation();
+  // на главной ниже есть блок акции, на самой /tippgeber (на любом языке) ссылка на текущую страницу не нужна
+  const path = readinessKey(useLocation().pathname);
+  const showTippTop = path !== '/' && path !== '/tippgeber';
 
   /* ---------- navigation state ---------- */
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -137,7 +136,6 @@ const Header = () => {
 
           {showTippTop && (
             <Link to="/tippgeber" className={styles.tippTop}>
-              <span className={styles.tippDot} aria-hidden="true" />
               {t('header.tippgeber')}
             </Link>
           )}
@@ -145,7 +143,6 @@ const Header = () => {
           <div className={styles.mobileActions}>
             {showTippTop && (
               <Link to="/tippgeber" className={styles.tippTablet}>
-                <span className={styles.tippDot} aria-hidden="true" />
                 {t('header.tippgeber')}
               </Link>
             )}
@@ -206,18 +203,15 @@ const Header = () => {
               ))}
             </List>
 
-            {showTipp && (
-              <Link
-                to="/tippgeber"
-                className={styles.drawerTipp}
-                onClick={handleNavLinkClick}
-              >
-                <span className={styles.tippDot} aria-hidden="true" />
-                <span className={styles.drawerTippText}>
-                  {t('header.tippgeber')}
-                </span>
-              </Link>
-            )}
+            <Link
+              to="/tippgeber"
+              className={styles.drawerTipp}
+              onClick={handleNavLinkClick}
+            >
+              <span className={styles.drawerTippText}>
+                {t('header.tippgeber')}
+              </span>
+            </Link>
 
             {/* --- ADMIN DROPDOWN (мобильное меню) --- */}
             {isAdmin && (
