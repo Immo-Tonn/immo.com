@@ -17,6 +17,7 @@ const PAGES = [
   '/legalnotice',
   '/privacypolicy',
   '/cancellationpolicy',
+  '/tippgeber',
   '/kontakt/danke',
 ];
 
@@ -46,7 +47,6 @@ export default {
     // (ssr:false). Пока в каталоге нет объектов, пререндерим служебный путь: страница
     // под noindex, в sitemap и built-objects.json не попадает.
     if (ids.length === 0) objectPaths.push('/immobilien/_empty');
-    // Tippgeber-Programm — только немецкая версия (без /en, /ru)
-    return [...pages, '/tippgeber', ...objectPaths];
+    return [...pages, ...objectPaths];
   },
 } satisfies Config;

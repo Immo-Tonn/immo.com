@@ -6,7 +6,7 @@ import instagram from '@shared/assets/footer/instagram.svg';
 import linkedIn from '@shared/assets/footer/linkedin.svg';
 // import youtube from '@shared/assets/footer/youtube.svg'; // пока не подключаем
 const Footer = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
       <div className={styles.topStripe} />
@@ -24,12 +24,9 @@ const Footer = () => {
             <li>
               <Link to="/cancellationpolicy">{t('footer.cancellationPolicy')}</Link>
             </li>
-            {/* страница только на немецком — ссылка только в немецкой версии */}
-            {i18n.language.startsWith('de') && (
-              <li>
-                <Link to="/tippgeber">{t('footer.tippgeber')}</Link>
-              </li>
-            )}
+            <li>
+              <Link to="/tippgeber">{t('footer.tippgeber')}</Link>
+            </li>
           </ul>
         </div>
         <div className={styles.footerMiddle}>
