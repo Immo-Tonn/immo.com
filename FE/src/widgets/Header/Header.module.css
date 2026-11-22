@@ -613,14 +613,6 @@ a.langOption {
 }
 
 /* ---------- Кнопка Tippgeber-Programm ---------- */
-.tippDot {
-  flex: none;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ff4d5e;
-  box-shadow: 0 0 0 3px rgba(255, 77, 94, 0.25);
-}
 .tippTop,
 .tippTablet {
   box-sizing: border-box;

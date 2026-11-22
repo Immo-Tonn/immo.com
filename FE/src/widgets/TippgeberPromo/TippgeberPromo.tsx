@@ -1,14 +1,10 @@
 import { Link } from '@shared/lib/localeRouter';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styles from './TippgeberPromo.module.css';
 
-/**
- * Блок акции Tippgeber-Programm на главной (сразу после hero).
- * Страница /tippgeber есть только на немецком, поэтому блок показывается только в немецкой версии.
- */
+/** Блок акции Tippgeber-Programm на главной (сразу после hero). */
 const TippgeberPromo = () => {
-  const { t, i18n } = useTranslation();
-  if (!i18n.language.startsWith('de')) return null;
+  const { t } = useTranslation();
 
   return (
     <section className={styles.promo} aria-labelledby="tipp-promo-title">
@@ -17,7 +13,6 @@ const TippgeberPromo = () => {
           <span className={styles.line}>{t('tippgeberPromo.line1')}</span>{' '}
           <span className={`${styles.line} ${styles.accent}`}>
             {t('tippgeberPromo.line2')}
-            <span className={styles.dot} aria-hidden="true" />
           </span>
         </h2>
         <div
@@ -29,7 +24,18 @@ const TippgeberPromo = () => {
           <Link to="/tippgeber" className={styles.cta}>
             {t('tippgeberPromo.cta')}
           </Link>
-          <p className={styles.note}>{t('tippgeberPromo.note')}</p>
+          <p className={styles.note}>
+            <Trans
+              i18nKey="tippgeberPromo.note"
+              components={[
+                <Link
+                  key="conditions"
+                  to="/tippgeber#teilnahmebedingungen"
+                  className={styles.noteLink}
+                />,
+              ]}
+            />
+          </p>
         </div>
       </div>
     </section>
