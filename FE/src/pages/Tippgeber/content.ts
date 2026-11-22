@@ -21,14 +21,15 @@ export const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(
 export const hero = {
   eyebrow: 'Tippgeber-Programm · Münster & Umgebung',
   line1: 'Ihr Tipp.',
-  line2: 'Bis zu 4.000 €.',
+  line2: 'Bis zu 5.000 €.',
   intro:
     'Kennen Sie jemanden, der ein Haus, eine Wohnung oder ein Grundstück in Münster und Umgebung verkaufen möchte? Stellen Sie den Kontakt zu IMMO TONN her. Führt Ihre Empfehlung zu einem erfolgreichen Verkauf über uns, bedanken wir uns mit einer Vergütung.',
   facts: [
     'ab 30.000 € Kaufpreis',
-    '200 € bis 4.000 €',
+    '200 € bis 5.000 €',
     '1 % ab 100.000 €',
   ],
+  confirm: 'Wir bestätigen Ihre Empfehlung innerhalb von 48 Stunden.',
   note: 'Auszahlung nach erfolgreichem Verkauf und Eingang unserer Maklerprovision. Bei gekürzter Provision kann die Vergütung geringer ausfallen.',
   ctaMail: 'Empfehlung per E-Mail senden',
   ctaCall: 'Anrufen',
@@ -76,7 +77,7 @@ export const reward = {
       ['ab 30.000 €', '200 €'],
       ['ab 50.000 €', '500 €'],
       ['ab 100.000 €', '1 % des Kaufpreises, mindestens 1.000 €'],
-      ['ab 400.000 €', '4.000 € (Höchstbetrag)'],
+      ['ab 500.000 €', '5.000 € (Höchstbetrag)'],
       ['unter 30.000 €', 'nicht im Programm, im Einzelfall auf Anfrage'],
     ],
   },
@@ -128,6 +129,10 @@ export const faq = {
     q: 'Was gilt bei niedrigeren Kaufpreisen?',
     a: 'Bei einem beurkundeten Kaufpreis von 30.000 € bis 49.999 € zahlen wir 200 €, von 50.000 € bis 99.999 € zahlen wir 500 €, ab 100.000 € erhalten Sie 1 % des Kaufpreises. Unter 30.000 € gilt das Programm nicht; im Einzelfall sprechen Sie uns gern an. Maßgeblich ist der Kaufpreis im Kaufvertrag, nicht der Angebotspreis.',
   },
+  {
+    q: 'Wie schnell erfahre ich, ob meine Empfehlung angenommen wurde?',
+    a: 'Wir bestätigen den Eingang Ihrer Empfehlung innerhalb von 48 Stunden (werktags) und informieren Sie anschließend über den Stand, zum Beispiel wenn ein Maklerauftrag erteilt wurde. Details zum Eigentümer und zum Objekt geben wir aus Datenschutzgründen nicht weiter.',
+  },
   ],
 };
 
@@ -148,7 +153,7 @@ export const conditions = {
       title: 'Welche Empfehlungen berücksichtigt werden',
       paragraphs: [
         'Die konkrete Verkaufsabsicht für die empfohlene Immobilie darf uns zum Zeitpunkt der Empfehlung noch nicht bekannt sein. Es darf bereits kein entsprechender Verkaufsauftrag bei uns bestehen.',
-        'Ihre Empfehlung muss uns per E-Mail oder telefonisch erreichen, bevor der Eigentümer selbst wegen dieses Verkaufs Kontakt mit uns aufnimmt. Wir bestätigen den Eingang Ihrer Empfehlung per E-Mail. Die Eingangsbestätigung dokumentiert den Eingang. Ein Vergütungsanspruch entsteht erst, wenn sämtliche Voraussetzungen erfüllt sind.',
+        'Ihre Empfehlung muss uns per E-Mail oder telefonisch erreichen, bevor der Eigentümer selbst wegen dieses Verkaufs Kontakt mit uns aufnimmt. Wir bestätigen den Eingang Ihrer Empfehlung per E-Mail. Die Eingangsbestätigung dokumentiert den Eingang. Die Bestätigung erfolgt innerhalb von 48 Stunden (werktags); über den weiteren Stand informieren wir Sie anschließend, ohne dabei personenbezogene Daten des Eigentümers weiterzugeben. Ein Vergütungsanspruch entsteht erst, wenn sämtliche Voraussetzungen erfüllt sind.',
       ],
     },
     {
@@ -160,7 +165,7 @@ export const conditions = {
     {
       title: 'Berechnung der Vergütung',
       paragraphs: [
-        'Die Vergütung richtet sich nach dem im Kaufvertrag notariell beurkundeten Kaufpreis, nicht nach dem Angebotspreis: Ab 100.000 € beträgt sie 1 % des Kaufpreises, mindestens 1.000 € und höchstens 4.000 €. Bei einem Kaufpreis von 50.000 € bis 99.999 € beträgt sie 500 €, bei einem Kaufpreis von 30.000 € bis 49.999 € beträgt sie 200 €. Liegt der beurkundete Kaufpreis unter 30.000 €, besteht kein Anspruch auf Vergütung.',
+        'Die Vergütung richtet sich nach dem im Kaufvertrag notariell beurkundeten Kaufpreis, nicht nach dem Angebotspreis: Ab 100.000 € beträgt sie 1 % des Kaufpreises, mindestens 1.000 € und höchstens 5.000 €. Bei einem Kaufpreis von 50.000 € bis 99.999 € beträgt sie 500 €, bei einem Kaufpreis von 30.000 € bis 49.999 € beträgt sie 200 €. Liegt der beurkundete Kaufpreis unter 30.000 €, besteht kein Anspruch auf Vergütung.',
         'Wird die mit uns vereinbarte Maklerprovision gekürzt oder nur teilweise gezahlt, wird die reguläre Vergütung im gleichen Verhältnis reduziert. Gehen beispielsweise 50 % der vereinbarten Maklerprovision ein, werden 50 % der regulären Tippgebervergütung ausgezahlt. Die Auszahlung kann dadurch unter dem jeweiligen Betrag liegen.',
         'Bei nachträglichem Eingang weiterer Provisionszahlungen erfolgt eine entsprechende Nachzahlung bis zur Höhe der regulären Vergütung.',
       ],
