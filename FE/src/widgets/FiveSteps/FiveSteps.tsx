@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import styles from './FiveSteps.module.css';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -46,7 +47,17 @@ const FiveSteps = () => {
                 <div className={styles.stepTitle}>{step.title}</div>
               </AccordionSummary>
               <AccordionDetails className={styles.details}>
-                {step.body}
+                {step.body.split('\n\n').map((paragraph, j) => (
+                  <Fragment key={j}>
+                    {j > 0 && (
+                      <>
+                        <br />
+                        <br />
+                      </>
+                    )}
+                    {paragraph}
+                  </Fragment>
+                ))}
               </AccordionDetails>
             </Accordion>
           ))}
